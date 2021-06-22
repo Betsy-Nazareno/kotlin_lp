@@ -105,7 +105,7 @@ tokens = (
     'MARK_1',
     'MARK_2',
     'STRING_1',
-    'STRING_2',
+    'CHAR',
     'COMMENT',
     'BOOLEAN' #Fin de aporte de Betsy-----------------------------------------------------------------------------------
      #Aporte Eddy  
@@ -201,12 +201,12 @@ t_SINGLE_QUOTE= '\''
 #Findeaporte
 
 # Regular expression rules for complex tokens - Aporte Karla -----------------------------------------------------------
-t_STRING_1 = r'"[\w]*"'
-t_STRING_2 = r"'[\w]*'"
+t_STRING_1 = r'("[\w]*[^"]")|("""[\w\t\n\$]*""")'
+t_CHAR = r"'[\w]'"
 
 entero = r'(-[1-9][0-9]*)|(\d+)'
 t_SUM = r'(' + entero + t_PLUS + entero + r')'
-t_VAL_TIPO_1 = r'(var' + t_EQUAL + r'(' + t_STRING_1 + r'|'+ t_STRING_2 + r')' + r')'
+t_VAL_TIPO_1 = r'(var' + t_EQUAL + r'(' + t_STRING_1 + r')' + r')'
 t_TEMPLATE = r'"([\w ]*)\${[\w= ]*}([\w ]*)"'
 
 #Fin aporte Karla ------------------------------------------------------------------------------------------------------
