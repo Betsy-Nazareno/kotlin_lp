@@ -200,7 +200,7 @@ t_SINGLE_QUOTE= '\''
 #Findeaporte
 
 # Regular expression rules for complex tokens - Aporte Karla -----------------------------------------------------------
-t_STRING_1 = r'("[\w]*[^"]")|("""[\w]*""")'
+t_STRING_1 = r'("[\w]*[^"]")|("""[\w\t\n\$]*""")'
 t_CHAR = r"'[\w]'"
 
 entero = r'(-[1-9][0-9]*)|(\d+)'
