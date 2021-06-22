@@ -14,9 +14,9 @@ reserved = {
     'is': 'IS',
     'when': 'WHEN',
     'package': 'PACKAGE',
-    'import' : 'IMPORT'
+    'import' : 'IMPORT',
        #Aporte de Eddy
-'PUBLIC': 'public',
+'public': 'PUBLIC',
 'PRIVATE': 'private',
 'PROTECTED': 'protected',
 'INTERNAL': 'internal',
@@ -62,10 +62,7 @@ reserved = {
 'IMPORT': 'import',
 'CLASS': 'class',
 'INTERFACE': 'interface',
-'FUN': 'fun',
 'OBJECT': 'object',
-'VAL': 'val',
-'VAR': 'var',
 'TYPE_ALIAS': 'typealias',
 'CONSTRUCTOR': 'constructor',
 'BY': 'by',
@@ -75,22 +72,15 @@ reserved = {
 'SUPER': 'super',
 'TYPEOF': 'typeof',
 'WHERE': 'where',
-'IF': 'if',
-'ELSE': 'else',
-'WHEN': 'when',
 'TRY': 'try',
 'CATCH': 'catch',
 'FINALLY': 'finally',
-'FOR': 'for',
 'DO': 'do',
 'WHILE': 'while',
 'THROW': 'throw',
-'RETURN': 'return',
 'CONTINUE': 'continue',
 'BREAK': 'break',
 'AS': 'as',
-'IS': 'is',
-'IN': 'in',
 'NOT_IS': '!is',
 'NOT_IN': '!in',
 'OUT': 'out',
@@ -116,7 +106,7 @@ tokens = (
     'INCREMENTTIMES',
     'DIVIDEIN',
     'MODIN',
-    'FLOAT',    #Asumo que desde aquí debemos definir tipos de datos
+    'FLOAT',
     'INT',
     'LONG',
     'MARK_1',
@@ -128,6 +118,7 @@ tokens = (
 
 ) + tuple(reserved.values())
 # Regular expression rules for simple tokens
+#Aporte de Betsy--------------------------------------------------------------------------------------------------------
 t_VAR_TIPO_1 = r'var="[\w]+"'
 t_MARK_1 = r'"'
 t_MARK_2 = r"'"
@@ -138,7 +129,6 @@ t_DIVIDE = r'/'
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
 t_MOD = r'%'
-#Aporte de Betsy--------------------------------------------------------------------------------------------------------
 t_EQUAL = r'='
 t_DOTS = r':'
 t_INCREMENTONE = r'\+\+'
@@ -161,20 +151,11 @@ t_LSQUARE= r'['
 t_RSQUARE= r']'
 t_LCURL= r'{' 
 t_RCURL= r'}'
-t_INCR= r'++'
-t_DECR= r'--'
 t_CONJ= r'&&'
 t_DISJ= r'||'
 t_EXCL_WS= r'!'
 t_EXCL_NO_WS= r'!'
-t_COLON= r':'
 t_SEMICOLON= ';'
-t_ASSIGNMENT= '='
-t_ADD_ASSIGNMENT= '+='
-t_SUB_ASSIGNMENT= '-='
-t_MULT_ASSIGNMENT= '*='
-t_DIV_ASSIGNMENT= '/='
-t_MOD_ASSIGNMENT= '%='
 t_ARROW= '->'
 t_DOUBLE_ARROW= '=>'
 t_RANGE= '..'
@@ -201,7 +182,7 @@ t_STRING_1 = r'"[\w]*"'
 t_STRING_2 = r"'[\w]*'"
 
 
-#t_VAL_TIPO_1 = r'(var' + t_EQUAL + r'(' + t_STRING_1 + r'|'+ t_STRING_2 + r')' + r')'
+t_VAL_TIPO_1 = r'(var' + t_EQUAL + r'(' + t_STRING_1 + r'|'+ t_STRING_2 + r')' + r')'
 
 
 
