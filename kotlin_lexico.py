@@ -15,73 +15,72 @@ reserved = {
     'when': 'WHEN',
     'package': 'PACKAGE',
     'import' : 'IMPORT',
-       #Aporte de Eddy
-'public': 'PUBLIC',
-'PRIVATE': 'private',
-'PROTECTED': 'protected',
-'INTERNAL': 'internal',
-'ENUM': 'enum',
-'SEALED': 'sealed',
-'ANNOTATION': 'annotation',
-'DATA': 'data',
-'INNER': 'inner',
-'VALUE': 'value',
-'TAILREC': 'tailrec',
-'OPERATOR': 'operator',
-'INLINE': 'inline',
-'INFIX': 'infix',
-'EXTERNAL': 'external',
-'SUSPEND': 'suspend',
-'OVERRIDE': 'override',
-'ABSTRACT': 'abstract',
-'FINAL': 'final',
-'OPEN': 'open',
-'CONST': 'const',
-'LATEINIT': 'lateinit',
-'VARARG': 'vararg',
-'NOINLINE': 'noinline',
-'CROSSINLINE': 'crossinline',
-'REIFIED': 'reified',
-'EXPECT': 'expect',
-'ACTUAL': 'actual',
-'FILE': 'file',
-'FIELD': 'field',
-'PROPERTY': 'property',
-'GET': 'get',
-'SET': 'set',
-'RECEIVER': 'receiver',
-'PARAM': 'param',
-'SETPARAM': 'setparam',
-'DELEGATE': 'delegate',
-'PACKAGE': 'package',
-'IMPORT': 'import',
-'CLASS': 'class',
-'INTERFACE': 'interface',
-'OBJECT': 'object',
-'TYPE_ALIAS': 'typealias',
-'CONSTRUCTOR': 'constructor',
-'BY': 'by',
-'COMPANION': 'companion',
-'INIT': 'init',
-'THIS': 'this',
-'SUPER': 'super',
-'TYPEOF': 'typeof',
-'WHERE': 'where',
-'TRY': 'try',
-'CATCH': 'catch',
-'FINALLY': 'finally',
-'DO': 'do',
-'WHILE': 'while',
-'THROW': 'throw',
-'CONTINUE': 'continue',
-'BREAK': 'break',
-'AS': 'as',
-'OUT': 'out',
-'DYNAMIC': 'dynamic',
+  #Aporte de Eddy
+ 'public':'PUBLIC',
+ 'private': 'PRIVATE',
+'protected':'PROTECTED',
+'internal':'INTERNAL',
+ 'enum':'ENUM',
+'sealed': 'SEALED',
+'annotation':'ANNOTATION',
+ 'data':'DATA',
+ 'inner':'INNER',
+ 'value':'VALUE',
+'tailrec':'TAILREC',
+'operator':'OPERATOR',
+ 'inline':'INLINE',
+'infix':'INFIX',
+'external':'EXTERNAL',
+'suspend':'SUSPEND',
+'override':'OVERRIDE',
+'abstract':'ABSTRACT',
+'final':'FINAL',
+'open':'OPEN',
+'const':'CONST',
+'lateinit':'LATEINIT',
+'vararg':'VARARG',
+'noinline':'NOINLINE',
+'crossinline' :'CROSSINLINE',
+  'reified'   :  'REIFIED',
+  'expect'    :  'EXPECT',
+  'actual'    :  'ACTUAL',
+   'file'     :  'FILE',       
+   'field'    :  'FIELD',         
+    'property':  'PROPERTY',
+ 'get':'GET',
+ 'set':'SET',
+'receiver':'RECEIVER',
+'param':'PARAM',
+'setparam':'SETPARAM',
+'class'  : 'CLASS',
+'interface': 'INTERFACE',
+'object':'OBJECT',
+'typealias':'TYPE_ALIAS',
+'constructor':'CONSTRUCTOR',
+'by':'BY',
+'companion':'COMPANION',
+'init':'INIT',
+'this':'THIS',
+'super':'SUPER',
+'typeof' : 'TYPEOF',
+'where':'WHERE',
+'try':'TRY',
+'catch': 'CATCH',
+'finally':'FINALLY',
+'do': 'DO',
+'throw':'THROW',
+'continue':'CONTINUE',
+'break':'BREAK',
+'as':'AS',
+ 'out':'OUT',
+'dynamic':'DYNAMIC'
+
+
 }
 
 tokens = (
     'VAR_TIPO_1',
+    'VAL_TIPO_1',
     'SUM',
     'PLUS',
     'MINUS',
@@ -109,6 +108,39 @@ tokens = (
     'STRING_2',
     'COMMENT',
     'BOOLEAN' #Fin de aporte de Betsy-----------------------------------------------------------------------------------
+     #Aporte Eddy  
+    'DOT',
+    'COMMA',
+    'LSQUARE',
+    'RSQUARE',
+    'LCURL',
+    'RCURL',
+    'INCR',
+    'DECR',
+    'DOT',
+    'CONJ',
+    'DISJ',
+    'EXCL_WS',
+    'EXCL_NO_WS',
+    'ARROW',
+    'DOUBLE_ARROW',
+    'RANGE',
+    'COLONCOLON',
+    'DOUBLE_SEMICOLON',
+    'SEMICOLON',
+    'HASH',
+    'AT_NO_WS',
+    'QUEST_WS',
+    'LANGLE',
+    'RANGLE',
+    'LE',
+    'GE',
+    'EXCL_EQ',
+    'EXCL_EQEQ',
+    'AS_SAFE',
+    'EQEQ',
+    'EQEQEQ',
+    'SINGLE_QUOTE',
 
 ) + tuple(reserved.values())
 # Regular expression rules for simple tokens
@@ -135,27 +167,25 @@ t_MODIN = r'%='
 
 #Fin de aporte de Betsy-------------------------------------------------------------------------------------------------
 # Aporte de Eddy
-t_RESERVED = r'...'
-t_DOT= r'.'
+t_DOT= r'\.'
 t_COMMA= r','
-t_LSQUARE= r'['
+t_LSQUARE= r'\['
 t_RSQUARE= r']'
 t_LCURL= r'{' 
 t_RCURL= r'}'
 t_CONJ= r'&&'
-t_DISJ= r'||'
+t_DISJ= r'\|\|'
 t_EXCL_WS= r'!'
 t_EXCL_NO_WS= r'!'
 t_SEMICOLON= ';'
 t_ARROW= '->'
 t_DOUBLE_ARROW= '=>'
-t_RANGE= '..'
+t_RANGE= '\.\.'
 t_COLONCOLON= '::'
 t_DOUBLE_SEMICOLON= ';;'
-t_HASH= '#'
+t_HASH= '\#'
 t_AT_NO_WS= '@'
-t_QUEST_WS= '?'
-t_QUEST_NO_WS= '?'
+t_QUEST_WS= '\?'
 t_LANGLE= '<'
 t_RANGLE= '>'
 t_LE= '<='
