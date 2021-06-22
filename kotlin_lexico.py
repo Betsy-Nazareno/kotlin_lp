@@ -15,6 +15,86 @@ reserved = {
     'when': 'WHEN',
     'package': 'PACKAGE',
     'import' : 'IMPORT'
+       #Aporte de Eddy
+'PUBLIC': 'public',
+'PRIVATE': 'private',
+'PROTECTED': 'protected',
+'INTERNAL': 'internal',
+'ENUM': 'enum',
+'SEALED': 'sealed',
+'ANNOTATION': 'annotation',
+'DATA': 'data',
+'INNER': 'inner',
+'VALUE': 'value',
+'TAILREC': 'tailrec',
+'OPERATOR': 'operator',
+'INLINE': 'inline',
+'INFIX': 'infix',
+'EXTERNAL': 'external',
+'SUSPEND': 'suspend',
+'OVERRIDE': 'override',
+'ABSTRACT': 'abstract',
+'FINAL': 'final',
+'OPEN': 'open',
+'CONST': 'const',
+'LATEINIT': 'lateinit',
+'VARARG': 'vararg',
+'NOINLINE': 'noinline',
+'CROSSINLINE': 'crossinline',
+'REIFIED': 'reified',
+'EXPECT': 'expect',
+'ACTUAL': 'actual',
+'RETURN_AT': 'return@',
+'CONTINUE_AT': 'continue@',
+'BREAK_AT': 'break@',
+'THIS_AT': 'this@',
+'SUPER_AT': 'super@',
+'FILE': 'file',
+'FIELD': 'field',
+'PROPERTY': 'property',
+'GET': 'get',
+'SET': 'set',
+'RECEIVER': 'receiver',
+'PARAM': 'param',
+'SETPARAM': 'setparam',
+'DELEGATE': 'delegate',
+'PACKAGE': 'package',
+'IMPORT': 'import',
+'CLASS': 'class',
+'INTERFACE': 'interface',
+'FUN': 'fun',
+'OBJECT': 'object',
+'VAL': 'val',
+'VAR': 'var',
+'TYPE_ALIAS': 'typealias',
+'CONSTRUCTOR': 'constructor',
+'BY': 'by',
+'COMPANION': 'companion',
+'INIT': 'init',
+'THIS': 'this',
+'SUPER': 'super',
+'TYPEOF': 'typeof',
+'WHERE': 'where',
+'IF': 'if',
+'ELSE': 'else',
+'WHEN': 'when',
+'TRY': 'try',
+'CATCH': 'catch',
+'FINALLY': 'finally',
+'FOR': 'for',
+'DO': 'do',
+'WHILE': 'while',
+'THROW': 'throw',
+'RETURN': 'return',
+'CONTINUE': 'continue',
+'BREAK': 'break',
+'AS': 'as',
+'IS': 'is',
+'IN': 'in',
+'NOT_IS': '!is',
+'NOT_IN': '!in',
+'OUT': 'out',
+'DYNAMIC': 'dynamic',
 }
 tokens = (
     'VAR_TIPO_1',
@@ -71,6 +151,50 @@ t_MODIN = r'%='
 
 
 #Fin de aporte de Betsy-------------------------------------------------------------------------------------------------
+# Aporte de Eddy
+t_RESERVED = r'...'
+t_DOT= r'.'
+t_COMMA= r','
+t_LPAREN= r'('
+t_RPAREN= r')'
+t_LSQUARE= r'['
+t_RSQUARE= r']'
+t_LCURL= r'{' 
+t_RCURL= r'}'
+t_INCR= r'++'
+t_DECR= r'--'
+t_CONJ= r'&&'
+t_DISJ= r'||'
+t_EXCL_WS= r'!'
+t_EXCL_NO_WS= r'!'
+t_COLON= r':'
+t_SEMICOLON= ';'
+t_ASSIGNMENT= '='
+t_ADD_ASSIGNMENT= '+='
+t_SUB_ASSIGNMENT= '-='
+t_MULT_ASSIGNMENT= '*='
+t_DIV_ASSIGNMENT= '/='
+t_MOD_ASSIGNMENT= '%='
+t_ARROW= '->'
+t_DOUBLE_ARROW= '=>'
+t_RANGE= '..'
+t_COLONCOLON= '::'
+t_DOUBLE_SEMICOLON= ';;'
+t_HASH= '#'
+t_AT_NO_WS= '@'
+t_QUEST_WS= '?'
+t_QUEST_NO_WS= '?'
+t_LANGLE= '<'
+t_RANGLE= '>'
+t_LE= '<='
+t_GE= '>='
+t_EXCL_EQ= '!='
+t_EXCL_EQEQ= '!=='
+t_AS_SAFE= 'as?'
+t_EQEQ= '=='
+t_EQEQEQ= '==='
+t_SINGLE_QUOTE= '\''
+#Findeaporte
 
 # Regular expression rules for complex tokens
 t_STRING_1 = r'"[\w]*"'
