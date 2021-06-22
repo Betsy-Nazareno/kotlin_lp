@@ -141,6 +141,7 @@ tokens = (
     'EQEQ',
     'EQEQEQ',
     'SINGLE_QUOTE',
+    'TEMPLATE'
 
 ) + tuple(reserved.values())
 # Regular expression rules for simple tokens
@@ -198,13 +199,16 @@ t_EQEQEQ= '==='
 t_SINGLE_QUOTE= '\''
 #Findeaporte
 
-# Regular expression rules for complex tokens
+# Regular expression rules for complex tokens - Aporte Karla -----------------------------------------------------------
 t_STRING_1 = r'"[\w]*"'
 t_STRING_2 = r"'[\w]*'"
 
-
+entero = r'(-[1-9][0-9]*)|(\d+)'
+t_SUM = r'(' + entero + t_PLUS + entero + r')'
 t_VAL_TIPO_1 = r'(var' + t_EQUAL + r'(' + t_STRING_1 + r'|'+ t_STRING_2 + r')' + r')'
+t_TEMPLATE = r'"([\w ]*)\${[\w= ]*}([\w ]*)"'
 
+#Fin aporte Karla ------------------------------------------------------------------------------------------------------
 
 
 #Aporte de Betsy--------------------------------------------------------------------------------------------------------
@@ -231,24 +235,26 @@ def t_LONG(t):
     return t
 
 # Regla de expresión regular para enteros
-entero = r'(-[1-9][0-9]*)|(\d+)'
-suma = r'(' + entero + t_PLUS + entero + r')'
-
-@TOKEN(entero)
 def t_INT(t):
-    #r'(-[1-9][0-9]*)|(\d+)'
+    r'(-[1-9][0-9]*)|(\d+)'
     t.value = int(t.value)
     return t
 
-@TOKEN(suma)
-def t_SUM(t):
-    return t
+#Fin de aporte de Betsy-------------------------------------------------------------------------------------------------
 
+#Aporte de Karla--------------------------------------------------------------------------------------------------------
 def t_COMMENT(t):
     r'(\/\/\w*)|(\/\*\w*\*\/)'
     pass #ignora comentarios
 
-#Fin de aporte de Betsy-------------------------------------------------------------------------------------------------
+def t_PACKAGE(t):
+    r'package \w + (\.\w*) * (\ *)?'
+    return t
+
+def t_IMPORT(t):
+    r'import \w+(\.\w*)*(\*)?( as [a-zA-Z]+)?'
+    return t
+#Fin aporte de Karla----------------------------------------------------------------------------------------------------
 
 # Define a rule so we can track line numbers
 def t_newline(t):
