@@ -44,11 +44,6 @@ reserved = {
 'REIFIED': 'reified',
 'EXPECT': 'expect',
 'ACTUAL': 'actual',
-'RETURN_AT': 'return@',
-'CONTINUE_AT': 'continue@',
-'BREAK_AT': 'break@',
-'THIS_AT': 'this@',
-'SUPER_AT': 'super@',
 'FILE': 'file',
 'FIELD': 'field',
 'PROPERTY': 'property',
@@ -81,11 +76,10 @@ reserved = {
 'CONTINUE': 'continue',
 'BREAK': 'break',
 'AS': 'as',
-'NOT_IS': '!is',
-'NOT_IN': '!in',
 'OUT': 'out',
 'DYNAMIC': 'dynamic',
 }
+
 tokens = (
     'VAR_TIPO_1',
     'SUM',
@@ -139,14 +133,11 @@ t_INCREMENTTIMES = r'\*='
 t_DIVIDEIN = r'/\='
 t_MODIN = r'%='
 
-
 #Fin de aporte de Betsy-------------------------------------------------------------------------------------------------
 # Aporte de Eddy
 t_RESERVED = r'...'
 t_DOT= r'.'
 t_COMMA= r','
-t_LPAREN= r'('
-t_RPAREN= r')'
 t_LSQUARE= r'['
 t_RSQUARE= r']'
 t_LCURL= r'{' 
