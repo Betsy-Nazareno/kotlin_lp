@@ -146,7 +146,8 @@ tokens = (
 ) + tuple(reserved.values())
 # Regular expression rules for simple tokens
 #Aporte de Betsy--------------------------------------------------------------------------------------------------------
-t_VAR_TIPO_1 = r'var="[\w]+"'
+t_VAR_TIPO_1 = r'var=\.*'
+
 t_MARK_1 = r'"'
 t_MARK_2 = r"'"
 t_PLUS = r'\+'
@@ -224,13 +225,12 @@ def t_ID(t):
 
 # Regla de expresión regular para decimales
 def t_FLOAT(t):
-    r'-?[0-9]+\.[0-9]+'
+    r'-?[0-9]+\.[0-9]+f'
     return t
 
 # Regla de expresión regular para Long
 def t_LONG(t):
     r'(-[1-9][0-9]*)|([0-9]+)L'
-    t.value= int(t.value[:-1])
     return t
 
 # Regla de expresión regular para enteros
