@@ -1,5 +1,6 @@
 import ply.lex as lex
 from ply.lex import TOKEN
+import ply.yacc as yacc
 
 reserved = {
     'if': 'IF',
@@ -15,65 +16,74 @@ reserved = {
     'when': 'WHEN',
     'package': 'PACKAGE',
     'import' : 'IMPORT',
-  #Aporte de Eddy
- 'public':'PUBLIC',
- 'private': 'PRIVATE',
-'protected':'PROTECTED',
-'internal':'INTERNAL',
- 'enum':'ENUM',
-'sealed': 'SEALED',
-'annotation':'ANNOTATION',
- 'data':'DATA',
- 'inner':'INNER',
- 'value':'VALUE',
-'tailrec':'TAILREC',
-'operator':'OPERATOR',
- 'inline':'INLINE',
-'infix':'INFIX',
-'external':'EXTERNAL',
-'suspend':'SUSPEND',
-'override':'OVERRIDE',
-'abstract':'ABSTRACT',
-'final':'FINAL',
-'open':'OPEN',
-'const':'CONST',
-'lateinit':'LATEINIT',
-'vararg':'VARARG',
-'noinline':'NOINLINE',
-'crossinline' :'CROSSINLINE',
-  'reified'   :  'REIFIED',
-  'expect'    :  'EXPECT',
-  'actual'    :  'ACTUAL',
-   'file'     :  'FILE',       
-   'field'    :  'FIELD',         
+    'arrayOf': 'ARRAYOF',
+    'print': 'PRINT',
+    'println': 'PRINTLN',
+    'Int': 'TINT',
+    'Double': 'TDOUBLE',
+    'String': 'TSTRING',
+    'Long': 'TLONG',
+    'Float': 'TFLOAT',
+    'Boolean': 'TBOOLEAN',
+    'Char': 'TCHAR',
+    'public':'PUBLIC',      #Aporte de Eddy-------------------------------------------------------------------
+    'private': 'PRIVATE',
+    'protected':'PROTECTED',
+    'internal':'INTERNAL',
+    'enum':'ENUM',
+    'sealed': 'SEALED',
+    'annotation':'ANNOTATION',
+    'data':'DATA',
+    'inner':'INNER',
+    'value':'VALUE',
+    'tailrec':'TAILREC',
+    'operator':'OPERATOR',
+    'inline':'INLINE',
+    'infix':'INFIX',
+    'external':'EXTERNAL',
+    'suspend':'SUSPEND',
+    'override':'OVERRIDE',
+    'abstract':'ABSTRACT',
+    'final':'FINAL',
+    'open':'OPEN',
+    'const':'CONST',
+    'lateinit':'LATEINIT',
+    'vararg':'VARARG',
+    'noinline':'NOINLINE',
+    'crossinline' :'CROSSINLINE',
+    'reified':  'REIFIED',
+    'expect':  'EXPECT',
+    'actual':  'ACTUAL',
+    'file':  'FILE',
+    'field':  'FIELD',
     'property':  'PROPERTY',
- 'get':'GET',
- 'set':'SET',
-'receiver':'RECEIVER',
-'param':'PARAM',
-'setparam':'SETPARAM',
-'class'  : 'CLASS',
-'interface': 'INTERFACE',
-'object':'OBJECT',
-'typealias':'TYPE_ALIAS',
-'constructor':'CONSTRUCTOR',
-'by':'BY',
-'companion':'COMPANION',
-'init':'INIT',
-'this':'THIS',
-'super':'SUPER',
-'typeof' : 'TYPEOF',
-'where':'WHERE',
-'try':'TRY',
-'catch': 'CATCH',
-'finally':'FINALLY',
-'do': 'DO',
-'throw':'THROW',
-'continue':'CONTINUE',
-'break':'BREAK',
-'as':'AS',
- 'out':'OUT',
-'dynamic':'DYNAMIC'
+    'get':'GET',
+    'set':'SET',
+    'receiver':'RECEIVER',
+    'param':'PARAM',
+    'setparam':'SETPARAM',
+    'class'  : 'CLASS',
+    'interface': 'INTERFACE',
+    'object':'OBJECT',
+    'typealias':'TYPE_ALIAS',
+    'constructor':'CONSTRUCTOR',
+    'by':'BY',
+    'companion':'COMPANION',
+    'init':'INIT',
+    'this':'THIS',
+    'super':'SUPER',
+    'typeof' : 'TYPEOF',
+    'where':'WHERE',
+    'try':'TRY',
+    'catch': 'CATCH',
+    'finally':'FINALLY',
+    'do': 'DO',
+    'throw':'THROW',
+    'continue':'CONTINUE',
+    'break':'BREAK',
+    'as':'AS',
+    'out':'OUT',
+    'dynamic':'DYNAMIC'
 
 
 }
@@ -90,6 +100,7 @@ tokens = (
     'RPAREN',
     "MOD",
     "ID",
+    "LINEBREAK",
     'EQUAL',#Aporte de Betsy--------------------------------------------------------------------------------------------
     'DOTS',
     'INCREMENTONE',
@@ -107,9 +118,8 @@ tokens = (
     'STRING_1',
     'CHAR',
     'COMMENT',
-    'BOOLEAN' #Fin de aporte de Betsy-----------------------------------------------------------------------------------
-     #Aporte Eddy  
-    'DOT',
+    'BOOLEAN', #Fin de aporte de Betsy-----------------------------------------------------------------------------------
+    'DOT', #Aporte Eddy  ---------------------------------------------------------------------------------------
     'COMMA',
     'LSQUARE',
     'RSQUARE',
@@ -117,7 +127,6 @@ tokens = (
     'RCURL',
     'INCR',
     'DECR',
-    'DOT',
     'CONJ',
     'DISJ',
     'EXCL_WS',
@@ -147,7 +156,7 @@ tokens = (
 # Regular expression rules for simple tokens
 #Aporte de Betsy--------------------------------------------------------------------------------------------------------
 t_VAR_TIPO_1 = r'var=\.*'
-
+t_LINEBREAK = r'\n'
 t_MARK_1 = r'"'
 t_MARK_2 = r"'"
 t_PLUS = r'\+'
@@ -201,8 +210,8 @@ t_SINGLE_QUOTE= '\''
 #Findeaporte
 
 # Regular expression rules for complex tokens - Aporte Karla -----------------------------------------------------------
-t_STRING_1 = r'("[\w]*[^"]")|("""[\w\t\n\$]*""")'
-t_CHAR = r"'[\w]'"
+t_STRING_1 = r'("([\w]*[^"])*")|("""[\w\t\n\$]*""")'
+t_CHAR = r"'[\w]{0,1}'"
 
 entero = r'(-[1-9][0-9]*)|(\d+)'
 t_SUM = r'(' + entero + t_PLUS + entero + r')'
@@ -230,7 +239,7 @@ def t_FLOAT(t):
 
 # Regla de expresión regular para Long
 def t_LONG(t):
-    r'(-[1-9][0-9]*)|([0-9]+)L'
+    r'((-[1-9][0-9]*)|([0-9]+))L'
     return t
 
 # Regla de expresión regular para enteros
@@ -255,6 +264,10 @@ def t_IMPORT(t):
     return t
 #Fin aporte de Karla----------------------------------------------------------------------------------------------------
 
+
+
+
+
 # Define a rule so we can track line numbers
 def t_newline(t):
     r'\n+'
@@ -275,6 +288,7 @@ def getTokens(lexer):
 # Build the lexer
 lexer = lex.lex()
 
+"""
 linea=" "
 while linea!="":
     linea=input(">>")
@@ -282,3 +296,4 @@ while linea!="":
     getTokens(lexer)
 # Tokenize
 print("Succesfull")
+"""
