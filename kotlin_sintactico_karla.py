@@ -12,10 +12,13 @@ def p_cuerpo(p):
                 | asignacion SEMICOLON
                 | for
                 | if
+                | stack
+                | stack_actuar
                 """
 
 def p_impresion(p):
-    'impresion : PRINT LPAREN STRING_1 RPAREN'
+    '''impresion : PRINT LPAREN term RPAREN
+                | PRINTLN LPAREN term RPAREN'''
 
 def p_for(p):
     'for : FOR LPAREN ID IN ID RPAREN LCURL line RCURL'
@@ -82,6 +85,7 @@ def p_factor(p):
                 '''
 
 #-----------------------Karla------------------------------------
+# ---------------- IF ---------------
 def p_if(p):
     '''if : IF LPAREN condicion RPAREN LCURL line RCURL
             | IF LPAREN condicion RPAREN LCURL line RCURL else
@@ -129,6 +133,18 @@ def p_opR(p):
             | EQEQ
             | EQEQEQ
             '''
+
+# ---------------- STACK ---------------
+# <pila> ::= "var " <variable> ": Stack<" <tipoDato> ">" "=" "ArrayList()"
+def p_stack(p):
+    'stack : keywordVariables ID DOTS STACK LANGLE tipoDato RANGLE EQUAL ARRAYLIST LPAREN RPAREN'
+
+#ejecutar funciones para pilas
+def p_stack_actuar(p):
+    'stack_func : ID DOT stack_funciones'
+
+#funciones pilas
+
 
 
 # Error rule for syntax errors
