@@ -26,6 +26,13 @@ reserved = {
     'Float': 'TFLOAT',
     'Boolean': 'TBOOLEAN',
     'Char': 'TCHAR',
+    'Queue': 'QUEUE',
+    'LinkedList': 'LINKEDLIST',
+    'listOf': 'LISTOF',
+    'add': 'ADD',
+    'peek': 'PEEK',
+    'remove': 'REMOVE',
+    'poll': 'POLL',
     'public':'PUBLIC',      #Aporte de Eddy-------------------------------------------------------------------
     'private': 'PRIVATE',
     'protected':'PROTECTED',

@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'ABSTRACT ACTUAL ANNOTATION ARRAYOF ARROW AS AS_SAFE AT_NO_WS BOOLEAN BREAK BY CATCH CHAR CLASS COLONCOLON COMMA COMMENT COMPANION CONJ CONST CONSTRUCTOR CONTINUE CROSSINLINE DATA DECR DECREMENTIN DECREMENTONE DISJ DIVIDE DIVIDEIN DO DOT DOTS DOUBLE_ARROW DOUBLE_SEMICOLON DYNAMIC ELSE ENUM EQEQ EQEQEQ EQUAL EXCL_EQ EXCL_EQEQ EXCL_NO_WS EXCL_WS EXPECT EXTERNAL FIELD FILE FINAL FINALLY FLOAT FOR FUN GE GET HASH ID IF IMPORT IN INCR INCREMENTIN INCREMENTONE INCREMENTTIMES INFIX INIT INLINE INNER INT INTERFACE INTERNAL IS LANGLE LATEINIT LCURL LE LINEBREAK LONG LPAREN LSQUARE MARK_1 MARK_2 MINUS MOD MODIN NOINLINE OBJECT OPEN OPERATOR OUT OVERRIDE PACKAGE PARAM PLUS PRINT PRINTLN PRIVATE PROPERTY PROTECTED PUBLIC QUEST_WS RANGE RANGLE RCURL RECEIVER REIFIED RETURN RPAREN RSQUARE SEALED SEMICOLON SET SETPARAM SINGLE_QUOTE STRING_1 SUM SUPER SUSPEND TAILREC TBOOLEAN TCHAR TDOUBLE TEMPLATE TFLOAT THIS THROW TIMES TINT TLONG TRY TSTRING TYPEOF TYPE_ALIAS VAL VALUE VAL_TIPO_1 VAR VARARG VAR_TIPO_1 WHEN WHERE WHILEline : impresion SEMICOLON\n                | asignacion SEMICOLON\n                | forimpresion : PRINT LPAREN  RPARENfor : FOR LPAREN ID IN ID RPAREN LCURL line RCURLasignacion : keywordVariables asignacionSimple\n                    | asignacionSimplekeywordVariables : VAR\n                        | VALasignacionSimple : ID DOTS tipoDato EQUAL valor\n                        | ID EQUAL valortipoDato : TINT\n                | TLONG\n                | TFLOAT\n                | TDOUBLE\n                | TBOOLEAN\n                | TCHAR\n                | TSTRINGvalor : expressionexpression : expression PLUS termexpression : expression MINUS termexpression : expression TIMES termexpression : expression DIVIDE termexpression : expression MOD termexpression : termterm : factorterm : LPAREN expression RPARENfactor : INT\n                | FLOAT\n                | LONG\n                | CHAR\n                | BOOLEAN\n                | ID\n                | STRING_1\n                '
+_lr_signature = 'ABSTRACT ACTUAL ADD ANNOTATION ARRAYOF ARROW AS AS_SAFE AT_NO_WS BOOLEAN BREAK BY CATCH CHAR CLASS COLONCOLON COMMA COMMENT COMPANION CONJ CONST CONSTRUCTOR CONTINUE CROSSINLINE DATA DECR DECREMENTIN DECREMENTONE DISJ DIVIDE DIVIDEIN DO DOT DOTS DOUBLE_ARROW DOUBLE_SEMICOLON DYNAMIC ELSE ENUM EQEQ EQEQEQ EQUAL EXCL_EQ EXCL_EQEQ EXCL_NO_WS EXCL_WS EXPECT EXTERNAL FIELD FILE FINAL FINALLY FLOAT FOR FUN GE GET HASH ID IF IMPORT IN INCR INCREMENTIN INCREMENTONE INCREMENTTIMES INFIX INIT INLINE INNER INT INTERFACE INTERNAL IS LANGLE LATEINIT LCURL LE LINEBREAK LINKEDLIST LISTOF LONG LPAREN LSQUARE MARK_1 MARK_2 MINUS MOD MODIN NOINLINE OBJECT OPEN OPERATOR OUT OVERRIDE PACKAGE PARAM PEEK PLUS POLL PRINT PRINTLN PRIVATE PROPERTY PROTECTED PUBLIC QUEST_WS QUEUE RANGE RANGLE RCURL RECEIVER REIFIED REMOVE RETURN RPAREN RSQUARE SEALED SEMICOLON SET SETPARAM SINGLE_QUOTE STRING_1 SUM SUPER SUSPEND TAILREC TBOOLEAN TCHAR TDOUBLE TEMPLATE TFLOAT THIS THROW TIMES TINT TLONG TRY TSTRING TYPEOF TYPE_ALIAS VAL VALUE VAL_TIPO_1 VAR VARARG VAR_TIPO_1 WHEN WHERE WHILEline : impresion SEMICOLON\n                | asignacion SEMICOLON\n                | expression\n                | estructurasControl\n                | estructurasDatos SEMICOLON\n                estructurasDatos : queue\n                        | queue_operationsestructurasControl : forqueue_operations : queue_add\n                        | queue_peek\n                        | queue_remove\n                        | queue_pollqueue_add : ID DOT ADD LPAREN factor RPARENqueue_peek : ID DOT PEEK LPAREN RPARENqueue_poll : ID DOT POLL LPAREN RPARENqueue_remove : ID DOT REMOVE LPAREN RPARENimpresion : PRINT LPAREN RPARENqueue : VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST  LANGLE tipoDato RANGLE LPAREN RPARENfor : FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL  morelines : line\n                | line morelinesasignacion : keywordVariables asignacionSimple\n                    | asignacionSimplekeywordVariables : VAR\n                        | VALasignacionSimple : ID DOTS tipoDato EQUAL valor\n                        | ID EQUAL valortipoDato : TINT\n                | TLONG\n                | TFLOAT\n                | TDOUBLE\n                | TBOOLEAN\n                | TCHAR\n                | TSTRINGvalor : expression\n             | opLogicaopLogica : opLogica LANGLE termopLogica : termexpression : expression PLUS termexpression : expression MINUS termexpression : expression TIMES termexpression : expression DIVIDE termexpression : expression MOD termexpression : termterm : factorterm : LPAREN expression RPAREN\n            | LPAREN opLogica RPARENfactor : INT\n                | FLOAT\n                | LONG\n                | CHAR\n                | BOOLEAN\n                | ID\n                | STRING_1\n                '
     
-_lr_action_items = {'PRINT':([0,58,],[5,5,]),'FOR':([0,58,],[8,8,]),'VAR':([0,58,],[10,10,]),'VAL':([0,58,],[11,11,]),'ID':([0,6,10,11,16,18,34,41,42,43,44,45,46,47,58,],[9,9,-8,-9,20,29,29,49,29,29,29,29,29,29,9,]),'$end':([1,4,12,13,60,],[0,-3,-1,-2,-5,]),'SEMICOLON':([2,3,7,15,19,29,30,31,32,33,35,36,37,38,39,40,50,51,52,53,54,55,56,],[12,13,-7,-6,-4,-33,-11,-19,-25,-26,-28,-29,-30,-31,-32,-34,-10,-20,-21,-22,-23,-24,-27,]),'RCURL':([4,12,13,59,60,],[-3,-1,-2,60,-5,]),'LPAREN':([5,8,18,34,42,43,44,45,46,47,],[14,16,34,34,34,34,34,34,34,34,]),'DOTS':([9,],[17,]),'EQUAL':([9,21,22,23,24,25,26,27,28,],[18,42,-12,-13,-14,-15,-16,-17,-18,]),'RPAREN':([14,29,32,33,35,36,37,38,39,40,48,49,51,52,53,54,55,56,],[19,-33,-25,-26,-28,-29,-30,-31,-32,-34,56,57,-20,-21,-22,-23,-24,-27,]),'TINT':([17,],[22,]),'TLONG':([17,],[23,]),'TFLOAT':([17,],[24,]),'TDOUBLE':([17,],[25,]),'TBOOLEAN':([17,],[26,]),'TCHAR':([17,],[27,]),'TSTRING':([17,],[28,]),'INT':([18,34,42,43,44,45,46,47,],[35,35,35,35,35,35,35,35,]),'FLOAT':([18,34,42,43,44,45,46,47,],[36,36,36,36,36,36,36,36,]),'LONG':([18,34,42,43,44,45,46,47,],[37,37,37,37,37,37,37,37,]),'CHAR':([18,34,42,43,44,45,46,47,],[38,38,38,38,38,38,38,38,]),'BOOLEAN':([18,34,42,43,44,45,46,47,],[39,39,39,39,39,39,39,39,]),'STRING_1':([18,34,42,43,44,45,46,47,],[40,40,40,40,40,40,40,40,]),'IN':([20,],[41,]),'PLUS':([29,31,32,33,35,36,37,38,39,40,48,51,52,53,54,55,56,],[-33,43,-25,-26,-28,-29,-30,-31,-32,-34,43,-20,-21,-22,-23,-24,-27,]),'MINUS':([29,31,32,33,35,36,37,38,39,40,48,51,52,53,54,55,56,],[-33,44,-25,-26,-28,-29,-30,-31,-32,-34,44,-20,-21,-22,-23,-24,-27,]),'TIMES':([29,31,32,33,35,36,37,38,39,40,48,51,52,53,54,55,56,],[-33,45,-25,-26,-28,-29,-30,-31,-32,-34,45,-20,-21,-22,-23,-24,-27,]),'DIVIDE':([29,31,32,33,35,36,37,38,39,40,48,51,52,53,54,55,56,],[-33,46,-25,-26,-28,-29,-30,-31,-32,-34,46,-20,-21,-22,-23,-24,-27,]),'MOD':([29,31,32,33,35,36,37,38,39,40,48,51,52,53,54,55,56,],[-33,47,-25,-26,-28,-29,-30,-31,-32,-34,47,-20,-21,-22,-23,-24,-27,]),'LCURL':([57,],[58,]),}
+_lr_action_items = {'PRINT':([0,4,5,11,12,17,18,24,25,26,27,28,29,30,31,37,42,50,51,52,53,54,56,57,95,98,100,],[7,-3,-4,-44,-8,-53,-45,-48,-49,-50,-51,-52,-54,-1,-2,-5,-53,-39,-40,-41,-42,-43,-46,-47,7,7,-19,]),'VAR':([0,4,5,11,12,17,18,24,25,26,27,28,29,30,31,37,42,50,51,52,53,54,56,57,95,98,100,],[15,-3,-4,-44,-8,-53,-45,-48,-49,-50,-51,-52,-54,-1,-2,-5,-53,-39,-40,-41,-42,-43,-46,-47,15,15,-19,]),'VAL':([0,4,5,11,12,17,18,24,25,26,27,28,29,30,31,37,42,50,51,52,53,54,56,57,95,98,100,],[16,-3,-4,-44,-8,-53,-45,-48,-49,-50,-51,-52,-54,-1,-2,-5,-53,-39,-40,-41,-42,-43,-46,-47,16,16,-19,]),'ID':([0,4,5,8,9,11,12,15,16,17,18,24,25,26,27,28,29,30,31,32,33,34,35,36,37,42,47,49,50,51,52,53,54,56,57,58,78,79,83,95,98,100,],[17,-3,-4,42,44,-44,-8,-24,45,-53,-45,-48,-49,-50,-51,-52,-54,-1,-2,42,42,42,42,42,-5,-53,42,75,-39,-40,-41,-42,-43,-46,-47,42,42,42,90,17,17,-19,]),'LPAREN':([0,4,5,7,8,11,12,17,18,19,24,25,26,27,28,29,30,31,32,33,34,35,36,37,42,47,50,51,52,53,54,56,57,58,71,72,73,74,78,95,98,100,104,],[8,-3,-4,38,8,-44,-8,-53,-45,49,-48,-49,-50,-51,-52,-54,-1,-2,8,8,8,8,8,-5,-53,8,-39,-40,-41,-42,-43,-46,-47,8,79,80,81,82,8,8,8,-19,105,]),'FOR':([0,4,5,11,12,17,18,24,25,26,27,28,29,30,31,37,42,50,51,52,53,54,56,57,95,98,100,],[19,-3,-4,-44,-8,-53,-45,-48,-49,-50,-51,-52,-54,-1,-2,-5,-53,-39,-40,-41,-42,-43,-46,-47,19,19,-19,]),'INT':([0,4,5,8,11,12,17,18,24,25,26,27,28,29,30,31,32,33,34,35,36,37,42,47,50,51,52,53,54,56,57,58,78,79,95,98,100,],[24,-3,-4,24,-44,-8,-53,-45,-48,-49,-50,-51,-52,-54,-1,-2,24,24,24,24,24,-5,-53,24,-39,-40,-41,-42,-43,-46,-47,24,24,24,24,24,-19,]),'FLOAT':([0,4,5,8,11,12,17,18,24,25,26,27,28,29,30,31,32,33,34,35,36,37,42,47,50,51,52,53,54,56,57,58,78,79,95,98,100,],[25,-3,-4,25,-44,-8,-53,-45,-48,-49,-50,-51,-52,-54,-1,-2,25,25,25,25,25,-5,-53,25,-39,-40,-41,-42,-43,-46,-47,25,25,25,25,25,-19,]),'LONG':([0,4,5,8,11,12,17,18,24,25,26,27,28,29,30,31,32,33,34,35,36,37,42,47,50,51,52,53,54,56,57,58,78,79,95,98,100,],[26,-3,-4,26,-44,-8,-53,-45,-48,-49,-50,-51,-52,-54,-1,-2,26,26,26,26,26,-5,-53,26,-39,-40,-41,-42,-43,-46,-47,26,26,26,26,26,-19,]),'CHAR':([0,4,5,8,11,12,17,18,24,25,26,27,28,29,30,31,32,33,34,35,36,37,42,47,50,51,52,53,54,56,57,58,78,79,95,98,100,],[27,-3,-4,27,-44,-8,-53,-45,-48,-49,-50,-51,-52,-54,-1,-2,27,27,27,27,27,-5,-53,27,-39,-40,-41,-42,-43,-46,-47,27,27,27,27,27,-19,]),'BOOLEAN':([0,4,5,8,11,12,17,18,24,25,26,27,28,29,30,31,32,33,34,35,36,37,42,47,50,51,52,53,54,56,57,58,78,79,95,98,100,],[28,-3,-4,28,-44,-8,-53,-45,-48,-49,-50,-51,-52,-54,-1,-2,28,28,28,28,28,-5,-53,28,-39,-40,-41,-42,-43,-46,-47,28,28,28,28,28,-19,]),'STRING_1':([0,4,5,8,11,12,17,18,24,25,26,27,28,29,30,31,32,33,34,35,36,37,42,47,50,51,52,53,54,56,57,58,78,79,95,98,100,],[29,-3,-4,29,-44,-8,-53,-45,-48,-49,-50,-51,-52,-54,-1,-2,29,29,29,29,29,-5,-53,29,-39,-40,-41,-42,-43,-46,-47,29,29,29,29,29,-19,]),'$end':([1,4,5,11,12,17,18,24,25,26,27,28,29,30,31,37,42,50,51,52,53,54,56,57,100,],[0,-3,-4,-44,-8,-53,-45,-48,-49,-50,-51,-52,-54,-1,-2,-5,-53,-39,-40,-41,-42,-43,-46,-47,-19,]),'SEMICOLON':([2,3,6,10,13,14,18,20,21,22,23,24,25,26,27,28,29,41,42,43,50,51,52,53,54,55,56,57,68,69,70,76,85,87,88,89,92,106,],[30,31,37,-23,-6,-7,-45,-9,-10,-11,-12,-48,-49,-50,-51,-52,-54,-38,-53,-22,-39,-40,-41,-42,-43,-17,-46,-47,-27,-35,-36,-37,-26,-14,-16,-15,-13,-18,]),'RCURL':([4,5,11,12,17,18,24,25,26,27,28,29,30,31,37,42,50,51,52,53,54,56,57,97,98,100,101,],[-3,-4,-44,-8,-53,-45,-48,-49,-50,-51,-52,-54,-1,-2,-5,-53,-39,-40,-41,-42,-43,-46,-47,100,-20,-19,-21,]),'PLUS':([4,11,17,18,24,25,26,27,28,29,39,41,42,50,51,52,53,54,56,57,69,],[32,-44,-53,-45,-48,-49,-50,-51,-52,-54,32,-44,-53,-39,-40,-41,-42,-43,-46,-47,32,]),'MINUS':([4,11,17,18,24,25,26,27,28,29,39,41,42,50,51,52,53,54,56,57,69,],[33,-44,-53,-45,-48,-49,-50,-51,-52,-54,33,-44,-53,-39,-40,-41,-42,-43,-46,-47,33,]),'TIMES':([4,11,17,18,24,25,26,27,28,29,39,41,42,50,51,52,53,54,56,57,69,],[34,-44,-53,-45,-48,-49,-50,-51,-52,-54,34,-44,-53,-39,-40,-41,-42,-43,-46,-47,34,]),'DIVIDE':([4,11,17,18,24,25,26,27,28,29,39,41,42,50,51,52,53,54,56,57,69,],[35,-44,-53,-45,-48,-49,-50,-51,-52,-54,35,-44,-53,-39,-40,-41,-42,-43,-46,-47,35,]),'MOD':([4,11,17,18,24,25,26,27,28,29,39,41,42,50,51,52,53,54,56,57,69,],[36,-44,-53,-45,-48,-49,-50,-51,-52,-54,36,-44,-53,-39,-40,-41,-42,-43,-46,-47,36,]),'DOTS':([17,44,45,],[46,46,59,]),'EQUAL':([17,44,60,61,62,63,64,65,66,67,94,],[47,47,78,-28,-29,-30,-31,-32,-33,-34,96,]),'DOT':([17,],[48,]),'RPAREN':([18,24,25,26,27,28,29,38,39,40,41,42,50,51,52,53,54,56,57,76,80,81,82,86,90,105,],[-45,-48,-49,-50,-51,-52,-54,55,56,57,-38,-53,-39,-40,-41,-42,-43,-46,-47,-37,87,88,89,92,93,106,]),'LANGLE':([18,24,25,26,27,28,29,40,41,42,56,57,70,76,77,99,],[-45,-48,-49,-50,-51,-52,-54,58,-38,-53,-46,-47,58,-37,84,102,]),'TINT':([46,84,102,],[61,61,61,]),'TLONG':([46,84,102,],[62,62,62,]),'TFLOAT':([46,84,102,],[63,63,63,]),'TDOUBLE':([46,84,102,],[64,64,64,]),'TBOOLEAN':([46,84,102,],[65,65,65,]),'TCHAR':([46,84,102,],[66,66,66,]),'TSTRING':([46,84,102,],[67,67,67,]),'ADD':([48,],[71,]),'PEEK':([48,],[72,]),'REMOVE':([48,],[73,]),'POLL':([48,],[74,]),'QUEUE':([59,],[77,]),'RANGLE':([61,62,63,64,65,66,67,91,103,],[-28,-29,-30,-31,-32,-33,-34,94,104,]),'IN':([75,],[83,]),'LCURL':([93,],[95,]),'LINKEDLIST':([96,],[99,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'line':([0,58,],[1,59,]),'impresion':([0,58,],[2,2,]),'asignacion':([0,58,],[3,3,]),'for':([0,58,],[4,4,]),'keywordVariables':([0,58,],[6,6,]),'asignacionSimple':([0,6,58,],[7,15,7,]),'tipoDato':([17,],[21,]),'valor':([18,42,],[30,50,]),'expression':([18,34,42,],[31,48,31,]),'term':([18,34,42,43,44,45,46,47,],[32,32,32,51,52,53,54,55,]),'factor':([18,34,42,43,44,45,46,47,],[33,33,33,33,33,33,33,33,]),}
+_lr_goto_items = {'line':([0,95,98,],[1,98,98,]),'impresion':([0,95,98,],[2,2,2,]),'asignacion':([0,95,98,],[3,3,3,]),'expression':([0,8,47,78,95,98,],[4,39,69,69,4,4,]),'estructurasControl':([0,95,98,],[5,5,5,]),'estructurasDatos':([0,95,98,],[6,6,6,]),'keywordVariables':([0,95,98,],[9,9,9,]),'asignacionSimple':([0,9,95,98,],[10,43,10,10,]),'term':([0,8,32,33,34,35,36,47,58,78,95,98,],[11,41,50,51,52,53,54,41,76,41,11,11,]),'for':([0,95,98,],[12,12,12,]),'queue':([0,95,98,],[13,13,13,]),'queue_operations':([0,95,98,],[14,14,14,]),'factor':([0,8,32,33,34,35,36,47,58,78,79,95,98,],[18,18,18,18,18,18,18,18,18,18,86,18,18,]),'queue_add':([0,95,98,],[20,20,20,]),'queue_peek':([0,95,98,],[21,21,21,]),'queue_remove':([0,95,98,],[22,22,22,]),'queue_poll':([0,95,98,],[23,23,23,]),'opLogica':([8,47,78,],[40,70,70,]),'tipoDato':([46,84,102,],[60,91,103,]),'valor':([47,78,],[68,85,]),'morelines':([95,98,],[97,101,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,38 +27,58 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> line","S'",1,None,None,None),
-  ('line -> impresion SEMICOLON','line',2,'p_cuerpo','kotlin_sintactico.py',10),
-  ('line -> asignacion SEMICOLON','line',2,'p_cuerpo','kotlin_sintactico.py',11),
-  ('line -> for','line',1,'p_cuerpo','kotlin_sintactico.py',12),
-  ('impresion -> PRINT LPAREN RPAREN','impresion',3,'p_impresion','kotlin_sintactico.py',15),
-  ('for -> FOR LPAREN ID IN ID RPAREN LCURL line RCURL','for',9,'p_for','kotlin_sintactico.py',18),
-  ('asignacion -> keywordVariables asignacionSimple','asignacion',2,'p_asignacion','kotlin_sintactico.py',21),
-  ('asignacion -> asignacionSimple','asignacion',1,'p_asignacion','kotlin_sintactico.py',22),
-  ('keywordVariables -> VAR','keywordVariables',1,'p_keywordVariables','kotlin_sintactico.py',25),
-  ('keywordVariables -> VAL','keywordVariables',1,'p_keywordVariables','kotlin_sintactico.py',26),
-  ('asignacionSimple -> ID DOTS tipoDato EQUAL valor','asignacionSimple',5,'p_asignacionS','kotlin_sintactico.py',28),
-  ('asignacionSimple -> ID EQUAL valor','asignacionSimple',3,'p_asignacionS','kotlin_sintactico.py',29),
-  ('tipoDato -> TINT','tipoDato',1,'p_tipoDato','kotlin_sintactico.py',33),
-  ('tipoDato -> TLONG','tipoDato',1,'p_tipoDato','kotlin_sintactico.py',34),
-  ('tipoDato -> TFLOAT','tipoDato',1,'p_tipoDato','kotlin_sintactico.py',35),
-  ('tipoDato -> TDOUBLE','tipoDato',1,'p_tipoDato','kotlin_sintactico.py',36),
-  ('tipoDato -> TBOOLEAN','tipoDato',1,'p_tipoDato','kotlin_sintactico.py',37),
-  ('tipoDato -> TCHAR','tipoDato',1,'p_tipoDato','kotlin_sintactico.py',38),
-  ('tipoDato -> TSTRING','tipoDato',1,'p_tipoDato','kotlin_sintactico.py',39),
-  ('valor -> expression','valor',1,'p_valor','kotlin_sintactico.py',42),
-  ('expression -> expression PLUS term','expression',3,'p_expression_plus','kotlin_sintactico.py',45),
-  ('expression -> expression MINUS term','expression',3,'p_expression_minus','kotlin_sintactico.py',48),
-  ('expression -> expression TIMES term','expression',3,'p_expression_times','kotlin_sintactico.py',51),
-  ('expression -> expression DIVIDE term','expression',3,'p_expression_divide','kotlin_sintactico.py',54),
-  ('expression -> expression MOD term','expression',3,'p_expression_mod','kotlin_sintactico.py',57),
-  ('expression -> term','expression',1,'p_expression_single','kotlin_sintactico.py',60),
-  ('term -> factor','term',1,'p_term_factor','kotlin_sintactico.py',63),
-  ('term -> LPAREN expression RPAREN','term',3,'p_term_Paren','kotlin_sintactico.py',66),
-  ('factor -> INT','factor',1,'p_factor','kotlin_sintactico.py',69),
-  ('factor -> FLOAT','factor',1,'p_factor','kotlin_sintactico.py',70),
-  ('factor -> LONG','factor',1,'p_factor','kotlin_sintactico.py',71),
-  ('factor -> CHAR','factor',1,'p_factor','kotlin_sintactico.py',72),
-  ('factor -> BOOLEAN','factor',1,'p_factor','kotlin_sintactico.py',73),
-  ('factor -> ID','factor',1,'p_factor','kotlin_sintactico.py',74),
-  ('factor -> STRING_1','factor',1,'p_factor','kotlin_sintactico.py',75),
+  ('line -> impresion SEMICOLON','line',2,'p_cuerpo','kotlin_sintactico.py',11),
+  ('line -> asignacion SEMICOLON','line',2,'p_cuerpo','kotlin_sintactico.py',12),
+  ('line -> expression','line',1,'p_cuerpo','kotlin_sintactico.py',13),
+  ('line -> estructurasControl','line',1,'p_cuerpo','kotlin_sintactico.py',14),
+  ('line -> estructurasDatos SEMICOLON','line',2,'p_cuerpo','kotlin_sintactico.py',15),
+  ('estructurasDatos -> queue','estructurasDatos',1,'p_estructuras_datos','kotlin_sintactico.py',18),
+  ('estructurasDatos -> queue_operations','estructurasDatos',1,'p_estructuras_datos','kotlin_sintactico.py',19),
+  ('estructurasControl -> for','estructurasControl',1,'p_estructuras_control','kotlin_sintactico.py',22),
+  ('queue_operations -> queue_add','queue_operations',1,'p_queue_operations','kotlin_sintactico.py',27),
+  ('queue_operations -> queue_peek','queue_operations',1,'p_queue_operations','kotlin_sintactico.py',28),
+  ('queue_operations -> queue_remove','queue_operations',1,'p_queue_operations','kotlin_sintactico.py',29),
+  ('queue_operations -> queue_poll','queue_operations',1,'p_queue_operations','kotlin_sintactico.py',30),
+  ('queue_add -> ID DOT ADD LPAREN factor RPAREN','queue_add',6,'p_queue_add','kotlin_sintactico.py',33),
+  ('queue_peek -> ID DOT PEEK LPAREN RPAREN','queue_peek',5,'p_queue_peek','kotlin_sintactico.py',36),
+  ('queue_poll -> ID DOT POLL LPAREN RPAREN','queue_poll',5,'p_queue_poll','kotlin_sintactico.py',39),
+  ('queue_remove -> ID DOT REMOVE LPAREN RPAREN','queue_remove',5,'p_queue_remove','kotlin_sintactico.py',42),
+  ('impresion -> PRINT LPAREN RPAREN','impresion',3,'p_impresion','kotlin_sintactico.py',45),
+  ('queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN','queue',14,'p_queue','kotlin_sintactico.py',48),
+  ('for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL','for',9,'p_for','kotlin_sintactico.py',51),
+  ('morelines -> line','morelines',1,'p_morelines','kotlin_sintactico.py',54),
+  ('morelines -> line morelines','morelines',2,'p_morelines','kotlin_sintactico.py',55),
+  ('asignacion -> keywordVariables asignacionSimple','asignacion',2,'p_asignacion','kotlin_sintactico.py',58),
+  ('asignacion -> asignacionSimple','asignacion',1,'p_asignacion','kotlin_sintactico.py',59),
+  ('keywordVariables -> VAR','keywordVariables',1,'p_keywordVariables','kotlin_sintactico.py',62),
+  ('keywordVariables -> VAL','keywordVariables',1,'p_keywordVariables','kotlin_sintactico.py',63),
+  ('asignacionSimple -> ID DOTS tipoDato EQUAL valor','asignacionSimple',5,'p_asignacionS','kotlin_sintactico.py',66),
+  ('asignacionSimple -> ID EQUAL valor','asignacionSimple',3,'p_asignacionS','kotlin_sintactico.py',67),
+  ('tipoDato -> TINT','tipoDato',1,'p_tipoDato','kotlin_sintactico.py',71),
+  ('tipoDato -> TLONG','tipoDato',1,'p_tipoDato','kotlin_sintactico.py',72),
+  ('tipoDato -> TFLOAT','tipoDato',1,'p_tipoDato','kotlin_sintactico.py',73),
+  ('tipoDato -> TDOUBLE','tipoDato',1,'p_tipoDato','kotlin_sintactico.py',74),
+  ('tipoDato -> TBOOLEAN','tipoDato',1,'p_tipoDato','kotlin_sintactico.py',75),
+  ('tipoDato -> TCHAR','tipoDato',1,'p_tipoDato','kotlin_sintactico.py',76),
+  ('tipoDato -> TSTRING','tipoDato',1,'p_tipoDato','kotlin_sintactico.py',77),
+  ('valor -> expression','valor',1,'p_valor','kotlin_sintactico.py',80),
+  ('valor -> opLogica','valor',1,'p_valor','kotlin_sintactico.py',81),
+  ('opLogica -> opLogica LANGLE term','opLogica',3,'p_op_logica','kotlin_sintactico.py',84),
+  ('opLogica -> term','opLogica',1,'p_op_logica_fin','kotlin_sintactico.py',87),
+  ('expression -> expression PLUS term','expression',3,'p_expression_plus','kotlin_sintactico.py',95),
+  ('expression -> expression MINUS term','expression',3,'p_expression_minus','kotlin_sintactico.py',98),
+  ('expression -> expression TIMES term','expression',3,'p_expression_times','kotlin_sintactico.py',101),
+  ('expression -> expression DIVIDE term','expression',3,'p_expression_divide','kotlin_sintactico.py',104),
+  ('expression -> expression MOD term','expression',3,'p_expression_mod','kotlin_sintactico.py',107),
+  ('expression -> term','expression',1,'p_expression_single','kotlin_sintactico.py',110),
+  ('term -> factor','term',1,'p_term_factor','kotlin_sintactico.py',113),
+  ('term -> LPAREN expression RPAREN','term',3,'p_term_Paren','kotlin_sintactico.py',116),
+  ('term -> LPAREN opLogica RPAREN','term',3,'p_term_Paren','kotlin_sintactico.py',117),
+  ('factor -> INT','factor',1,'p_factor','kotlin_sintactico.py',120),
+  ('factor -> FLOAT','factor',1,'p_factor','kotlin_sintactico.py',121),
+  ('factor -> LONG','factor',1,'p_factor','kotlin_sintactico.py',122),
+  ('factor -> CHAR','factor',1,'p_factor','kotlin_sintactico.py',123),
+  ('factor -> BOOLEAN','factor',1,'p_factor','kotlin_sintactico.py',124),
+  ('factor -> ID','factor',1,'p_factor','kotlin_sintactico.py',125),
+  ('factor -> STRING_1','factor',1,'p_factor','kotlin_sintactico.py',126),
 ]
