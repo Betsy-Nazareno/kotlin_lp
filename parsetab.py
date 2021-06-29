@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'ABSTRACT ACTUAL ANNOTATION ARRAYOF ARROW AS AS_SAFE AT_NO_WS BOOLEAN BREAK BY CATCH CHAR CLASS COLONCOLON COMMA COMMENT COMPANION CONJ CONST CONSTRUCTOR CONTINUE CROSSINLINE DATA DECR DECREMENTIN DECREMENTONE DISJ DIVIDE DIVIDEIN DO DOT DOTS DOUBLE_ARROW DOUBLE_SEMICOLON DYNAMIC ELSE ENUM EQEQ EQEQEQ EQUAL EXCL_EQ EXCL_EQEQ EXCL_NO_WS EXCL_WS EXPECT EXTERNAL FIELD FILE FINAL FINALLY FLOAT FOR FUN GE GET HASH ID IF IMPORT IN INCR INCREMENTIN INCREMENTONE INCREMENTTIMES INFIX INIT INLINE INNER INT INTERFACE INTERNAL IS LANGLE LATEINIT LCURL LE LINEBREAK LONG LPAREN LSQUARE MARK_1 MARK_2 MINUS MOD MODIN NOINLINE OBJECT OPEN OPERATOR OUT OVERRIDE PACKAGE PARAM PLUS PRINT PRINTLN PRIVATE PROPERTY PROTECTED PUBLIC QUEST_WS RANGE RANGLE RCURL RECEIVER REIFIED RETURN RPAREN RSQUARE SEALED SEMICOLON SET SETPARAM SINGLE_QUOTE STRING_1 SUM SUPER SUSPEND TAILREC TBOOLEAN TCHAR TDOUBLE TEMPLATE TFLOAT THIS THROW TIMES TINT TLONG TRY TSTRING TYPEOF TYPE_ALIAS VAL VALUE VAL_TIPO_1 VAR VARARG VAR_TIPO_1 WHEN WHERE WHILEline : impresion SEMICOLON\n                | asignacion SEMICOLON\n                | forimpresion : PRINT LPAREN  RPARENfor : FOR LPAREN ID IN ID RPAREN LCURL line RCURLasignacion : keywordVariables asignacionSimple\n                    | asignacionSimplekeywordVariables : VAR\n                        | VALasignacionSimple : ID DOTS tipoDato EQUAL valor\n                        | ID EQUAL valortipoDato : TINT\n                | TLONG\n                | TFLOAT\n                | TDOUBLE\n                | TBOOLEAN\n                | TCHAR\n                | TSTRINGvalor : expressionexpression : expression PLUS termexpression : expression MINUS termexpression : expression TIMES termexpression : expression DIVIDE termexpression : expression MOD termexpression : termterm : factorterm : LPAREN expression RPARENfactor : INT\n                | FLOAT\n                | LONG\n                | CHAR\n                | BOOLEAN\n                | ID\n                | STRING_1\n                '
+_lr_signature = 'ABSTRACT ACTUAL ANNOTATION ARRAYOF ARROW AS AS_SAFE AT_NO_WS BOOLEAN BREAK BY CATCH CHAR CLASS COLONCOLON COMMA COMMENT COMPANION CONJ CONST CONSTRUCTOR CONTINUE CROSSINLINE DATA DECR DECREMENTIN DECREMENTONE DISJ DIVIDE DIVIDEIN DO DOT DOTS DOUBLE_ARROW DOUBLE_SEMICOLON DYNAMIC ELSE ENUM EQEQ EQEQEQ EQUAL EXCL_EQ EXCL_EQEQ EXCL_NO_WS EXCL_WS EXPECT EXTERNAL FIELD FILE FINAL FINALLY FLOAT FOR FUN GE GET HASH ID IF IMPORT IN INCR INCREMENTIN INCREMENTONE INCREMENTTIMES INFIX INIT INLINE INNER INT INTERFACE INTERNAL IS LANGLE LATEINIT LCURL LE LINEBREAK LONG LPAREN LSQUARE MARK_1 MARK_2 MINUS MOD MODIN NOINLINE OBJECT OPEN OPERATOR OUT OVERRIDE PACKAGE PARAM PLUS PRINT PRINTLN PRIVATE PROPERTY PROTECTED PUBLIC QUEST_WS RANGE RANGLE RCURL RECEIVER REIFIED RETURN RPAREN RSQUARE SEALED SEMICOLON SET SETPARAM SINGLE_QUOTE STRING_1 SUM SUPER SUSPEND TAILREC TBOOLEAN TCHAR TDOUBLE TEMPLATE TFLOAT THIS THROW TIMES TINT TLONG TRY TSTRING TYPEOF TYPE_ALIAS VAL VALUE VAL_TIPO_1 VAR VARARG VAR_TIPO_1 WHEN WHERE WHILEline : impresion SEMICOLON\n                | expression\n                | asignacion SEMICOLON\n                | for\n                | if\n                impresion : PRINT LPAREN STRING_1 RPARENfor : FOR LPAREN ID IN ID RPAREN LCURL line RCURLkeywordVariables : VAR\n                        | VALasignacion : keywordVariables asignacionSimple\n                    | asignacionSimpleasignacionSimple : ID DOTS tipoDato EQUAL valor\n                        | ID EQUAL valortipoDato : TINT\n                | TLONG\n                | TFLOAT\n                | TDOUBLE\n                | TBOOLEAN\n                | TCHAR\n                | TSTRINGvalor : expressionexpression : expression PLUS termexpression : expression MINUS termexpression : expression TIMES termexpression : expression DIVIDE termexpression : expression MOD termexpression : termterm : factorterm : LPAREN expression RPARENfactor : INT\n                | FLOAT\n                | LONG\n                | CHAR\n                | BOOLEAN\n                | ID\n                | STRING_1\n                if : IF LPAREN condicion RPAREN LCURL line RCURL\n            | IF LPAREN condicion RPAREN LCURL line RCURL else\n            else : ELSE LCURL line RCURLcondicion : condicionL\n                | condicionR\n                | condicionN\n                condicionL : term opL termcondicionR : term opR termcondicionN : EXCL_WS termopL : CONJ\n            | DISJ\n            opR : LANGLE\n            | RANGLE\n            | LE\n            | GE\n            | EXCL_EQ\n            | EXCL_EQEQ\n            | AS_SAFE\n            | EQEQ\n            | EQEQEQ\n            '
     
-_lr_action_items = {'PRINT':([0,58,],[5,5,]),'FOR':([0,58,],[8,8,]),'VAR':([0,58,],[10,10,]),'VAL':([0,58,],[11,11,]),'ID':([0,6,10,11,16,18,34,41,42,43,44,45,46,47,58,],[9,9,-8,-9,20,29,29,49,29,29,29,29,29,29,9,]),'$end':([1,4,12,13,60,],[0,-3,-1,-2,-5,]),'SEMICOLON':([2,3,7,15,19,29,30,31,32,33,35,36,37,38,39,40,50,51,52,53,54,55,56,],[12,13,-7,-6,-4,-33,-11,-19,-25,-26,-28,-29,-30,-31,-32,-34,-10,-20,-21,-22,-23,-24,-27,]),'RCURL':([4,12,13,59,60,],[-3,-1,-2,60,-5,]),'LPAREN':([5,8,18,34,42,43,44,45,46,47,],[14,16,34,34,34,34,34,34,34,34,]),'DOTS':([9,],[17,]),'EQUAL':([9,21,22,23,24,25,26,27,28,],[18,42,-12,-13,-14,-15,-16,-17,-18,]),'RPAREN':([14,29,32,33,35,36,37,38,39,40,48,49,51,52,53,54,55,56,],[19,-33,-25,-26,-28,-29,-30,-31,-32,-34,56,57,-20,-21,-22,-23,-24,-27,]),'TINT':([17,],[22,]),'TLONG':([17,],[23,]),'TFLOAT':([17,],[24,]),'TDOUBLE':([17,],[25,]),'TBOOLEAN':([17,],[26,]),'TCHAR':([17,],[27,]),'TSTRING':([17,],[28,]),'INT':([18,34,42,43,44,45,46,47,],[35,35,35,35,35,35,35,35,]),'FLOAT':([18,34,42,43,44,45,46,47,],[36,36,36,36,36,36,36,36,]),'LONG':([18,34,42,43,44,45,46,47,],[37,37,37,37,37,37,37,37,]),'CHAR':([18,34,42,43,44,45,46,47,],[38,38,38,38,38,38,38,38,]),'BOOLEAN':([18,34,42,43,44,45,46,47,],[39,39,39,39,39,39,39,39,]),'STRING_1':([18,34,42,43,44,45,46,47,],[40,40,40,40,40,40,40,40,]),'IN':([20,],[41,]),'PLUS':([29,31,32,33,35,36,37,38,39,40,48,51,52,53,54,55,56,],[-33,43,-25,-26,-28,-29,-30,-31,-32,-34,43,-20,-21,-22,-23,-24,-27,]),'MINUS':([29,31,32,33,35,36,37,38,39,40,48,51,52,53,54,55,56,],[-33,44,-25,-26,-28,-29,-30,-31,-32,-34,44,-20,-21,-22,-23,-24,-27,]),'TIMES':([29,31,32,33,35,36,37,38,39,40,48,51,52,53,54,55,56,],[-33,45,-25,-26,-28,-29,-30,-31,-32,-34,45,-20,-21,-22,-23,-24,-27,]),'DIVIDE':([29,31,32,33,35,36,37,38,39,40,48,51,52,53,54,55,56,],[-33,46,-25,-26,-28,-29,-30,-31,-32,-34,46,-20,-21,-22,-23,-24,-27,]),'MOD':([29,31,32,33,35,36,37,38,39,40,48,51,52,53,54,55,56,],[-33,47,-25,-26,-28,-29,-30,-31,-32,-34,47,-20,-21,-22,-23,-24,-27,]),'LCURL':([57,],[58,]),}
+_lr_action_items = {'PRINT':([0,84,89,95,],[7,7,7,7,]),'FOR':([0,84,89,95,],[13,13,13,13,]),'IF':([0,84,89,95,],[15,15,15,15,]),'LPAREN':([0,7,8,13,15,25,26,27,28,29,38,39,63,66,68,69,70,71,72,73,74,75,76,77,78,79,80,84,89,95,],[8,31,8,36,39,8,8,8,8,8,8,8,8,8,8,8,-46,-47,-48,-49,-50,-51,-52,-53,-54,-55,-56,8,8,8,]),'VAR':([0,84,89,95,],[17,17,17,17,]),'VAL':([0,84,89,95,],[18,18,18,18,]),'ID':([0,8,11,17,18,25,26,27,28,29,36,38,39,63,65,66,68,69,70,71,72,73,74,75,76,77,78,79,80,84,89,95,],[14,33,35,-8,-9,33,33,33,33,33,47,33,33,33,82,33,33,33,-46,-47,-48,-49,-50,-51,-52,-53,-54,-55,-56,14,14,14,]),'INT':([0,8,25,26,27,28,29,38,39,63,66,68,69,70,71,72,73,74,75,76,77,78,79,80,84,89,95,],[19,19,19,19,19,19,19,19,19,19,19,19,19,-46,-47,-48,-49,-50,-51,-52,-53,-54,-55,-56,19,19,19,]),'FLOAT':([0,8,25,26,27,28,29,38,39,63,66,68,69,70,71,72,73,74,75,76,77,78,79,80,84,89,95,],[20,20,20,20,20,20,20,20,20,20,20,20,20,-46,-47,-48,-49,-50,-51,-52,-53,-54,-55,-56,20,20,20,]),'LONG':([0,8,25,26,27,28,29,38,39,63,66,68,69,70,71,72,73,74,75,76,77,78,79,80,84,89,95,],[21,21,21,21,21,21,21,21,21,21,21,21,21,-46,-47,-48,-49,-50,-51,-52,-53,-54,-55,-56,21,21,21,]),'CHAR':([0,8,25,26,27,28,29,38,39,63,66,68,69,70,71,72,73,74,75,76,77,78,79,80,84,89,95,],[22,22,22,22,22,22,22,22,22,22,22,22,22,-46,-47,-48,-49,-50,-51,-52,-53,-54,-55,-56,22,22,22,]),'BOOLEAN':([0,8,25,26,27,28,29,38,39,63,66,68,69,70,71,72,73,74,75,76,77,78,79,80,84,89,95,],[23,23,23,23,23,23,23,23,23,23,23,23,23,-46,-47,-48,-49,-50,-51,-52,-53,-54,-55,-56,23,23,23,]),'STRING_1':([0,8,25,26,27,28,29,31,38,39,63,66,68,69,70,71,72,73,74,75,76,77,78,79,80,84,89,95,],[9,9,9,9,9,9,9,45,9,9,9,9,9,9,-46,-47,-48,-49,-50,-51,-52,-53,-54,-55,-56,9,9,9,]),'$end':([1,3,5,6,9,10,14,16,19,20,21,22,23,24,30,33,40,41,42,43,44,46,90,92,94,97,],[0,-2,-4,-5,-36,-27,-35,-28,-30,-31,-32,-33,-34,-1,-3,-35,-22,-23,-24,-25,-26,-29,-37,-38,-7,-39,]),'SEMICOLON':([2,4,9,10,12,16,19,20,21,22,23,33,34,40,41,42,43,44,46,56,57,64,83,],[24,30,-36,-27,-11,-28,-30,-31,-32,-33,-34,-35,-10,-22,-23,-24,-25,-26,-29,-13,-21,-6,-12,]),'RCURL':([3,5,6,9,10,14,16,19,20,21,22,23,24,30,33,40,41,42,43,44,46,88,90,91,92,94,96,97,],[-2,-4,-5,-36,-27,-35,-28,-30,-31,-32,-33,-34,-1,-3,-35,-22,-23,-24,-25,-26,-29,90,-37,94,-38,-7,97,-39,]),'PLUS':([3,9,10,14,16,19,20,21,22,23,32,33,40,41,42,43,44,46,57,],[25,-36,-27,-35,-28,-30,-31,-32,-33,-34,25,-35,-22,-23,-24,-25,-26,-29,25,]),'MINUS':([3,9,10,14,16,19,20,21,22,23,32,33,40,41,42,43,44,46,57,],[26,-36,-27,-35,-28,-30,-31,-32,-33,-34,26,-35,-22,-23,-24,-25,-26,-29,26,]),'TIMES':([3,9,10,14,16,19,20,21,22,23,32,33,40,41,42,43,44,46,57,],[27,-36,-27,-35,-28,-30,-31,-32,-33,-34,27,-35,-22,-23,-24,-25,-26,-29,27,]),'DIVIDE':([3,9,10,14,16,19,20,21,22,23,32,33,40,41,42,43,44,46,57,],[28,-36,-27,-35,-28,-30,-31,-32,-33,-34,28,-35,-22,-23,-24,-25,-26,-29,28,]),'MOD':([3,9,10,14,16,19,20,21,22,23,32,33,40,41,42,43,44,46,57,],[29,-36,-27,-35,-28,-30,-31,-32,-33,-34,29,-35,-22,-23,-24,-25,-26,-29,29,]),'RPAREN':([9,10,16,19,20,21,22,23,32,33,40,41,42,43,44,45,46,58,59,60,61,81,82,85,86,],[-36,-27,-28,-30,-31,-32,-33,-34,46,-35,-22,-23,-24,-25,-26,64,-29,67,-40,-41,-42,-45,87,-43,-44,]),'CONJ':([9,16,19,20,21,22,23,33,46,62,],[-36,-28,-30,-31,-32,-33,-34,-35,-29,70,]),'DISJ':([9,16,19,20,21,22,23,33,46,62,],[-36,-28,-30,-31,-32,-33,-34,-35,-29,71,]),'LANGLE':([9,16,19,20,21,22,23,33,46,62,],[-36,-28,-30,-31,-32,-33,-34,-35,-29,72,]),'RANGLE':([9,16,19,20,21,22,23,33,46,62,],[-36,-28,-30,-31,-32,-33,-34,-35,-29,73,]),'LE':([9,16,19,20,21,22,23,33,46,62,],[-36,-28,-30,-31,-32,-33,-34,-35,-29,74,]),'GE':([9,16,19,20,21,22,23,33,46,62,],[-36,-28,-30,-31,-32,-33,-34,-35,-29,75,]),'EXCL_EQ':([9,16,19,20,21,22,23,33,46,62,],[-36,-28,-30,-31,-32,-33,-34,-35,-29,76,]),'EXCL_EQEQ':([9,16,19,20,21,22,23,33,46,62,],[-36,-28,-30,-31,-32,-33,-34,-35,-29,77,]),'AS_SAFE':([9,16,19,20,21,22,23,33,46,62,],[-36,-28,-30,-31,-32,-33,-34,-35,-29,78,]),'EQEQ':([9,16,19,20,21,22,23,33,46,62,],[-36,-28,-30,-31,-32,-33,-34,-35,-29,79,]),'EQEQEQ':([9,16,19,20,21,22,23,33,46,62,],[-36,-28,-30,-31,-32,-33,-34,-35,-29,80,]),'DOTS':([14,35,],[37,37,]),'EQUAL':([14,35,48,49,50,51,52,53,54,55,],[38,38,66,-14,-15,-16,-17,-18,-19,-20,]),'TINT':([37,],[49,]),'TLONG':([37,],[50,]),'TFLOAT':([37,],[51,]),'TDOUBLE':([37,],[52,]),'TBOOLEAN':([37,],[53,]),'TCHAR':([37,],[54,]),'TSTRING':([37,],[55,]),'EXCL_WS':([39,],[63,]),'IN':([47,],[65,]),'LCURL':([67,87,93,],[84,89,95,]),'ELSE':([90,],[93,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'line':([0,58,],[1,59,]),'impresion':([0,58,],[2,2,]),'asignacion':([0,58,],[3,3,]),'for':([0,58,],[4,4,]),'keywordVariables':([0,58,],[6,6,]),'asignacionSimple':([0,6,58,],[7,15,7,]),'tipoDato':([17,],[21,]),'valor':([18,42,],[30,50,]),'expression':([18,34,42,],[31,48,31,]),'term':([18,34,42,43,44,45,46,47,],[32,32,32,51,52,53,54,55,]),'factor':([18,34,42,43,44,45,46,47,],[33,33,33,33,33,33,33,33,]),}
+_lr_goto_items = {'line':([0,84,89,95,],[1,88,91,96,]),'impresion':([0,84,89,95,],[2,2,2,2,]),'expression':([0,8,38,66,84,89,95,],[3,32,57,57,3,3,3,]),'asignacion':([0,84,89,95,],[4,4,4,4,]),'for':([0,84,89,95,],[5,5,5,5,]),'if':([0,84,89,95,],[6,6,6,6,]),'term':([0,8,25,26,27,28,29,38,39,63,66,68,69,84,89,95,],[10,10,40,41,42,43,44,10,62,81,10,85,86,10,10,10,]),'keywordVariables':([0,84,89,95,],[11,11,11,11,]),'asignacionSimple':([0,11,84,89,95,],[12,34,12,12,12,]),'factor':([0,8,25,26,27,28,29,38,39,63,66,68,69,84,89,95,],[16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,]),'tipoDato':([37,],[48,]),'valor':([38,66,],[56,83,]),'condicion':([39,],[58,]),'condicionL':([39,],[59,]),'condicionR':([39,],[60,]),'condicionN':([39,],[61,]),'opL':([62,],[68,]),'opR':([62,],[69,]),'else':([90,],[92,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,38 +27,60 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> line","S'",1,None,None,None),
-  ('line -> impresion SEMICOLON','line',2,'p_cuerpo','kotlin_sintactico.py',10),
-  ('line -> asignacion SEMICOLON','line',2,'p_cuerpo','kotlin_sintactico.py',11),
-  ('line -> for','line',1,'p_cuerpo','kotlin_sintactico.py',12),
-  ('impresion -> PRINT LPAREN RPAREN','impresion',3,'p_impresion','kotlin_sintactico.py',15),
-  ('for -> FOR LPAREN ID IN ID RPAREN LCURL line RCURL','for',9,'p_for','kotlin_sintactico.py',18),
-  ('asignacion -> keywordVariables asignacionSimple','asignacion',2,'p_asignacion','kotlin_sintactico.py',21),
-  ('asignacion -> asignacionSimple','asignacion',1,'p_asignacion','kotlin_sintactico.py',22),
-  ('keywordVariables -> VAR','keywordVariables',1,'p_keywordVariables','kotlin_sintactico.py',25),
-  ('keywordVariables -> VAL','keywordVariables',1,'p_keywordVariables','kotlin_sintactico.py',26),
-  ('asignacionSimple -> ID DOTS tipoDato EQUAL valor','asignacionSimple',5,'p_asignacionS','kotlin_sintactico.py',28),
-  ('asignacionSimple -> ID EQUAL valor','asignacionSimple',3,'p_asignacionS','kotlin_sintactico.py',29),
-  ('tipoDato -> TINT','tipoDato',1,'p_tipoDato','kotlin_sintactico.py',33),
-  ('tipoDato -> TLONG','tipoDato',1,'p_tipoDato','kotlin_sintactico.py',34),
-  ('tipoDato -> TFLOAT','tipoDato',1,'p_tipoDato','kotlin_sintactico.py',35),
-  ('tipoDato -> TDOUBLE','tipoDato',1,'p_tipoDato','kotlin_sintactico.py',36),
-  ('tipoDato -> TBOOLEAN','tipoDato',1,'p_tipoDato','kotlin_sintactico.py',37),
-  ('tipoDato -> TCHAR','tipoDato',1,'p_tipoDato','kotlin_sintactico.py',38),
-  ('tipoDato -> TSTRING','tipoDato',1,'p_tipoDato','kotlin_sintactico.py',39),
-  ('valor -> expression','valor',1,'p_valor','kotlin_sintactico.py',42),
-  ('expression -> expression PLUS term','expression',3,'p_expression_plus','kotlin_sintactico.py',45),
-  ('expression -> expression MINUS term','expression',3,'p_expression_minus','kotlin_sintactico.py',48),
-  ('expression -> expression TIMES term','expression',3,'p_expression_times','kotlin_sintactico.py',51),
-  ('expression -> expression DIVIDE term','expression',3,'p_expression_divide','kotlin_sintactico.py',54),
-  ('expression -> expression MOD term','expression',3,'p_expression_mod','kotlin_sintactico.py',57),
-  ('expression -> term','expression',1,'p_expression_single','kotlin_sintactico.py',60),
-  ('term -> factor','term',1,'p_term_factor','kotlin_sintactico.py',63),
-  ('term -> LPAREN expression RPAREN','term',3,'p_term_Paren','kotlin_sintactico.py',66),
-  ('factor -> INT','factor',1,'p_factor','kotlin_sintactico.py',69),
-  ('factor -> FLOAT','factor',1,'p_factor','kotlin_sintactico.py',70),
-  ('factor -> LONG','factor',1,'p_factor','kotlin_sintactico.py',71),
-  ('factor -> CHAR','factor',1,'p_factor','kotlin_sintactico.py',72),
-  ('factor -> BOOLEAN','factor',1,'p_factor','kotlin_sintactico.py',73),
-  ('factor -> ID','factor',1,'p_factor','kotlin_sintactico.py',74),
-  ('factor -> STRING_1','factor',1,'p_factor','kotlin_sintactico.py',75),
+  ('line -> impresion SEMICOLON','line',2,'p_cuerpo','kotlin_sintactico_karla.py',10),
+  ('line -> expression','line',1,'p_cuerpo','kotlin_sintactico_karla.py',11),
+  ('line -> asignacion SEMICOLON','line',2,'p_cuerpo','kotlin_sintactico_karla.py',12),
+  ('line -> for','line',1,'p_cuerpo','kotlin_sintactico_karla.py',13),
+  ('line -> if','line',1,'p_cuerpo','kotlin_sintactico_karla.py',14),
+  ('impresion -> PRINT LPAREN STRING_1 RPAREN','impresion',4,'p_impresion','kotlin_sintactico_karla.py',18),
+  ('for -> FOR LPAREN ID IN ID RPAREN LCURL line RCURL','for',9,'p_for','kotlin_sintactico_karla.py',21),
+  ('keywordVariables -> VAR','keywordVariables',1,'p_keywordVariables','kotlin_sintactico_karla.py',26),
+  ('keywordVariables -> VAL','keywordVariables',1,'p_keywordVariables','kotlin_sintactico_karla.py',27),
+  ('asignacion -> keywordVariables asignacionSimple','asignacion',2,'p_asignacion','kotlin_sintactico_karla.py',30),
+  ('asignacion -> asignacionSimple','asignacion',1,'p_asignacion','kotlin_sintactico_karla.py',31),
+  ('asignacionSimple -> ID DOTS tipoDato EQUAL valor','asignacionSimple',5,'p_asignacionS','kotlin_sintactico_karla.py',34),
+  ('asignacionSimple -> ID EQUAL valor','asignacionSimple',3,'p_asignacionS','kotlin_sintactico_karla.py',35),
+  ('tipoDato -> TINT','tipoDato',1,'p_tipoDato','kotlin_sintactico_karla.py',39),
+  ('tipoDato -> TLONG','tipoDato',1,'p_tipoDato','kotlin_sintactico_karla.py',40),
+  ('tipoDato -> TFLOAT','tipoDato',1,'p_tipoDato','kotlin_sintactico_karla.py',41),
+  ('tipoDato -> TDOUBLE','tipoDato',1,'p_tipoDato','kotlin_sintactico_karla.py',42),
+  ('tipoDato -> TBOOLEAN','tipoDato',1,'p_tipoDato','kotlin_sintactico_karla.py',43),
+  ('tipoDato -> TCHAR','tipoDato',1,'p_tipoDato','kotlin_sintactico_karla.py',44),
+  ('tipoDato -> TSTRING','tipoDato',1,'p_tipoDato','kotlin_sintactico_karla.py',45),
+  ('valor -> expression','valor',1,'p_valor','kotlin_sintactico_karla.py',48),
+  ('expression -> expression PLUS term','expression',3,'p_expression_plus','kotlin_sintactico_karla.py',51),
+  ('expression -> expression MINUS term','expression',3,'p_expression_minus','kotlin_sintactico_karla.py',54),
+  ('expression -> expression TIMES term','expression',3,'p_expression_times','kotlin_sintactico_karla.py',57),
+  ('expression -> expression DIVIDE term','expression',3,'p_expression_divide','kotlin_sintactico_karla.py',60),
+  ('expression -> expression MOD term','expression',3,'p_expression_mod','kotlin_sintactico_karla.py',63),
+  ('expression -> term','expression',1,'p_expression_single','kotlin_sintactico_karla.py',66),
+  ('term -> factor','term',1,'p_term_factor','kotlin_sintactico_karla.py',69),
+  ('term -> LPAREN expression RPAREN','term',3,'p_term_Paren','kotlin_sintactico_karla.py',72),
+  ('factor -> INT','factor',1,'p_factor','kotlin_sintactico_karla.py',75),
+  ('factor -> FLOAT','factor',1,'p_factor','kotlin_sintactico_karla.py',76),
+  ('factor -> LONG','factor',1,'p_factor','kotlin_sintactico_karla.py',77),
+  ('factor -> CHAR','factor',1,'p_factor','kotlin_sintactico_karla.py',78),
+  ('factor -> BOOLEAN','factor',1,'p_factor','kotlin_sintactico_karla.py',79),
+  ('factor -> ID','factor',1,'p_factor','kotlin_sintactico_karla.py',80),
+  ('factor -> STRING_1','factor',1,'p_factor','kotlin_sintactico_karla.py',81),
+  ('if -> IF LPAREN condicion RPAREN LCURL line RCURL','if',7,'p_if','kotlin_sintactico_karla.py',86),
+  ('if -> IF LPAREN condicion RPAREN LCURL line RCURL else','if',8,'p_if','kotlin_sintactico_karla.py',87),
+  ('else -> ELSE LCURL line RCURL','else',4,'p_else','kotlin_sintactico_karla.py',91),
+  ('condicion -> condicionL','condicion',1,'p_condicion','kotlin_sintactico_karla.py',101),
+  ('condicion -> condicionR','condicion',1,'p_condicion','kotlin_sintactico_karla.py',102),
+  ('condicion -> condicionN','condicion',1,'p_condicion','kotlin_sintactico_karla.py',103),
+  ('condicionL -> term opL term','condicionL',3,'p_condicionL','kotlin_sintactico_karla.py',107),
+  ('condicionR -> term opR term','condicionR',3,'p_condicionR','kotlin_sintactico_karla.py',110),
+  ('condicionN -> EXCL_WS term','condicionN',2,'p_condicionN','kotlin_sintactico_karla.py',113),
+  ('opL -> CONJ','opL',1,'p_opL','kotlin_sintactico_karla.py',117),
+  ('opL -> DISJ','opL',1,'p_opL','kotlin_sintactico_karla.py',118),
+  ('opR -> LANGLE','opR',1,'p_opR','kotlin_sintactico_karla.py',122),
+  ('opR -> RANGLE','opR',1,'p_opR','kotlin_sintactico_karla.py',123),
+  ('opR -> LE','opR',1,'p_opR','kotlin_sintactico_karla.py',124),
+  ('opR -> GE','opR',1,'p_opR','kotlin_sintactico_karla.py',125),
+  ('opR -> EXCL_EQ','opR',1,'p_opR','kotlin_sintactico_karla.py',126),
+  ('opR -> EXCL_EQEQ','opR',1,'p_opR','kotlin_sintactico_karla.py',127),
+  ('opR -> AS_SAFE','opR',1,'p_opR','kotlin_sintactico_karla.py',128),
+  ('opR -> EQEQ','opR',1,'p_opR','kotlin_sintactico_karla.py',129),
+  ('opR -> EQEQEQ','opR',1,'p_opR','kotlin_sintactico_karla.py',130),
 ]
