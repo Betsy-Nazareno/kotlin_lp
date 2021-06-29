@@ -107,6 +107,7 @@ reserved = {
     'append' : 'APPEND',
     'removeNode':'REMOVEN',
     'removeAtIndex':'REMOVEI'
+   
     
 }
 
@@ -191,7 +192,7 @@ t_MOD = r'%'
 t_EQUAL = r'\='
 t_DOTS = r':'
 t_INCREMENTONE = r'\+\+'
-t_DECREMENTONE = r'--'
+t_DECREMENTONE = r'\-\-'
 t_INCREMENTIN = r'\+='
 t_DECREMENTIN = r'-='
 t_INCREMENTTIMES = r'\*='

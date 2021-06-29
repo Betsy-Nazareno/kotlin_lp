@@ -14,7 +14,7 @@ def p_cuerpo(p):
                 | estructurasControl
                 | estructurasDatos SEMICOLON
                 | condicion
-            
+
                 """
 def p_estructuras_datos(p):
     """estructurasDatos : queue
@@ -25,6 +25,7 @@ def p_estructuras_datos(p):
                         | def_estruct_tipoDato
                         | lista
                         | lsimplem
+                        | lcomp
                        
                          |"""
 
@@ -95,9 +96,6 @@ def p_tipoDato(p):
 def p_valor(p):
     '''valor : expression'''
 
-
-
-
 def p_expression_plus(p):
     "expression : expression PLUS term"
 
@@ -112,7 +110,10 @@ def p_expression_divide(p):
 
 def p_expression_mod(p):
     'expression : expression MOD term'
-
+def p_expression_increment(p):
+    'expression : expression INCREMENTONE'
+def p_expression_decrement(p):
+    'expression : expression DECREMENTONE'
 def p_expression_single(p):
     '''expression : term'''
 
@@ -222,30 +223,30 @@ def p_stack_peek(p):
 def p_stack_size(p):
     'stack_size : SIZE LPAREN RPAREN'
 
-#EDDy
+#EDDY
 
 def p_Lmetod(p):
     '''Lmetod : FIRST LPAREN RPAREN
     | LAST LPAREN RPAREN
     | REMOVEL LPAREN RPAREN
                 '''
-"""
-def p_Cmethod(p):
-    '''cmethod : APPEND IPAREN OBJECT RPAREN
-    | REMOVEN IPAREN OBJECT RPAREN
-    | REMOVEI IPAREN TINT RPAREN
+
+def p_Cmetod(p):
+    '''Cmetod : APPEND LPAREN OBJECT RPAREN
+    | REMOVEN LPAREN OBJECT RPAREN
+    | REMOVEI LPAREN TINT RPAREN
    
                 '''
-"""
+
 def p_while(p):
-    'while : WHILE DOTS LPAREN ID opR TINT RPAREN LCURL morelines RCURL'
+    'while : WHILE LPAREN ID opR INT RPAREN LCURL morelines RCURL '
 def p_lista(p):
     'lista : keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN'
 def p_lsimplem(p):   
     'lsimplem : ID DOT Lmetod'
 
-"""def p_lcomp(p):
-    'metodc : ID DOT cmethod'"""
+def p_lcomp(p):
+    'lcomp : ID DOT Cmetod'
 
 
 # Error rule for syntax errors
