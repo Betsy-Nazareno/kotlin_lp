@@ -97,7 +97,14 @@ reserved = {
     'ArrayList':'ARRAYLIST',
     'pop':'POP',
     'isEmpty':'ISEMPTY',
-    'push':'PUSH'
+    'push':'PUSH',
+    #Eddy
+    'LinkedList':'LINKEDL',
+    'Object':'OBJECT',
+    'first':'FIRST',
+    'last':'LAST',
+    'removeLast':'REMOVEL'
+    
 }
 
 tokens = (
@@ -307,3 +314,4 @@ while linea!="":
     getTokens(lexer)
 # Tokenize
 print("Succesfull")
+
