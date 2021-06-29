@@ -232,12 +232,20 @@ def p_Lmetod(p):
     | LAST LPAREN RPAREN
     | REMOVEL LPAREN RPAREN
                 '''
+def p_Cmethod(p):
+    '''cmethod : APPEND IPAREN OBJECT RPAREN
+    | REMOVEN IPAREN OBJECT RPAREN
+    | REMOVEI IPAREN TINT RPAREN
+   
+                '''
 def p_while(p):
     'while : WHILE DOTS LPAREN ID opR TINT RPAREN LCURL morelines RCURL'
 def p_lista(p):
     'lista : keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN'
 def p_lsimplem(p):   
     'lsimplem : ID DOT Lmetod'
+def p_lcomp(p):
+    'metodc: ID DOT cmethod '
 
 
 # Error rule for syntax errors
