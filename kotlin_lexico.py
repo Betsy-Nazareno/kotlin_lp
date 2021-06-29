@@ -98,6 +98,13 @@ reserved = {
     'pop':'POP',
     'isEmpty':'ISEMPTY',
     'push':'PUSH'
+    #Eddy
+    'LinkedList':'LINKEDL',
+    'Object':'OBJECT',
+    'first':'FIRST',
+    'last':'LAST',
+    'removeLast':'REMOVEL'
+    
 }
 
 tokens = (
