@@ -13,14 +13,24 @@ def p_cuerpo(p):
                 | expression
                 | estructurasControl
                 | estructurasDatos SEMICOLON
+            
                 """
 def p_estructuras_datos(p):
     """estructurasDatos : queue
-                        | queue_operations"""
+                        | queue_operations
+                         | stack
+                        | stack_actuar
+                          | instance_arraylist
+                         | def_estruct_tipoDato
+                          | lista
+                         | lsimplem
+                       
+                         |"""
 
 def p_estructuras_control(p):
     """estructurasControl : for
-                         | if"""
+                         | if
+                         | while """
 
 
 
@@ -29,6 +39,7 @@ def p_queue_operations(p):
                         | queue_peek
                         | queue_remove
                         | queue_poll'''
+   
 
 def p_queue_add(p):
     '''queue_add : ID DOT ADD LPAREN factor RPAREN'''
@@ -170,6 +181,51 @@ def p_opR(p):
             | EQEQ
             | EQEQEQ
             '''
+# ---------------- STACK ---------------
+# <pila> ::= "var " <variable> ": Stack<" <tipoDato> ">" "=" "ArrayList()"
+def p_stack(p):
+    'stack : keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist'
+
+# Stack<" <tipoDato> ">"
+def p_def_estruct_dato(p):
+    'def_estruct_tipoDato : STACK LANGLE tipoDato RANGLE'
+
+# ArrayList()
+def p_instance_ArrayList(p):
+    'instance_arraylist : ARRAYLIST LPAREN RPAREN'
+
+#ejecutar funciones para pilas
+def p_stack_actuar(p):
+    'stack_actuar : ID DOT stack_funciones'
+
+#funciones pilas
+def p_stack_funciones(p):
+    ''' stack_funciones : stack_isEmpty
+                        | stack_push
+                        | stack_pop
+                        '''
+
+def p_stack_isEmpty(p):
+    'stack_isEmpty : ISEMPTY LPAREN RPAREN'
+
+def p_stack_pop(p):
+    'stack_pop : POP LPAREN RPAREN'
+
+def p_stack_push(p):
+    'stack_push : PUSH LPAREN ID RPAREN'
+  #EDDY
+    
+ def p_Lmetod(p):
+    '''Lmetod : FIRST IPAREN RPAREN
+    | LAST IPAREN RPAREN
+    | REMOVEL IPAREN RPAREN
+                '''
+def p_while(p):
+    'while : WHILE DOTS IPAREN ID p_opR TINT RPAREN LCURL morelines RCURL'
+def p_lista(p):
+    'lista: keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE IPAREN RPAREN'
+def p_lsimplem(p):   
+    'lsimplem: ID DOT Lmetod'
 
 
 # Error rule for syntax errors
