@@ -90,9 +90,14 @@ reserved = {
     'break':'BREAK',
     'as':'AS',
     'out':'OUT',
-    'dynamic':'DYNAMIC'
+    'dynamic':'DYNAMIC',
 
-
+    #karla
+    'Stack':'STACK',
+    'ArrayList':'ARRAYLIST',
+    'pop':'POP',
+    'isEmpty':'ISEMPTY',
+    'push':'PUSH'
 }
 
 tokens = (
@@ -173,7 +178,7 @@ t_DIVIDE = r'/'
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
 t_MOD = r'%'
-t_EQUAL = r'='
+t_EQUAL = r'\='
 t_DOTS = r':'
 t_INCREMENTONE = r'\+\+'
 t_DECREMENTONE = r'--'

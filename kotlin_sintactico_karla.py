@@ -9,11 +9,14 @@ from kotlin_lexico import tokens
 def p_cuerpo(p):
     """line : impresion SEMICOLON
                 | expression
+                | asignacion
                 | asignacion SEMICOLON
                 | for
                 | if
                 | stack
                 | stack_actuar
+                | instance_arraylist
+                | def_estruct_tipoDato
                 """
 
 def p_impresion(p):
@@ -137,14 +140,35 @@ def p_opR(p):
 # ---------------- STACK ---------------
 # <pila> ::= "var " <variable> ": Stack<" <tipoDato> ">" "=" "ArrayList()"
 def p_stack(p):
-    'stack : keywordVariables ID DOTS STACK LANGLE tipoDato RANGLE EQUAL ARRAYLIST LPAREN RPAREN'
+    'stack : keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist'
+
+# Stack<" <tipoDato> ">"
+def p_def_estruct_dato(p):
+    'def_estruct_tipoDato : STACK LANGLE tipoDato RANGLE'
+
+# ArrayList()
+def p_instance_ArrayList(p):
+    'instance_arraylist : ARRAYLIST LPAREN RPAREN'
 
 #ejecutar funciones para pilas
 def p_stack_actuar(p):
-    'stack_func : ID DOT stack_funciones'
+    'stack_actuar : ID DOT stack_funciones'
 
 #funciones pilas
+def p_stack_funciones(p):
+    ''' stack_funciones : stack_isEmpty
+                        | stack_push
+                        | stack_pop
+                        '''
 
+def p_stack_isEmpty(p):
+    'stack_isEmpty : ISEMPTY LPAREN RPAREN'
+
+def p_stack_pop(p):
+    'stack_pop : POP LPAREN RPAREN'
+
+def p_stack_push(p):
+    'stack_push : PUSH LPAREN ID RPAREN'
 
 
 # Error rule for syntax errors
