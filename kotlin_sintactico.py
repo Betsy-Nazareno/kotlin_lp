@@ -13,6 +13,7 @@ def p_cuerpo(p):
                 | expression
                 | estructurasControl
                 | estructurasDatos SEMICOLON
+                | condicion
             
                 """
 def p_estructuras_datos(p):
@@ -153,6 +154,9 @@ def p_condicion(p):
                 | condicionR
                 | condicionN
                 '''
+
+def p_masCondiciones(p):
+    'masCondiciones : opL condicion'
 
 def p_condicionL(p):
     'condicionL : term opL term'

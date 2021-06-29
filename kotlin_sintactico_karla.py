@@ -108,7 +108,11 @@ def p_condicion(p):
     '''condicion : condicionL
                 | condicionR
                 | condicionN
+                | condicion masCondiciones+
                 '''
+
+def p_masCondiciones(p):
+    'masCondiciones : opL condicion'
 
 def p_condicionL(p):
     'condicionL : term opL term'
