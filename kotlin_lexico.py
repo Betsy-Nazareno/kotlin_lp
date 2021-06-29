@@ -103,9 +103,9 @@ reserved = {
     'LinkedList':'LINKEDL',
     'first':'FIRST',
     'last':'LAST',
-    'removeLast':'REMOVEL'
-    'append' : 'APPEND
-    'removeNode':'REMOVEN'
+    'removeLast':'REMOVEL',
+    'append' : 'APPEND',
+    'removeNode':'REMOVEN',
     'removeAtIndex':'REMOVEI'
     
 }
