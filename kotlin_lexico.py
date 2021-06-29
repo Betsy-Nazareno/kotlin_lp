@@ -98,9 +98,9 @@ reserved = {
     'pop':'POP',
     'isEmpty':'ISEMPTY',
     'push':'PUSH',
+    'size':'SIZE',
     #Eddy
     'LinkedList':'LINKEDL',
-    'Object':'OBJECT',
     'first':'FIRST',
     'last':'LAST',
     'removeLast':'REMOVEL'
@@ -306,7 +306,7 @@ def getTokens(lexer):
         print(tok)
 # Build the lexer
 lexer = lex.lex()
-
+"""
 linea=" "
 while linea!="":
     linea=input(">>")
@@ -315,3 +315,4 @@ while linea!="":
 # Tokenize
 print("Succesfull")
 
+"""

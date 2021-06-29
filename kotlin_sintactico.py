@@ -1,5 +1,5 @@
 import ply.yacc as yacc
-from kotlin_lp.kotlin_lexico import tokens
+from kotlin_lexico import tokens
 
 
 #Bug: Las restas las reconoce si pones espacio entre el número y el menos.
@@ -18,12 +18,12 @@ def p_cuerpo(p):
 def p_estructuras_datos(p):
     """estructurasDatos : queue
                         | queue_operations
-                         | stack
+                        | stack
                         | stack_actuar
-                          | instance_arraylist
-                         | def_estruct_tipoDato
-                          | lista
-                         | lsimplem
+                        | instance_arraylist
+                        | def_estruct_tipoDato
+                        | lista
+                        | lsimplem
                        
                          |"""
 
@@ -58,7 +58,7 @@ def p_impresion(p):
                 |  PRINTLN LPAREN expression RPAREN'''
 
 def p_queue(p):
-    '''queue : VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST  LANGLE tipoDato RANGLE LPAREN RPAREN'''
+    '''queue : VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN'''
 
 def p_for(p):
     '''for : FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL  '''
@@ -131,8 +131,7 @@ def p_factor(p):
                 | STRING_1
                 '''
 
-
-
+#---------- Karla -------------
 def p_if(p):
     '''if : IF LPAREN condicion RPAREN LCURL morelines RCURL
             | IF LPAREN condicion RPAREN LCURL morelines RCURL else
@@ -203,6 +202,8 @@ def p_stack_funciones(p):
     ''' stack_funciones : stack_isEmpty
                         | stack_push
                         | stack_pop
+                        | stack_peek
+                        | stack_size
                         '''
 
 def p_stack_isEmpty(p):
@@ -213,19 +214,26 @@ def p_stack_pop(p):
 
 def p_stack_push(p):
     'stack_push : PUSH LPAREN ID RPAREN'
-  #EDDY
-    
- def p_Lmetod(p):
-    '''Lmetod : FIRST IPAREN RPAREN
-    | LAST IPAREN RPAREN
-    | REMOVEL IPAREN RPAREN
+
+def p_stack_peek(p):
+    'stack_peek : PEEK LPAREN RPAREN'
+
+def p_stack_size(p):
+    'stack_size : SIZE LPAREN RPAREN'
+
+#EDDy
+
+def p_Lmetod(p):
+    '''Lmetod : FIRST LPAREN RPAREN
+    | LAST LPAREN RPAREN
+    | REMOVEL LPAREN RPAREN
                 '''
 def p_while(p):
-    'while : WHILE DOTS IPAREN ID p_opR TINT RPAREN LCURL morelines RCURL'
+    'while : WHILE DOTS LPAREN ID opR TINT RPAREN LCURL morelines RCURL'
 def p_lista(p):
-    'lista: keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE IPAREN RPAREN'
+    'lista : keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN'
 def p_lsimplem(p):   
-    'lsimplem: ID DOT Lmetod'
+    'lsimplem : ID DOT Lmetod'
 
 
 # Error rule for syntax errors
