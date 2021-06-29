@@ -104,6 +104,9 @@ reserved = {
     'first':'FIRST',
     'last':'LAST',
     'removeLast':'REMOVEL'
+    'append' : 'APPEND
+    'removeNode':'REMOVEN'
+    'removeAtIndex':'REMOVEI'
     
 }
 
