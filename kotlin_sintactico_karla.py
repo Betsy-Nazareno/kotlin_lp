@@ -1,70 +1,34 @@
 import ply.yacc as yacc
-from kotlin_lp.kotlin_lexico import tokens
+from kotlin_lexico import tokens
 
 
 #Bug: Las restas las reconoce si pones espacio entre el número y el menos.
 #Si quieren probar las expresiones sin antes agregarlas a una variable agreguen "| expression" a la primer regla
 
 
-
 def p_cuerpo(p):
     """line : impresion SEMICOLON
-                | asignacion SEMICOLON
                 | expression
-                | estructurasControl
-                | estructurasDatos SEMICOLON
+                | asignacion SEMICOLON
+                | for
+                | if
                 """
-def p_estructuras_datos(p):
-    """estructurasDatos : queue
-                        | queue_operations"""
-
-def p_estructuras_control(p):
-    """estructurasControl : for
-                         | if"""
-
-
-
-def p_queue_operations(p):
-    '''queue_operations : queue_add
-                        | queue_peek
-                        | queue_remove
-                        | queue_poll'''
-
-def p_queue_add(p):
-    '''queue_add : ID DOT ADD LPAREN factor RPAREN'''
-
-def p_queue_peek(p):
-    '''queue_peek : ID DOT PEEK LPAREN RPAREN'''
-
-def p_queue_poll(p):
-    '''queue_poll : ID DOT POLL LPAREN RPAREN'''
-
-def p_queue_remove(p):
-    '''queue_remove : ID DOT REMOVE LPAREN RPAREN'''
 
 def p_impresion(p):
-    '''impresion : PRINT LPAREN expression RPAREN
-                |  PRINTLN LPAREN expression RPAREN'''
-
-def p_queue(p):
-    '''queue : VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST  LANGLE tipoDato RANGLE LPAREN RPAREN'''
+    'impresion : PRINT LPAREN STRING_1 RPAREN'
 
 def p_for(p):
-    '''for : FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL  '''
+    'for : FOR LPAREN ID IN ID RPAREN LCURL line RCURL'
 
 
-
-def p_morelines(p):
-    '''morelines : line
-                | line morelines'''
+#asignacion de variable
+def p_keywordVariables(p):
+    '''keywordVariables : VAR
+                        | VAL'''
 
 def p_asignacion(p):
     '''asignacion : keywordVariables asignacionSimple
                     | asignacionSimple'''
-
-def p_keywordVariables(p):
-    '''keywordVariables : VAR
-                        | VAL'''
 
 def p_asignacionS(p):
     '''asignacionSimple : ID DOTS tipoDato EQUAL valor
@@ -82,9 +46,6 @@ def p_tipoDato(p):
 
 def p_valor(p):
     '''valor : expression'''
-
-
-
 
 def p_expression_plus(p):
     "expression : expression PLUS term"
@@ -108,7 +69,7 @@ def p_term_factor(p):
     """term : factor"""
 
 def p_term_Paren(p):
-    '''term : LPAREN expression RPAREN'''
+    'term : LPAREN expression RPAREN'
 
 def p_factor(p):
     '''factor : INT
@@ -120,11 +81,10 @@ def p_factor(p):
                 | STRING_1
                 '''
 
-
-
+#-----------------------Karla------------------------------------
 def p_if(p):
-    '''if : IF LPAREN condicion RPAREN LCURL morelines RCURL
-            | IF LPAREN condicion RPAREN LCURL morelines RCURL else
+    '''if : IF LPAREN condicion RPAREN LCURL line RCURL
+            | IF LPAREN condicion RPAREN LCURL line RCURL else
             '''
 
 def p_else(p):
@@ -136,7 +96,6 @@ def p_else(p):
 #condicionL : condicion con operadores logicos
 #condicionR : condicion con operadores relacionales
 #condicionN : negar expresion, p.e: !variable
-
 
 def p_condicion(p):
     '''condicion : condicionL
@@ -179,9 +138,9 @@ def p_error(p):
         # Just discard the token and tell the parser it's okay.
     else:
         print("Syntax error at EOF")
+
 # Build the parser
 parser = yacc.yacc()
-
 
 while True:
     try:

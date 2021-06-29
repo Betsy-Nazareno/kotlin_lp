@@ -8,7 +8,6 @@ Unused terminals:
     ARRAYOF
     ARROW
     AS
-    AS_SAFE
     AT_NO_WS
     BREAK
     BY
@@ -18,7 +17,6 @@ Unused terminals:
     COMMA
     COMMENT
     COMPANION
-    CONJ
     CONST
     CONSTRUCTOR
     CONTINUE
@@ -27,20 +25,13 @@ Unused terminals:
     DECR
     DECREMENTIN
     DECREMENTONE
-    DISJ
     DIVIDEIN
     DO
     DOUBLE_ARROW
     DOUBLE_SEMICOLON
     DYNAMIC
-    ELSE
     ENUM
-    EQEQ
-    EQEQEQ
-    EXCL_EQ
-    EXCL_EQEQ
     EXCL_NO_WS
-    EXCL_WS
     EXPECT
     EXTERNAL
     FIELD
@@ -48,10 +39,8 @@ Unused terminals:
     FINAL
     FINALLY
     FUN
-    GE
     GET
     HASH
-    IF
     IMPORT
     INCR
     INCREMENTIN
@@ -65,7 +54,6 @@ Unused terminals:
     INTERNAL
     IS
     LATEINIT
-    LE
     LINEBREAK
     LISTOF
     LSQUARE
@@ -80,7 +68,6 @@ Unused terminals:
     OVERRIDE
     PACKAGE
     PARAM
-    PRINTLN
     PRIVATE
     PROPERTY
     PROTECTED
@@ -124,75 +111,93 @@ Rule 5     line -> estructurasDatos SEMICOLON
 Rule 6     estructurasDatos -> queue
 Rule 7     estructurasDatos -> queue_operations
 Rule 8     estructurasControl -> for
-Rule 9     queue_operations -> queue_add
-Rule 10    queue_operations -> queue_peek
-Rule 11    queue_operations -> queue_remove
-Rule 12    queue_operations -> queue_poll
-Rule 13    queue_add -> ID DOT ADD LPAREN factor RPAREN
-Rule 14    queue_peek -> ID DOT PEEK LPAREN RPAREN
-Rule 15    queue_poll -> ID DOT POLL LPAREN RPAREN
-Rule 16    queue_remove -> ID DOT REMOVE LPAREN RPAREN
-Rule 17    impresion -> PRINT LPAREN RPAREN
-Rule 18    queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
-Rule 19    for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL
-Rule 20    morelines -> line
-Rule 21    morelines -> line morelines
-Rule 22    asignacion -> keywordVariables asignacionSimple
-Rule 23    asignacion -> asignacionSimple
-Rule 24    keywordVariables -> VAR
-Rule 25    keywordVariables -> VAL
-Rule 26    asignacionSimple -> ID DOTS tipoDato EQUAL valor
-Rule 27    asignacionSimple -> ID EQUAL valor
-Rule 28    tipoDato -> TINT
-Rule 29    tipoDato -> TLONG
-Rule 30    tipoDato -> TFLOAT
-Rule 31    tipoDato -> TDOUBLE
-Rule 32    tipoDato -> TBOOLEAN
-Rule 33    tipoDato -> TCHAR
-Rule 34    tipoDato -> TSTRING
-Rule 35    valor -> expression
-Rule 36    valor -> opLogica
-Rule 37    opLogica -> opLogica LANGLE term
-Rule 38    opLogica -> term
-Rule 39    expression -> expression PLUS term
-Rule 40    expression -> expression MINUS term
-Rule 41    expression -> expression TIMES term
-Rule 42    expression -> expression DIVIDE term
-Rule 43    expression -> expression MOD term
-Rule 44    expression -> term
-Rule 45    term -> factor
-Rule 46    term -> LPAREN expression RPAREN
-Rule 47    term -> LPAREN opLogica RPAREN
-Rule 48    factor -> INT
-Rule 49    factor -> FLOAT
-Rule 50    factor -> LONG
-Rule 51    factor -> CHAR
-Rule 52    factor -> BOOLEAN
-Rule 53    factor -> ID
-Rule 54    factor -> STRING_1
+Rule 9     estructurasControl -> if
+Rule 10    queue_operations -> queue_add
+Rule 11    queue_operations -> queue_peek
+Rule 12    queue_operations -> queue_remove
+Rule 13    queue_operations -> queue_poll
+Rule 14    queue_add -> ID DOT ADD LPAREN factor RPAREN
+Rule 15    queue_peek -> ID DOT PEEK LPAREN RPAREN
+Rule 16    queue_poll -> ID DOT POLL LPAREN RPAREN
+Rule 17    queue_remove -> ID DOT REMOVE LPAREN RPAREN
+Rule 18    impresion -> PRINT LPAREN expression RPAREN
+Rule 19    impresion -> PRINTLN LPAREN expression RPAREN
+Rule 20    queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
+Rule 21    for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL
+Rule 22    morelines -> line
+Rule 23    morelines -> line morelines
+Rule 24    asignacion -> keywordVariables asignacionSimple
+Rule 25    asignacion -> asignacionSimple
+Rule 26    keywordVariables -> VAR
+Rule 27    keywordVariables -> VAL
+Rule 28    asignacionSimple -> ID DOTS tipoDato EQUAL valor
+Rule 29    asignacionSimple -> ID EQUAL valor
+Rule 30    tipoDato -> TINT
+Rule 31    tipoDato -> TLONG
+Rule 32    tipoDato -> TFLOAT
+Rule 33    tipoDato -> TDOUBLE
+Rule 34    tipoDato -> TBOOLEAN
+Rule 35    tipoDato -> TCHAR
+Rule 36    tipoDato -> TSTRING
+Rule 37    valor -> expression
+Rule 38    expression -> expression PLUS term
+Rule 39    expression -> expression MINUS term
+Rule 40    expression -> expression TIMES term
+Rule 41    expression -> expression DIVIDE term
+Rule 42    expression -> expression MOD term
+Rule 43    expression -> term
+Rule 44    term -> factor
+Rule 45    term -> LPAREN expression RPAREN
+Rule 46    factor -> INT
+Rule 47    factor -> FLOAT
+Rule 48    factor -> LONG
+Rule 49    factor -> CHAR
+Rule 50    factor -> BOOLEAN
+Rule 51    factor -> ID
+Rule 52    factor -> STRING_1
+Rule 53    if -> IF LPAREN condicion RPAREN LCURL morelines RCURL
+Rule 54    if -> IF LPAREN condicion RPAREN LCURL morelines RCURL else
+Rule 55    else -> ELSE LCURL line RCURL
+Rule 56    condicion -> condicionL
+Rule 57    condicion -> condicionR
+Rule 58    condicion -> condicionN
+Rule 59    condicionL -> term opL term
+Rule 60    condicionR -> term opR term
+Rule 61    condicionN -> EXCL_WS term
+Rule 62    opL -> CONJ
+Rule 63    opL -> DISJ
+Rule 64    opR -> LANGLE
+Rule 65    opR -> RANGLE
+Rule 66    opR -> LE
+Rule 67    opR -> GE
+Rule 68    opR -> EXCL_EQ
+Rule 69    opR -> EXCL_EQEQ
+Rule 70    opR -> AS_SAFE
+Rule 71    opR -> EQEQ
+Rule 72    opR -> EQEQEQ
 
 Terminals, with rules where they appear
 
 ABSTRACT             : 
 ACTUAL               : 
-ADD                  : 13
+ADD                  : 14
 ANNOTATION           : 
 ARRAYOF              : 
 ARROW                : 
 AS                   : 
-AS_SAFE              : 
+AS_SAFE              : 70
 AT_NO_WS             : 
-BOOLEAN              : 52
+BOOLEAN              : 50
 BREAK                : 
 BY                   : 
 CATCH                : 
-CHAR                 : 51
+CHAR                 : 49
 CLASS                : 
 COLONCOLON           : 
 COMMA                : 
 COMMENT              : 
 COMPANION            : 
-CONJ                 : 
+CONJ                 : 62
 CONST                : 
 CONSTRUCTOR          : 
 CONTINUE             : 
@@ -201,40 +206,40 @@ DATA                 :
 DECR                 : 
 DECREMENTIN          : 
 DECREMENTONE         : 
-DISJ                 : 
-DIVIDE               : 42
+DISJ                 : 63
+DIVIDE               : 41
 DIVIDEIN             : 
 DO                   : 
-DOT                  : 13 14 15 16
-DOTS                 : 18 26
+DOT                  : 14 15 16 17
+DOTS                 : 20 28
 DOUBLE_ARROW         : 
 DOUBLE_SEMICOLON     : 
 DYNAMIC              : 
-ELSE                 : 
+ELSE                 : 55
 ENUM                 : 
-EQEQ                 : 
-EQEQEQ               : 
-EQUAL                : 18 26 27
-EXCL_EQ              : 
-EXCL_EQEQ            : 
+EQEQ                 : 71
+EQEQEQ               : 72
+EQUAL                : 20 28 29
+EXCL_EQ              : 68
+EXCL_EQEQ            : 69
 EXCL_NO_WS           : 
-EXCL_WS              : 
+EXCL_WS              : 61
 EXPECT               : 
 EXTERNAL             : 
 FIELD                : 
 FILE                 : 
 FINAL                : 
 FINALLY              : 
-FLOAT                : 49
-FOR                  : 19
+FLOAT                : 47
+FOR                  : 21
 FUN                  : 
-GE                   : 
+GE                   : 67
 GET                  : 
 HASH                 : 
-ID                   : 13 14 15 16 18 19 19 26 27 53
-IF                   : 
+ID                   : 14 15 16 17 20 21 21 28 29 51
+IF                   : 53 54
 IMPORT               : 
-IN                   : 19
+IN                   : 21
 INCR                 : 
 INCREMENTIN          : 
 INCREMENTONE         : 
@@ -243,24 +248,24 @@ INFIX                :
 INIT                 : 
 INLINE               : 
 INNER                : 
-INT                  : 48
+INT                  : 46
 INTERFACE            : 
 INTERNAL             : 
 IS                   : 
-LANGLE               : 18 18 37
+LANGLE               : 20 20 64
 LATEINIT             : 
-LCURL                : 19
-LE                   : 
+LCURL                : 21 53 54 55
+LE                   : 66
 LINEBREAK            : 
-LINKEDLIST           : 18
+LINKEDLIST           : 20
 LISTOF               : 
-LONG                 : 50
-LPAREN               : 13 14 15 16 17 18 19 46 47
+LONG                 : 48
+LPAREN               : 14 15 16 17 18 19 20 21 45 53 54
 LSQUARE              : 
 MARK_1               : 
 MARK_2               : 
-MINUS                : 40
-MOD                  : 43
+MINUS                : 39
+MOD                  : 42
 MODIN                : 
 NOINLINE             : 
 OBJECT               : 
@@ -270,54 +275,54 @@ OUT                  :
 OVERRIDE             : 
 PACKAGE              : 
 PARAM                : 
-PEEK                 : 14
-PLUS                 : 39
-POLL                 : 15
-PRINT                : 17
-PRINTLN              : 
+PEEK                 : 15
+PLUS                 : 38
+POLL                 : 16
+PRINT                : 18
+PRINTLN              : 19
 PRIVATE              : 
 PROPERTY             : 
 PROTECTED            : 
 PUBLIC               : 
 QUEST_WS             : 
-QUEUE                : 18
+QUEUE                : 20
 RANGE                : 
-RANGLE               : 18 18
-RCURL                : 19
+RANGLE               : 20 20 65
+RCURL                : 21 53 54 55
 RECEIVER             : 
 REIFIED              : 
-REMOVE               : 16
+REMOVE               : 17
 RETURN               : 
-RPAREN               : 13 14 15 16 17 18 19 46 47
+RPAREN               : 14 15 16 17 18 19 20 21 45 53 54
 RSQUARE              : 
 SEALED               : 
 SEMICOLON            : 1 2 5
 SET                  : 
 SETPARAM             : 
 SINGLE_QUOTE         : 
-STRING_1             : 54
+STRING_1             : 52
 SUM                  : 
 SUPER                : 
 SUSPEND              : 
 TAILREC              : 
-TBOOLEAN             : 32
-TCHAR                : 33
-TDOUBLE              : 31
+TBOOLEAN             : 34
+TCHAR                : 35
+TDOUBLE              : 33
 TEMPLATE             : 
-TFLOAT               : 30
+TFLOAT               : 32
 THIS                 : 
 THROW                : 
-TIMES                : 41
-TINT                 : 28
-TLONG                : 29
+TIMES                : 40
+TINT                 : 30
+TLONG                : 31
 TRY                  : 
-TSTRING              : 34
+TSTRING              : 36
 TYPEOF               : 
 TYPE_ALIAS           : 
-VAL                  : 18 25
+VAL                  : 20 27
 VALUE                : 
 VAL_TIPO_1           : 
-VAR                  : 24
+VAR                  : 26
 VARARG               : 
 VAR_TIPO_1           : 
 WHEN                 : 
@@ -328,26 +333,33 @@ error                :
 Nonterminals, with rules where they appear
 
 asignacion           : 2
-asignacionSimple     : 22 23
+asignacionSimple     : 24 25
+condicion            : 53 54
+condicionL           : 56
+condicionN           : 58
+condicionR           : 57
+else                 : 54
 estructurasControl   : 4
 estructurasDatos     : 5
-expression           : 3 35 39 40 41 42 43 46
-factor               : 13 45
+expression           : 3 18 19 37 38 39 40 41 42 45
+factor               : 14 44
 for                  : 8
+if                   : 9
 impresion            : 1
-keywordVariables     : 22
-line                 : 20 21 0
-morelines            : 19 21
-opLogica             : 36 37 47
+keywordVariables     : 24
+line                 : 22 23 55 0
+morelines            : 21 23 53 54
+opL                  : 59
+opR                  : 60
 queue                : 6
-queue_add            : 9
+queue_add            : 10
 queue_operations     : 7
-queue_peek           : 10
-queue_poll           : 12
-queue_remove         : 11
-term                 : 37 38 39 40 41 42 43 44
-tipoDato             : 18 18 26
-valor                : 26 27
+queue_peek           : 11
+queue_poll           : 13
+queue_remove         : 12
+term                 : 38 39 40 41 42 43 59 59 60 60 61
+tipoDato             : 20 20 28
+valor                : 28 29
 
 Parsing method: LALR
 
@@ -359,55 +371,60 @@ state 0
     (3) line -> . expression
     (4) line -> . estructurasControl
     (5) line -> . estructurasDatos SEMICOLON
-    (17) impresion -> . PRINT LPAREN RPAREN
-    (22) asignacion -> . keywordVariables asignacionSimple
-    (23) asignacion -> . asignacionSimple
-    (39) expression -> . expression PLUS term
-    (40) expression -> . expression MINUS term
-    (41) expression -> . expression TIMES term
-    (42) expression -> . expression DIVIDE term
-    (43) expression -> . expression MOD term
-    (44) expression -> . term
+    (18) impresion -> . PRINT LPAREN expression RPAREN
+    (19) impresion -> . PRINTLN LPAREN expression RPAREN
+    (24) asignacion -> . keywordVariables asignacionSimple
+    (25) asignacion -> . asignacionSimple
+    (38) expression -> . expression PLUS term
+    (39) expression -> . expression MINUS term
+    (40) expression -> . expression TIMES term
+    (41) expression -> . expression DIVIDE term
+    (42) expression -> . expression MOD term
+    (43) expression -> . term
     (8) estructurasControl -> . for
+    (9) estructurasControl -> . if
     (6) estructurasDatos -> . queue
     (7) estructurasDatos -> . queue_operations
-    (24) keywordVariables -> . VAR
-    (25) keywordVariables -> . VAL
-    (26) asignacionSimple -> . ID DOTS tipoDato EQUAL valor
-    (27) asignacionSimple -> . ID EQUAL valor
-    (45) term -> . factor
-    (46) term -> . LPAREN expression RPAREN
-    (47) term -> . LPAREN opLogica RPAREN
-    (19) for -> . FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL
-    (18) queue -> . VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
-    (9) queue_operations -> . queue_add
-    (10) queue_operations -> . queue_peek
-    (11) queue_operations -> . queue_remove
-    (12) queue_operations -> . queue_poll
-    (48) factor -> . INT
-    (49) factor -> . FLOAT
-    (50) factor -> . LONG
-    (51) factor -> . CHAR
-    (52) factor -> . BOOLEAN
-    (53) factor -> . ID
-    (54) factor -> . STRING_1
-    (13) queue_add -> . ID DOT ADD LPAREN factor RPAREN
-    (14) queue_peek -> . ID DOT PEEK LPAREN RPAREN
-    (16) queue_remove -> . ID DOT REMOVE LPAREN RPAREN
-    (15) queue_poll -> . ID DOT POLL LPAREN RPAREN
+    (26) keywordVariables -> . VAR
+    (27) keywordVariables -> . VAL
+    (28) asignacionSimple -> . ID DOTS tipoDato EQUAL valor
+    (29) asignacionSimple -> . ID EQUAL valor
+    (44) term -> . factor
+    (45) term -> . LPAREN expression RPAREN
+    (21) for -> . FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL
+    (53) if -> . IF LPAREN condicion RPAREN LCURL morelines RCURL
+    (54) if -> . IF LPAREN condicion RPAREN LCURL morelines RCURL else
+    (20) queue -> . VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
+    (10) queue_operations -> . queue_add
+    (11) queue_operations -> . queue_peek
+    (12) queue_operations -> . queue_remove
+    (13) queue_operations -> . queue_poll
+    (46) factor -> . INT
+    (47) factor -> . FLOAT
+    (48) factor -> . LONG
+    (49) factor -> . CHAR
+    (50) factor -> . BOOLEAN
+    (51) factor -> . ID
+    (52) factor -> . STRING_1
+    (14) queue_add -> . ID DOT ADD LPAREN factor RPAREN
+    (15) queue_peek -> . ID DOT PEEK LPAREN RPAREN
+    (17) queue_remove -> . ID DOT REMOVE LPAREN RPAREN
+    (16) queue_poll -> . ID DOT POLL LPAREN RPAREN
 
     PRINT           shift and go to state 7
-    VAR             shift and go to state 15
-    VAL             shift and go to state 16
-    ID              shift and go to state 17
+    PRINTLN         shift and go to state 9
+    VAR             shift and go to state 17
+    VAL             shift and go to state 18
+    ID              shift and go to state 19
     LPAREN          shift and go to state 8
-    FOR             shift and go to state 19
-    INT             shift and go to state 24
-    FLOAT           shift and go to state 25
-    LONG            shift and go to state 26
-    CHAR            shift and go to state 27
-    BOOLEAN         shift and go to state 28
-    STRING_1        shift and go to state 29
+    FOR             shift and go to state 21
+    IF              shift and go to state 22
+    INT             shift and go to state 27
+    FLOAT           shift and go to state 28
+    LONG            shift and go to state 29
+    CHAR            shift and go to state 30
+    BOOLEAN         shift and go to state 31
+    STRING_1        shift and go to state 32
 
     line                           shift and go to state 1
     impresion                      shift and go to state 2
@@ -415,17 +432,18 @@ state 0
     expression                     shift and go to state 4
     estructurasControl             shift and go to state 5
     estructurasDatos               shift and go to state 6
-    keywordVariables               shift and go to state 9
-    asignacionSimple               shift and go to state 10
-    term                           shift and go to state 11
-    for                            shift and go to state 12
-    queue                          shift and go to state 13
-    queue_operations               shift and go to state 14
-    factor                         shift and go to state 18
-    queue_add                      shift and go to state 20
-    queue_peek                     shift and go to state 21
-    queue_remove                   shift and go to state 22
-    queue_poll                     shift and go to state 23
+    keywordVariables               shift and go to state 10
+    asignacionSimple               shift and go to state 11
+    term                           shift and go to state 12
+    for                            shift and go to state 13
+    if                             shift and go to state 14
+    queue                          shift and go to state 15
+    queue_operations               shift and go to state 16
+    factor                         shift and go to state 20
+    queue_add                      shift and go to state 23
+    queue_peek                     shift and go to state 24
+    queue_remove                   shift and go to state 25
+    queue_poll                     shift and go to state 26
 
 state 1
 
@@ -437,32 +455,34 @@ state 2
 
     (1) line -> impresion . SEMICOLON
 
-    SEMICOLON       shift and go to state 30
+    SEMICOLON       shift and go to state 33
 
 
 state 3
 
     (2) line -> asignacion . SEMICOLON
 
-    SEMICOLON       shift and go to state 31
+    SEMICOLON       shift and go to state 34
 
 
 state 4
 
     (3) line -> expression .
-    (39) expression -> expression . PLUS term
-    (40) expression -> expression . MINUS term
-    (41) expression -> expression . TIMES term
-    (42) expression -> expression . DIVIDE term
-    (43) expression -> expression . MOD term
+    (38) expression -> expression . PLUS term
+    (39) expression -> expression . MINUS term
+    (40) expression -> expression . TIMES term
+    (41) expression -> expression . DIVIDE term
+    (42) expression -> expression . MOD term
 
     $end            reduce using rule 3 (line -> expression .)
     PRINT           reduce using rule 3 (line -> expression .)
+    PRINTLN         reduce using rule 3 (line -> expression .)
     VAR             reduce using rule 3 (line -> expression .)
     VAL             reduce using rule 3 (line -> expression .)
     ID              reduce using rule 3 (line -> expression .)
     LPAREN          reduce using rule 3 (line -> expression .)
     FOR             reduce using rule 3 (line -> expression .)
+    IF              reduce using rule 3 (line -> expression .)
     INT             reduce using rule 3 (line -> expression .)
     FLOAT           reduce using rule 3 (line -> expression .)
     LONG            reduce using rule 3 (line -> expression .)
@@ -470,11 +490,11 @@ state 4
     BOOLEAN         reduce using rule 3 (line -> expression .)
     STRING_1        reduce using rule 3 (line -> expression .)
     RCURL           reduce using rule 3 (line -> expression .)
-    PLUS            shift and go to state 32
-    MINUS           shift and go to state 33
-    TIMES           shift and go to state 34
-    DIVIDE          shift and go to state 35
-    MOD             shift and go to state 36
+    PLUS            shift and go to state 35
+    MINUS           shift and go to state 36
+    TIMES           shift and go to state 37
+    DIVIDE          shift and go to state 38
+    MOD             shift and go to state 39
 
 
 state 5
@@ -483,11 +503,13 @@ state 5
 
     $end            reduce using rule 4 (line -> estructurasControl .)
     PRINT           reduce using rule 4 (line -> estructurasControl .)
+    PRINTLN         reduce using rule 4 (line -> estructurasControl .)
     VAR             reduce using rule 4 (line -> estructurasControl .)
     VAL             reduce using rule 4 (line -> estructurasControl .)
     ID              reduce using rule 4 (line -> estructurasControl .)
     LPAREN          reduce using rule 4 (line -> estructurasControl .)
     FOR             reduce using rule 4 (line -> estructurasControl .)
+    IF              reduce using rule 4 (line -> estructurasControl .)
     INT             reduce using rule 4 (line -> estructurasControl .)
     FLOAT           reduce using rule 4 (line -> estructurasControl .)
     LONG            reduce using rule 4 (line -> estructurasControl .)
@@ -501,106 +523,114 @@ state 6
 
     (5) line -> estructurasDatos . SEMICOLON
 
-    SEMICOLON       shift and go to state 37
+    SEMICOLON       shift and go to state 40
 
 
 state 7
 
-    (17) impresion -> PRINT . LPAREN RPAREN
+    (18) impresion -> PRINT . LPAREN expression RPAREN
 
-    LPAREN          shift and go to state 38
+    LPAREN          shift and go to state 41
 
 
 state 8
 
-    (46) term -> LPAREN . expression RPAREN
-    (47) term -> LPAREN . opLogica RPAREN
-    (39) expression -> . expression PLUS term
-    (40) expression -> . expression MINUS term
-    (41) expression -> . expression TIMES term
-    (42) expression -> . expression DIVIDE term
-    (43) expression -> . expression MOD term
-    (44) expression -> . term
-    (37) opLogica -> . opLogica LANGLE term
-    (38) opLogica -> . term
-    (45) term -> . factor
-    (46) term -> . LPAREN expression RPAREN
-    (47) term -> . LPAREN opLogica RPAREN
-    (48) factor -> . INT
-    (49) factor -> . FLOAT
-    (50) factor -> . LONG
-    (51) factor -> . CHAR
-    (52) factor -> . BOOLEAN
-    (53) factor -> . ID
-    (54) factor -> . STRING_1
+    (45) term -> LPAREN . expression RPAREN
+    (38) expression -> . expression PLUS term
+    (39) expression -> . expression MINUS term
+    (40) expression -> . expression TIMES term
+    (41) expression -> . expression DIVIDE term
+    (42) expression -> . expression MOD term
+    (43) expression -> . term
+    (44) term -> . factor
+    (45) term -> . LPAREN expression RPAREN
+    (46) factor -> . INT
+    (47) factor -> . FLOAT
+    (48) factor -> . LONG
+    (49) factor -> . CHAR
+    (50) factor -> . BOOLEAN
+    (51) factor -> . ID
+    (52) factor -> . STRING_1
 
     LPAREN          shift and go to state 8
-    INT             shift and go to state 24
-    FLOAT           shift and go to state 25
-    LONG            shift and go to state 26
-    CHAR            shift and go to state 27
-    BOOLEAN         shift and go to state 28
-    ID              shift and go to state 42
-    STRING_1        shift and go to state 29
+    INT             shift and go to state 27
+    FLOAT           shift and go to state 28
+    LONG            shift and go to state 29
+    CHAR            shift and go to state 30
+    BOOLEAN         shift and go to state 31
+    ID              shift and go to state 43
+    STRING_1        shift and go to state 32
 
-    expression                     shift and go to state 39
-    opLogica                       shift and go to state 40
-    term                           shift and go to state 41
-    factor                         shift and go to state 18
+    expression                     shift and go to state 42
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
 
 state 9
 
-    (22) asignacion -> keywordVariables . asignacionSimple
-    (26) asignacionSimple -> . ID DOTS tipoDato EQUAL valor
-    (27) asignacionSimple -> . ID EQUAL valor
+    (19) impresion -> PRINTLN . LPAREN expression RPAREN
 
-    ID              shift and go to state 44
+    LPAREN          shift and go to state 44
 
-    asignacionSimple               shift and go to state 43
 
 state 10
 
-    (23) asignacion -> asignacionSimple .
+    (24) asignacion -> keywordVariables . asignacionSimple
+    (28) asignacionSimple -> . ID DOTS tipoDato EQUAL valor
+    (29) asignacionSimple -> . ID EQUAL valor
 
-    SEMICOLON       reduce using rule 23 (asignacion -> asignacionSimple .)
+    ID              shift and go to state 46
 
+    asignacionSimple               shift and go to state 45
 
 state 11
 
-    (44) expression -> term .
+    (25) asignacion -> asignacionSimple .
 
-    PLUS            reduce using rule 44 (expression -> term .)
-    MINUS           reduce using rule 44 (expression -> term .)
-    TIMES           reduce using rule 44 (expression -> term .)
-    DIVIDE          reduce using rule 44 (expression -> term .)
-    MOD             reduce using rule 44 (expression -> term .)
-    $end            reduce using rule 44 (expression -> term .)
-    PRINT           reduce using rule 44 (expression -> term .)
-    VAR             reduce using rule 44 (expression -> term .)
-    VAL             reduce using rule 44 (expression -> term .)
-    ID              reduce using rule 44 (expression -> term .)
-    LPAREN          reduce using rule 44 (expression -> term .)
-    FOR             reduce using rule 44 (expression -> term .)
-    INT             reduce using rule 44 (expression -> term .)
-    FLOAT           reduce using rule 44 (expression -> term .)
-    LONG            reduce using rule 44 (expression -> term .)
-    CHAR            reduce using rule 44 (expression -> term .)
-    BOOLEAN         reduce using rule 44 (expression -> term .)
-    STRING_1        reduce using rule 44 (expression -> term .)
-    RCURL           reduce using rule 44 (expression -> term .)
+    SEMICOLON       reduce using rule 25 (asignacion -> asignacionSimple .)
 
 
 state 12
+
+    (43) expression -> term .
+
+    PLUS            reduce using rule 43 (expression -> term .)
+    MINUS           reduce using rule 43 (expression -> term .)
+    TIMES           reduce using rule 43 (expression -> term .)
+    DIVIDE          reduce using rule 43 (expression -> term .)
+    MOD             reduce using rule 43 (expression -> term .)
+    $end            reduce using rule 43 (expression -> term .)
+    RPAREN          reduce using rule 43 (expression -> term .)
+    SEMICOLON       reduce using rule 43 (expression -> term .)
+    PRINT           reduce using rule 43 (expression -> term .)
+    PRINTLN         reduce using rule 43 (expression -> term .)
+    VAR             reduce using rule 43 (expression -> term .)
+    VAL             reduce using rule 43 (expression -> term .)
+    ID              reduce using rule 43 (expression -> term .)
+    LPAREN          reduce using rule 43 (expression -> term .)
+    FOR             reduce using rule 43 (expression -> term .)
+    IF              reduce using rule 43 (expression -> term .)
+    INT             reduce using rule 43 (expression -> term .)
+    FLOAT           reduce using rule 43 (expression -> term .)
+    LONG            reduce using rule 43 (expression -> term .)
+    CHAR            reduce using rule 43 (expression -> term .)
+    BOOLEAN         reduce using rule 43 (expression -> term .)
+    STRING_1        reduce using rule 43 (expression -> term .)
+    RCURL           reduce using rule 43 (expression -> term .)
+
+
+state 13
 
     (8) estructurasControl -> for .
 
     $end            reduce using rule 8 (estructurasControl -> for .)
     PRINT           reduce using rule 8 (estructurasControl -> for .)
+    PRINTLN         reduce using rule 8 (estructurasControl -> for .)
     VAR             reduce using rule 8 (estructurasControl -> for .)
     VAL             reduce using rule 8 (estructurasControl -> for .)
     ID              reduce using rule 8 (estructurasControl -> for .)
     LPAREN          reduce using rule 8 (estructurasControl -> for .)
     FOR             reduce using rule 8 (estructurasControl -> for .)
+    IF              reduce using rule 8 (estructurasControl -> for .)
     INT             reduce using rule 8 (estructurasControl -> for .)
     FLOAT           reduce using rule 8 (estructurasControl -> for .)
     LONG            reduce using rule 8 (estructurasControl -> for .)
@@ -610,314 +640,432 @@ state 12
     RCURL           reduce using rule 8 (estructurasControl -> for .)
 
 
-state 13
+state 14
+
+    (9) estructurasControl -> if .
+
+    $end            reduce using rule 9 (estructurasControl -> if .)
+    PRINT           reduce using rule 9 (estructurasControl -> if .)
+    PRINTLN         reduce using rule 9 (estructurasControl -> if .)
+    VAR             reduce using rule 9 (estructurasControl -> if .)
+    VAL             reduce using rule 9 (estructurasControl -> if .)
+    ID              reduce using rule 9 (estructurasControl -> if .)
+    LPAREN          reduce using rule 9 (estructurasControl -> if .)
+    FOR             reduce using rule 9 (estructurasControl -> if .)
+    IF              reduce using rule 9 (estructurasControl -> if .)
+    INT             reduce using rule 9 (estructurasControl -> if .)
+    FLOAT           reduce using rule 9 (estructurasControl -> if .)
+    LONG            reduce using rule 9 (estructurasControl -> if .)
+    CHAR            reduce using rule 9 (estructurasControl -> if .)
+    BOOLEAN         reduce using rule 9 (estructurasControl -> if .)
+    STRING_1        reduce using rule 9 (estructurasControl -> if .)
+    RCURL           reduce using rule 9 (estructurasControl -> if .)
+
+
+state 15
 
     (6) estructurasDatos -> queue .
 
     SEMICOLON       reduce using rule 6 (estructurasDatos -> queue .)
 
 
-state 14
+state 16
 
     (7) estructurasDatos -> queue_operations .
 
     SEMICOLON       reduce using rule 7 (estructurasDatos -> queue_operations .)
 
 
-state 15
-
-    (24) keywordVariables -> VAR .
-
-    ID              reduce using rule 24 (keywordVariables -> VAR .)
-
-
-state 16
-
-    (25) keywordVariables -> VAL .
-    (18) queue -> VAL . ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
-
-  ! shift/reduce conflict for ID resolved as shift
-    ID              shift and go to state 45
-
-  ! ID              [ reduce using rule 25 (keywordVariables -> VAL .) ]
-
-
 state 17
 
-    (26) asignacionSimple -> ID . DOTS tipoDato EQUAL valor
-    (27) asignacionSimple -> ID . EQUAL valor
-    (53) factor -> ID .
-    (13) queue_add -> ID . DOT ADD LPAREN factor RPAREN
-    (14) queue_peek -> ID . DOT PEEK LPAREN RPAREN
-    (16) queue_remove -> ID . DOT REMOVE LPAREN RPAREN
-    (15) queue_poll -> ID . DOT POLL LPAREN RPAREN
+    (26) keywordVariables -> VAR .
 
-    DOTS            shift and go to state 46
-    EQUAL           shift and go to state 47
-    PLUS            reduce using rule 53 (factor -> ID .)
-    MINUS           reduce using rule 53 (factor -> ID .)
-    TIMES           reduce using rule 53 (factor -> ID .)
-    DIVIDE          reduce using rule 53 (factor -> ID .)
-    MOD             reduce using rule 53 (factor -> ID .)
-    $end            reduce using rule 53 (factor -> ID .)
-    PRINT           reduce using rule 53 (factor -> ID .)
-    VAR             reduce using rule 53 (factor -> ID .)
-    VAL             reduce using rule 53 (factor -> ID .)
-    ID              reduce using rule 53 (factor -> ID .)
-    LPAREN          reduce using rule 53 (factor -> ID .)
-    FOR             reduce using rule 53 (factor -> ID .)
-    INT             reduce using rule 53 (factor -> ID .)
-    FLOAT           reduce using rule 53 (factor -> ID .)
-    LONG            reduce using rule 53 (factor -> ID .)
-    CHAR            reduce using rule 53 (factor -> ID .)
-    BOOLEAN         reduce using rule 53 (factor -> ID .)
-    STRING_1        reduce using rule 53 (factor -> ID .)
-    RCURL           reduce using rule 53 (factor -> ID .)
-    DOT             shift and go to state 48
+    ID              reduce using rule 26 (keywordVariables -> VAR .)
 
 
 state 18
 
-    (45) term -> factor .
+    (27) keywordVariables -> VAL .
+    (20) queue -> VAL . ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
 
-    PLUS            reduce using rule 45 (term -> factor .)
-    MINUS           reduce using rule 45 (term -> factor .)
-    TIMES           reduce using rule 45 (term -> factor .)
-    DIVIDE          reduce using rule 45 (term -> factor .)
-    MOD             reduce using rule 45 (term -> factor .)
-    $end            reduce using rule 45 (term -> factor .)
-    RPAREN          reduce using rule 45 (term -> factor .)
-    LANGLE          reduce using rule 45 (term -> factor .)
-    SEMICOLON       reduce using rule 45 (term -> factor .)
-    PRINT           reduce using rule 45 (term -> factor .)
-    VAR             reduce using rule 45 (term -> factor .)
-    VAL             reduce using rule 45 (term -> factor .)
-    ID              reduce using rule 45 (term -> factor .)
-    LPAREN          reduce using rule 45 (term -> factor .)
-    FOR             reduce using rule 45 (term -> factor .)
-    INT             reduce using rule 45 (term -> factor .)
-    FLOAT           reduce using rule 45 (term -> factor .)
-    LONG            reduce using rule 45 (term -> factor .)
-    CHAR            reduce using rule 45 (term -> factor .)
-    BOOLEAN         reduce using rule 45 (term -> factor .)
-    STRING_1        reduce using rule 45 (term -> factor .)
-    RCURL           reduce using rule 45 (term -> factor .)
+  ! shift/reduce conflict for ID resolved as shift
+    ID              shift and go to state 47
+
+  ! ID              [ reduce using rule 27 (keywordVariables -> VAL .) ]
 
 
 state 19
 
-    (19) for -> FOR . LPAREN ID IN ID RPAREN LCURL morelines RCURL
+    (28) asignacionSimple -> ID . DOTS tipoDato EQUAL valor
+    (29) asignacionSimple -> ID . EQUAL valor
+    (51) factor -> ID .
+    (14) queue_add -> ID . DOT ADD LPAREN factor RPAREN
+    (15) queue_peek -> ID . DOT PEEK LPAREN RPAREN
+    (17) queue_remove -> ID . DOT REMOVE LPAREN RPAREN
+    (16) queue_poll -> ID . DOT POLL LPAREN RPAREN
 
-    LPAREN          shift and go to state 49
+    DOTS            shift and go to state 48
+    EQUAL           shift and go to state 49
+    PLUS            reduce using rule 51 (factor -> ID .)
+    MINUS           reduce using rule 51 (factor -> ID .)
+    TIMES           reduce using rule 51 (factor -> ID .)
+    DIVIDE          reduce using rule 51 (factor -> ID .)
+    MOD             reduce using rule 51 (factor -> ID .)
+    $end            reduce using rule 51 (factor -> ID .)
+    PRINT           reduce using rule 51 (factor -> ID .)
+    PRINTLN         reduce using rule 51 (factor -> ID .)
+    VAR             reduce using rule 51 (factor -> ID .)
+    VAL             reduce using rule 51 (factor -> ID .)
+    ID              reduce using rule 51 (factor -> ID .)
+    LPAREN          reduce using rule 51 (factor -> ID .)
+    FOR             reduce using rule 51 (factor -> ID .)
+    IF              reduce using rule 51 (factor -> ID .)
+    INT             reduce using rule 51 (factor -> ID .)
+    FLOAT           reduce using rule 51 (factor -> ID .)
+    LONG            reduce using rule 51 (factor -> ID .)
+    CHAR            reduce using rule 51 (factor -> ID .)
+    BOOLEAN         reduce using rule 51 (factor -> ID .)
+    STRING_1        reduce using rule 51 (factor -> ID .)
+    RCURL           reduce using rule 51 (factor -> ID .)
+    DOT             shift and go to state 50
 
 
 state 20
 
-    (9) queue_operations -> queue_add .
+    (44) term -> factor .
 
-    SEMICOLON       reduce using rule 9 (queue_operations -> queue_add .)
+    PLUS            reduce using rule 44 (term -> factor .)
+    MINUS           reduce using rule 44 (term -> factor .)
+    TIMES           reduce using rule 44 (term -> factor .)
+    DIVIDE          reduce using rule 44 (term -> factor .)
+    MOD             reduce using rule 44 (term -> factor .)
+    $end            reduce using rule 44 (term -> factor .)
+    RPAREN          reduce using rule 44 (term -> factor .)
+    SEMICOLON       reduce using rule 44 (term -> factor .)
+    PRINT           reduce using rule 44 (term -> factor .)
+    PRINTLN         reduce using rule 44 (term -> factor .)
+    VAR             reduce using rule 44 (term -> factor .)
+    VAL             reduce using rule 44 (term -> factor .)
+    ID              reduce using rule 44 (term -> factor .)
+    LPAREN          reduce using rule 44 (term -> factor .)
+    FOR             reduce using rule 44 (term -> factor .)
+    IF              reduce using rule 44 (term -> factor .)
+    INT             reduce using rule 44 (term -> factor .)
+    FLOAT           reduce using rule 44 (term -> factor .)
+    LONG            reduce using rule 44 (term -> factor .)
+    CHAR            reduce using rule 44 (term -> factor .)
+    BOOLEAN         reduce using rule 44 (term -> factor .)
+    STRING_1        reduce using rule 44 (term -> factor .)
+    RCURL           reduce using rule 44 (term -> factor .)
+    CONJ            reduce using rule 44 (term -> factor .)
+    DISJ            reduce using rule 44 (term -> factor .)
+    LANGLE          reduce using rule 44 (term -> factor .)
+    RANGLE          reduce using rule 44 (term -> factor .)
+    LE              reduce using rule 44 (term -> factor .)
+    GE              reduce using rule 44 (term -> factor .)
+    EXCL_EQ         reduce using rule 44 (term -> factor .)
+    EXCL_EQEQ       reduce using rule 44 (term -> factor .)
+    AS_SAFE         reduce using rule 44 (term -> factor .)
+    EQEQ            reduce using rule 44 (term -> factor .)
+    EQEQEQ          reduce using rule 44 (term -> factor .)
 
 
 state 21
 
-    (10) queue_operations -> queue_peek .
+    (21) for -> FOR . LPAREN ID IN ID RPAREN LCURL morelines RCURL
 
-    SEMICOLON       reduce using rule 10 (queue_operations -> queue_peek .)
+    LPAREN          shift and go to state 51
 
 
 state 22
 
-    (11) queue_operations -> queue_remove .
+    (53) if -> IF . LPAREN condicion RPAREN LCURL morelines RCURL
+    (54) if -> IF . LPAREN condicion RPAREN LCURL morelines RCURL else
 
-    SEMICOLON       reduce using rule 11 (queue_operations -> queue_remove .)
+    LPAREN          shift and go to state 52
 
 
 state 23
 
-    (12) queue_operations -> queue_poll .
+    (10) queue_operations -> queue_add .
 
-    SEMICOLON       reduce using rule 12 (queue_operations -> queue_poll .)
+    SEMICOLON       reduce using rule 10 (queue_operations -> queue_add .)
 
 
 state 24
 
-    (48) factor -> INT .
+    (11) queue_operations -> queue_peek .
 
-    PLUS            reduce using rule 48 (factor -> INT .)
-    MINUS           reduce using rule 48 (factor -> INT .)
-    TIMES           reduce using rule 48 (factor -> INT .)
-    DIVIDE          reduce using rule 48 (factor -> INT .)
-    MOD             reduce using rule 48 (factor -> INT .)
-    $end            reduce using rule 48 (factor -> INT .)
-    RPAREN          reduce using rule 48 (factor -> INT .)
-    LANGLE          reduce using rule 48 (factor -> INT .)
-    SEMICOLON       reduce using rule 48 (factor -> INT .)
-    PRINT           reduce using rule 48 (factor -> INT .)
-    VAR             reduce using rule 48 (factor -> INT .)
-    VAL             reduce using rule 48 (factor -> INT .)
-    ID              reduce using rule 48 (factor -> INT .)
-    LPAREN          reduce using rule 48 (factor -> INT .)
-    FOR             reduce using rule 48 (factor -> INT .)
-    INT             reduce using rule 48 (factor -> INT .)
-    FLOAT           reduce using rule 48 (factor -> INT .)
-    LONG            reduce using rule 48 (factor -> INT .)
-    CHAR            reduce using rule 48 (factor -> INT .)
-    BOOLEAN         reduce using rule 48 (factor -> INT .)
-    STRING_1        reduce using rule 48 (factor -> INT .)
-    RCURL           reduce using rule 48 (factor -> INT .)
+    SEMICOLON       reduce using rule 11 (queue_operations -> queue_peek .)
 
 
 state 25
 
-    (49) factor -> FLOAT .
+    (12) queue_operations -> queue_remove .
 
-    PLUS            reduce using rule 49 (factor -> FLOAT .)
-    MINUS           reduce using rule 49 (factor -> FLOAT .)
-    TIMES           reduce using rule 49 (factor -> FLOAT .)
-    DIVIDE          reduce using rule 49 (factor -> FLOAT .)
-    MOD             reduce using rule 49 (factor -> FLOAT .)
-    $end            reduce using rule 49 (factor -> FLOAT .)
-    RPAREN          reduce using rule 49 (factor -> FLOAT .)
-    LANGLE          reduce using rule 49 (factor -> FLOAT .)
-    SEMICOLON       reduce using rule 49 (factor -> FLOAT .)
-    PRINT           reduce using rule 49 (factor -> FLOAT .)
-    VAR             reduce using rule 49 (factor -> FLOAT .)
-    VAL             reduce using rule 49 (factor -> FLOAT .)
-    ID              reduce using rule 49 (factor -> FLOAT .)
-    LPAREN          reduce using rule 49 (factor -> FLOAT .)
-    FOR             reduce using rule 49 (factor -> FLOAT .)
-    INT             reduce using rule 49 (factor -> FLOAT .)
-    FLOAT           reduce using rule 49 (factor -> FLOAT .)
-    LONG            reduce using rule 49 (factor -> FLOAT .)
-    CHAR            reduce using rule 49 (factor -> FLOAT .)
-    BOOLEAN         reduce using rule 49 (factor -> FLOAT .)
-    STRING_1        reduce using rule 49 (factor -> FLOAT .)
-    RCURL           reduce using rule 49 (factor -> FLOAT .)
+    SEMICOLON       reduce using rule 12 (queue_operations -> queue_remove .)
 
 
 state 26
 
-    (50) factor -> LONG .
+    (13) queue_operations -> queue_poll .
 
-    PLUS            reduce using rule 50 (factor -> LONG .)
-    MINUS           reduce using rule 50 (factor -> LONG .)
-    TIMES           reduce using rule 50 (factor -> LONG .)
-    DIVIDE          reduce using rule 50 (factor -> LONG .)
-    MOD             reduce using rule 50 (factor -> LONG .)
-    $end            reduce using rule 50 (factor -> LONG .)
-    RPAREN          reduce using rule 50 (factor -> LONG .)
-    LANGLE          reduce using rule 50 (factor -> LONG .)
-    SEMICOLON       reduce using rule 50 (factor -> LONG .)
-    PRINT           reduce using rule 50 (factor -> LONG .)
-    VAR             reduce using rule 50 (factor -> LONG .)
-    VAL             reduce using rule 50 (factor -> LONG .)
-    ID              reduce using rule 50 (factor -> LONG .)
-    LPAREN          reduce using rule 50 (factor -> LONG .)
-    FOR             reduce using rule 50 (factor -> LONG .)
-    INT             reduce using rule 50 (factor -> LONG .)
-    FLOAT           reduce using rule 50 (factor -> LONG .)
-    LONG            reduce using rule 50 (factor -> LONG .)
-    CHAR            reduce using rule 50 (factor -> LONG .)
-    BOOLEAN         reduce using rule 50 (factor -> LONG .)
-    STRING_1        reduce using rule 50 (factor -> LONG .)
-    RCURL           reduce using rule 50 (factor -> LONG .)
+    SEMICOLON       reduce using rule 13 (queue_operations -> queue_poll .)
 
 
 state 27
 
-    (51) factor -> CHAR .
+    (46) factor -> INT .
 
-    PLUS            reduce using rule 51 (factor -> CHAR .)
-    MINUS           reduce using rule 51 (factor -> CHAR .)
-    TIMES           reduce using rule 51 (factor -> CHAR .)
-    DIVIDE          reduce using rule 51 (factor -> CHAR .)
-    MOD             reduce using rule 51 (factor -> CHAR .)
-    $end            reduce using rule 51 (factor -> CHAR .)
-    RPAREN          reduce using rule 51 (factor -> CHAR .)
-    LANGLE          reduce using rule 51 (factor -> CHAR .)
-    SEMICOLON       reduce using rule 51 (factor -> CHAR .)
-    PRINT           reduce using rule 51 (factor -> CHAR .)
-    VAR             reduce using rule 51 (factor -> CHAR .)
-    VAL             reduce using rule 51 (factor -> CHAR .)
-    ID              reduce using rule 51 (factor -> CHAR .)
-    LPAREN          reduce using rule 51 (factor -> CHAR .)
-    FOR             reduce using rule 51 (factor -> CHAR .)
-    INT             reduce using rule 51 (factor -> CHAR .)
-    FLOAT           reduce using rule 51 (factor -> CHAR .)
-    LONG            reduce using rule 51 (factor -> CHAR .)
-    CHAR            reduce using rule 51 (factor -> CHAR .)
-    BOOLEAN         reduce using rule 51 (factor -> CHAR .)
-    STRING_1        reduce using rule 51 (factor -> CHAR .)
-    RCURL           reduce using rule 51 (factor -> CHAR .)
+    PLUS            reduce using rule 46 (factor -> INT .)
+    MINUS           reduce using rule 46 (factor -> INT .)
+    TIMES           reduce using rule 46 (factor -> INT .)
+    DIVIDE          reduce using rule 46 (factor -> INT .)
+    MOD             reduce using rule 46 (factor -> INT .)
+    $end            reduce using rule 46 (factor -> INT .)
+    RPAREN          reduce using rule 46 (factor -> INT .)
+    SEMICOLON       reduce using rule 46 (factor -> INT .)
+    PRINT           reduce using rule 46 (factor -> INT .)
+    PRINTLN         reduce using rule 46 (factor -> INT .)
+    VAR             reduce using rule 46 (factor -> INT .)
+    VAL             reduce using rule 46 (factor -> INT .)
+    ID              reduce using rule 46 (factor -> INT .)
+    LPAREN          reduce using rule 46 (factor -> INT .)
+    FOR             reduce using rule 46 (factor -> INT .)
+    IF              reduce using rule 46 (factor -> INT .)
+    INT             reduce using rule 46 (factor -> INT .)
+    FLOAT           reduce using rule 46 (factor -> INT .)
+    LONG            reduce using rule 46 (factor -> INT .)
+    CHAR            reduce using rule 46 (factor -> INT .)
+    BOOLEAN         reduce using rule 46 (factor -> INT .)
+    STRING_1        reduce using rule 46 (factor -> INT .)
+    RCURL           reduce using rule 46 (factor -> INT .)
+    CONJ            reduce using rule 46 (factor -> INT .)
+    DISJ            reduce using rule 46 (factor -> INT .)
+    LANGLE          reduce using rule 46 (factor -> INT .)
+    RANGLE          reduce using rule 46 (factor -> INT .)
+    LE              reduce using rule 46 (factor -> INT .)
+    GE              reduce using rule 46 (factor -> INT .)
+    EXCL_EQ         reduce using rule 46 (factor -> INT .)
+    EXCL_EQEQ       reduce using rule 46 (factor -> INT .)
+    AS_SAFE         reduce using rule 46 (factor -> INT .)
+    EQEQ            reduce using rule 46 (factor -> INT .)
+    EQEQEQ          reduce using rule 46 (factor -> INT .)
 
 
 state 28
 
-    (52) factor -> BOOLEAN .
+    (47) factor -> FLOAT .
 
-    PLUS            reduce using rule 52 (factor -> BOOLEAN .)
-    MINUS           reduce using rule 52 (factor -> BOOLEAN .)
-    TIMES           reduce using rule 52 (factor -> BOOLEAN .)
-    DIVIDE          reduce using rule 52 (factor -> BOOLEAN .)
-    MOD             reduce using rule 52 (factor -> BOOLEAN .)
-    $end            reduce using rule 52 (factor -> BOOLEAN .)
-    RPAREN          reduce using rule 52 (factor -> BOOLEAN .)
-    LANGLE          reduce using rule 52 (factor -> BOOLEAN .)
-    SEMICOLON       reduce using rule 52 (factor -> BOOLEAN .)
-    PRINT           reduce using rule 52 (factor -> BOOLEAN .)
-    VAR             reduce using rule 52 (factor -> BOOLEAN .)
-    VAL             reduce using rule 52 (factor -> BOOLEAN .)
-    ID              reduce using rule 52 (factor -> BOOLEAN .)
-    LPAREN          reduce using rule 52 (factor -> BOOLEAN .)
-    FOR             reduce using rule 52 (factor -> BOOLEAN .)
-    INT             reduce using rule 52 (factor -> BOOLEAN .)
-    FLOAT           reduce using rule 52 (factor -> BOOLEAN .)
-    LONG            reduce using rule 52 (factor -> BOOLEAN .)
-    CHAR            reduce using rule 52 (factor -> BOOLEAN .)
-    BOOLEAN         reduce using rule 52 (factor -> BOOLEAN .)
-    STRING_1        reduce using rule 52 (factor -> BOOLEAN .)
-    RCURL           reduce using rule 52 (factor -> BOOLEAN .)
+    PLUS            reduce using rule 47 (factor -> FLOAT .)
+    MINUS           reduce using rule 47 (factor -> FLOAT .)
+    TIMES           reduce using rule 47 (factor -> FLOAT .)
+    DIVIDE          reduce using rule 47 (factor -> FLOAT .)
+    MOD             reduce using rule 47 (factor -> FLOAT .)
+    $end            reduce using rule 47 (factor -> FLOAT .)
+    RPAREN          reduce using rule 47 (factor -> FLOAT .)
+    SEMICOLON       reduce using rule 47 (factor -> FLOAT .)
+    PRINT           reduce using rule 47 (factor -> FLOAT .)
+    PRINTLN         reduce using rule 47 (factor -> FLOAT .)
+    VAR             reduce using rule 47 (factor -> FLOAT .)
+    VAL             reduce using rule 47 (factor -> FLOAT .)
+    ID              reduce using rule 47 (factor -> FLOAT .)
+    LPAREN          reduce using rule 47 (factor -> FLOAT .)
+    FOR             reduce using rule 47 (factor -> FLOAT .)
+    IF              reduce using rule 47 (factor -> FLOAT .)
+    INT             reduce using rule 47 (factor -> FLOAT .)
+    FLOAT           reduce using rule 47 (factor -> FLOAT .)
+    LONG            reduce using rule 47 (factor -> FLOAT .)
+    CHAR            reduce using rule 47 (factor -> FLOAT .)
+    BOOLEAN         reduce using rule 47 (factor -> FLOAT .)
+    STRING_1        reduce using rule 47 (factor -> FLOAT .)
+    RCURL           reduce using rule 47 (factor -> FLOAT .)
+    CONJ            reduce using rule 47 (factor -> FLOAT .)
+    DISJ            reduce using rule 47 (factor -> FLOAT .)
+    LANGLE          reduce using rule 47 (factor -> FLOAT .)
+    RANGLE          reduce using rule 47 (factor -> FLOAT .)
+    LE              reduce using rule 47 (factor -> FLOAT .)
+    GE              reduce using rule 47 (factor -> FLOAT .)
+    EXCL_EQ         reduce using rule 47 (factor -> FLOAT .)
+    EXCL_EQEQ       reduce using rule 47 (factor -> FLOAT .)
+    AS_SAFE         reduce using rule 47 (factor -> FLOAT .)
+    EQEQ            reduce using rule 47 (factor -> FLOAT .)
+    EQEQEQ          reduce using rule 47 (factor -> FLOAT .)
 
 
 state 29
 
-    (54) factor -> STRING_1 .
+    (48) factor -> LONG .
 
-    PLUS            reduce using rule 54 (factor -> STRING_1 .)
-    MINUS           reduce using rule 54 (factor -> STRING_1 .)
-    TIMES           reduce using rule 54 (factor -> STRING_1 .)
-    DIVIDE          reduce using rule 54 (factor -> STRING_1 .)
-    MOD             reduce using rule 54 (factor -> STRING_1 .)
-    $end            reduce using rule 54 (factor -> STRING_1 .)
-    RPAREN          reduce using rule 54 (factor -> STRING_1 .)
-    LANGLE          reduce using rule 54 (factor -> STRING_1 .)
-    SEMICOLON       reduce using rule 54 (factor -> STRING_1 .)
-    PRINT           reduce using rule 54 (factor -> STRING_1 .)
-    VAR             reduce using rule 54 (factor -> STRING_1 .)
-    VAL             reduce using rule 54 (factor -> STRING_1 .)
-    ID              reduce using rule 54 (factor -> STRING_1 .)
-    LPAREN          reduce using rule 54 (factor -> STRING_1 .)
-    FOR             reduce using rule 54 (factor -> STRING_1 .)
-    INT             reduce using rule 54 (factor -> STRING_1 .)
-    FLOAT           reduce using rule 54 (factor -> STRING_1 .)
-    LONG            reduce using rule 54 (factor -> STRING_1 .)
-    CHAR            reduce using rule 54 (factor -> STRING_1 .)
-    BOOLEAN         reduce using rule 54 (factor -> STRING_1 .)
-    STRING_1        reduce using rule 54 (factor -> STRING_1 .)
-    RCURL           reduce using rule 54 (factor -> STRING_1 .)
+    PLUS            reduce using rule 48 (factor -> LONG .)
+    MINUS           reduce using rule 48 (factor -> LONG .)
+    TIMES           reduce using rule 48 (factor -> LONG .)
+    DIVIDE          reduce using rule 48 (factor -> LONG .)
+    MOD             reduce using rule 48 (factor -> LONG .)
+    $end            reduce using rule 48 (factor -> LONG .)
+    RPAREN          reduce using rule 48 (factor -> LONG .)
+    SEMICOLON       reduce using rule 48 (factor -> LONG .)
+    PRINT           reduce using rule 48 (factor -> LONG .)
+    PRINTLN         reduce using rule 48 (factor -> LONG .)
+    VAR             reduce using rule 48 (factor -> LONG .)
+    VAL             reduce using rule 48 (factor -> LONG .)
+    ID              reduce using rule 48 (factor -> LONG .)
+    LPAREN          reduce using rule 48 (factor -> LONG .)
+    FOR             reduce using rule 48 (factor -> LONG .)
+    IF              reduce using rule 48 (factor -> LONG .)
+    INT             reduce using rule 48 (factor -> LONG .)
+    FLOAT           reduce using rule 48 (factor -> LONG .)
+    LONG            reduce using rule 48 (factor -> LONG .)
+    CHAR            reduce using rule 48 (factor -> LONG .)
+    BOOLEAN         reduce using rule 48 (factor -> LONG .)
+    STRING_1        reduce using rule 48 (factor -> LONG .)
+    RCURL           reduce using rule 48 (factor -> LONG .)
+    CONJ            reduce using rule 48 (factor -> LONG .)
+    DISJ            reduce using rule 48 (factor -> LONG .)
+    LANGLE          reduce using rule 48 (factor -> LONG .)
+    RANGLE          reduce using rule 48 (factor -> LONG .)
+    LE              reduce using rule 48 (factor -> LONG .)
+    GE              reduce using rule 48 (factor -> LONG .)
+    EXCL_EQ         reduce using rule 48 (factor -> LONG .)
+    EXCL_EQEQ       reduce using rule 48 (factor -> LONG .)
+    AS_SAFE         reduce using rule 48 (factor -> LONG .)
+    EQEQ            reduce using rule 48 (factor -> LONG .)
+    EQEQEQ          reduce using rule 48 (factor -> LONG .)
 
 
 state 30
+
+    (49) factor -> CHAR .
+
+    PLUS            reduce using rule 49 (factor -> CHAR .)
+    MINUS           reduce using rule 49 (factor -> CHAR .)
+    TIMES           reduce using rule 49 (factor -> CHAR .)
+    DIVIDE          reduce using rule 49 (factor -> CHAR .)
+    MOD             reduce using rule 49 (factor -> CHAR .)
+    $end            reduce using rule 49 (factor -> CHAR .)
+    RPAREN          reduce using rule 49 (factor -> CHAR .)
+    SEMICOLON       reduce using rule 49 (factor -> CHAR .)
+    PRINT           reduce using rule 49 (factor -> CHAR .)
+    PRINTLN         reduce using rule 49 (factor -> CHAR .)
+    VAR             reduce using rule 49 (factor -> CHAR .)
+    VAL             reduce using rule 49 (factor -> CHAR .)
+    ID              reduce using rule 49 (factor -> CHAR .)
+    LPAREN          reduce using rule 49 (factor -> CHAR .)
+    FOR             reduce using rule 49 (factor -> CHAR .)
+    IF              reduce using rule 49 (factor -> CHAR .)
+    INT             reduce using rule 49 (factor -> CHAR .)
+    FLOAT           reduce using rule 49 (factor -> CHAR .)
+    LONG            reduce using rule 49 (factor -> CHAR .)
+    CHAR            reduce using rule 49 (factor -> CHAR .)
+    BOOLEAN         reduce using rule 49 (factor -> CHAR .)
+    STRING_1        reduce using rule 49 (factor -> CHAR .)
+    RCURL           reduce using rule 49 (factor -> CHAR .)
+    CONJ            reduce using rule 49 (factor -> CHAR .)
+    DISJ            reduce using rule 49 (factor -> CHAR .)
+    LANGLE          reduce using rule 49 (factor -> CHAR .)
+    RANGLE          reduce using rule 49 (factor -> CHAR .)
+    LE              reduce using rule 49 (factor -> CHAR .)
+    GE              reduce using rule 49 (factor -> CHAR .)
+    EXCL_EQ         reduce using rule 49 (factor -> CHAR .)
+    EXCL_EQEQ       reduce using rule 49 (factor -> CHAR .)
+    AS_SAFE         reduce using rule 49 (factor -> CHAR .)
+    EQEQ            reduce using rule 49 (factor -> CHAR .)
+    EQEQEQ          reduce using rule 49 (factor -> CHAR .)
+
+
+state 31
+
+    (50) factor -> BOOLEAN .
+
+    PLUS            reduce using rule 50 (factor -> BOOLEAN .)
+    MINUS           reduce using rule 50 (factor -> BOOLEAN .)
+    TIMES           reduce using rule 50 (factor -> BOOLEAN .)
+    DIVIDE          reduce using rule 50 (factor -> BOOLEAN .)
+    MOD             reduce using rule 50 (factor -> BOOLEAN .)
+    $end            reduce using rule 50 (factor -> BOOLEAN .)
+    RPAREN          reduce using rule 50 (factor -> BOOLEAN .)
+    SEMICOLON       reduce using rule 50 (factor -> BOOLEAN .)
+    PRINT           reduce using rule 50 (factor -> BOOLEAN .)
+    PRINTLN         reduce using rule 50 (factor -> BOOLEAN .)
+    VAR             reduce using rule 50 (factor -> BOOLEAN .)
+    VAL             reduce using rule 50 (factor -> BOOLEAN .)
+    ID              reduce using rule 50 (factor -> BOOLEAN .)
+    LPAREN          reduce using rule 50 (factor -> BOOLEAN .)
+    FOR             reduce using rule 50 (factor -> BOOLEAN .)
+    IF              reduce using rule 50 (factor -> BOOLEAN .)
+    INT             reduce using rule 50 (factor -> BOOLEAN .)
+    FLOAT           reduce using rule 50 (factor -> BOOLEAN .)
+    LONG            reduce using rule 50 (factor -> BOOLEAN .)
+    CHAR            reduce using rule 50 (factor -> BOOLEAN .)
+    BOOLEAN         reduce using rule 50 (factor -> BOOLEAN .)
+    STRING_1        reduce using rule 50 (factor -> BOOLEAN .)
+    RCURL           reduce using rule 50 (factor -> BOOLEAN .)
+    CONJ            reduce using rule 50 (factor -> BOOLEAN .)
+    DISJ            reduce using rule 50 (factor -> BOOLEAN .)
+    LANGLE          reduce using rule 50 (factor -> BOOLEAN .)
+    RANGLE          reduce using rule 50 (factor -> BOOLEAN .)
+    LE              reduce using rule 50 (factor -> BOOLEAN .)
+    GE              reduce using rule 50 (factor -> BOOLEAN .)
+    EXCL_EQ         reduce using rule 50 (factor -> BOOLEAN .)
+    EXCL_EQEQ       reduce using rule 50 (factor -> BOOLEAN .)
+    AS_SAFE         reduce using rule 50 (factor -> BOOLEAN .)
+    EQEQ            reduce using rule 50 (factor -> BOOLEAN .)
+    EQEQEQ          reduce using rule 50 (factor -> BOOLEAN .)
+
+
+state 32
+
+    (52) factor -> STRING_1 .
+
+    PLUS            reduce using rule 52 (factor -> STRING_1 .)
+    MINUS           reduce using rule 52 (factor -> STRING_1 .)
+    TIMES           reduce using rule 52 (factor -> STRING_1 .)
+    DIVIDE          reduce using rule 52 (factor -> STRING_1 .)
+    MOD             reduce using rule 52 (factor -> STRING_1 .)
+    $end            reduce using rule 52 (factor -> STRING_1 .)
+    RPAREN          reduce using rule 52 (factor -> STRING_1 .)
+    SEMICOLON       reduce using rule 52 (factor -> STRING_1 .)
+    PRINT           reduce using rule 52 (factor -> STRING_1 .)
+    PRINTLN         reduce using rule 52 (factor -> STRING_1 .)
+    VAR             reduce using rule 52 (factor -> STRING_1 .)
+    VAL             reduce using rule 52 (factor -> STRING_1 .)
+    ID              reduce using rule 52 (factor -> STRING_1 .)
+    LPAREN          reduce using rule 52 (factor -> STRING_1 .)
+    FOR             reduce using rule 52 (factor -> STRING_1 .)
+    IF              reduce using rule 52 (factor -> STRING_1 .)
+    INT             reduce using rule 52 (factor -> STRING_1 .)
+    FLOAT           reduce using rule 52 (factor -> STRING_1 .)
+    LONG            reduce using rule 52 (factor -> STRING_1 .)
+    CHAR            reduce using rule 52 (factor -> STRING_1 .)
+    BOOLEAN         reduce using rule 52 (factor -> STRING_1 .)
+    STRING_1        reduce using rule 52 (factor -> STRING_1 .)
+    RCURL           reduce using rule 52 (factor -> STRING_1 .)
+    CONJ            reduce using rule 52 (factor -> STRING_1 .)
+    DISJ            reduce using rule 52 (factor -> STRING_1 .)
+    LANGLE          reduce using rule 52 (factor -> STRING_1 .)
+    RANGLE          reduce using rule 52 (factor -> STRING_1 .)
+    LE              reduce using rule 52 (factor -> STRING_1 .)
+    GE              reduce using rule 52 (factor -> STRING_1 .)
+    EXCL_EQ         reduce using rule 52 (factor -> STRING_1 .)
+    EXCL_EQEQ       reduce using rule 52 (factor -> STRING_1 .)
+    AS_SAFE         reduce using rule 52 (factor -> STRING_1 .)
+    EQEQ            reduce using rule 52 (factor -> STRING_1 .)
+    EQEQEQ          reduce using rule 52 (factor -> STRING_1 .)
+
+
+state 33
 
     (1) line -> impresion SEMICOLON .
 
     $end            reduce using rule 1 (line -> impresion SEMICOLON .)
     PRINT           reduce using rule 1 (line -> impresion SEMICOLON .)
+    PRINTLN         reduce using rule 1 (line -> impresion SEMICOLON .)
     VAR             reduce using rule 1 (line -> impresion SEMICOLON .)
     VAL             reduce using rule 1 (line -> impresion SEMICOLON .)
     ID              reduce using rule 1 (line -> impresion SEMICOLON .)
     LPAREN          reduce using rule 1 (line -> impresion SEMICOLON .)
     FOR             reduce using rule 1 (line -> impresion SEMICOLON .)
+    IF              reduce using rule 1 (line -> impresion SEMICOLON .)
     INT             reduce using rule 1 (line -> impresion SEMICOLON .)
     FLOAT           reduce using rule 1 (line -> impresion SEMICOLON .)
     LONG            reduce using rule 1 (line -> impresion SEMICOLON .)
@@ -927,17 +1075,19 @@ state 30
     RCURL           reduce using rule 1 (line -> impresion SEMICOLON .)
 
 
-state 31
+state 34
 
     (2) line -> asignacion SEMICOLON .
 
     $end            reduce using rule 2 (line -> asignacion SEMICOLON .)
     PRINT           reduce using rule 2 (line -> asignacion SEMICOLON .)
+    PRINTLN         reduce using rule 2 (line -> asignacion SEMICOLON .)
     VAR             reduce using rule 2 (line -> asignacion SEMICOLON .)
     VAL             reduce using rule 2 (line -> asignacion SEMICOLON .)
     ID              reduce using rule 2 (line -> asignacion SEMICOLON .)
     LPAREN          reduce using rule 2 (line -> asignacion SEMICOLON .)
     FOR             reduce using rule 2 (line -> asignacion SEMICOLON .)
+    IF              reduce using rule 2 (line -> asignacion SEMICOLON .)
     INT             reduce using rule 2 (line -> asignacion SEMICOLON .)
     FLOAT           reduce using rule 2 (line -> asignacion SEMICOLON .)
     LONG            reduce using rule 2 (line -> asignacion SEMICOLON .)
@@ -947,147 +1097,144 @@ state 31
     RCURL           reduce using rule 2 (line -> asignacion SEMICOLON .)
 
 
-state 32
-
-    (39) expression -> expression PLUS . term
-    (45) term -> . factor
-    (46) term -> . LPAREN expression RPAREN
-    (47) term -> . LPAREN opLogica RPAREN
-    (48) factor -> . INT
-    (49) factor -> . FLOAT
-    (50) factor -> . LONG
-    (51) factor -> . CHAR
-    (52) factor -> . BOOLEAN
-    (53) factor -> . ID
-    (54) factor -> . STRING_1
-
-    LPAREN          shift and go to state 8
-    INT             shift and go to state 24
-    FLOAT           shift and go to state 25
-    LONG            shift and go to state 26
-    CHAR            shift and go to state 27
-    BOOLEAN         shift and go to state 28
-    ID              shift and go to state 42
-    STRING_1        shift and go to state 29
-
-    term                           shift and go to state 50
-    factor                         shift and go to state 18
-
-state 33
-
-    (40) expression -> expression MINUS . term
-    (45) term -> . factor
-    (46) term -> . LPAREN expression RPAREN
-    (47) term -> . LPAREN opLogica RPAREN
-    (48) factor -> . INT
-    (49) factor -> . FLOAT
-    (50) factor -> . LONG
-    (51) factor -> . CHAR
-    (52) factor -> . BOOLEAN
-    (53) factor -> . ID
-    (54) factor -> . STRING_1
-
-    LPAREN          shift and go to state 8
-    INT             shift and go to state 24
-    FLOAT           shift and go to state 25
-    LONG            shift and go to state 26
-    CHAR            shift and go to state 27
-    BOOLEAN         shift and go to state 28
-    ID              shift and go to state 42
-    STRING_1        shift and go to state 29
-
-    term                           shift and go to state 51
-    factor                         shift and go to state 18
-
-state 34
-
-    (41) expression -> expression TIMES . term
-    (45) term -> . factor
-    (46) term -> . LPAREN expression RPAREN
-    (47) term -> . LPAREN opLogica RPAREN
-    (48) factor -> . INT
-    (49) factor -> . FLOAT
-    (50) factor -> . LONG
-    (51) factor -> . CHAR
-    (52) factor -> . BOOLEAN
-    (53) factor -> . ID
-    (54) factor -> . STRING_1
-
-    LPAREN          shift and go to state 8
-    INT             shift and go to state 24
-    FLOAT           shift and go to state 25
-    LONG            shift and go to state 26
-    CHAR            shift and go to state 27
-    BOOLEAN         shift and go to state 28
-    ID              shift and go to state 42
-    STRING_1        shift and go to state 29
-
-    term                           shift and go to state 52
-    factor                         shift and go to state 18
-
 state 35
 
-    (42) expression -> expression DIVIDE . term
-    (45) term -> . factor
-    (46) term -> . LPAREN expression RPAREN
-    (47) term -> . LPAREN opLogica RPAREN
-    (48) factor -> . INT
-    (49) factor -> . FLOAT
-    (50) factor -> . LONG
-    (51) factor -> . CHAR
-    (52) factor -> . BOOLEAN
-    (53) factor -> . ID
-    (54) factor -> . STRING_1
+    (38) expression -> expression PLUS . term
+    (44) term -> . factor
+    (45) term -> . LPAREN expression RPAREN
+    (46) factor -> . INT
+    (47) factor -> . FLOAT
+    (48) factor -> . LONG
+    (49) factor -> . CHAR
+    (50) factor -> . BOOLEAN
+    (51) factor -> . ID
+    (52) factor -> . STRING_1
 
     LPAREN          shift and go to state 8
-    INT             shift and go to state 24
-    FLOAT           shift and go to state 25
-    LONG            shift and go to state 26
-    CHAR            shift and go to state 27
-    BOOLEAN         shift and go to state 28
-    ID              shift and go to state 42
-    STRING_1        shift and go to state 29
+    INT             shift and go to state 27
+    FLOAT           shift and go to state 28
+    LONG            shift and go to state 29
+    CHAR            shift and go to state 30
+    BOOLEAN         shift and go to state 31
+    ID              shift and go to state 43
+    STRING_1        shift and go to state 32
 
     term                           shift and go to state 53
-    factor                         shift and go to state 18
+    factor                         shift and go to state 20
 
 state 36
 
-    (43) expression -> expression MOD . term
-    (45) term -> . factor
-    (46) term -> . LPAREN expression RPAREN
-    (47) term -> . LPAREN opLogica RPAREN
-    (48) factor -> . INT
-    (49) factor -> . FLOAT
-    (50) factor -> . LONG
-    (51) factor -> . CHAR
-    (52) factor -> . BOOLEAN
-    (53) factor -> . ID
-    (54) factor -> . STRING_1
+    (39) expression -> expression MINUS . term
+    (44) term -> . factor
+    (45) term -> . LPAREN expression RPAREN
+    (46) factor -> . INT
+    (47) factor -> . FLOAT
+    (48) factor -> . LONG
+    (49) factor -> . CHAR
+    (50) factor -> . BOOLEAN
+    (51) factor -> . ID
+    (52) factor -> . STRING_1
 
     LPAREN          shift and go to state 8
-    INT             shift and go to state 24
-    FLOAT           shift and go to state 25
-    LONG            shift and go to state 26
-    CHAR            shift and go to state 27
-    BOOLEAN         shift and go to state 28
-    ID              shift and go to state 42
-    STRING_1        shift and go to state 29
+    INT             shift and go to state 27
+    FLOAT           shift and go to state 28
+    LONG            shift and go to state 29
+    CHAR            shift and go to state 30
+    BOOLEAN         shift and go to state 31
+    ID              shift and go to state 43
+    STRING_1        shift and go to state 32
 
     term                           shift and go to state 54
-    factor                         shift and go to state 18
+    factor                         shift and go to state 20
 
 state 37
+
+    (40) expression -> expression TIMES . term
+    (44) term -> . factor
+    (45) term -> . LPAREN expression RPAREN
+    (46) factor -> . INT
+    (47) factor -> . FLOAT
+    (48) factor -> . LONG
+    (49) factor -> . CHAR
+    (50) factor -> . BOOLEAN
+    (51) factor -> . ID
+    (52) factor -> . STRING_1
+
+    LPAREN          shift and go to state 8
+    INT             shift and go to state 27
+    FLOAT           shift and go to state 28
+    LONG            shift and go to state 29
+    CHAR            shift and go to state 30
+    BOOLEAN         shift and go to state 31
+    ID              shift and go to state 43
+    STRING_1        shift and go to state 32
+
+    term                           shift and go to state 55
+    factor                         shift and go to state 20
+
+state 38
+
+    (41) expression -> expression DIVIDE . term
+    (44) term -> . factor
+    (45) term -> . LPAREN expression RPAREN
+    (46) factor -> . INT
+    (47) factor -> . FLOAT
+    (48) factor -> . LONG
+    (49) factor -> . CHAR
+    (50) factor -> . BOOLEAN
+    (51) factor -> . ID
+    (52) factor -> . STRING_1
+
+    LPAREN          shift and go to state 8
+    INT             shift and go to state 27
+    FLOAT           shift and go to state 28
+    LONG            shift and go to state 29
+    CHAR            shift and go to state 30
+    BOOLEAN         shift and go to state 31
+    ID              shift and go to state 43
+    STRING_1        shift and go to state 32
+
+    term                           shift and go to state 56
+    factor                         shift and go to state 20
+
+state 39
+
+    (42) expression -> expression MOD . term
+    (44) term -> . factor
+    (45) term -> . LPAREN expression RPAREN
+    (46) factor -> . INT
+    (47) factor -> . FLOAT
+    (48) factor -> . LONG
+    (49) factor -> . CHAR
+    (50) factor -> . BOOLEAN
+    (51) factor -> . ID
+    (52) factor -> . STRING_1
+
+    LPAREN          shift and go to state 8
+    INT             shift and go to state 27
+    FLOAT           shift and go to state 28
+    LONG            shift and go to state 29
+    CHAR            shift and go to state 30
+    BOOLEAN         shift and go to state 31
+    ID              shift and go to state 43
+    STRING_1        shift and go to state 32
+
+    term                           shift and go to state 57
+    factor                         shift and go to state 20
+
+state 40
 
     (5) line -> estructurasDatos SEMICOLON .
 
     $end            reduce using rule 5 (line -> estructurasDatos SEMICOLON .)
     PRINT           reduce using rule 5 (line -> estructurasDatos SEMICOLON .)
+    PRINTLN         reduce using rule 5 (line -> estructurasDatos SEMICOLON .)
     VAR             reduce using rule 5 (line -> estructurasDatos SEMICOLON .)
     VAL             reduce using rule 5 (line -> estructurasDatos SEMICOLON .)
     ID              reduce using rule 5 (line -> estructurasDatos SEMICOLON .)
     LPAREN          reduce using rule 5 (line -> estructurasDatos SEMICOLON .)
     FOR             reduce using rule 5 (line -> estructurasDatos SEMICOLON .)
+    IF              reduce using rule 5 (line -> estructurasDatos SEMICOLON .)
     INT             reduce using rule 5 (line -> estructurasDatos SEMICOLON .)
     FLOAT           reduce using rule 5 (line -> estructurasDatos SEMICOLON .)
     LONG            reduce using rule 5 (line -> estructurasDatos SEMICOLON .)
@@ -1097,1006 +1244,1654 @@ state 37
     RCURL           reduce using rule 5 (line -> estructurasDatos SEMICOLON .)
 
 
-state 38
-
-    (17) impresion -> PRINT LPAREN . RPAREN
-
-    RPAREN          shift and go to state 55
-
-
-state 39
-
-    (46) term -> LPAREN expression . RPAREN
-    (39) expression -> expression . PLUS term
-    (40) expression -> expression . MINUS term
-    (41) expression -> expression . TIMES term
-    (42) expression -> expression . DIVIDE term
-    (43) expression -> expression . MOD term
-
-    RPAREN          shift and go to state 56
-    PLUS            shift and go to state 32
-    MINUS           shift and go to state 33
-    TIMES           shift and go to state 34
-    DIVIDE          shift and go to state 35
-    MOD             shift and go to state 36
-
-
-state 40
-
-    (47) term -> LPAREN opLogica . RPAREN
-    (37) opLogica -> opLogica . LANGLE term
-
-    RPAREN          shift and go to state 57
-    LANGLE          shift and go to state 58
-
-
 state 41
 
-    (44) expression -> term .
-    (38) opLogica -> term .
+    (18) impresion -> PRINT LPAREN . expression RPAREN
+    (38) expression -> . expression PLUS term
+    (39) expression -> . expression MINUS term
+    (40) expression -> . expression TIMES term
+    (41) expression -> . expression DIVIDE term
+    (42) expression -> . expression MOD term
+    (43) expression -> . term
+    (44) term -> . factor
+    (45) term -> . LPAREN expression RPAREN
+    (46) factor -> . INT
+    (47) factor -> . FLOAT
+    (48) factor -> . LONG
+    (49) factor -> . CHAR
+    (50) factor -> . BOOLEAN
+    (51) factor -> . ID
+    (52) factor -> . STRING_1
 
-  ! reduce/reduce conflict for RPAREN resolved using rule 38 (opLogica -> term .)
-  ! reduce/reduce conflict for SEMICOLON resolved using rule 38 (opLogica -> term .)
-    PLUS            reduce using rule 44 (expression -> term .)
-    MINUS           reduce using rule 44 (expression -> term .)
-    TIMES           reduce using rule 44 (expression -> term .)
-    DIVIDE          reduce using rule 44 (expression -> term .)
-    MOD             reduce using rule 44 (expression -> term .)
-    RPAREN          reduce using rule 38 (opLogica -> term .)
-    LANGLE          reduce using rule 38 (opLogica -> term .)
-    SEMICOLON       reduce using rule 38 (opLogica -> term .)
+    LPAREN          shift and go to state 8
+    INT             shift and go to state 27
+    FLOAT           shift and go to state 28
+    LONG            shift and go to state 29
+    CHAR            shift and go to state 30
+    BOOLEAN         shift and go to state 31
+    ID              shift and go to state 43
+    STRING_1        shift and go to state 32
 
-  ! RPAREN          [ reduce using rule 44 (expression -> term .) ]
-  ! SEMICOLON       [ reduce using rule 44 (expression -> term .) ]
-
+    expression                     shift and go to state 58
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
 
 state 42
 
-    (53) factor -> ID .
+    (45) term -> LPAREN expression . RPAREN
+    (38) expression -> expression . PLUS term
+    (39) expression -> expression . MINUS term
+    (40) expression -> expression . TIMES term
+    (41) expression -> expression . DIVIDE term
+    (42) expression -> expression . MOD term
 
-    RPAREN          reduce using rule 53 (factor -> ID .)
-    PLUS            reduce using rule 53 (factor -> ID .)
-    MINUS           reduce using rule 53 (factor -> ID .)
-    TIMES           reduce using rule 53 (factor -> ID .)
-    DIVIDE          reduce using rule 53 (factor -> ID .)
-    MOD             reduce using rule 53 (factor -> ID .)
-    LANGLE          reduce using rule 53 (factor -> ID .)
-    $end            reduce using rule 53 (factor -> ID .)
-    SEMICOLON       reduce using rule 53 (factor -> ID .)
-    PRINT           reduce using rule 53 (factor -> ID .)
-    VAR             reduce using rule 53 (factor -> ID .)
-    VAL             reduce using rule 53 (factor -> ID .)
-    ID              reduce using rule 53 (factor -> ID .)
-    LPAREN          reduce using rule 53 (factor -> ID .)
-    FOR             reduce using rule 53 (factor -> ID .)
-    INT             reduce using rule 53 (factor -> ID .)
-    FLOAT           reduce using rule 53 (factor -> ID .)
-    LONG            reduce using rule 53 (factor -> ID .)
-    CHAR            reduce using rule 53 (factor -> ID .)
-    BOOLEAN         reduce using rule 53 (factor -> ID .)
-    STRING_1        reduce using rule 53 (factor -> ID .)
-    RCURL           reduce using rule 53 (factor -> ID .)
+    RPAREN          shift and go to state 59
+    PLUS            shift and go to state 35
+    MINUS           shift and go to state 36
+    TIMES           shift and go to state 37
+    DIVIDE          shift and go to state 38
+    MOD             shift and go to state 39
 
 
 state 43
 
-    (22) asignacion -> keywordVariables asignacionSimple .
+    (51) factor -> ID .
 
-    SEMICOLON       reduce using rule 22 (asignacion -> keywordVariables asignacionSimple .)
+    RPAREN          reduce using rule 51 (factor -> ID .)
+    PLUS            reduce using rule 51 (factor -> ID .)
+    MINUS           reduce using rule 51 (factor -> ID .)
+    TIMES           reduce using rule 51 (factor -> ID .)
+    DIVIDE          reduce using rule 51 (factor -> ID .)
+    MOD             reduce using rule 51 (factor -> ID .)
+    $end            reduce using rule 51 (factor -> ID .)
+    SEMICOLON       reduce using rule 51 (factor -> ID .)
+    PRINT           reduce using rule 51 (factor -> ID .)
+    PRINTLN         reduce using rule 51 (factor -> ID .)
+    VAR             reduce using rule 51 (factor -> ID .)
+    VAL             reduce using rule 51 (factor -> ID .)
+    ID              reduce using rule 51 (factor -> ID .)
+    LPAREN          reduce using rule 51 (factor -> ID .)
+    FOR             reduce using rule 51 (factor -> ID .)
+    IF              reduce using rule 51 (factor -> ID .)
+    INT             reduce using rule 51 (factor -> ID .)
+    FLOAT           reduce using rule 51 (factor -> ID .)
+    LONG            reduce using rule 51 (factor -> ID .)
+    CHAR            reduce using rule 51 (factor -> ID .)
+    BOOLEAN         reduce using rule 51 (factor -> ID .)
+    STRING_1        reduce using rule 51 (factor -> ID .)
+    RCURL           reduce using rule 51 (factor -> ID .)
+    CONJ            reduce using rule 51 (factor -> ID .)
+    DISJ            reduce using rule 51 (factor -> ID .)
+    LANGLE          reduce using rule 51 (factor -> ID .)
+    RANGLE          reduce using rule 51 (factor -> ID .)
+    LE              reduce using rule 51 (factor -> ID .)
+    GE              reduce using rule 51 (factor -> ID .)
+    EXCL_EQ         reduce using rule 51 (factor -> ID .)
+    EXCL_EQEQ       reduce using rule 51 (factor -> ID .)
+    AS_SAFE         reduce using rule 51 (factor -> ID .)
+    EQEQ            reduce using rule 51 (factor -> ID .)
+    EQEQEQ          reduce using rule 51 (factor -> ID .)
 
 
 state 44
 
-    (26) asignacionSimple -> ID . DOTS tipoDato EQUAL valor
-    (27) asignacionSimple -> ID . EQUAL valor
+    (19) impresion -> PRINTLN LPAREN . expression RPAREN
+    (38) expression -> . expression PLUS term
+    (39) expression -> . expression MINUS term
+    (40) expression -> . expression TIMES term
+    (41) expression -> . expression DIVIDE term
+    (42) expression -> . expression MOD term
+    (43) expression -> . term
+    (44) term -> . factor
+    (45) term -> . LPAREN expression RPAREN
+    (46) factor -> . INT
+    (47) factor -> . FLOAT
+    (48) factor -> . LONG
+    (49) factor -> . CHAR
+    (50) factor -> . BOOLEAN
+    (51) factor -> . ID
+    (52) factor -> . STRING_1
 
-    DOTS            shift and go to state 46
-    EQUAL           shift and go to state 47
+    LPAREN          shift and go to state 8
+    INT             shift and go to state 27
+    FLOAT           shift and go to state 28
+    LONG            shift and go to state 29
+    CHAR            shift and go to state 30
+    BOOLEAN         shift and go to state 31
+    ID              shift and go to state 43
+    STRING_1        shift and go to state 32
 
+    expression                     shift and go to state 60
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
 
 state 45
 
-    (18) queue -> VAL ID . DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
+    (24) asignacion -> keywordVariables asignacionSimple .
 
-    DOTS            shift and go to state 59
+    SEMICOLON       reduce using rule 24 (asignacion -> keywordVariables asignacionSimple .)
 
 
 state 46
 
-    (26) asignacionSimple -> ID DOTS . tipoDato EQUAL valor
-    (28) tipoDato -> . TINT
-    (29) tipoDato -> . TLONG
-    (30) tipoDato -> . TFLOAT
-    (31) tipoDato -> . TDOUBLE
-    (32) tipoDato -> . TBOOLEAN
-    (33) tipoDato -> . TCHAR
-    (34) tipoDato -> . TSTRING
+    (28) asignacionSimple -> ID . DOTS tipoDato EQUAL valor
+    (29) asignacionSimple -> ID . EQUAL valor
 
-    TINT            shift and go to state 61
-    TLONG           shift and go to state 62
-    TFLOAT          shift and go to state 63
-    TDOUBLE         shift and go to state 64
-    TBOOLEAN        shift and go to state 65
-    TCHAR           shift and go to state 66
-    TSTRING         shift and go to state 67
+    DOTS            shift and go to state 48
+    EQUAL           shift and go to state 49
 
-    tipoDato                       shift and go to state 60
 
 state 47
 
-    (27) asignacionSimple -> ID EQUAL . valor
-    (35) valor -> . expression
-    (36) valor -> . opLogica
-    (39) expression -> . expression PLUS term
-    (40) expression -> . expression MINUS term
-    (41) expression -> . expression TIMES term
-    (42) expression -> . expression DIVIDE term
-    (43) expression -> . expression MOD term
-    (44) expression -> . term
-    (37) opLogica -> . opLogica LANGLE term
-    (38) opLogica -> . term
-    (45) term -> . factor
-    (46) term -> . LPAREN expression RPAREN
-    (47) term -> . LPAREN opLogica RPAREN
-    (48) factor -> . INT
-    (49) factor -> . FLOAT
-    (50) factor -> . LONG
-    (51) factor -> . CHAR
-    (52) factor -> . BOOLEAN
-    (53) factor -> . ID
-    (54) factor -> . STRING_1
+    (20) queue -> VAL ID . DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
 
-    LPAREN          shift and go to state 8
-    INT             shift and go to state 24
-    FLOAT           shift and go to state 25
-    LONG            shift and go to state 26
-    CHAR            shift and go to state 27
-    BOOLEAN         shift and go to state 28
-    ID              shift and go to state 42
-    STRING_1        shift and go to state 29
+    DOTS            shift and go to state 61
 
-    valor                          shift and go to state 68
-    expression                     shift and go to state 69
-    opLogica                       shift and go to state 70
-    term                           shift and go to state 41
-    factor                         shift and go to state 18
 
 state 48
 
-    (13) queue_add -> ID DOT . ADD LPAREN factor RPAREN
-    (14) queue_peek -> ID DOT . PEEK LPAREN RPAREN
-    (16) queue_remove -> ID DOT . REMOVE LPAREN RPAREN
-    (15) queue_poll -> ID DOT . POLL LPAREN RPAREN
+    (28) asignacionSimple -> ID DOTS . tipoDato EQUAL valor
+    (30) tipoDato -> . TINT
+    (31) tipoDato -> . TLONG
+    (32) tipoDato -> . TFLOAT
+    (33) tipoDato -> . TDOUBLE
+    (34) tipoDato -> . TBOOLEAN
+    (35) tipoDato -> . TCHAR
+    (36) tipoDato -> . TSTRING
 
-    ADD             shift and go to state 71
-    PEEK            shift and go to state 72
-    REMOVE          shift and go to state 73
-    POLL            shift and go to state 74
+    TINT            shift and go to state 63
+    TLONG           shift and go to state 64
+    TFLOAT          shift and go to state 65
+    TDOUBLE         shift and go to state 66
+    TBOOLEAN        shift and go to state 67
+    TCHAR           shift and go to state 68
+    TSTRING         shift and go to state 69
 
+    tipoDato                       shift and go to state 62
 
 state 49
 
-    (19) for -> FOR LPAREN . ID IN ID RPAREN LCURL morelines RCURL
+    (29) asignacionSimple -> ID EQUAL . valor
+    (37) valor -> . expression
+    (38) expression -> . expression PLUS term
+    (39) expression -> . expression MINUS term
+    (40) expression -> . expression TIMES term
+    (41) expression -> . expression DIVIDE term
+    (42) expression -> . expression MOD term
+    (43) expression -> . term
+    (44) term -> . factor
+    (45) term -> . LPAREN expression RPAREN
+    (46) factor -> . INT
+    (47) factor -> . FLOAT
+    (48) factor -> . LONG
+    (49) factor -> . CHAR
+    (50) factor -> . BOOLEAN
+    (51) factor -> . ID
+    (52) factor -> . STRING_1
 
-    ID              shift and go to state 75
+    LPAREN          shift and go to state 8
+    INT             shift and go to state 27
+    FLOAT           shift and go to state 28
+    LONG            shift and go to state 29
+    CHAR            shift and go to state 30
+    BOOLEAN         shift and go to state 31
+    ID              shift and go to state 43
+    STRING_1        shift and go to state 32
 
+    valor                          shift and go to state 70
+    expression                     shift and go to state 71
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
 
 state 50
 
-    (39) expression -> expression PLUS term .
+    (14) queue_add -> ID DOT . ADD LPAREN factor RPAREN
+    (15) queue_peek -> ID DOT . PEEK LPAREN RPAREN
+    (17) queue_remove -> ID DOT . REMOVE LPAREN RPAREN
+    (16) queue_poll -> ID DOT . POLL LPAREN RPAREN
 
-    PLUS            reduce using rule 39 (expression -> expression PLUS term .)
-    MINUS           reduce using rule 39 (expression -> expression PLUS term .)
-    TIMES           reduce using rule 39 (expression -> expression PLUS term .)
-    DIVIDE          reduce using rule 39 (expression -> expression PLUS term .)
-    MOD             reduce using rule 39 (expression -> expression PLUS term .)
-    $end            reduce using rule 39 (expression -> expression PLUS term .)
-    RPAREN          reduce using rule 39 (expression -> expression PLUS term .)
-    SEMICOLON       reduce using rule 39 (expression -> expression PLUS term .)
-    PRINT           reduce using rule 39 (expression -> expression PLUS term .)
-    VAR             reduce using rule 39 (expression -> expression PLUS term .)
-    VAL             reduce using rule 39 (expression -> expression PLUS term .)
-    ID              reduce using rule 39 (expression -> expression PLUS term .)
-    LPAREN          reduce using rule 39 (expression -> expression PLUS term .)
-    FOR             reduce using rule 39 (expression -> expression PLUS term .)
-    INT             reduce using rule 39 (expression -> expression PLUS term .)
-    FLOAT           reduce using rule 39 (expression -> expression PLUS term .)
-    LONG            reduce using rule 39 (expression -> expression PLUS term .)
-    CHAR            reduce using rule 39 (expression -> expression PLUS term .)
-    BOOLEAN         reduce using rule 39 (expression -> expression PLUS term .)
-    STRING_1        reduce using rule 39 (expression -> expression PLUS term .)
-    RCURL           reduce using rule 39 (expression -> expression PLUS term .)
+    ADD             shift and go to state 72
+    PEEK            shift and go to state 73
+    REMOVE          shift and go to state 74
+    POLL            shift and go to state 75
 
 
 state 51
 
-    (40) expression -> expression MINUS term .
+    (21) for -> FOR LPAREN . ID IN ID RPAREN LCURL morelines RCURL
 
-    PLUS            reduce using rule 40 (expression -> expression MINUS term .)
-    MINUS           reduce using rule 40 (expression -> expression MINUS term .)
-    TIMES           reduce using rule 40 (expression -> expression MINUS term .)
-    DIVIDE          reduce using rule 40 (expression -> expression MINUS term .)
-    MOD             reduce using rule 40 (expression -> expression MINUS term .)
-    $end            reduce using rule 40 (expression -> expression MINUS term .)
-    RPAREN          reduce using rule 40 (expression -> expression MINUS term .)
-    SEMICOLON       reduce using rule 40 (expression -> expression MINUS term .)
-    PRINT           reduce using rule 40 (expression -> expression MINUS term .)
-    VAR             reduce using rule 40 (expression -> expression MINUS term .)
-    VAL             reduce using rule 40 (expression -> expression MINUS term .)
-    ID              reduce using rule 40 (expression -> expression MINUS term .)
-    LPAREN          reduce using rule 40 (expression -> expression MINUS term .)
-    FOR             reduce using rule 40 (expression -> expression MINUS term .)
-    INT             reduce using rule 40 (expression -> expression MINUS term .)
-    FLOAT           reduce using rule 40 (expression -> expression MINUS term .)
-    LONG            reduce using rule 40 (expression -> expression MINUS term .)
-    CHAR            reduce using rule 40 (expression -> expression MINUS term .)
-    BOOLEAN         reduce using rule 40 (expression -> expression MINUS term .)
-    STRING_1        reduce using rule 40 (expression -> expression MINUS term .)
-    RCURL           reduce using rule 40 (expression -> expression MINUS term .)
+    ID              shift and go to state 76
 
 
 state 52
 
-    (41) expression -> expression TIMES term .
+    (53) if -> IF LPAREN . condicion RPAREN LCURL morelines RCURL
+    (54) if -> IF LPAREN . condicion RPAREN LCURL morelines RCURL else
+    (56) condicion -> . condicionL
+    (57) condicion -> . condicionR
+    (58) condicion -> . condicionN
+    (59) condicionL -> . term opL term
+    (60) condicionR -> . term opR term
+    (61) condicionN -> . EXCL_WS term
+    (44) term -> . factor
+    (45) term -> . LPAREN expression RPAREN
+    (46) factor -> . INT
+    (47) factor -> . FLOAT
+    (48) factor -> . LONG
+    (49) factor -> . CHAR
+    (50) factor -> . BOOLEAN
+    (51) factor -> . ID
+    (52) factor -> . STRING_1
 
-    PLUS            reduce using rule 41 (expression -> expression TIMES term .)
-    MINUS           reduce using rule 41 (expression -> expression TIMES term .)
-    TIMES           reduce using rule 41 (expression -> expression TIMES term .)
-    DIVIDE          reduce using rule 41 (expression -> expression TIMES term .)
-    MOD             reduce using rule 41 (expression -> expression TIMES term .)
-    $end            reduce using rule 41 (expression -> expression TIMES term .)
-    RPAREN          reduce using rule 41 (expression -> expression TIMES term .)
-    SEMICOLON       reduce using rule 41 (expression -> expression TIMES term .)
-    PRINT           reduce using rule 41 (expression -> expression TIMES term .)
-    VAR             reduce using rule 41 (expression -> expression TIMES term .)
-    VAL             reduce using rule 41 (expression -> expression TIMES term .)
-    ID              reduce using rule 41 (expression -> expression TIMES term .)
-    LPAREN          reduce using rule 41 (expression -> expression TIMES term .)
-    FOR             reduce using rule 41 (expression -> expression TIMES term .)
-    INT             reduce using rule 41 (expression -> expression TIMES term .)
-    FLOAT           reduce using rule 41 (expression -> expression TIMES term .)
-    LONG            reduce using rule 41 (expression -> expression TIMES term .)
-    CHAR            reduce using rule 41 (expression -> expression TIMES term .)
-    BOOLEAN         reduce using rule 41 (expression -> expression TIMES term .)
-    STRING_1        reduce using rule 41 (expression -> expression TIMES term .)
-    RCURL           reduce using rule 41 (expression -> expression TIMES term .)
+    EXCL_WS         shift and go to state 82
+    LPAREN          shift and go to state 8
+    INT             shift and go to state 27
+    FLOAT           shift and go to state 28
+    LONG            shift and go to state 29
+    CHAR            shift and go to state 30
+    BOOLEAN         shift and go to state 31
+    ID              shift and go to state 43
+    STRING_1        shift and go to state 32
 
+    condicion                      shift and go to state 77
+    condicionL                     shift and go to state 78
+    condicionR                     shift and go to state 79
+    condicionN                     shift and go to state 80
+    term                           shift and go to state 81
+    factor                         shift and go to state 20
 
 state 53
 
-    (42) expression -> expression DIVIDE term .
+    (38) expression -> expression PLUS term .
 
-    PLUS            reduce using rule 42 (expression -> expression DIVIDE term .)
-    MINUS           reduce using rule 42 (expression -> expression DIVIDE term .)
-    TIMES           reduce using rule 42 (expression -> expression DIVIDE term .)
-    DIVIDE          reduce using rule 42 (expression -> expression DIVIDE term .)
-    MOD             reduce using rule 42 (expression -> expression DIVIDE term .)
-    $end            reduce using rule 42 (expression -> expression DIVIDE term .)
-    RPAREN          reduce using rule 42 (expression -> expression DIVIDE term .)
-    SEMICOLON       reduce using rule 42 (expression -> expression DIVIDE term .)
-    PRINT           reduce using rule 42 (expression -> expression DIVIDE term .)
-    VAR             reduce using rule 42 (expression -> expression DIVIDE term .)
-    VAL             reduce using rule 42 (expression -> expression DIVIDE term .)
-    ID              reduce using rule 42 (expression -> expression DIVIDE term .)
-    LPAREN          reduce using rule 42 (expression -> expression DIVIDE term .)
-    FOR             reduce using rule 42 (expression -> expression DIVIDE term .)
-    INT             reduce using rule 42 (expression -> expression DIVIDE term .)
-    FLOAT           reduce using rule 42 (expression -> expression DIVIDE term .)
-    LONG            reduce using rule 42 (expression -> expression DIVIDE term .)
-    CHAR            reduce using rule 42 (expression -> expression DIVIDE term .)
-    BOOLEAN         reduce using rule 42 (expression -> expression DIVIDE term .)
-    STRING_1        reduce using rule 42 (expression -> expression DIVIDE term .)
-    RCURL           reduce using rule 42 (expression -> expression DIVIDE term .)
+    PLUS            reduce using rule 38 (expression -> expression PLUS term .)
+    MINUS           reduce using rule 38 (expression -> expression PLUS term .)
+    TIMES           reduce using rule 38 (expression -> expression PLUS term .)
+    DIVIDE          reduce using rule 38 (expression -> expression PLUS term .)
+    MOD             reduce using rule 38 (expression -> expression PLUS term .)
+    $end            reduce using rule 38 (expression -> expression PLUS term .)
+    RPAREN          reduce using rule 38 (expression -> expression PLUS term .)
+    SEMICOLON       reduce using rule 38 (expression -> expression PLUS term .)
+    PRINT           reduce using rule 38 (expression -> expression PLUS term .)
+    PRINTLN         reduce using rule 38 (expression -> expression PLUS term .)
+    VAR             reduce using rule 38 (expression -> expression PLUS term .)
+    VAL             reduce using rule 38 (expression -> expression PLUS term .)
+    ID              reduce using rule 38 (expression -> expression PLUS term .)
+    LPAREN          reduce using rule 38 (expression -> expression PLUS term .)
+    FOR             reduce using rule 38 (expression -> expression PLUS term .)
+    IF              reduce using rule 38 (expression -> expression PLUS term .)
+    INT             reduce using rule 38 (expression -> expression PLUS term .)
+    FLOAT           reduce using rule 38 (expression -> expression PLUS term .)
+    LONG            reduce using rule 38 (expression -> expression PLUS term .)
+    CHAR            reduce using rule 38 (expression -> expression PLUS term .)
+    BOOLEAN         reduce using rule 38 (expression -> expression PLUS term .)
+    STRING_1        reduce using rule 38 (expression -> expression PLUS term .)
+    RCURL           reduce using rule 38 (expression -> expression PLUS term .)
 
 
 state 54
 
-    (43) expression -> expression MOD term .
+    (39) expression -> expression MINUS term .
 
-    PLUS            reduce using rule 43 (expression -> expression MOD term .)
-    MINUS           reduce using rule 43 (expression -> expression MOD term .)
-    TIMES           reduce using rule 43 (expression -> expression MOD term .)
-    DIVIDE          reduce using rule 43 (expression -> expression MOD term .)
-    MOD             reduce using rule 43 (expression -> expression MOD term .)
-    $end            reduce using rule 43 (expression -> expression MOD term .)
-    RPAREN          reduce using rule 43 (expression -> expression MOD term .)
-    SEMICOLON       reduce using rule 43 (expression -> expression MOD term .)
-    PRINT           reduce using rule 43 (expression -> expression MOD term .)
-    VAR             reduce using rule 43 (expression -> expression MOD term .)
-    VAL             reduce using rule 43 (expression -> expression MOD term .)
-    ID              reduce using rule 43 (expression -> expression MOD term .)
-    LPAREN          reduce using rule 43 (expression -> expression MOD term .)
-    FOR             reduce using rule 43 (expression -> expression MOD term .)
-    INT             reduce using rule 43 (expression -> expression MOD term .)
-    FLOAT           reduce using rule 43 (expression -> expression MOD term .)
-    LONG            reduce using rule 43 (expression -> expression MOD term .)
-    CHAR            reduce using rule 43 (expression -> expression MOD term .)
-    BOOLEAN         reduce using rule 43 (expression -> expression MOD term .)
-    STRING_1        reduce using rule 43 (expression -> expression MOD term .)
-    RCURL           reduce using rule 43 (expression -> expression MOD term .)
+    PLUS            reduce using rule 39 (expression -> expression MINUS term .)
+    MINUS           reduce using rule 39 (expression -> expression MINUS term .)
+    TIMES           reduce using rule 39 (expression -> expression MINUS term .)
+    DIVIDE          reduce using rule 39 (expression -> expression MINUS term .)
+    MOD             reduce using rule 39 (expression -> expression MINUS term .)
+    $end            reduce using rule 39 (expression -> expression MINUS term .)
+    RPAREN          reduce using rule 39 (expression -> expression MINUS term .)
+    SEMICOLON       reduce using rule 39 (expression -> expression MINUS term .)
+    PRINT           reduce using rule 39 (expression -> expression MINUS term .)
+    PRINTLN         reduce using rule 39 (expression -> expression MINUS term .)
+    VAR             reduce using rule 39 (expression -> expression MINUS term .)
+    VAL             reduce using rule 39 (expression -> expression MINUS term .)
+    ID              reduce using rule 39 (expression -> expression MINUS term .)
+    LPAREN          reduce using rule 39 (expression -> expression MINUS term .)
+    FOR             reduce using rule 39 (expression -> expression MINUS term .)
+    IF              reduce using rule 39 (expression -> expression MINUS term .)
+    INT             reduce using rule 39 (expression -> expression MINUS term .)
+    FLOAT           reduce using rule 39 (expression -> expression MINUS term .)
+    LONG            reduce using rule 39 (expression -> expression MINUS term .)
+    CHAR            reduce using rule 39 (expression -> expression MINUS term .)
+    BOOLEAN         reduce using rule 39 (expression -> expression MINUS term .)
+    STRING_1        reduce using rule 39 (expression -> expression MINUS term .)
+    RCURL           reduce using rule 39 (expression -> expression MINUS term .)
 
 
 state 55
 
-    (17) impresion -> PRINT LPAREN RPAREN .
+    (40) expression -> expression TIMES term .
 
-    SEMICOLON       reduce using rule 17 (impresion -> PRINT LPAREN RPAREN .)
+    PLUS            reduce using rule 40 (expression -> expression TIMES term .)
+    MINUS           reduce using rule 40 (expression -> expression TIMES term .)
+    TIMES           reduce using rule 40 (expression -> expression TIMES term .)
+    DIVIDE          reduce using rule 40 (expression -> expression TIMES term .)
+    MOD             reduce using rule 40 (expression -> expression TIMES term .)
+    $end            reduce using rule 40 (expression -> expression TIMES term .)
+    RPAREN          reduce using rule 40 (expression -> expression TIMES term .)
+    SEMICOLON       reduce using rule 40 (expression -> expression TIMES term .)
+    PRINT           reduce using rule 40 (expression -> expression TIMES term .)
+    PRINTLN         reduce using rule 40 (expression -> expression TIMES term .)
+    VAR             reduce using rule 40 (expression -> expression TIMES term .)
+    VAL             reduce using rule 40 (expression -> expression TIMES term .)
+    ID              reduce using rule 40 (expression -> expression TIMES term .)
+    LPAREN          reduce using rule 40 (expression -> expression TIMES term .)
+    FOR             reduce using rule 40 (expression -> expression TIMES term .)
+    IF              reduce using rule 40 (expression -> expression TIMES term .)
+    INT             reduce using rule 40 (expression -> expression TIMES term .)
+    FLOAT           reduce using rule 40 (expression -> expression TIMES term .)
+    LONG            reduce using rule 40 (expression -> expression TIMES term .)
+    CHAR            reduce using rule 40 (expression -> expression TIMES term .)
+    BOOLEAN         reduce using rule 40 (expression -> expression TIMES term .)
+    STRING_1        reduce using rule 40 (expression -> expression TIMES term .)
+    RCURL           reduce using rule 40 (expression -> expression TIMES term .)
 
 
 state 56
 
-    (46) term -> LPAREN expression RPAREN .
+    (41) expression -> expression DIVIDE term .
 
-    PLUS            reduce using rule 46 (term -> LPAREN expression RPAREN .)
-    MINUS           reduce using rule 46 (term -> LPAREN expression RPAREN .)
-    TIMES           reduce using rule 46 (term -> LPAREN expression RPAREN .)
-    DIVIDE          reduce using rule 46 (term -> LPAREN expression RPAREN .)
-    MOD             reduce using rule 46 (term -> LPAREN expression RPAREN .)
-    $end            reduce using rule 46 (term -> LPAREN expression RPAREN .)
-    RPAREN          reduce using rule 46 (term -> LPAREN expression RPAREN .)
-    LANGLE          reduce using rule 46 (term -> LPAREN expression RPAREN .)
-    SEMICOLON       reduce using rule 46 (term -> LPAREN expression RPAREN .)
-    PRINT           reduce using rule 46 (term -> LPAREN expression RPAREN .)
-    VAR             reduce using rule 46 (term -> LPAREN expression RPAREN .)
-    VAL             reduce using rule 46 (term -> LPAREN expression RPAREN .)
-    ID              reduce using rule 46 (term -> LPAREN expression RPAREN .)
-    LPAREN          reduce using rule 46 (term -> LPAREN expression RPAREN .)
-    FOR             reduce using rule 46 (term -> LPAREN expression RPAREN .)
-    INT             reduce using rule 46 (term -> LPAREN expression RPAREN .)
-    FLOAT           reduce using rule 46 (term -> LPAREN expression RPAREN .)
-    LONG            reduce using rule 46 (term -> LPAREN expression RPAREN .)
-    CHAR            reduce using rule 46 (term -> LPAREN expression RPAREN .)
-    BOOLEAN         reduce using rule 46 (term -> LPAREN expression RPAREN .)
-    STRING_1        reduce using rule 46 (term -> LPAREN expression RPAREN .)
-    RCURL           reduce using rule 46 (term -> LPAREN expression RPAREN .)
+    PLUS            reduce using rule 41 (expression -> expression DIVIDE term .)
+    MINUS           reduce using rule 41 (expression -> expression DIVIDE term .)
+    TIMES           reduce using rule 41 (expression -> expression DIVIDE term .)
+    DIVIDE          reduce using rule 41 (expression -> expression DIVIDE term .)
+    MOD             reduce using rule 41 (expression -> expression DIVIDE term .)
+    $end            reduce using rule 41 (expression -> expression DIVIDE term .)
+    RPAREN          reduce using rule 41 (expression -> expression DIVIDE term .)
+    SEMICOLON       reduce using rule 41 (expression -> expression DIVIDE term .)
+    PRINT           reduce using rule 41 (expression -> expression DIVIDE term .)
+    PRINTLN         reduce using rule 41 (expression -> expression DIVIDE term .)
+    VAR             reduce using rule 41 (expression -> expression DIVIDE term .)
+    VAL             reduce using rule 41 (expression -> expression DIVIDE term .)
+    ID              reduce using rule 41 (expression -> expression DIVIDE term .)
+    LPAREN          reduce using rule 41 (expression -> expression DIVIDE term .)
+    FOR             reduce using rule 41 (expression -> expression DIVIDE term .)
+    IF              reduce using rule 41 (expression -> expression DIVIDE term .)
+    INT             reduce using rule 41 (expression -> expression DIVIDE term .)
+    FLOAT           reduce using rule 41 (expression -> expression DIVIDE term .)
+    LONG            reduce using rule 41 (expression -> expression DIVIDE term .)
+    CHAR            reduce using rule 41 (expression -> expression DIVIDE term .)
+    BOOLEAN         reduce using rule 41 (expression -> expression DIVIDE term .)
+    STRING_1        reduce using rule 41 (expression -> expression DIVIDE term .)
+    RCURL           reduce using rule 41 (expression -> expression DIVIDE term .)
 
 
 state 57
 
-    (47) term -> LPAREN opLogica RPAREN .
+    (42) expression -> expression MOD term .
 
-    PLUS            reduce using rule 47 (term -> LPAREN opLogica RPAREN .)
-    MINUS           reduce using rule 47 (term -> LPAREN opLogica RPAREN .)
-    TIMES           reduce using rule 47 (term -> LPAREN opLogica RPAREN .)
-    DIVIDE          reduce using rule 47 (term -> LPAREN opLogica RPAREN .)
-    MOD             reduce using rule 47 (term -> LPAREN opLogica RPAREN .)
-    $end            reduce using rule 47 (term -> LPAREN opLogica RPAREN .)
-    RPAREN          reduce using rule 47 (term -> LPAREN opLogica RPAREN .)
-    LANGLE          reduce using rule 47 (term -> LPAREN opLogica RPAREN .)
-    SEMICOLON       reduce using rule 47 (term -> LPAREN opLogica RPAREN .)
-    PRINT           reduce using rule 47 (term -> LPAREN opLogica RPAREN .)
-    VAR             reduce using rule 47 (term -> LPAREN opLogica RPAREN .)
-    VAL             reduce using rule 47 (term -> LPAREN opLogica RPAREN .)
-    ID              reduce using rule 47 (term -> LPAREN opLogica RPAREN .)
-    LPAREN          reduce using rule 47 (term -> LPAREN opLogica RPAREN .)
-    FOR             reduce using rule 47 (term -> LPAREN opLogica RPAREN .)
-    INT             reduce using rule 47 (term -> LPAREN opLogica RPAREN .)
-    FLOAT           reduce using rule 47 (term -> LPAREN opLogica RPAREN .)
-    LONG            reduce using rule 47 (term -> LPAREN opLogica RPAREN .)
-    CHAR            reduce using rule 47 (term -> LPAREN opLogica RPAREN .)
-    BOOLEAN         reduce using rule 47 (term -> LPAREN opLogica RPAREN .)
-    STRING_1        reduce using rule 47 (term -> LPAREN opLogica RPAREN .)
-    RCURL           reduce using rule 47 (term -> LPAREN opLogica RPAREN .)
+    PLUS            reduce using rule 42 (expression -> expression MOD term .)
+    MINUS           reduce using rule 42 (expression -> expression MOD term .)
+    TIMES           reduce using rule 42 (expression -> expression MOD term .)
+    DIVIDE          reduce using rule 42 (expression -> expression MOD term .)
+    MOD             reduce using rule 42 (expression -> expression MOD term .)
+    $end            reduce using rule 42 (expression -> expression MOD term .)
+    RPAREN          reduce using rule 42 (expression -> expression MOD term .)
+    SEMICOLON       reduce using rule 42 (expression -> expression MOD term .)
+    PRINT           reduce using rule 42 (expression -> expression MOD term .)
+    PRINTLN         reduce using rule 42 (expression -> expression MOD term .)
+    VAR             reduce using rule 42 (expression -> expression MOD term .)
+    VAL             reduce using rule 42 (expression -> expression MOD term .)
+    ID              reduce using rule 42 (expression -> expression MOD term .)
+    LPAREN          reduce using rule 42 (expression -> expression MOD term .)
+    FOR             reduce using rule 42 (expression -> expression MOD term .)
+    IF              reduce using rule 42 (expression -> expression MOD term .)
+    INT             reduce using rule 42 (expression -> expression MOD term .)
+    FLOAT           reduce using rule 42 (expression -> expression MOD term .)
+    LONG            reduce using rule 42 (expression -> expression MOD term .)
+    CHAR            reduce using rule 42 (expression -> expression MOD term .)
+    BOOLEAN         reduce using rule 42 (expression -> expression MOD term .)
+    STRING_1        reduce using rule 42 (expression -> expression MOD term .)
+    RCURL           reduce using rule 42 (expression -> expression MOD term .)
 
 
 state 58
 
-    (37) opLogica -> opLogica LANGLE . term
-    (45) term -> . factor
-    (46) term -> . LPAREN expression RPAREN
-    (47) term -> . LPAREN opLogica RPAREN
-    (48) factor -> . INT
-    (49) factor -> . FLOAT
-    (50) factor -> . LONG
-    (51) factor -> . CHAR
-    (52) factor -> . BOOLEAN
-    (53) factor -> . ID
-    (54) factor -> . STRING_1
+    (18) impresion -> PRINT LPAREN expression . RPAREN
+    (38) expression -> expression . PLUS term
+    (39) expression -> expression . MINUS term
+    (40) expression -> expression . TIMES term
+    (41) expression -> expression . DIVIDE term
+    (42) expression -> expression . MOD term
 
-    LPAREN          shift and go to state 8
-    INT             shift and go to state 24
-    FLOAT           shift and go to state 25
-    LONG            shift and go to state 26
-    CHAR            shift and go to state 27
-    BOOLEAN         shift and go to state 28
-    ID              shift and go to state 42
-    STRING_1        shift and go to state 29
+    RPAREN          shift and go to state 83
+    PLUS            shift and go to state 35
+    MINUS           shift and go to state 36
+    TIMES           shift and go to state 37
+    DIVIDE          shift and go to state 38
+    MOD             shift and go to state 39
 
-    term                           shift and go to state 76
-    factor                         shift and go to state 18
 
 state 59
 
-    (18) queue -> VAL ID DOTS . QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
+    (45) term -> LPAREN expression RPAREN .
 
-    QUEUE           shift and go to state 77
+    PLUS            reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    TIMES           reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    MOD             reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    $end            reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    SEMICOLON       reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    PRINT           reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    PRINTLN         reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    VAR             reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    VAL             reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    ID              reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    LPAREN          reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    FOR             reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    IF              reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    INT             reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    FLOAT           reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    LONG            reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    CHAR            reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    BOOLEAN         reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    STRING_1        reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    RCURL           reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    CONJ            reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    DISJ            reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    LANGLE          reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    RANGLE          reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    LE              reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    GE              reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    EXCL_EQ         reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    EXCL_EQEQ       reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    AS_SAFE         reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    EQEQ            reduce using rule 45 (term -> LPAREN expression RPAREN .)
+    EQEQEQ          reduce using rule 45 (term -> LPAREN expression RPAREN .)
 
 
 state 60
 
-    (26) asignacionSimple -> ID DOTS tipoDato . EQUAL valor
+    (19) impresion -> PRINTLN LPAREN expression . RPAREN
+    (38) expression -> expression . PLUS term
+    (39) expression -> expression . MINUS term
+    (40) expression -> expression . TIMES term
+    (41) expression -> expression . DIVIDE term
+    (42) expression -> expression . MOD term
 
-    EQUAL           shift and go to state 78
+    RPAREN          shift and go to state 84
+    PLUS            shift and go to state 35
+    MINUS           shift and go to state 36
+    TIMES           shift and go to state 37
+    DIVIDE          shift and go to state 38
+    MOD             shift and go to state 39
 
 
 state 61
 
-    (28) tipoDato -> TINT .
+    (20) queue -> VAL ID DOTS . QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
 
-    EQUAL           reduce using rule 28 (tipoDato -> TINT .)
-    RANGLE          reduce using rule 28 (tipoDato -> TINT .)
+    QUEUE           shift and go to state 85
 
 
 state 62
 
-    (29) tipoDato -> TLONG .
+    (28) asignacionSimple -> ID DOTS tipoDato . EQUAL valor
 
-    EQUAL           reduce using rule 29 (tipoDato -> TLONG .)
-    RANGLE          reduce using rule 29 (tipoDato -> TLONG .)
+    EQUAL           shift and go to state 86
 
 
 state 63
 
-    (30) tipoDato -> TFLOAT .
+    (30) tipoDato -> TINT .
 
-    EQUAL           reduce using rule 30 (tipoDato -> TFLOAT .)
-    RANGLE          reduce using rule 30 (tipoDato -> TFLOAT .)
+    EQUAL           reduce using rule 30 (tipoDato -> TINT .)
+    RANGLE          reduce using rule 30 (tipoDato -> TINT .)
 
 
 state 64
 
-    (31) tipoDato -> TDOUBLE .
+    (31) tipoDato -> TLONG .
 
-    EQUAL           reduce using rule 31 (tipoDato -> TDOUBLE .)
-    RANGLE          reduce using rule 31 (tipoDato -> TDOUBLE .)
+    EQUAL           reduce using rule 31 (tipoDato -> TLONG .)
+    RANGLE          reduce using rule 31 (tipoDato -> TLONG .)
 
 
 state 65
 
-    (32) tipoDato -> TBOOLEAN .
+    (32) tipoDato -> TFLOAT .
 
-    EQUAL           reduce using rule 32 (tipoDato -> TBOOLEAN .)
-    RANGLE          reduce using rule 32 (tipoDato -> TBOOLEAN .)
+    EQUAL           reduce using rule 32 (tipoDato -> TFLOAT .)
+    RANGLE          reduce using rule 32 (tipoDato -> TFLOAT .)
 
 
 state 66
 
-    (33) tipoDato -> TCHAR .
+    (33) tipoDato -> TDOUBLE .
 
-    EQUAL           reduce using rule 33 (tipoDato -> TCHAR .)
-    RANGLE          reduce using rule 33 (tipoDato -> TCHAR .)
+    EQUAL           reduce using rule 33 (tipoDato -> TDOUBLE .)
+    RANGLE          reduce using rule 33 (tipoDato -> TDOUBLE .)
 
 
 state 67
 
-    (34) tipoDato -> TSTRING .
+    (34) tipoDato -> TBOOLEAN .
 
-    EQUAL           reduce using rule 34 (tipoDato -> TSTRING .)
-    RANGLE          reduce using rule 34 (tipoDato -> TSTRING .)
+    EQUAL           reduce using rule 34 (tipoDato -> TBOOLEAN .)
+    RANGLE          reduce using rule 34 (tipoDato -> TBOOLEAN .)
 
 
 state 68
 
-    (27) asignacionSimple -> ID EQUAL valor .
+    (35) tipoDato -> TCHAR .
 
-    SEMICOLON       reduce using rule 27 (asignacionSimple -> ID EQUAL valor .)
+    EQUAL           reduce using rule 35 (tipoDato -> TCHAR .)
+    RANGLE          reduce using rule 35 (tipoDato -> TCHAR .)
 
 
 state 69
 
-    (35) valor -> expression .
-    (39) expression -> expression . PLUS term
-    (40) expression -> expression . MINUS term
-    (41) expression -> expression . TIMES term
-    (42) expression -> expression . DIVIDE term
-    (43) expression -> expression . MOD term
+    (36) tipoDato -> TSTRING .
 
-    SEMICOLON       reduce using rule 35 (valor -> expression .)
-    PLUS            shift and go to state 32
-    MINUS           shift and go to state 33
-    TIMES           shift and go to state 34
-    DIVIDE          shift and go to state 35
-    MOD             shift and go to state 36
+    EQUAL           reduce using rule 36 (tipoDato -> TSTRING .)
+    RANGLE          reduce using rule 36 (tipoDato -> TSTRING .)
 
 
 state 70
 
-    (36) valor -> opLogica .
-    (37) opLogica -> opLogica . LANGLE term
+    (29) asignacionSimple -> ID EQUAL valor .
 
-    SEMICOLON       reduce using rule 36 (valor -> opLogica .)
-    LANGLE          shift and go to state 58
+    SEMICOLON       reduce using rule 29 (asignacionSimple -> ID EQUAL valor .)
 
 
 state 71
 
-    (13) queue_add -> ID DOT ADD . LPAREN factor RPAREN
+    (37) valor -> expression .
+    (38) expression -> expression . PLUS term
+    (39) expression -> expression . MINUS term
+    (40) expression -> expression . TIMES term
+    (41) expression -> expression . DIVIDE term
+    (42) expression -> expression . MOD term
 
-    LPAREN          shift and go to state 79
+    SEMICOLON       reduce using rule 37 (valor -> expression .)
+    PLUS            shift and go to state 35
+    MINUS           shift and go to state 36
+    TIMES           shift and go to state 37
+    DIVIDE          shift and go to state 38
+    MOD             shift and go to state 39
 
 
 state 72
 
-    (14) queue_peek -> ID DOT PEEK . LPAREN RPAREN
+    (14) queue_add -> ID DOT ADD . LPAREN factor RPAREN
 
-    LPAREN          shift and go to state 80
+    LPAREN          shift and go to state 87
 
 
 state 73
 
-    (16) queue_remove -> ID DOT REMOVE . LPAREN RPAREN
+    (15) queue_peek -> ID DOT PEEK . LPAREN RPAREN
 
-    LPAREN          shift and go to state 81
+    LPAREN          shift and go to state 88
 
 
 state 74
 
-    (15) queue_poll -> ID DOT POLL . LPAREN RPAREN
+    (17) queue_remove -> ID DOT REMOVE . LPAREN RPAREN
 
-    LPAREN          shift and go to state 82
+    LPAREN          shift and go to state 89
 
 
 state 75
 
-    (19) for -> FOR LPAREN ID . IN ID RPAREN LCURL morelines RCURL
+    (16) queue_poll -> ID DOT POLL . LPAREN RPAREN
 
-    IN              shift and go to state 83
+    LPAREN          shift and go to state 90
 
 
 state 76
 
-    (37) opLogica -> opLogica LANGLE term .
+    (21) for -> FOR LPAREN ID . IN ID RPAREN LCURL morelines RCURL
 
-    RPAREN          reduce using rule 37 (opLogica -> opLogica LANGLE term .)
-    LANGLE          reduce using rule 37 (opLogica -> opLogica LANGLE term .)
-    SEMICOLON       reduce using rule 37 (opLogica -> opLogica LANGLE term .)
+    IN              shift and go to state 91
 
 
 state 77
 
-    (18) queue -> VAL ID DOTS QUEUE . LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
-
-    LANGLE          shift and go to state 84
-
-
-state 78
-
-    (26) asignacionSimple -> ID DOTS tipoDato EQUAL . valor
-    (35) valor -> . expression
-    (36) valor -> . opLogica
-    (39) expression -> . expression PLUS term
-    (40) expression -> . expression MINUS term
-    (41) expression -> . expression TIMES term
-    (42) expression -> . expression DIVIDE term
-    (43) expression -> . expression MOD term
-    (44) expression -> . term
-    (37) opLogica -> . opLogica LANGLE term
-    (38) opLogica -> . term
-    (45) term -> . factor
-    (46) term -> . LPAREN expression RPAREN
-    (47) term -> . LPAREN opLogica RPAREN
-    (48) factor -> . INT
-    (49) factor -> . FLOAT
-    (50) factor -> . LONG
-    (51) factor -> . CHAR
-    (52) factor -> . BOOLEAN
-    (53) factor -> . ID
-    (54) factor -> . STRING_1
-
-    LPAREN          shift and go to state 8
-    INT             shift and go to state 24
-    FLOAT           shift and go to state 25
-    LONG            shift and go to state 26
-    CHAR            shift and go to state 27
-    BOOLEAN         shift and go to state 28
-    ID              shift and go to state 42
-    STRING_1        shift and go to state 29
-
-    valor                          shift and go to state 85
-    expression                     shift and go to state 69
-    opLogica                       shift and go to state 70
-    term                           shift and go to state 41
-    factor                         shift and go to state 18
-
-state 79
-
-    (13) queue_add -> ID DOT ADD LPAREN . factor RPAREN
-    (48) factor -> . INT
-    (49) factor -> . FLOAT
-    (50) factor -> . LONG
-    (51) factor -> . CHAR
-    (52) factor -> . BOOLEAN
-    (53) factor -> . ID
-    (54) factor -> . STRING_1
-
-    INT             shift and go to state 24
-    FLOAT           shift and go to state 25
-    LONG            shift and go to state 26
-    CHAR            shift and go to state 27
-    BOOLEAN         shift and go to state 28
-    ID              shift and go to state 42
-    STRING_1        shift and go to state 29
-
-    factor                         shift and go to state 86
-
-state 80
-
-    (14) queue_peek -> ID DOT PEEK LPAREN . RPAREN
-
-    RPAREN          shift and go to state 87
-
-
-state 81
-
-    (16) queue_remove -> ID DOT REMOVE LPAREN . RPAREN
-
-    RPAREN          shift and go to state 88
-
-
-state 82
-
-    (15) queue_poll -> ID DOT POLL LPAREN . RPAREN
-
-    RPAREN          shift and go to state 89
-
-
-state 83
-
-    (19) for -> FOR LPAREN ID IN . ID RPAREN LCURL morelines RCURL
-
-    ID              shift and go to state 90
-
-
-state 84
-
-    (18) queue -> VAL ID DOTS QUEUE LANGLE . tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
-    (28) tipoDato -> . TINT
-    (29) tipoDato -> . TLONG
-    (30) tipoDato -> . TFLOAT
-    (31) tipoDato -> . TDOUBLE
-    (32) tipoDato -> . TBOOLEAN
-    (33) tipoDato -> . TCHAR
-    (34) tipoDato -> . TSTRING
-
-    TINT            shift and go to state 61
-    TLONG           shift and go to state 62
-    TFLOAT          shift and go to state 63
-    TDOUBLE         shift and go to state 64
-    TBOOLEAN        shift and go to state 65
-    TCHAR           shift and go to state 66
-    TSTRING         shift and go to state 67
-
-    tipoDato                       shift and go to state 91
-
-state 85
-
-    (26) asignacionSimple -> ID DOTS tipoDato EQUAL valor .
-
-    SEMICOLON       reduce using rule 26 (asignacionSimple -> ID DOTS tipoDato EQUAL valor .)
-
-
-state 86
-
-    (13) queue_add -> ID DOT ADD LPAREN factor . RPAREN
+    (53) if -> IF LPAREN condicion . RPAREN LCURL morelines RCURL
+    (54) if -> IF LPAREN condicion . RPAREN LCURL morelines RCURL else
 
     RPAREN          shift and go to state 92
 
 
+state 78
+
+    (56) condicion -> condicionL .
+
+    RPAREN          reduce using rule 56 (condicion -> condicionL .)
+
+
+state 79
+
+    (57) condicion -> condicionR .
+
+    RPAREN          reduce using rule 57 (condicion -> condicionR .)
+
+
+state 80
+
+    (58) condicion -> condicionN .
+
+    RPAREN          reduce using rule 58 (condicion -> condicionN .)
+
+
+state 81
+
+    (59) condicionL -> term . opL term
+    (60) condicionR -> term . opR term
+    (62) opL -> . CONJ
+    (63) opL -> . DISJ
+    (64) opR -> . LANGLE
+    (65) opR -> . RANGLE
+    (66) opR -> . LE
+    (67) opR -> . GE
+    (68) opR -> . EXCL_EQ
+    (69) opR -> . EXCL_EQEQ
+    (70) opR -> . AS_SAFE
+    (71) opR -> . EQEQ
+    (72) opR -> . EQEQEQ
+
+    CONJ            shift and go to state 95
+    DISJ            shift and go to state 96
+    LANGLE          shift and go to state 97
+    RANGLE          shift and go to state 98
+    LE              shift and go to state 99
+    GE              shift and go to state 100
+    EXCL_EQ         shift and go to state 101
+    EXCL_EQEQ       shift and go to state 102
+    AS_SAFE         shift and go to state 103
+    EQEQ            shift and go to state 104
+    EQEQEQ          shift and go to state 105
+
+    opL                            shift and go to state 93
+    opR                            shift and go to state 94
+
+state 82
+
+    (61) condicionN -> EXCL_WS . term
+    (44) term -> . factor
+    (45) term -> . LPAREN expression RPAREN
+    (46) factor -> . INT
+    (47) factor -> . FLOAT
+    (48) factor -> . LONG
+    (49) factor -> . CHAR
+    (50) factor -> . BOOLEAN
+    (51) factor -> . ID
+    (52) factor -> . STRING_1
+
+    LPAREN          shift and go to state 8
+    INT             shift and go to state 27
+    FLOAT           shift and go to state 28
+    LONG            shift and go to state 29
+    CHAR            shift and go to state 30
+    BOOLEAN         shift and go to state 31
+    ID              shift and go to state 43
+    STRING_1        shift and go to state 32
+
+    term                           shift and go to state 106
+    factor                         shift and go to state 20
+
+state 83
+
+    (18) impresion -> PRINT LPAREN expression RPAREN .
+
+    SEMICOLON       reduce using rule 18 (impresion -> PRINT LPAREN expression RPAREN .)
+
+
+state 84
+
+    (19) impresion -> PRINTLN LPAREN expression RPAREN .
+
+    SEMICOLON       reduce using rule 19 (impresion -> PRINTLN LPAREN expression RPAREN .)
+
+
+state 85
+
+    (20) queue -> VAL ID DOTS QUEUE . LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
+
+    LANGLE          shift and go to state 107
+
+
+state 86
+
+    (28) asignacionSimple -> ID DOTS tipoDato EQUAL . valor
+    (37) valor -> . expression
+    (38) expression -> . expression PLUS term
+    (39) expression -> . expression MINUS term
+    (40) expression -> . expression TIMES term
+    (41) expression -> . expression DIVIDE term
+    (42) expression -> . expression MOD term
+    (43) expression -> . term
+    (44) term -> . factor
+    (45) term -> . LPAREN expression RPAREN
+    (46) factor -> . INT
+    (47) factor -> . FLOAT
+    (48) factor -> . LONG
+    (49) factor -> . CHAR
+    (50) factor -> . BOOLEAN
+    (51) factor -> . ID
+    (52) factor -> . STRING_1
+
+    LPAREN          shift and go to state 8
+    INT             shift and go to state 27
+    FLOAT           shift and go to state 28
+    LONG            shift and go to state 29
+    CHAR            shift and go to state 30
+    BOOLEAN         shift and go to state 31
+    ID              shift and go to state 43
+    STRING_1        shift and go to state 32
+
+    valor                          shift and go to state 108
+    expression                     shift and go to state 71
+    term                           shift and go to state 12
+    factor                         shift and go to state 20
+
 state 87
 
-    (14) queue_peek -> ID DOT PEEK LPAREN RPAREN .
+    (14) queue_add -> ID DOT ADD LPAREN . factor RPAREN
+    (46) factor -> . INT
+    (47) factor -> . FLOAT
+    (48) factor -> . LONG
+    (49) factor -> . CHAR
+    (50) factor -> . BOOLEAN
+    (51) factor -> . ID
+    (52) factor -> . STRING_1
 
-    SEMICOLON       reduce using rule 14 (queue_peek -> ID DOT PEEK LPAREN RPAREN .)
+    INT             shift and go to state 27
+    FLOAT           shift and go to state 28
+    LONG            shift and go to state 29
+    CHAR            shift and go to state 30
+    BOOLEAN         shift and go to state 31
+    ID              shift and go to state 43
+    STRING_1        shift and go to state 32
 
+    factor                         shift and go to state 109
 
 state 88
 
-    (16) queue_remove -> ID DOT REMOVE LPAREN RPAREN .
+    (15) queue_peek -> ID DOT PEEK LPAREN . RPAREN
 
-    SEMICOLON       reduce using rule 16 (queue_remove -> ID DOT REMOVE LPAREN RPAREN .)
+    RPAREN          shift and go to state 110
 
 
 state 89
 
-    (15) queue_poll -> ID DOT POLL LPAREN RPAREN .
+    (17) queue_remove -> ID DOT REMOVE LPAREN . RPAREN
 
-    SEMICOLON       reduce using rule 15 (queue_poll -> ID DOT POLL LPAREN RPAREN .)
+    RPAREN          shift and go to state 111
 
 
 state 90
 
-    (19) for -> FOR LPAREN ID IN ID . RPAREN LCURL morelines RCURL
+    (16) queue_poll -> ID DOT POLL LPAREN . RPAREN
 
-    RPAREN          shift and go to state 93
+    RPAREN          shift and go to state 112
 
 
 state 91
 
-    (18) queue -> VAL ID DOTS QUEUE LANGLE tipoDato . RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
+    (21) for -> FOR LPAREN ID IN . ID RPAREN LCURL morelines RCURL
 
-    RANGLE          shift and go to state 94
+    ID              shift and go to state 113
 
 
 state 92
 
-    (13) queue_add -> ID DOT ADD LPAREN factor RPAREN .
+    (53) if -> IF LPAREN condicion RPAREN . LCURL morelines RCURL
+    (54) if -> IF LPAREN condicion RPAREN . LCURL morelines RCURL else
 
-    SEMICOLON       reduce using rule 13 (queue_add -> ID DOT ADD LPAREN factor RPAREN .)
+    LCURL           shift and go to state 114
 
 
 state 93
 
-    (19) for -> FOR LPAREN ID IN ID RPAREN . LCURL morelines RCURL
+    (59) condicionL -> term opL . term
+    (44) term -> . factor
+    (45) term -> . LPAREN expression RPAREN
+    (46) factor -> . INT
+    (47) factor -> . FLOAT
+    (48) factor -> . LONG
+    (49) factor -> . CHAR
+    (50) factor -> . BOOLEAN
+    (51) factor -> . ID
+    (52) factor -> . STRING_1
 
-    LCURL           shift and go to state 95
+    LPAREN          shift and go to state 8
+    INT             shift and go to state 27
+    FLOAT           shift and go to state 28
+    LONG            shift and go to state 29
+    CHAR            shift and go to state 30
+    BOOLEAN         shift and go to state 31
+    ID              shift and go to state 43
+    STRING_1        shift and go to state 32
 
+    term                           shift and go to state 115
+    factor                         shift and go to state 20
 
 state 94
 
-    (18) queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE . EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
+    (60) condicionR -> term opR . term
+    (44) term -> . factor
+    (45) term -> . LPAREN expression RPAREN
+    (46) factor -> . INT
+    (47) factor -> . FLOAT
+    (48) factor -> . LONG
+    (49) factor -> . CHAR
+    (50) factor -> . BOOLEAN
+    (51) factor -> . ID
+    (52) factor -> . STRING_1
 
-    EQUAL           shift and go to state 96
+    LPAREN          shift and go to state 8
+    INT             shift and go to state 27
+    FLOAT           shift and go to state 28
+    LONG            shift and go to state 29
+    CHAR            shift and go to state 30
+    BOOLEAN         shift and go to state 31
+    ID              shift and go to state 43
+    STRING_1        shift and go to state 32
 
+    term                           shift and go to state 116
+    factor                         shift and go to state 20
 
 state 95
 
-    (19) for -> FOR LPAREN ID IN ID RPAREN LCURL . morelines RCURL
-    (20) morelines -> . line
-    (21) morelines -> . line morelines
-    (1) line -> . impresion SEMICOLON
-    (2) line -> . asignacion SEMICOLON
-    (3) line -> . expression
-    (4) line -> . estructurasControl
-    (5) line -> . estructurasDatos SEMICOLON
-    (17) impresion -> . PRINT LPAREN RPAREN
-    (22) asignacion -> . keywordVariables asignacionSimple
-    (23) asignacion -> . asignacionSimple
-    (39) expression -> . expression PLUS term
-    (40) expression -> . expression MINUS term
-    (41) expression -> . expression TIMES term
-    (42) expression -> . expression DIVIDE term
-    (43) expression -> . expression MOD term
-    (44) expression -> . term
-    (8) estructurasControl -> . for
-    (6) estructurasDatos -> . queue
-    (7) estructurasDatos -> . queue_operations
-    (24) keywordVariables -> . VAR
-    (25) keywordVariables -> . VAL
-    (26) asignacionSimple -> . ID DOTS tipoDato EQUAL valor
-    (27) asignacionSimple -> . ID EQUAL valor
-    (45) term -> . factor
-    (46) term -> . LPAREN expression RPAREN
-    (47) term -> . LPAREN opLogica RPAREN
-    (19) for -> . FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL
-    (18) queue -> . VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
-    (9) queue_operations -> . queue_add
-    (10) queue_operations -> . queue_peek
-    (11) queue_operations -> . queue_remove
-    (12) queue_operations -> . queue_poll
-    (48) factor -> . INT
-    (49) factor -> . FLOAT
-    (50) factor -> . LONG
-    (51) factor -> . CHAR
-    (52) factor -> . BOOLEAN
-    (53) factor -> . ID
-    (54) factor -> . STRING_1
-    (13) queue_add -> . ID DOT ADD LPAREN factor RPAREN
-    (14) queue_peek -> . ID DOT PEEK LPAREN RPAREN
-    (16) queue_remove -> . ID DOT REMOVE LPAREN RPAREN
-    (15) queue_poll -> . ID DOT POLL LPAREN RPAREN
+    (62) opL -> CONJ .
 
-    PRINT           shift and go to state 7
-    VAR             shift and go to state 15
-    VAL             shift and go to state 16
-    ID              shift and go to state 17
-    LPAREN          shift and go to state 8
-    FOR             shift and go to state 19
-    INT             shift and go to state 24
-    FLOAT           shift and go to state 25
-    LONG            shift and go to state 26
-    CHAR            shift and go to state 27
-    BOOLEAN         shift and go to state 28
-    STRING_1        shift and go to state 29
+    LPAREN          reduce using rule 62 (opL -> CONJ .)
+    INT             reduce using rule 62 (opL -> CONJ .)
+    FLOAT           reduce using rule 62 (opL -> CONJ .)
+    LONG            reduce using rule 62 (opL -> CONJ .)
+    CHAR            reduce using rule 62 (opL -> CONJ .)
+    BOOLEAN         reduce using rule 62 (opL -> CONJ .)
+    ID              reduce using rule 62 (opL -> CONJ .)
+    STRING_1        reduce using rule 62 (opL -> CONJ .)
 
-    morelines                      shift and go to state 97
-    line                           shift and go to state 98
-    impresion                      shift and go to state 2
-    asignacion                     shift and go to state 3
-    expression                     shift and go to state 4
-    estructurasControl             shift and go to state 5
-    estructurasDatos               shift and go to state 6
-    keywordVariables               shift and go to state 9
-    asignacionSimple               shift and go to state 10
-    term                           shift and go to state 11
-    for                            shift and go to state 12
-    queue                          shift and go to state 13
-    queue_operations               shift and go to state 14
-    factor                         shift and go to state 18
-    queue_add                      shift and go to state 20
-    queue_peek                     shift and go to state 21
-    queue_remove                   shift and go to state 22
-    queue_poll                     shift and go to state 23
 
 state 96
 
-    (18) queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL . LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
+    (63) opL -> DISJ .
 
-    LINKEDLIST      shift and go to state 99
+    LPAREN          reduce using rule 63 (opL -> DISJ .)
+    INT             reduce using rule 63 (opL -> DISJ .)
+    FLOAT           reduce using rule 63 (opL -> DISJ .)
+    LONG            reduce using rule 63 (opL -> DISJ .)
+    CHAR            reduce using rule 63 (opL -> DISJ .)
+    BOOLEAN         reduce using rule 63 (opL -> DISJ .)
+    ID              reduce using rule 63 (opL -> DISJ .)
+    STRING_1        reduce using rule 63 (opL -> DISJ .)
 
 
 state 97
 
-    (19) for -> FOR LPAREN ID IN ID RPAREN LCURL morelines . RCURL
+    (64) opR -> LANGLE .
 
-    RCURL           shift and go to state 100
+    LPAREN          reduce using rule 64 (opR -> LANGLE .)
+    INT             reduce using rule 64 (opR -> LANGLE .)
+    FLOAT           reduce using rule 64 (opR -> LANGLE .)
+    LONG            reduce using rule 64 (opR -> LANGLE .)
+    CHAR            reduce using rule 64 (opR -> LANGLE .)
+    BOOLEAN         reduce using rule 64 (opR -> LANGLE .)
+    ID              reduce using rule 64 (opR -> LANGLE .)
+    STRING_1        reduce using rule 64 (opR -> LANGLE .)
 
 
 state 98
 
-    (20) morelines -> line .
-    (21) morelines -> line . morelines
-    (20) morelines -> . line
-    (21) morelines -> . line morelines
+    (65) opR -> RANGLE .
+
+    LPAREN          reduce using rule 65 (opR -> RANGLE .)
+    INT             reduce using rule 65 (opR -> RANGLE .)
+    FLOAT           reduce using rule 65 (opR -> RANGLE .)
+    LONG            reduce using rule 65 (opR -> RANGLE .)
+    CHAR            reduce using rule 65 (opR -> RANGLE .)
+    BOOLEAN         reduce using rule 65 (opR -> RANGLE .)
+    ID              reduce using rule 65 (opR -> RANGLE .)
+    STRING_1        reduce using rule 65 (opR -> RANGLE .)
+
+
+state 99
+
+    (66) opR -> LE .
+
+    LPAREN          reduce using rule 66 (opR -> LE .)
+    INT             reduce using rule 66 (opR -> LE .)
+    FLOAT           reduce using rule 66 (opR -> LE .)
+    LONG            reduce using rule 66 (opR -> LE .)
+    CHAR            reduce using rule 66 (opR -> LE .)
+    BOOLEAN         reduce using rule 66 (opR -> LE .)
+    ID              reduce using rule 66 (opR -> LE .)
+    STRING_1        reduce using rule 66 (opR -> LE .)
+
+
+state 100
+
+    (67) opR -> GE .
+
+    LPAREN          reduce using rule 67 (opR -> GE .)
+    INT             reduce using rule 67 (opR -> GE .)
+    FLOAT           reduce using rule 67 (opR -> GE .)
+    LONG            reduce using rule 67 (opR -> GE .)
+    CHAR            reduce using rule 67 (opR -> GE .)
+    BOOLEAN         reduce using rule 67 (opR -> GE .)
+    ID              reduce using rule 67 (opR -> GE .)
+    STRING_1        reduce using rule 67 (opR -> GE .)
+
+
+state 101
+
+    (68) opR -> EXCL_EQ .
+
+    LPAREN          reduce using rule 68 (opR -> EXCL_EQ .)
+    INT             reduce using rule 68 (opR -> EXCL_EQ .)
+    FLOAT           reduce using rule 68 (opR -> EXCL_EQ .)
+    LONG            reduce using rule 68 (opR -> EXCL_EQ .)
+    CHAR            reduce using rule 68 (opR -> EXCL_EQ .)
+    BOOLEAN         reduce using rule 68 (opR -> EXCL_EQ .)
+    ID              reduce using rule 68 (opR -> EXCL_EQ .)
+    STRING_1        reduce using rule 68 (opR -> EXCL_EQ .)
+
+
+state 102
+
+    (69) opR -> EXCL_EQEQ .
+
+    LPAREN          reduce using rule 69 (opR -> EXCL_EQEQ .)
+    INT             reduce using rule 69 (opR -> EXCL_EQEQ .)
+    FLOAT           reduce using rule 69 (opR -> EXCL_EQEQ .)
+    LONG            reduce using rule 69 (opR -> EXCL_EQEQ .)
+    CHAR            reduce using rule 69 (opR -> EXCL_EQEQ .)
+    BOOLEAN         reduce using rule 69 (opR -> EXCL_EQEQ .)
+    ID              reduce using rule 69 (opR -> EXCL_EQEQ .)
+    STRING_1        reduce using rule 69 (opR -> EXCL_EQEQ .)
+
+
+state 103
+
+    (70) opR -> AS_SAFE .
+
+    LPAREN          reduce using rule 70 (opR -> AS_SAFE .)
+    INT             reduce using rule 70 (opR -> AS_SAFE .)
+    FLOAT           reduce using rule 70 (opR -> AS_SAFE .)
+    LONG            reduce using rule 70 (opR -> AS_SAFE .)
+    CHAR            reduce using rule 70 (opR -> AS_SAFE .)
+    BOOLEAN         reduce using rule 70 (opR -> AS_SAFE .)
+    ID              reduce using rule 70 (opR -> AS_SAFE .)
+    STRING_1        reduce using rule 70 (opR -> AS_SAFE .)
+
+
+state 104
+
+    (71) opR -> EQEQ .
+
+    LPAREN          reduce using rule 71 (opR -> EQEQ .)
+    INT             reduce using rule 71 (opR -> EQEQ .)
+    FLOAT           reduce using rule 71 (opR -> EQEQ .)
+    LONG            reduce using rule 71 (opR -> EQEQ .)
+    CHAR            reduce using rule 71 (opR -> EQEQ .)
+    BOOLEAN         reduce using rule 71 (opR -> EQEQ .)
+    ID              reduce using rule 71 (opR -> EQEQ .)
+    STRING_1        reduce using rule 71 (opR -> EQEQ .)
+
+
+state 105
+
+    (72) opR -> EQEQEQ .
+
+    LPAREN          reduce using rule 72 (opR -> EQEQEQ .)
+    INT             reduce using rule 72 (opR -> EQEQEQ .)
+    FLOAT           reduce using rule 72 (opR -> EQEQEQ .)
+    LONG            reduce using rule 72 (opR -> EQEQEQ .)
+    CHAR            reduce using rule 72 (opR -> EQEQEQ .)
+    BOOLEAN         reduce using rule 72 (opR -> EQEQEQ .)
+    ID              reduce using rule 72 (opR -> EQEQEQ .)
+    STRING_1        reduce using rule 72 (opR -> EQEQEQ .)
+
+
+state 106
+
+    (61) condicionN -> EXCL_WS term .
+
+    RPAREN          reduce using rule 61 (condicionN -> EXCL_WS term .)
+
+
+state 107
+
+    (20) queue -> VAL ID DOTS QUEUE LANGLE . tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
+    (30) tipoDato -> . TINT
+    (31) tipoDato -> . TLONG
+    (32) tipoDato -> . TFLOAT
+    (33) tipoDato -> . TDOUBLE
+    (34) tipoDato -> . TBOOLEAN
+    (35) tipoDato -> . TCHAR
+    (36) tipoDato -> . TSTRING
+
+    TINT            shift and go to state 63
+    TLONG           shift and go to state 64
+    TFLOAT          shift and go to state 65
+    TDOUBLE         shift and go to state 66
+    TBOOLEAN        shift and go to state 67
+    TCHAR           shift and go to state 68
+    TSTRING         shift and go to state 69
+
+    tipoDato                       shift and go to state 117
+
+state 108
+
+    (28) asignacionSimple -> ID DOTS tipoDato EQUAL valor .
+
+    SEMICOLON       reduce using rule 28 (asignacionSimple -> ID DOTS tipoDato EQUAL valor .)
+
+
+state 109
+
+    (14) queue_add -> ID DOT ADD LPAREN factor . RPAREN
+
+    RPAREN          shift and go to state 118
+
+
+state 110
+
+    (15) queue_peek -> ID DOT PEEK LPAREN RPAREN .
+
+    SEMICOLON       reduce using rule 15 (queue_peek -> ID DOT PEEK LPAREN RPAREN .)
+
+
+state 111
+
+    (17) queue_remove -> ID DOT REMOVE LPAREN RPAREN .
+
+    SEMICOLON       reduce using rule 17 (queue_remove -> ID DOT REMOVE LPAREN RPAREN .)
+
+
+state 112
+
+    (16) queue_poll -> ID DOT POLL LPAREN RPAREN .
+
+    SEMICOLON       reduce using rule 16 (queue_poll -> ID DOT POLL LPAREN RPAREN .)
+
+
+state 113
+
+    (21) for -> FOR LPAREN ID IN ID . RPAREN LCURL morelines RCURL
+
+    RPAREN          shift and go to state 119
+
+
+state 114
+
+    (53) if -> IF LPAREN condicion RPAREN LCURL . morelines RCURL
+    (54) if -> IF LPAREN condicion RPAREN LCURL . morelines RCURL else
+    (22) morelines -> . line
+    (23) morelines -> . line morelines
     (1) line -> . impresion SEMICOLON
     (2) line -> . asignacion SEMICOLON
     (3) line -> . expression
     (4) line -> . estructurasControl
     (5) line -> . estructurasDatos SEMICOLON
-    (17) impresion -> . PRINT LPAREN RPAREN
-    (22) asignacion -> . keywordVariables asignacionSimple
-    (23) asignacion -> . asignacionSimple
-    (39) expression -> . expression PLUS term
-    (40) expression -> . expression MINUS term
-    (41) expression -> . expression TIMES term
-    (42) expression -> . expression DIVIDE term
-    (43) expression -> . expression MOD term
-    (44) expression -> . term
+    (18) impresion -> . PRINT LPAREN expression RPAREN
+    (19) impresion -> . PRINTLN LPAREN expression RPAREN
+    (24) asignacion -> . keywordVariables asignacionSimple
+    (25) asignacion -> . asignacionSimple
+    (38) expression -> . expression PLUS term
+    (39) expression -> . expression MINUS term
+    (40) expression -> . expression TIMES term
+    (41) expression -> . expression DIVIDE term
+    (42) expression -> . expression MOD term
+    (43) expression -> . term
     (8) estructurasControl -> . for
+    (9) estructurasControl -> . if
     (6) estructurasDatos -> . queue
     (7) estructurasDatos -> . queue_operations
-    (24) keywordVariables -> . VAR
-    (25) keywordVariables -> . VAL
-    (26) asignacionSimple -> . ID DOTS tipoDato EQUAL valor
-    (27) asignacionSimple -> . ID EQUAL valor
-    (45) term -> . factor
-    (46) term -> . LPAREN expression RPAREN
-    (47) term -> . LPAREN opLogica RPAREN
-    (19) for -> . FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL
-    (18) queue -> . VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
-    (9) queue_operations -> . queue_add
-    (10) queue_operations -> . queue_peek
-    (11) queue_operations -> . queue_remove
-    (12) queue_operations -> . queue_poll
-    (48) factor -> . INT
-    (49) factor -> . FLOAT
-    (50) factor -> . LONG
-    (51) factor -> . CHAR
-    (52) factor -> . BOOLEAN
-    (53) factor -> . ID
-    (54) factor -> . STRING_1
-    (13) queue_add -> . ID DOT ADD LPAREN factor RPAREN
-    (14) queue_peek -> . ID DOT PEEK LPAREN RPAREN
-    (16) queue_remove -> . ID DOT REMOVE LPAREN RPAREN
-    (15) queue_poll -> . ID DOT POLL LPAREN RPAREN
+    (26) keywordVariables -> . VAR
+    (27) keywordVariables -> . VAL
+    (28) asignacionSimple -> . ID DOTS tipoDato EQUAL valor
+    (29) asignacionSimple -> . ID EQUAL valor
+    (44) term -> . factor
+    (45) term -> . LPAREN expression RPAREN
+    (21) for -> . FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL
+    (53) if -> . IF LPAREN condicion RPAREN LCURL morelines RCURL
+    (54) if -> . IF LPAREN condicion RPAREN LCURL morelines RCURL else
+    (20) queue -> . VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
+    (10) queue_operations -> . queue_add
+    (11) queue_operations -> . queue_peek
+    (12) queue_operations -> . queue_remove
+    (13) queue_operations -> . queue_poll
+    (46) factor -> . INT
+    (47) factor -> . FLOAT
+    (48) factor -> . LONG
+    (49) factor -> . CHAR
+    (50) factor -> . BOOLEAN
+    (51) factor -> . ID
+    (52) factor -> . STRING_1
+    (14) queue_add -> . ID DOT ADD LPAREN factor RPAREN
+    (15) queue_peek -> . ID DOT PEEK LPAREN RPAREN
+    (17) queue_remove -> . ID DOT REMOVE LPAREN RPAREN
+    (16) queue_poll -> . ID DOT POLL LPAREN RPAREN
 
-    RCURL           reduce using rule 20 (morelines -> line .)
     PRINT           shift and go to state 7
-    VAR             shift and go to state 15
-    VAL             shift and go to state 16
-    ID              shift and go to state 17
+    PRINTLN         shift and go to state 9
+    VAR             shift and go to state 17
+    VAL             shift and go to state 18
+    ID              shift and go to state 19
     LPAREN          shift and go to state 8
-    FOR             shift and go to state 19
-    INT             shift and go to state 24
-    FLOAT           shift and go to state 25
-    LONG            shift and go to state 26
-    CHAR            shift and go to state 27
-    BOOLEAN         shift and go to state 28
-    STRING_1        shift and go to state 29
+    FOR             shift and go to state 21
+    IF              shift and go to state 22
+    INT             shift and go to state 27
+    FLOAT           shift and go to state 28
+    LONG            shift and go to state 29
+    CHAR            shift and go to state 30
+    BOOLEAN         shift and go to state 31
+    STRING_1        shift and go to state 32
 
-    line                           shift and go to state 98
-    morelines                      shift and go to state 101
+    morelines                      shift and go to state 120
+    line                           shift and go to state 121
     impresion                      shift and go to state 2
     asignacion                     shift and go to state 3
     expression                     shift and go to state 4
     estructurasControl             shift and go to state 5
     estructurasDatos               shift and go to state 6
-    keywordVariables               shift and go to state 9
-    asignacionSimple               shift and go to state 10
-    term                           shift and go to state 11
-    for                            shift and go to state 12
-    queue                          shift and go to state 13
-    queue_operations               shift and go to state 14
-    factor                         shift and go to state 18
-    queue_add                      shift and go to state 20
-    queue_peek                     shift and go to state 21
-    queue_remove                   shift and go to state 22
-    queue_poll                     shift and go to state 23
+    keywordVariables               shift and go to state 10
+    asignacionSimple               shift and go to state 11
+    term                           shift and go to state 12
+    for                            shift and go to state 13
+    if                             shift and go to state 14
+    queue                          shift and go to state 15
+    queue_operations               shift and go to state 16
+    factor                         shift and go to state 20
+    queue_add                      shift and go to state 23
+    queue_peek                     shift and go to state 24
+    queue_remove                   shift and go to state 25
+    queue_poll                     shift and go to state 26
 
-state 99
+state 115
 
-    (18) queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST . LANGLE tipoDato RANGLE LPAREN RPAREN
+    (59) condicionL -> term opL term .
 
-    LANGLE          shift and go to state 102
-
-
-state 100
-
-    (19) for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .
-
-    $end            reduce using rule 19 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
-    PRINT           reduce using rule 19 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
-    VAR             reduce using rule 19 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
-    VAL             reduce using rule 19 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
-    ID              reduce using rule 19 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
-    LPAREN          reduce using rule 19 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
-    FOR             reduce using rule 19 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
-    INT             reduce using rule 19 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
-    FLOAT           reduce using rule 19 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
-    LONG            reduce using rule 19 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
-    CHAR            reduce using rule 19 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
-    BOOLEAN         reduce using rule 19 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
-    STRING_1        reduce using rule 19 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
-    RCURL           reduce using rule 19 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
+    RPAREN          reduce using rule 59 (condicionL -> term opL term .)
 
 
-state 101
+state 116
 
-    (21) morelines -> line morelines .
+    (60) condicionR -> term opR term .
 
-    RCURL           reduce using rule 21 (morelines -> line morelines .)
-
-
-state 102
-
-    (18) queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE . tipoDato RANGLE LPAREN RPAREN
-    (28) tipoDato -> . TINT
-    (29) tipoDato -> . TLONG
-    (30) tipoDato -> . TFLOAT
-    (31) tipoDato -> . TDOUBLE
-    (32) tipoDato -> . TBOOLEAN
-    (33) tipoDato -> . TCHAR
-    (34) tipoDato -> . TSTRING
-
-    TINT            shift and go to state 61
-    TLONG           shift and go to state 62
-    TFLOAT          shift and go to state 63
-    TDOUBLE         shift and go to state 64
-    TBOOLEAN        shift and go to state 65
-    TCHAR           shift and go to state 66
-    TSTRING         shift and go to state 67
-
-    tipoDato                       shift and go to state 103
-
-state 103
-
-    (18) queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato . RANGLE LPAREN RPAREN
-
-    RANGLE          shift and go to state 104
+    RPAREN          reduce using rule 60 (condicionR -> term opR term .)
 
 
-state 104
+state 117
 
-    (18) queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE . LPAREN RPAREN
+    (20) queue -> VAL ID DOTS QUEUE LANGLE tipoDato . RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
 
-    LPAREN          shift and go to state 105
-
-
-state 105
-
-    (18) queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN . RPAREN
-
-    RPAREN          shift and go to state 106
+    RANGLE          shift and go to state 122
 
 
-state 106
+state 118
 
-    (18) queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN .
+    (14) queue_add -> ID DOT ADD LPAREN factor RPAREN .
 
-    SEMICOLON       reduce using rule 18 (queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN .)
+    SEMICOLON       reduce using rule 14 (queue_add -> ID DOT ADD LPAREN factor RPAREN .)
+
+
+state 119
+
+    (21) for -> FOR LPAREN ID IN ID RPAREN . LCURL morelines RCURL
+
+    LCURL           shift and go to state 123
+
+
+state 120
+
+    (53) if -> IF LPAREN condicion RPAREN LCURL morelines . RCURL
+    (54) if -> IF LPAREN condicion RPAREN LCURL morelines . RCURL else
+
+    RCURL           shift and go to state 124
+
+
+state 121
+
+    (22) morelines -> line .
+    (23) morelines -> line . morelines
+    (22) morelines -> . line
+    (23) morelines -> . line morelines
+    (1) line -> . impresion SEMICOLON
+    (2) line -> . asignacion SEMICOLON
+    (3) line -> . expression
+    (4) line -> . estructurasControl
+    (5) line -> . estructurasDatos SEMICOLON
+    (18) impresion -> . PRINT LPAREN expression RPAREN
+    (19) impresion -> . PRINTLN LPAREN expression RPAREN
+    (24) asignacion -> . keywordVariables asignacionSimple
+    (25) asignacion -> . asignacionSimple
+    (38) expression -> . expression PLUS term
+    (39) expression -> . expression MINUS term
+    (40) expression -> . expression TIMES term
+    (41) expression -> . expression DIVIDE term
+    (42) expression -> . expression MOD term
+    (43) expression -> . term
+    (8) estructurasControl -> . for
+    (9) estructurasControl -> . if
+    (6) estructurasDatos -> . queue
+    (7) estructurasDatos -> . queue_operations
+    (26) keywordVariables -> . VAR
+    (27) keywordVariables -> . VAL
+    (28) asignacionSimple -> . ID DOTS tipoDato EQUAL valor
+    (29) asignacionSimple -> . ID EQUAL valor
+    (44) term -> . factor
+    (45) term -> . LPAREN expression RPAREN
+    (21) for -> . FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL
+    (53) if -> . IF LPAREN condicion RPAREN LCURL morelines RCURL
+    (54) if -> . IF LPAREN condicion RPAREN LCURL morelines RCURL else
+    (20) queue -> . VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
+    (10) queue_operations -> . queue_add
+    (11) queue_operations -> . queue_peek
+    (12) queue_operations -> . queue_remove
+    (13) queue_operations -> . queue_poll
+    (46) factor -> . INT
+    (47) factor -> . FLOAT
+    (48) factor -> . LONG
+    (49) factor -> . CHAR
+    (50) factor -> . BOOLEAN
+    (51) factor -> . ID
+    (52) factor -> . STRING_1
+    (14) queue_add -> . ID DOT ADD LPAREN factor RPAREN
+    (15) queue_peek -> . ID DOT PEEK LPAREN RPAREN
+    (17) queue_remove -> . ID DOT REMOVE LPAREN RPAREN
+    (16) queue_poll -> . ID DOT POLL LPAREN RPAREN
+
+    RCURL           reduce using rule 22 (morelines -> line .)
+    PRINT           shift and go to state 7
+    PRINTLN         shift and go to state 9
+    VAR             shift and go to state 17
+    VAL             shift and go to state 18
+    ID              shift and go to state 19
+    LPAREN          shift and go to state 8
+    FOR             shift and go to state 21
+    IF              shift and go to state 22
+    INT             shift and go to state 27
+    FLOAT           shift and go to state 28
+    LONG            shift and go to state 29
+    CHAR            shift and go to state 30
+    BOOLEAN         shift and go to state 31
+    STRING_1        shift and go to state 32
+
+    line                           shift and go to state 121
+    morelines                      shift and go to state 125
+    impresion                      shift and go to state 2
+    asignacion                     shift and go to state 3
+    expression                     shift and go to state 4
+    estructurasControl             shift and go to state 5
+    estructurasDatos               shift and go to state 6
+    keywordVariables               shift and go to state 10
+    asignacionSimple               shift and go to state 11
+    term                           shift and go to state 12
+    for                            shift and go to state 13
+    if                             shift and go to state 14
+    queue                          shift and go to state 15
+    queue_operations               shift and go to state 16
+    factor                         shift and go to state 20
+    queue_add                      shift and go to state 23
+    queue_peek                     shift and go to state 24
+    queue_remove                   shift and go to state 25
+    queue_poll                     shift and go to state 26
+
+state 122
+
+    (20) queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE . EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
+
+    EQUAL           shift and go to state 126
+
+
+state 123
+
+    (21) for -> FOR LPAREN ID IN ID RPAREN LCURL . morelines RCURL
+    (22) morelines -> . line
+    (23) morelines -> . line morelines
+    (1) line -> . impresion SEMICOLON
+    (2) line -> . asignacion SEMICOLON
+    (3) line -> . expression
+    (4) line -> . estructurasControl
+    (5) line -> . estructurasDatos SEMICOLON
+    (18) impresion -> . PRINT LPAREN expression RPAREN
+    (19) impresion -> . PRINTLN LPAREN expression RPAREN
+    (24) asignacion -> . keywordVariables asignacionSimple
+    (25) asignacion -> . asignacionSimple
+    (38) expression -> . expression PLUS term
+    (39) expression -> . expression MINUS term
+    (40) expression -> . expression TIMES term
+    (41) expression -> . expression DIVIDE term
+    (42) expression -> . expression MOD term
+    (43) expression -> . term
+    (8) estructurasControl -> . for
+    (9) estructurasControl -> . if
+    (6) estructurasDatos -> . queue
+    (7) estructurasDatos -> . queue_operations
+    (26) keywordVariables -> . VAR
+    (27) keywordVariables -> . VAL
+    (28) asignacionSimple -> . ID DOTS tipoDato EQUAL valor
+    (29) asignacionSimple -> . ID EQUAL valor
+    (44) term -> . factor
+    (45) term -> . LPAREN expression RPAREN
+    (21) for -> . FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL
+    (53) if -> . IF LPAREN condicion RPAREN LCURL morelines RCURL
+    (54) if -> . IF LPAREN condicion RPAREN LCURL morelines RCURL else
+    (20) queue -> . VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
+    (10) queue_operations -> . queue_add
+    (11) queue_operations -> . queue_peek
+    (12) queue_operations -> . queue_remove
+    (13) queue_operations -> . queue_poll
+    (46) factor -> . INT
+    (47) factor -> . FLOAT
+    (48) factor -> . LONG
+    (49) factor -> . CHAR
+    (50) factor -> . BOOLEAN
+    (51) factor -> . ID
+    (52) factor -> . STRING_1
+    (14) queue_add -> . ID DOT ADD LPAREN factor RPAREN
+    (15) queue_peek -> . ID DOT PEEK LPAREN RPAREN
+    (17) queue_remove -> . ID DOT REMOVE LPAREN RPAREN
+    (16) queue_poll -> . ID DOT POLL LPAREN RPAREN
+
+    PRINT           shift and go to state 7
+    PRINTLN         shift and go to state 9
+    VAR             shift and go to state 17
+    VAL             shift and go to state 18
+    ID              shift and go to state 19
+    LPAREN          shift and go to state 8
+    FOR             shift and go to state 21
+    IF              shift and go to state 22
+    INT             shift and go to state 27
+    FLOAT           shift and go to state 28
+    LONG            shift and go to state 29
+    CHAR            shift and go to state 30
+    BOOLEAN         shift and go to state 31
+    STRING_1        shift and go to state 32
+
+    morelines                      shift and go to state 127
+    line                           shift and go to state 121
+    impresion                      shift and go to state 2
+    asignacion                     shift and go to state 3
+    expression                     shift and go to state 4
+    estructurasControl             shift and go to state 5
+    estructurasDatos               shift and go to state 6
+    keywordVariables               shift and go to state 10
+    asignacionSimple               shift and go to state 11
+    term                           shift and go to state 12
+    for                            shift and go to state 13
+    if                             shift and go to state 14
+    queue                          shift and go to state 15
+    queue_operations               shift and go to state 16
+    factor                         shift and go to state 20
+    queue_add                      shift and go to state 23
+    queue_peek                     shift and go to state 24
+    queue_remove                   shift and go to state 25
+    queue_poll                     shift and go to state 26
+
+state 124
+
+    (53) if -> IF LPAREN condicion RPAREN LCURL morelines RCURL .
+    (54) if -> IF LPAREN condicion RPAREN LCURL morelines RCURL . else
+    (55) else -> . ELSE LCURL line RCURL
+
+    $end            reduce using rule 53 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL .)
+    PRINT           reduce using rule 53 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL .)
+    PRINTLN         reduce using rule 53 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL .)
+    VAR             reduce using rule 53 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL .)
+    VAL             reduce using rule 53 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL .)
+    ID              reduce using rule 53 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL .)
+    LPAREN          reduce using rule 53 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL .)
+    FOR             reduce using rule 53 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL .)
+    IF              reduce using rule 53 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL .)
+    INT             reduce using rule 53 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL .)
+    FLOAT           reduce using rule 53 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL .)
+    LONG            reduce using rule 53 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL .)
+    CHAR            reduce using rule 53 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL .)
+    BOOLEAN         reduce using rule 53 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL .)
+    STRING_1        reduce using rule 53 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL .)
+    RCURL           reduce using rule 53 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL .)
+    ELSE            shift and go to state 129
+
+    else                           shift and go to state 128
+
+state 125
+
+    (23) morelines -> line morelines .
+
+    RCURL           reduce using rule 23 (morelines -> line morelines .)
+
+
+state 126
+
+    (20) queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL . LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
+
+    LINKEDLIST      shift and go to state 130
+
+
+state 127
+
+    (21) for -> FOR LPAREN ID IN ID RPAREN LCURL morelines . RCURL
+
+    RCURL           shift and go to state 131
+
+
+state 128
+
+    (54) if -> IF LPAREN condicion RPAREN LCURL morelines RCURL else .
+
+    $end            reduce using rule 54 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL else .)
+    PRINT           reduce using rule 54 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL else .)
+    PRINTLN         reduce using rule 54 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL else .)
+    VAR             reduce using rule 54 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL else .)
+    VAL             reduce using rule 54 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL else .)
+    ID              reduce using rule 54 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL else .)
+    LPAREN          reduce using rule 54 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL else .)
+    FOR             reduce using rule 54 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL else .)
+    IF              reduce using rule 54 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL else .)
+    INT             reduce using rule 54 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL else .)
+    FLOAT           reduce using rule 54 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL else .)
+    LONG            reduce using rule 54 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL else .)
+    CHAR            reduce using rule 54 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL else .)
+    BOOLEAN         reduce using rule 54 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL else .)
+    STRING_1        reduce using rule 54 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL else .)
+    RCURL           reduce using rule 54 (if -> IF LPAREN condicion RPAREN LCURL morelines RCURL else .)
+
+
+state 129
+
+    (55) else -> ELSE . LCURL line RCURL
+
+    LCURL           shift and go to state 132
+
+
+state 130
+
+    (20) queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST . LANGLE tipoDato RANGLE LPAREN RPAREN
+
+    LANGLE          shift and go to state 133
+
+
+state 131
+
+    (21) for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .
+
+    $end            reduce using rule 21 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
+    PRINT           reduce using rule 21 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
+    PRINTLN         reduce using rule 21 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
+    VAR             reduce using rule 21 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
+    VAL             reduce using rule 21 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
+    ID              reduce using rule 21 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
+    LPAREN          reduce using rule 21 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
+    FOR             reduce using rule 21 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
+    IF              reduce using rule 21 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
+    INT             reduce using rule 21 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
+    FLOAT           reduce using rule 21 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
+    LONG            reduce using rule 21 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
+    CHAR            reduce using rule 21 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
+    BOOLEAN         reduce using rule 21 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
+    STRING_1        reduce using rule 21 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
+    RCURL           reduce using rule 21 (for -> FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL .)
+
+
+state 132
+
+    (55) else -> ELSE LCURL . line RCURL
+    (1) line -> . impresion SEMICOLON
+    (2) line -> . asignacion SEMICOLON
+    (3) line -> . expression
+    (4) line -> . estructurasControl
+    (5) line -> . estructurasDatos SEMICOLON
+    (18) impresion -> . PRINT LPAREN expression RPAREN
+    (19) impresion -> . PRINTLN LPAREN expression RPAREN
+    (24) asignacion -> . keywordVariables asignacionSimple
+    (25) asignacion -> . asignacionSimple
+    (38) expression -> . expression PLUS term
+    (39) expression -> . expression MINUS term
+    (40) expression -> . expression TIMES term
+    (41) expression -> . expression DIVIDE term
+    (42) expression -> . expression MOD term
+    (43) expression -> . term
+    (8) estructurasControl -> . for
+    (9) estructurasControl -> . if
+    (6) estructurasDatos -> . queue
+    (7) estructurasDatos -> . queue_operations
+    (26) keywordVariables -> . VAR
+    (27) keywordVariables -> . VAL
+    (28) asignacionSimple -> . ID DOTS tipoDato EQUAL valor
+    (29) asignacionSimple -> . ID EQUAL valor
+    (44) term -> . factor
+    (45) term -> . LPAREN expression RPAREN
+    (21) for -> . FOR LPAREN ID IN ID RPAREN LCURL morelines RCURL
+    (53) if -> . IF LPAREN condicion RPAREN LCURL morelines RCURL
+    (54) if -> . IF LPAREN condicion RPAREN LCURL morelines RCURL else
+    (20) queue -> . VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN
+    (10) queue_operations -> . queue_add
+    (11) queue_operations -> . queue_peek
+    (12) queue_operations -> . queue_remove
+    (13) queue_operations -> . queue_poll
+    (46) factor -> . INT
+    (47) factor -> . FLOAT
+    (48) factor -> . LONG
+    (49) factor -> . CHAR
+    (50) factor -> . BOOLEAN
+    (51) factor -> . ID
+    (52) factor -> . STRING_1
+    (14) queue_add -> . ID DOT ADD LPAREN factor RPAREN
+    (15) queue_peek -> . ID DOT PEEK LPAREN RPAREN
+    (17) queue_remove -> . ID DOT REMOVE LPAREN RPAREN
+    (16) queue_poll -> . ID DOT POLL LPAREN RPAREN
+
+    PRINT           shift and go to state 7
+    PRINTLN         shift and go to state 9
+    VAR             shift and go to state 17
+    VAL             shift and go to state 18
+    ID              shift and go to state 19
+    LPAREN          shift and go to state 8
+    FOR             shift and go to state 21
+    IF              shift and go to state 22
+    INT             shift and go to state 27
+    FLOAT           shift and go to state 28
+    LONG            shift and go to state 29
+    CHAR            shift and go to state 30
+    BOOLEAN         shift and go to state 31
+    STRING_1        shift and go to state 32
+
+    line                           shift and go to state 134
+    impresion                      shift and go to state 2
+    asignacion                     shift and go to state 3
+    expression                     shift and go to state 4
+    estructurasControl             shift and go to state 5
+    estructurasDatos               shift and go to state 6
+    keywordVariables               shift and go to state 10
+    asignacionSimple               shift and go to state 11
+    term                           shift and go to state 12
+    for                            shift and go to state 13
+    if                             shift and go to state 14
+    queue                          shift and go to state 15
+    queue_operations               shift and go to state 16
+    factor                         shift and go to state 20
+    queue_add                      shift and go to state 23
+    queue_peek                     shift and go to state 24
+    queue_remove                   shift and go to state 25
+    queue_poll                     shift and go to state 26
+
+state 133
+
+    (20) queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE . tipoDato RANGLE LPAREN RPAREN
+    (30) tipoDato -> . TINT
+    (31) tipoDato -> . TLONG
+    (32) tipoDato -> . TFLOAT
+    (33) tipoDato -> . TDOUBLE
+    (34) tipoDato -> . TBOOLEAN
+    (35) tipoDato -> . TCHAR
+    (36) tipoDato -> . TSTRING
+
+    TINT            shift and go to state 63
+    TLONG           shift and go to state 64
+    TFLOAT          shift and go to state 65
+    TDOUBLE         shift and go to state 66
+    TBOOLEAN        shift and go to state 67
+    TCHAR           shift and go to state 68
+    TSTRING         shift and go to state 69
+
+    tipoDato                       shift and go to state 135
+
+state 134
+
+    (55) else -> ELSE LCURL line . RCURL
+
+    RCURL           shift and go to state 136
+
+
+state 135
+
+    (20) queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato . RANGLE LPAREN RPAREN
+
+    RANGLE          shift and go to state 137
+
+
+state 136
+
+    (55) else -> ELSE LCURL line RCURL .
+
+    $end            reduce using rule 55 (else -> ELSE LCURL line RCURL .)
+    PRINT           reduce using rule 55 (else -> ELSE LCURL line RCURL .)
+    PRINTLN         reduce using rule 55 (else -> ELSE LCURL line RCURL .)
+    VAR             reduce using rule 55 (else -> ELSE LCURL line RCURL .)
+    VAL             reduce using rule 55 (else -> ELSE LCURL line RCURL .)
+    ID              reduce using rule 55 (else -> ELSE LCURL line RCURL .)
+    LPAREN          reduce using rule 55 (else -> ELSE LCURL line RCURL .)
+    FOR             reduce using rule 55 (else -> ELSE LCURL line RCURL .)
+    IF              reduce using rule 55 (else -> ELSE LCURL line RCURL .)
+    INT             reduce using rule 55 (else -> ELSE LCURL line RCURL .)
+    FLOAT           reduce using rule 55 (else -> ELSE LCURL line RCURL .)
+    LONG            reduce using rule 55 (else -> ELSE LCURL line RCURL .)
+    CHAR            reduce using rule 55 (else -> ELSE LCURL line RCURL .)
+    BOOLEAN         reduce using rule 55 (else -> ELSE LCURL line RCURL .)
+    STRING_1        reduce using rule 55 (else -> ELSE LCURL line RCURL .)
+    RCURL           reduce using rule 55 (else -> ELSE LCURL line RCURL .)
+
+
+state 137
+
+    (20) queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE . LPAREN RPAREN
+
+    LPAREN          shift and go to state 138
+
+
+state 138
+
+    (20) queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN . RPAREN
+
+    RPAREN          shift and go to state 139
+
+
+state 139
+
+    (20) queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN .
+
+    SEMICOLON       reduce using rule 20 (queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDLIST LANGLE tipoDato RANGLE LPAREN RPAREN .)
 
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for ID in state 16 resolved as shift
-WARNING: reduce/reduce conflict in state 41 resolved using rule (opLogica -> term)
-WARNING: rejected rule (expression -> term) in state 41
+WARNING: shift/reduce conflict for ID in state 18 resolved as shift
