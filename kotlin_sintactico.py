@@ -184,22 +184,19 @@ def p_factor(p):
 
 # ---------- Karla -------------
 def p_if(p):
-    '''if : IF LPAREN condicion RPAREN LCURL morelines RCURL
-            | IF LPAREN condicion RPAREN LCURL morelines RCURL else
+    '''if : IF LPAREN condicion RPAREN LCURL line RCURL
+            | IF LPAREN condicion RPAREN LCURL line RCURL else
             '''
-
 
 def p_else(p):
     'else : ELSE LCURL line RCURL'
 
-
-# condiciones del if
+#condiciones del if
 # ((<datos> (<operadorL> | <operadorR>)) | <operadorN>) <datos>
 
-# condicionL : condicion con operadores logicos
-# condicionR : condicion con operadores relacionales
-# condicionN : negar expresion, p.e: !variable
-
+#condicionL : condicion con operadores logicos
+#condicionR : condicion con operadores relacionales
+#condicionN : negar expresion, p.e: !variable
 
 def p_condicion(p):
     '''condicion : condicionL
@@ -207,25 +204,38 @@ def p_condicion(p):
                 | condicionN
                 '''
 
-
 def p_condicionL(p):
-    'condicionL : term opL term'
-
+    '''condicionL : BOOLEAN opL BOOLEAN
+                    | ID opL ID
+                    | ID opL BOOLEAN
+                    | BOOLEAN opL ID
+                    '''
 
 def p_condicionR(p):
-    'condicionR : term opR term'
-
+    '''condicionR : INT opR INT
+                    | INT opR FLOAT
+                    | INT opR LONG
+                    | FLOAT opR FLOAT
+                    | FLOAT opR INT
+                    | FLOAT opR LONG
+                    | LONG opR LONG
+                    | LONG opR INT
+                    | LONG opR FLOAT
+                    | STRING_1 opR STRING_1
+                    | CHAR opR CHAR
+                    | ID opR ID
+                    '''
 
 def p_condicionN(p):
-    'condicionN : EXCL_WS term'
+    '''condicionN : EXCL_WS BOOLEAN
+                    | EXCL_WS ID
+                    '''
 
-
-# operaciones logicos y relacionales
+#operaciones logicos y relacionales
 def p_opL(p):
     '''opL : CONJ
             | DISJ
             '''
-
 
 def p_opR(p):
     '''opR : LANGLE
@@ -238,7 +248,6 @@ def p_opR(p):
             | EQEQ
             | EQEQEQ
             '''
-
 
 # ---------------- STACK ---------------
 # <pila> ::= "var " <variable> ": Stack<" <tipoDato> ">" "=" "ArrayList()"
