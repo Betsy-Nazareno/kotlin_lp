@@ -1,11 +1,22 @@
 import tkinter as tk
 
+WIN_WIDTH = 550
+WIN_HEIGHT = 550
+
 window = tk.Tk() 
 window.title("Proyecto LP")  # to define the title
 window.config(cursor= 'heart')
-canvas = tk.Canvas(window, width=550, height=550)  # define the size
+canvas = tk.Canvas(window, width=WIN_WIDTH, height=WIN_HEIGHT)  # define the size
 canvas.pack()
 frame = tk.Frame(window)
+
+#set window at the center of the screen
+screen_width = window.winfo_screenwidth()
+screen_height = window.winfo_screenheight()
+x_win_coord = int((screen_width/2) - (WIN_WIDTH/2))
+y_win_coord = int((screen_height/2) - (WIN_HEIGHT/2))
+window.geometry("{}x{}+{}+{}".format(WIN_WIDTH, WIN_HEIGHT, x_win_coord, y_win_coord))
+
 
 frame.place(relx=0.05, rely=0.05, relwidth=0.9, relheight=0.9)
 menu = tk.Menu(window)
