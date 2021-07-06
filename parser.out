@@ -5,6 +5,7 @@ Unused terminals:
     ABSTRACT
     ACTUAL
     ANNOTATION
+    ARRAYLIST
     ARRAYOF
     ARROW
     AS
@@ -112,7 +113,7 @@ Rule 10    estructurasDatos -> queue
 Rule 11    estructurasDatos -> queue_operations
 Rule 12    estructurasDatos -> stack
 Rule 13    estructurasDatos -> stack_actuar
-Rule 14    estructurasDatos -> instance_arraylist
+Rule 14    estructurasDatos -> instance_linkedlist
 Rule 15    estructurasDatos -> def_estruct_tipoDato
 Rule 16    estructurasDatos -> lista
 Rule 17    estructurasDatos -> lsimplem
@@ -210,9 +211,9 @@ Rule 108   opR -> EXCL_EQEQ
 Rule 109   opR -> AS_SAFE
 Rule 110   opR -> EQEQ
 Rule 111   opR -> EQEQEQ
-Rule 112   stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist
+Rule 112   stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
 Rule 113   def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE
-Rule 114   instance_arraylist -> ARRAYLIST LPAREN RPAREN
+Rule 114   instance_linkedlist -> LINKEDL LPAREN RPAREN
 Rule 115   stack_actuar -> ID DOT stack_funciones
 Rule 116   stack_funciones -> stack_isEmpty
 Rule 117   stack_funciones -> stack_push
@@ -221,7 +222,7 @@ Rule 119   stack_funciones -> stack_peek
 Rule 120   stack_funciones -> stack_size
 Rule 121   stack_isEmpty -> ISEMPTY LPAREN RPAREN
 Rule 122   stack_pop -> POP LPAREN RPAREN
-Rule 123   stack_push -> PUSH LPAREN ID RPAREN
+Rule 123   stack_push -> PUSH LPAREN factor RPAREN
 Rule 124   stack_peek -> PEEK LPAREN RPAREN
 Rule 125   stack_size -> SIZE LPAREN RPAREN
 Rule 126   Lmetod -> FIRST LPAREN RPAREN
@@ -242,7 +243,7 @@ ACTUAL               :
 ADD                  : 27
 ANNOTATION           : 
 APPEND               : 129
-ARRAYLIST            : 114
+ARRAYLIST            : 
 ARRAYOF              : 
 ARROW                : 
 AS                   : 
@@ -298,7 +299,7 @@ FUN                  :
 GE                   : 106
 GET                  : 
 HASH                 : 
-ID                   : 27 28 29 30 33 34 35 37 44 45 75 84 84 85 86 98 98 100 112 115 123 132 133 134 135
+ID                   : 27 28 29 30 33 34 35 37 44 45 75 84 84 85 86 98 98 100 112 115 132 133 134 135
 IF                   : 77 78
 IMPORT               : 
 IN                   : 34
@@ -322,7 +323,7 @@ LATEINIT             :
 LCURL                : 34 77 78 79 132
 LE                   : 105
 LINEBREAK            : 
-LINKEDL              : 33 133 133
+LINKEDL              : 33 114 133 133
 LISTOF               : 
 LONG                 : 47 72 89 92 93 93 94 95
 LPAREN               : 27 28 29 30 31 32 33 34 69 77 78 114 121 122 123 124 125 126 127 128 129 130 131 132 133
@@ -419,11 +420,11 @@ else                 : 78
 estructurasControl   : 3
 estructurasDatos     : 7
 expression           : 2 31 32 59 60 61 62 63 64 65 66 69
-factor               : 27 68
+factor               : 27 68 123
 for                  : 20
 if                   : 21
 impresion            : 5
-instance_arraylist   : 14 112
+instance_linkedlist  : 14 112
 iterable             : 34
 keywordVariables     : 40 112 133
 lcomp                : 18
@@ -514,7 +515,7 @@ state 0
     (11) estructurasDatos -> . queue_operations
     (12) estructurasDatos -> . stack
     (13) estructurasDatos -> . stack_actuar
-    (14) estructurasDatos -> . instance_arraylist
+    (14) estructurasDatos -> . instance_linkedlist
     (15) estructurasDatos -> . def_estruct_tipoDato
     (16) estructurasDatos -> . lista
     (17) estructurasDatos -> . lsimplem
@@ -536,9 +537,9 @@ state 0
     (24) queue_operations -> . queue_peek
     (25) queue_operations -> . queue_remove
     (26) queue_operations -> . queue_poll
-    (112) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist
+    (112) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
     (115) stack_actuar -> . ID DOT stack_funciones
-    (114) instance_arraylist -> . ARRAYLIST LPAREN RPAREN
+    (114) instance_linkedlist -> . LINKEDL LPAREN RPAREN
     (113) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
     (133) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
     (134) lsimplem -> . ID DOT Lmetod
@@ -566,7 +567,7 @@ state 0
     $end            reduce using rule 19 (estructurasDatos -> .)
     VAR             shift and go to state 43
     VAL             shift and go to state 44
-    ARRAYLIST       shift and go to state 49
+    LINKEDL         shift and go to state 45
     STACK           shift and go to state 50
 
     line                           shift and go to state 1
@@ -592,15 +593,15 @@ state 0
     queue_operations               shift and go to state 35
     stack                          shift and go to state 36
     stack_actuar                   shift and go to state 37
-    instance_arraylist             shift and go to state 38
+    instance_linkedlist            shift and go to state 38
     def_estruct_tipoDato           shift and go to state 39
     lista                          shift and go to state 40
     lsimplem                       shift and go to state 41
     lcomp                          shift and go to state 42
-    queue_add                      shift and go to state 45
-    queue_peek                     shift and go to state 46
-    queue_remove                   shift and go to state 47
-    queue_poll                     shift and go to state 48
+    queue_add                      shift and go to state 46
+    queue_peek                     shift and go to state 47
+    queue_remove                   shift and go to state 48
+    queue_poll                     shift and go to state 49
 
 state 1
 
@@ -630,7 +631,7 @@ state 2
     PRINTLN         reduce using rule 1 (line -> lineas .)
     VAR             reduce using rule 1 (line -> lineas .)
     VAL             reduce using rule 1 (line -> lineas .)
-    ARRAYLIST       reduce using rule 1 (line -> lineas .)
+    LINKEDL         reduce using rule 1 (line -> lineas .)
     STACK           reduce using rule 1 (line -> lineas .)
     SEMICOLON       reduce using rule 1 (line -> lineas .)
 
@@ -664,7 +665,7 @@ state 3
     PRINTLN         reduce using rule 2 (line -> expression .)
     VAR             reduce using rule 2 (line -> expression .)
     VAL             reduce using rule 2 (line -> expression .)
-    ARRAYLIST       reduce using rule 2 (line -> expression .)
+    LINKEDL         reduce using rule 2 (line -> expression .)
     STACK           reduce using rule 2 (line -> expression .)
     SEMICOLON       reduce using rule 2 (line -> expression .)
     PLUS            shift and go to state 51
@@ -698,7 +699,7 @@ state 4
     PRINTLN         reduce using rule 3 (line -> estructurasControl .)
     VAR             reduce using rule 3 (line -> estructurasControl .)
     VAL             reduce using rule 3 (line -> estructurasControl .)
-    ARRAYLIST       reduce using rule 3 (line -> estructurasControl .)
+    LINKEDL         reduce using rule 3 (line -> estructurasControl .)
     STACK           reduce using rule 3 (line -> estructurasControl .)
     SEMICOLON       reduce using rule 3 (line -> estructurasControl .)
 
@@ -725,7 +726,7 @@ state 5
     PRINTLN         reduce using rule 4 (line -> condicion .)
     VAR             reduce using rule 4 (line -> condicion .)
     VAL             reduce using rule 4 (line -> condicion .)
-    ARRAYLIST       reduce using rule 4 (line -> condicion .)
+    LINKEDL         reduce using rule 4 (line -> condicion .)
     STACK           reduce using rule 4 (line -> condicion .)
     SEMICOLON       reduce using rule 4 (line -> condicion .)
 
@@ -754,7 +755,7 @@ state 6
     PRINTLN         reduce using rule 8 (lineas -> blocks .)
     VAR             reduce using rule 8 (lineas -> blocks .)
     VAL             reduce using rule 8 (lineas -> blocks .)
-    ARRAYLIST       reduce using rule 8 (lineas -> blocks .)
+    LINKEDL         reduce using rule 8 (lineas -> blocks .)
     STACK           reduce using rule 8 (lineas -> blocks .)
     SEMICOLON       shift and go to state 58
 
@@ -792,7 +793,7 @@ state 7
     PRINTLN         reduce using rule 67 (expression -> term .)
     VAR             reduce using rule 67 (expression -> term .)
     VAL             reduce using rule 67 (expression -> term .)
-    ARRAYLIST       reduce using rule 67 (expression -> term .)
+    LINKEDL         reduce using rule 67 (expression -> term .)
     STACK           reduce using rule 67 (expression -> term .)
 
 
@@ -818,7 +819,7 @@ state 8
     PRINTLN         reduce using rule 20 (estructurasControl -> for .)
     VAR             reduce using rule 20 (estructurasControl -> for .)
     VAL             reduce using rule 20 (estructurasControl -> for .)
-    ARRAYLIST       reduce using rule 20 (estructurasControl -> for .)
+    LINKEDL         reduce using rule 20 (estructurasControl -> for .)
     STACK           reduce using rule 20 (estructurasControl -> for .)
     SEMICOLON       reduce using rule 20 (estructurasControl -> for .)
 
@@ -845,7 +846,7 @@ state 9
     PRINTLN         reduce using rule 21 (estructurasControl -> if .)
     VAR             reduce using rule 21 (estructurasControl -> if .)
     VAL             reduce using rule 21 (estructurasControl -> if .)
-    ARRAYLIST       reduce using rule 21 (estructurasControl -> if .)
+    LINKEDL         reduce using rule 21 (estructurasControl -> if .)
     STACK           reduce using rule 21 (estructurasControl -> if .)
     SEMICOLON       reduce using rule 21 (estructurasControl -> if .)
 
@@ -872,7 +873,7 @@ state 10
     PRINTLN         reduce using rule 22 (estructurasControl -> while .)
     VAR             reduce using rule 22 (estructurasControl -> while .)
     VAL             reduce using rule 22 (estructurasControl -> while .)
-    ARRAYLIST       reduce using rule 22 (estructurasControl -> while .)
+    LINKEDL         reduce using rule 22 (estructurasControl -> while .)
     STACK           reduce using rule 22 (estructurasControl -> while .)
     SEMICOLON       reduce using rule 22 (estructurasControl -> while .)
 
@@ -900,7 +901,7 @@ state 11
     PRINTLN         reduce using rule 80 (condicion -> condicionL .)
     VAR             reduce using rule 80 (condicion -> condicionL .)
     VAL             reduce using rule 80 (condicion -> condicionL .)
-    ARRAYLIST       reduce using rule 80 (condicion -> condicionL .)
+    LINKEDL         reduce using rule 80 (condicion -> condicionL .)
     STACK           reduce using rule 80 (condicion -> condicionL .)
     SEMICOLON       reduce using rule 80 (condicion -> condicionL .)
 
@@ -928,7 +929,7 @@ state 12
     PRINTLN         reduce using rule 81 (condicion -> condicionR .)
     VAR             reduce using rule 81 (condicion -> condicionR .)
     VAL             reduce using rule 81 (condicion -> condicionR .)
-    ARRAYLIST       reduce using rule 81 (condicion -> condicionR .)
+    LINKEDL         reduce using rule 81 (condicion -> condicionR .)
     STACK           reduce using rule 81 (condicion -> condicionR .)
     SEMICOLON       reduce using rule 81 (condicion -> condicionR .)
 
@@ -956,7 +957,7 @@ state 13
     PRINTLN         reduce using rule 82 (condicion -> condicionN .)
     VAR             reduce using rule 82 (condicion -> condicionN .)
     VAL             reduce using rule 82 (condicion -> condicionN .)
-    ARRAYLIST       reduce using rule 82 (condicion -> condicionN .)
+    LINKEDL         reduce using rule 82 (condicion -> condicionN .)
     STACK           reduce using rule 82 (condicion -> condicionN .)
     SEMICOLON       reduce using rule 82 (condicion -> condicionN .)
 
@@ -984,7 +985,7 @@ state 14
     PRINTLN         reduce using rule 5 (blocks -> impresion .)
     VAR             reduce using rule 5 (blocks -> impresion .)
     VAL             reduce using rule 5 (blocks -> impresion .)
-    ARRAYLIST       reduce using rule 5 (blocks -> impresion .)
+    LINKEDL         reduce using rule 5 (blocks -> impresion .)
     STACK           reduce using rule 5 (blocks -> impresion .)
 
 
@@ -1011,7 +1012,7 @@ state 15
     PRINTLN         reduce using rule 6 (blocks -> asignacion .)
     VAR             reduce using rule 6 (blocks -> asignacion .)
     VAL             reduce using rule 6 (blocks -> asignacion .)
-    ARRAYLIST       reduce using rule 6 (blocks -> asignacion .)
+    LINKEDL         reduce using rule 6 (blocks -> asignacion .)
     STACK           reduce using rule 6 (blocks -> asignacion .)
 
 
@@ -1038,7 +1039,7 @@ state 16
     PRINTLN         reduce using rule 7 (blocks -> estructurasDatos .)
     VAR             reduce using rule 7 (blocks -> estructurasDatos .)
     VAL             reduce using rule 7 (blocks -> estructurasDatos .)
-    ARRAYLIST       reduce using rule 7 (blocks -> estructurasDatos .)
+    LINKEDL         reduce using rule 7 (blocks -> estructurasDatos .)
     STACK           reduce using rule 7 (blocks -> estructurasDatos .)
 
 
@@ -1073,7 +1074,7 @@ state 17
     PRINTLN         reduce using rule 68 (term -> factor .)
     VAR             reduce using rule 68 (term -> factor .)
     VAL             reduce using rule 68 (term -> factor .)
-    ARRAYLIST       reduce using rule 68 (term -> factor .)
+    LINKEDL         reduce using rule 68 (term -> factor .)
     STACK           reduce using rule 68 (term -> factor .)
 
 
@@ -1170,7 +1171,7 @@ state 20
     PRINTLN         reduce using rule 75 (factor -> ID .)
     VAR             reduce using rule 75 (factor -> ID .)
     VAL             reduce using rule 75 (factor -> ID .)
-    ARRAYLIST       reduce using rule 75 (factor -> ID .)
+    LINKEDL         reduce using rule 75 (factor -> ID .)
     STACK           reduce using rule 75 (factor -> ID .)
     SEMICOLON       reduce using rule 75 (factor -> ID .)
     DOTS            shift and go to state 70
@@ -1247,7 +1248,7 @@ state 23
     PRINTLN         reduce using rule 70 (factor -> INT .)
     VAR             reduce using rule 70 (factor -> INT .)
     VAL             reduce using rule 70 (factor -> INT .)
-    ARRAYLIST       reduce using rule 70 (factor -> INT .)
+    LINKEDL         reduce using rule 70 (factor -> INT .)
     STACK           reduce using rule 70 (factor -> INT .)
     SEMICOLON       reduce using rule 70 (factor -> INT .)
     LANGLE          shift and go to state 75
@@ -1295,7 +1296,7 @@ state 24
     PRINTLN         reduce using rule 74 (factor -> BOOLEAN .)
     VAR             reduce using rule 74 (factor -> BOOLEAN .)
     VAL             reduce using rule 74 (factor -> BOOLEAN .)
-    ARRAYLIST       reduce using rule 74 (factor -> BOOLEAN .)
+    LINKEDL         reduce using rule 74 (factor -> BOOLEAN .)
     STACK           reduce using rule 74 (factor -> BOOLEAN .)
     SEMICOLON       reduce using rule 74 (factor -> BOOLEAN .)
     CONJ            shift and go to state 73
@@ -1344,7 +1345,7 @@ state 25
     PRINTLN         reduce using rule 71 (factor -> FLOAT .)
     VAR             reduce using rule 71 (factor -> FLOAT .)
     VAL             reduce using rule 71 (factor -> FLOAT .)
-    ARRAYLIST       reduce using rule 71 (factor -> FLOAT .)
+    LINKEDL         reduce using rule 71 (factor -> FLOAT .)
     STACK           reduce using rule 71 (factor -> FLOAT .)
     SEMICOLON       reduce using rule 71 (factor -> FLOAT .)
     LANGLE          shift and go to state 75
@@ -1400,7 +1401,7 @@ state 26
     PRINTLN         reduce using rule 72 (factor -> LONG .)
     VAR             reduce using rule 72 (factor -> LONG .)
     VAL             reduce using rule 72 (factor -> LONG .)
-    ARRAYLIST       reduce using rule 72 (factor -> LONG .)
+    LINKEDL         reduce using rule 72 (factor -> LONG .)
     STACK           reduce using rule 72 (factor -> LONG .)
     SEMICOLON       reduce using rule 72 (factor -> LONG .)
     LANGLE          shift and go to state 75
@@ -1454,7 +1455,7 @@ state 27
     PRINTLN         reduce using rule 76 (factor -> STRING_1 .)
     VAR             reduce using rule 76 (factor -> STRING_1 .)
     VAL             reduce using rule 76 (factor -> STRING_1 .)
-    ARRAYLIST       reduce using rule 76 (factor -> STRING_1 .)
+    LINKEDL         reduce using rule 76 (factor -> STRING_1 .)
     STACK           reduce using rule 76 (factor -> STRING_1 .)
     SEMICOLON       reduce using rule 76 (factor -> STRING_1 .)
     LANGLE          shift and go to state 75
@@ -1508,7 +1509,7 @@ state 28
     PRINTLN         reduce using rule 73 (factor -> CHAR .)
     VAR             reduce using rule 73 (factor -> CHAR .)
     VAL             reduce using rule 73 (factor -> CHAR .)
-    ARRAYLIST       reduce using rule 73 (factor -> CHAR .)
+    LINKEDL         reduce using rule 73 (factor -> CHAR .)
     STACK           reduce using rule 73 (factor -> CHAR .)
     SEMICOLON       reduce using rule 73 (factor -> CHAR .)
     LANGLE          shift and go to state 75
@@ -1549,7 +1550,7 @@ state 31
 state 32
 
     (40) asignacion -> keywordVariables . asignacionSimple
-    (112) stack -> keywordVariables . ID DOTS def_estruct_tipoDato EQUAL instance_arraylist
+    (112) stack -> keywordVariables . ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
     (133) lista -> keywordVariables . ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
     (44) asignacionSimple -> . ID DOTS tipoDatoEspecifico
     (45) asignacionSimple -> . ID EQUAL valor
@@ -1581,7 +1582,7 @@ state 33
     PRINTLN         reduce using rule 41 (asignacion -> asignacionSimple .)
     VAR             reduce using rule 41 (asignacion -> asignacionSimple .)
     VAL             reduce using rule 41 (asignacion -> asignacionSimple .)
-    ARRAYLIST       reduce using rule 41 (asignacion -> asignacionSimple .)
+    LINKEDL         reduce using rule 41 (asignacion -> asignacionSimple .)
     STACK           reduce using rule 41 (asignacion -> asignacionSimple .)
 
 
@@ -1608,7 +1609,7 @@ state 34
     PRINTLN         reduce using rule 10 (estructurasDatos -> queue .)
     VAR             reduce using rule 10 (estructurasDatos -> queue .)
     VAL             reduce using rule 10 (estructurasDatos -> queue .)
-    ARRAYLIST       reduce using rule 10 (estructurasDatos -> queue .)
+    LINKEDL         reduce using rule 10 (estructurasDatos -> queue .)
     STACK           reduce using rule 10 (estructurasDatos -> queue .)
 
 
@@ -1635,7 +1636,7 @@ state 35
     PRINTLN         reduce using rule 11 (estructurasDatos -> queue_operations .)
     VAR             reduce using rule 11 (estructurasDatos -> queue_operations .)
     VAL             reduce using rule 11 (estructurasDatos -> queue_operations .)
-    ARRAYLIST       reduce using rule 11 (estructurasDatos -> queue_operations .)
+    LINKEDL         reduce using rule 11 (estructurasDatos -> queue_operations .)
     STACK           reduce using rule 11 (estructurasDatos -> queue_operations .)
 
 
@@ -1662,7 +1663,7 @@ state 36
     PRINTLN         reduce using rule 12 (estructurasDatos -> stack .)
     VAR             reduce using rule 12 (estructurasDatos -> stack .)
     VAL             reduce using rule 12 (estructurasDatos -> stack .)
-    ARRAYLIST       reduce using rule 12 (estructurasDatos -> stack .)
+    LINKEDL         reduce using rule 12 (estructurasDatos -> stack .)
     STACK           reduce using rule 12 (estructurasDatos -> stack .)
 
 
@@ -1689,35 +1690,35 @@ state 37
     PRINTLN         reduce using rule 13 (estructurasDatos -> stack_actuar .)
     VAR             reduce using rule 13 (estructurasDatos -> stack_actuar .)
     VAL             reduce using rule 13 (estructurasDatos -> stack_actuar .)
-    ARRAYLIST       reduce using rule 13 (estructurasDatos -> stack_actuar .)
+    LINKEDL         reduce using rule 13 (estructurasDatos -> stack_actuar .)
     STACK           reduce using rule 13 (estructurasDatos -> stack_actuar .)
 
 
 state 38
 
-    (14) estructurasDatos -> instance_arraylist .
+    (14) estructurasDatos -> instance_linkedlist .
 
-    SEMICOLON       reduce using rule 14 (estructurasDatos -> instance_arraylist .)
-    $end            reduce using rule 14 (estructurasDatos -> instance_arraylist .)
-    RCURL           reduce using rule 14 (estructurasDatos -> instance_arraylist .)
-    LPAREN          reduce using rule 14 (estructurasDatos -> instance_arraylist .)
-    FOR             reduce using rule 14 (estructurasDatos -> instance_arraylist .)
-    IF              reduce using rule 14 (estructurasDatos -> instance_arraylist .)
-    WHILE           reduce using rule 14 (estructurasDatos -> instance_arraylist .)
-    BOOLEAN         reduce using rule 14 (estructurasDatos -> instance_arraylist .)
-    ID              reduce using rule 14 (estructurasDatos -> instance_arraylist .)
-    INT             reduce using rule 14 (estructurasDatos -> instance_arraylist .)
-    FLOAT           reduce using rule 14 (estructurasDatos -> instance_arraylist .)
-    LONG            reduce using rule 14 (estructurasDatos -> instance_arraylist .)
-    STRING_1        reduce using rule 14 (estructurasDatos -> instance_arraylist .)
-    CHAR            reduce using rule 14 (estructurasDatos -> instance_arraylist .)
-    EXCL_WS         reduce using rule 14 (estructurasDatos -> instance_arraylist .)
-    PRINT           reduce using rule 14 (estructurasDatos -> instance_arraylist .)
-    PRINTLN         reduce using rule 14 (estructurasDatos -> instance_arraylist .)
-    VAR             reduce using rule 14 (estructurasDatos -> instance_arraylist .)
-    VAL             reduce using rule 14 (estructurasDatos -> instance_arraylist .)
-    ARRAYLIST       reduce using rule 14 (estructurasDatos -> instance_arraylist .)
-    STACK           reduce using rule 14 (estructurasDatos -> instance_arraylist .)
+    SEMICOLON       reduce using rule 14 (estructurasDatos -> instance_linkedlist .)
+    $end            reduce using rule 14 (estructurasDatos -> instance_linkedlist .)
+    RCURL           reduce using rule 14 (estructurasDatos -> instance_linkedlist .)
+    LPAREN          reduce using rule 14 (estructurasDatos -> instance_linkedlist .)
+    FOR             reduce using rule 14 (estructurasDatos -> instance_linkedlist .)
+    IF              reduce using rule 14 (estructurasDatos -> instance_linkedlist .)
+    WHILE           reduce using rule 14 (estructurasDatos -> instance_linkedlist .)
+    BOOLEAN         reduce using rule 14 (estructurasDatos -> instance_linkedlist .)
+    ID              reduce using rule 14 (estructurasDatos -> instance_linkedlist .)
+    INT             reduce using rule 14 (estructurasDatos -> instance_linkedlist .)
+    FLOAT           reduce using rule 14 (estructurasDatos -> instance_linkedlist .)
+    LONG            reduce using rule 14 (estructurasDatos -> instance_linkedlist .)
+    STRING_1        reduce using rule 14 (estructurasDatos -> instance_linkedlist .)
+    CHAR            reduce using rule 14 (estructurasDatos -> instance_linkedlist .)
+    EXCL_WS         reduce using rule 14 (estructurasDatos -> instance_linkedlist .)
+    PRINT           reduce using rule 14 (estructurasDatos -> instance_linkedlist .)
+    PRINTLN         reduce using rule 14 (estructurasDatos -> instance_linkedlist .)
+    VAR             reduce using rule 14 (estructurasDatos -> instance_linkedlist .)
+    VAL             reduce using rule 14 (estructurasDatos -> instance_linkedlist .)
+    LINKEDL         reduce using rule 14 (estructurasDatos -> instance_linkedlist .)
+    STACK           reduce using rule 14 (estructurasDatos -> instance_linkedlist .)
 
 
 state 39
@@ -1743,7 +1744,7 @@ state 39
     PRINTLN         reduce using rule 15 (estructurasDatos -> def_estruct_tipoDato .)
     VAR             reduce using rule 15 (estructurasDatos -> def_estruct_tipoDato .)
     VAL             reduce using rule 15 (estructurasDatos -> def_estruct_tipoDato .)
-    ARRAYLIST       reduce using rule 15 (estructurasDatos -> def_estruct_tipoDato .)
+    LINKEDL         reduce using rule 15 (estructurasDatos -> def_estruct_tipoDato .)
     STACK           reduce using rule 15 (estructurasDatos -> def_estruct_tipoDato .)
 
 
@@ -1770,7 +1771,7 @@ state 40
     PRINTLN         reduce using rule 16 (estructurasDatos -> lista .)
     VAR             reduce using rule 16 (estructurasDatos -> lista .)
     VAL             reduce using rule 16 (estructurasDatos -> lista .)
-    ARRAYLIST       reduce using rule 16 (estructurasDatos -> lista .)
+    LINKEDL         reduce using rule 16 (estructurasDatos -> lista .)
     STACK           reduce using rule 16 (estructurasDatos -> lista .)
 
 
@@ -1797,7 +1798,7 @@ state 41
     PRINTLN         reduce using rule 17 (estructurasDatos -> lsimplem .)
     VAR             reduce using rule 17 (estructurasDatos -> lsimplem .)
     VAL             reduce using rule 17 (estructurasDatos -> lsimplem .)
-    ARRAYLIST       reduce using rule 17 (estructurasDatos -> lsimplem .)
+    LINKEDL         reduce using rule 17 (estructurasDatos -> lsimplem .)
     STACK           reduce using rule 17 (estructurasDatos -> lsimplem .)
 
 
@@ -1824,7 +1825,7 @@ state 42
     PRINTLN         reduce using rule 18 (estructurasDatos -> lcomp .)
     VAR             reduce using rule 18 (estructurasDatos -> lcomp .)
     VAL             reduce using rule 18 (estructurasDatos -> lcomp .)
-    ARRAYLIST       reduce using rule 18 (estructurasDatos -> lcomp .)
+    LINKEDL         reduce using rule 18 (estructurasDatos -> lcomp .)
     STACK           reduce using rule 18 (estructurasDatos -> lcomp .)
 
 
@@ -1848,6 +1849,13 @@ state 44
 
 state 45
 
+    (114) instance_linkedlist -> LINKEDL . LPAREN RPAREN
+
+    LPAREN          shift and go to state 99
+
+
+state 46
+
     (23) queue_operations -> queue_add .
 
     SEMICOLON       reduce using rule 23 (queue_operations -> queue_add .)
@@ -1869,11 +1877,11 @@ state 45
     PRINTLN         reduce using rule 23 (queue_operations -> queue_add .)
     VAR             reduce using rule 23 (queue_operations -> queue_add .)
     VAL             reduce using rule 23 (queue_operations -> queue_add .)
-    ARRAYLIST       reduce using rule 23 (queue_operations -> queue_add .)
+    LINKEDL         reduce using rule 23 (queue_operations -> queue_add .)
     STACK           reduce using rule 23 (queue_operations -> queue_add .)
 
 
-state 46
+state 47
 
     (24) queue_operations -> queue_peek .
 
@@ -1896,11 +1904,11 @@ state 46
     PRINTLN         reduce using rule 24 (queue_operations -> queue_peek .)
     VAR             reduce using rule 24 (queue_operations -> queue_peek .)
     VAL             reduce using rule 24 (queue_operations -> queue_peek .)
-    ARRAYLIST       reduce using rule 24 (queue_operations -> queue_peek .)
+    LINKEDL         reduce using rule 24 (queue_operations -> queue_peek .)
     STACK           reduce using rule 24 (queue_operations -> queue_peek .)
 
 
-state 47
+state 48
 
     (25) queue_operations -> queue_remove .
 
@@ -1923,11 +1931,11 @@ state 47
     PRINTLN         reduce using rule 25 (queue_operations -> queue_remove .)
     VAR             reduce using rule 25 (queue_operations -> queue_remove .)
     VAL             reduce using rule 25 (queue_operations -> queue_remove .)
-    ARRAYLIST       reduce using rule 25 (queue_operations -> queue_remove .)
+    LINKEDL         reduce using rule 25 (queue_operations -> queue_remove .)
     STACK           reduce using rule 25 (queue_operations -> queue_remove .)
 
 
-state 48
+state 49
 
     (26) queue_operations -> queue_poll .
 
@@ -1950,15 +1958,8 @@ state 48
     PRINTLN         reduce using rule 26 (queue_operations -> queue_poll .)
     VAR             reduce using rule 26 (queue_operations -> queue_poll .)
     VAL             reduce using rule 26 (queue_operations -> queue_poll .)
-    ARRAYLIST       reduce using rule 26 (queue_operations -> queue_poll .)
+    LINKEDL         reduce using rule 26 (queue_operations -> queue_poll .)
     STACK           reduce using rule 26 (queue_operations -> queue_poll .)
-
-
-state 49
-
-    (114) instance_arraylist -> ARRAYLIST . LPAREN RPAREN
-
-    LPAREN          shift and go to state 99
 
 
 state 50
@@ -2124,7 +2125,7 @@ state 56
     PRINTLN         reduce using rule 65 (expression -> expression INCREMENTONE .)
     VAR             reduce using rule 65 (expression -> expression INCREMENTONE .)
     VAL             reduce using rule 65 (expression -> expression INCREMENTONE .)
-    ARRAYLIST       reduce using rule 65 (expression -> expression INCREMENTONE .)
+    LINKEDL         reduce using rule 65 (expression -> expression INCREMENTONE .)
     STACK           reduce using rule 65 (expression -> expression INCREMENTONE .)
 
 
@@ -2159,7 +2160,7 @@ state 57
     PRINTLN         reduce using rule 66 (expression -> expression DECREMENTONE .)
     VAR             reduce using rule 66 (expression -> expression DECREMENTONE .)
     VAL             reduce using rule 66 (expression -> expression DECREMENTONE .)
-    ARRAYLIST       reduce using rule 66 (expression -> expression DECREMENTONE .)
+    LINKEDL         reduce using rule 66 (expression -> expression DECREMENTONE .)
     STACK           reduce using rule 66 (expression -> expression DECREMENTONE .)
 
 
@@ -2185,7 +2186,7 @@ state 58
     PRINTLN         reduce using rule 9 (lineas -> blocks SEMICOLON .)
     VAR             reduce using rule 9 (lineas -> blocks SEMICOLON .)
     VAL             reduce using rule 9 (lineas -> blocks SEMICOLON .)
-    ARRAYLIST       reduce using rule 9 (lineas -> blocks SEMICOLON .)
+    LINKEDL         reduce using rule 9 (lineas -> blocks SEMICOLON .)
     STACK           reduce using rule 9 (lineas -> blocks SEMICOLON .)
     SEMICOLON       reduce using rule 9 (lineas -> blocks SEMICOLON .)
 
@@ -2242,7 +2243,7 @@ state 60
     PRINTLN         reduce using rule 70 (factor -> INT .)
     VAR             reduce using rule 70 (factor -> INT .)
     VAL             reduce using rule 70 (factor -> INT .)
-    ARRAYLIST       reduce using rule 70 (factor -> INT .)
+    LINKEDL         reduce using rule 70 (factor -> INT .)
     STACK           reduce using rule 70 (factor -> INT .)
 
 
@@ -2277,7 +2278,7 @@ state 61
     PRINTLN         reduce using rule 71 (factor -> FLOAT .)
     VAR             reduce using rule 71 (factor -> FLOAT .)
     VAL             reduce using rule 71 (factor -> FLOAT .)
-    ARRAYLIST       reduce using rule 71 (factor -> FLOAT .)
+    LINKEDL         reduce using rule 71 (factor -> FLOAT .)
     STACK           reduce using rule 71 (factor -> FLOAT .)
 
 
@@ -2312,7 +2313,7 @@ state 62
     PRINTLN         reduce using rule 72 (factor -> LONG .)
     VAR             reduce using rule 72 (factor -> LONG .)
     VAL             reduce using rule 72 (factor -> LONG .)
-    ARRAYLIST       reduce using rule 72 (factor -> LONG .)
+    LINKEDL         reduce using rule 72 (factor -> LONG .)
     STACK           reduce using rule 72 (factor -> LONG .)
 
 
@@ -2347,7 +2348,7 @@ state 63
     PRINTLN         reduce using rule 73 (factor -> CHAR .)
     VAR             reduce using rule 73 (factor -> CHAR .)
     VAL             reduce using rule 73 (factor -> CHAR .)
-    ARRAYLIST       reduce using rule 73 (factor -> CHAR .)
+    LINKEDL         reduce using rule 73 (factor -> CHAR .)
     STACK           reduce using rule 73 (factor -> CHAR .)
 
 
@@ -2382,7 +2383,7 @@ state 64
     PRINTLN         reduce using rule 74 (factor -> BOOLEAN .)
     VAR             reduce using rule 74 (factor -> BOOLEAN .)
     VAL             reduce using rule 74 (factor -> BOOLEAN .)
-    ARRAYLIST       reduce using rule 74 (factor -> BOOLEAN .)
+    LINKEDL         reduce using rule 74 (factor -> BOOLEAN .)
     STACK           reduce using rule 74 (factor -> BOOLEAN .)
 
 
@@ -2417,7 +2418,7 @@ state 65
     PRINTLN         reduce using rule 75 (factor -> ID .)
     VAR             reduce using rule 75 (factor -> ID .)
     VAL             reduce using rule 75 (factor -> ID .)
-    ARRAYLIST       reduce using rule 75 (factor -> ID .)
+    LINKEDL         reduce using rule 75 (factor -> ID .)
     STACK           reduce using rule 75 (factor -> ID .)
 
 
@@ -2452,7 +2453,7 @@ state 66
     PRINTLN         reduce using rule 76 (factor -> STRING_1 .)
     VAR             reduce using rule 76 (factor -> STRING_1 .)
     VAL             reduce using rule 76 (factor -> STRING_1 .)
-    ARRAYLIST       reduce using rule 76 (factor -> STRING_1 .)
+    LINKEDL         reduce using rule 76 (factor -> STRING_1 .)
     STACK           reduce using rule 76 (factor -> STRING_1 .)
 
 
@@ -2555,7 +2556,7 @@ state 72
     (130) Cmetod -> . REMOVEN LPAREN OBJECT RPAREN
     (131) Cmetod -> . REMOVEI LPAREN TINT RPAREN
     (121) stack_isEmpty -> . ISEMPTY LPAREN RPAREN
-    (123) stack_push -> . PUSH LPAREN ID RPAREN
+    (123) stack_push -> . PUSH LPAREN factor RPAREN
     (122) stack_pop -> . POP LPAREN RPAREN
     (124) stack_peek -> . PEEK LPAREN RPAREN
     (125) stack_size -> . SIZE LPAREN RPAREN
@@ -2834,7 +2835,7 @@ state 92
     PRINTLN         reduce using rule 99 (condicionN -> EXCL_WS BOOLEAN .)
     VAR             reduce using rule 99 (condicionN -> EXCL_WS BOOLEAN .)
     VAL             reduce using rule 99 (condicionN -> EXCL_WS BOOLEAN .)
-    ARRAYLIST       reduce using rule 99 (condicionN -> EXCL_WS BOOLEAN .)
+    LINKEDL         reduce using rule 99 (condicionN -> EXCL_WS BOOLEAN .)
     STACK           reduce using rule 99 (condicionN -> EXCL_WS BOOLEAN .)
     SEMICOLON       reduce using rule 99 (condicionN -> EXCL_WS BOOLEAN .)
 
@@ -2862,7 +2863,7 @@ state 93
     PRINTLN         reduce using rule 100 (condicionN -> EXCL_WS ID .)
     VAR             reduce using rule 100 (condicionN -> EXCL_WS ID .)
     VAL             reduce using rule 100 (condicionN -> EXCL_WS ID .)
-    ARRAYLIST       reduce using rule 100 (condicionN -> EXCL_WS ID .)
+    LINKEDL         reduce using rule 100 (condicionN -> EXCL_WS ID .)
     STACK           reduce using rule 100 (condicionN -> EXCL_WS ID .)
     SEMICOLON       reduce using rule 100 (condicionN -> EXCL_WS ID .)
 
@@ -2958,13 +2959,13 @@ state 96
     PRINTLN         reduce using rule 40 (asignacion -> keywordVariables asignacionSimple .)
     VAR             reduce using rule 40 (asignacion -> keywordVariables asignacionSimple .)
     VAL             reduce using rule 40 (asignacion -> keywordVariables asignacionSimple .)
-    ARRAYLIST       reduce using rule 40 (asignacion -> keywordVariables asignacionSimple .)
+    LINKEDL         reduce using rule 40 (asignacion -> keywordVariables asignacionSimple .)
     STACK           reduce using rule 40 (asignacion -> keywordVariables asignacionSimple .)
 
 
 state 97
 
-    (112) stack -> keywordVariables ID . DOTS def_estruct_tipoDato EQUAL instance_arraylist
+    (112) stack -> keywordVariables ID . DOTS def_estruct_tipoDato EQUAL instance_linkedlist
     (133) lista -> keywordVariables ID . DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
     (44) asignacionSimple -> ID . DOTS tipoDatoEspecifico
     (45) asignacionSimple -> ID . EQUAL valor
@@ -2982,7 +2983,7 @@ state 98
 
 state 99
 
-    (114) instance_arraylist -> ARRAYLIST LPAREN . RPAREN
+    (114) instance_linkedlist -> LINKEDL LPAREN . RPAREN
 
     RPAREN          shift and go to state 168
 
@@ -3039,7 +3040,7 @@ state 101
     PRINTLN         reduce using rule 60 (expression -> expression PLUS term .)
     VAR             reduce using rule 60 (expression -> expression PLUS term .)
     VAL             reduce using rule 60 (expression -> expression PLUS term .)
-    ARRAYLIST       reduce using rule 60 (expression -> expression PLUS term .)
+    LINKEDL         reduce using rule 60 (expression -> expression PLUS term .)
     STACK           reduce using rule 60 (expression -> expression PLUS term .)
 
 
@@ -3074,7 +3075,7 @@ state 102
     PRINTLN         reduce using rule 61 (expression -> expression MINUS term .)
     VAR             reduce using rule 61 (expression -> expression MINUS term .)
     VAL             reduce using rule 61 (expression -> expression MINUS term .)
-    ARRAYLIST       reduce using rule 61 (expression -> expression MINUS term .)
+    LINKEDL         reduce using rule 61 (expression -> expression MINUS term .)
     STACK           reduce using rule 61 (expression -> expression MINUS term .)
 
 
@@ -3109,7 +3110,7 @@ state 103
     PRINTLN         reduce using rule 62 (expression -> expression TIMES term .)
     VAR             reduce using rule 62 (expression -> expression TIMES term .)
     VAL             reduce using rule 62 (expression -> expression TIMES term .)
-    ARRAYLIST       reduce using rule 62 (expression -> expression TIMES term .)
+    LINKEDL         reduce using rule 62 (expression -> expression TIMES term .)
     STACK           reduce using rule 62 (expression -> expression TIMES term .)
 
 
@@ -3144,7 +3145,7 @@ state 104
     PRINTLN         reduce using rule 63 (expression -> expression DIVIDE term .)
     VAR             reduce using rule 63 (expression -> expression DIVIDE term .)
     VAL             reduce using rule 63 (expression -> expression DIVIDE term .)
-    ARRAYLIST       reduce using rule 63 (expression -> expression DIVIDE term .)
+    LINKEDL         reduce using rule 63 (expression -> expression DIVIDE term .)
     STACK           reduce using rule 63 (expression -> expression DIVIDE term .)
 
 
@@ -3179,7 +3180,7 @@ state 105
     PRINTLN         reduce using rule 64 (expression -> expression MOD term .)
     VAR             reduce using rule 64 (expression -> expression MOD term .)
     VAL             reduce using rule 64 (expression -> expression MOD term .)
-    ARRAYLIST       reduce using rule 64 (expression -> expression MOD term .)
+    LINKEDL         reduce using rule 64 (expression -> expression MOD term .)
     STACK           reduce using rule 64 (expression -> expression MOD term .)
 
 
@@ -3214,7 +3215,7 @@ state 106
     PRINTLN         reduce using rule 69 (term -> LPAREN expression RPAREN .)
     VAR             reduce using rule 69 (term -> LPAREN expression RPAREN .)
     VAL             reduce using rule 69 (term -> LPAREN expression RPAREN .)
-    ARRAYLIST       reduce using rule 69 (term -> LPAREN expression RPAREN .)
+    LINKEDL         reduce using rule 69 (term -> LPAREN expression RPAREN .)
     STACK           reduce using rule 69 (term -> LPAREN expression RPAREN .)
 
 
@@ -3248,7 +3249,7 @@ state 108
     PRINTLN         reduce using rule 84 (condicionL -> ID opL ID .)
     VAR             reduce using rule 84 (condicionL -> ID opL ID .)
     VAL             reduce using rule 84 (condicionL -> ID opL ID .)
-    ARRAYLIST       reduce using rule 84 (condicionL -> ID opL ID .)
+    LINKEDL         reduce using rule 84 (condicionL -> ID opL ID .)
     STACK           reduce using rule 84 (condicionL -> ID opL ID .)
     SEMICOLON       reduce using rule 84 (condicionL -> ID opL ID .)
 
@@ -3276,7 +3277,7 @@ state 109
     PRINTLN         reduce using rule 85 (condicionL -> ID opL BOOLEAN .)
     VAR             reduce using rule 85 (condicionL -> ID opL BOOLEAN .)
     VAL             reduce using rule 85 (condicionL -> ID opL BOOLEAN .)
-    ARRAYLIST       reduce using rule 85 (condicionL -> ID opL BOOLEAN .)
+    LINKEDL         reduce using rule 85 (condicionL -> ID opL BOOLEAN .)
     STACK           reduce using rule 85 (condicionL -> ID opL BOOLEAN .)
     SEMICOLON       reduce using rule 85 (condicionL -> ID opL BOOLEAN .)
 
@@ -3304,7 +3305,7 @@ state 110
     PRINTLN         reduce using rule 98 (condicionR -> ID opR ID .)
     VAR             reduce using rule 98 (condicionR -> ID opR ID .)
     VAL             reduce using rule 98 (condicionR -> ID opR ID .)
-    ARRAYLIST       reduce using rule 98 (condicionR -> ID opR ID .)
+    LINKEDL         reduce using rule 98 (condicionR -> ID opR ID .)
     STACK           reduce using rule 98 (condicionR -> ID opR ID .)
     SEMICOLON       reduce using rule 98 (condicionR -> ID opR ID .)
 
@@ -3332,7 +3333,7 @@ state 111
     PRINTLN         reduce using rule 44 (asignacionSimple -> ID DOTS tipoDatoEspecifico .)
     VAR             reduce using rule 44 (asignacionSimple -> ID DOTS tipoDatoEspecifico .)
     VAL             reduce using rule 44 (asignacionSimple -> ID DOTS tipoDatoEspecifico .)
-    ARRAYLIST       reduce using rule 44 (asignacionSimple -> ID DOTS tipoDatoEspecifico .)
+    LINKEDL         reduce using rule 44 (asignacionSimple -> ID DOTS tipoDatoEspecifico .)
     STACK           reduce using rule 44 (asignacionSimple -> ID DOTS tipoDatoEspecifico .)
 
 
@@ -3401,7 +3402,7 @@ state 118
     PRINTLN         reduce using rule 45 (asignacionSimple -> ID EQUAL valor .)
     VAR             reduce using rule 45 (asignacionSimple -> ID EQUAL valor .)
     VAL             reduce using rule 45 (asignacionSimple -> ID EQUAL valor .)
-    ARRAYLIST       reduce using rule 45 (asignacionSimple -> ID EQUAL valor .)
+    LINKEDL         reduce using rule 45 (asignacionSimple -> ID EQUAL valor .)
     STACK           reduce using rule 45 (asignacionSimple -> ID EQUAL valor .)
 
 
@@ -3435,7 +3436,7 @@ state 119
     PRINTLN         reduce using rule 59 (valor -> expression .)
     VAR             reduce using rule 59 (valor -> expression .)
     VAL             reduce using rule 59 (valor -> expression .)
-    ARRAYLIST       reduce using rule 59 (valor -> expression .)
+    LINKEDL         reduce using rule 59 (valor -> expression .)
     STACK           reduce using rule 59 (valor -> expression .)
     PLUS            shift and go to state 51
     MINUS           shift and go to state 52
@@ -3469,7 +3470,7 @@ state 120
     PRINTLN         reduce using rule 115 (stack_actuar -> ID DOT stack_funciones .)
     VAR             reduce using rule 115 (stack_actuar -> ID DOT stack_funciones .)
     VAL             reduce using rule 115 (stack_actuar -> ID DOT stack_funciones .)
-    ARRAYLIST       reduce using rule 115 (stack_actuar -> ID DOT stack_funciones .)
+    LINKEDL         reduce using rule 115 (stack_actuar -> ID DOT stack_funciones .)
     STACK           reduce using rule 115 (stack_actuar -> ID DOT stack_funciones .)
 
 
@@ -3496,7 +3497,7 @@ state 121
     PRINTLN         reduce using rule 134 (lsimplem -> ID DOT Lmetod .)
     VAR             reduce using rule 134 (lsimplem -> ID DOT Lmetod .)
     VAL             reduce using rule 134 (lsimplem -> ID DOT Lmetod .)
-    ARRAYLIST       reduce using rule 134 (lsimplem -> ID DOT Lmetod .)
+    LINKEDL         reduce using rule 134 (lsimplem -> ID DOT Lmetod .)
     STACK           reduce using rule 134 (lsimplem -> ID DOT Lmetod .)
 
 
@@ -3523,7 +3524,7 @@ state 122
     PRINTLN         reduce using rule 135 (lcomp -> ID DOT Cmetod .)
     VAR             reduce using rule 135 (lcomp -> ID DOT Cmetod .)
     VAL             reduce using rule 135 (lcomp -> ID DOT Cmetod .)
-    ARRAYLIST       reduce using rule 135 (lcomp -> ID DOT Cmetod .)
+    LINKEDL         reduce using rule 135 (lcomp -> ID DOT Cmetod .)
     STACK           reduce using rule 135 (lcomp -> ID DOT Cmetod .)
 
 
@@ -3579,7 +3580,7 @@ state 127
     PRINTLN         reduce using rule 116 (stack_funciones -> stack_isEmpty .)
     VAR             reduce using rule 116 (stack_funciones -> stack_isEmpty .)
     VAL             reduce using rule 116 (stack_funciones -> stack_isEmpty .)
-    ARRAYLIST       reduce using rule 116 (stack_funciones -> stack_isEmpty .)
+    LINKEDL         reduce using rule 116 (stack_funciones -> stack_isEmpty .)
     STACK           reduce using rule 116 (stack_funciones -> stack_isEmpty .)
 
 
@@ -3606,7 +3607,7 @@ state 128
     PRINTLN         reduce using rule 117 (stack_funciones -> stack_push .)
     VAR             reduce using rule 117 (stack_funciones -> stack_push .)
     VAL             reduce using rule 117 (stack_funciones -> stack_push .)
-    ARRAYLIST       reduce using rule 117 (stack_funciones -> stack_push .)
+    LINKEDL         reduce using rule 117 (stack_funciones -> stack_push .)
     STACK           reduce using rule 117 (stack_funciones -> stack_push .)
 
 
@@ -3633,7 +3634,7 @@ state 129
     PRINTLN         reduce using rule 118 (stack_funciones -> stack_pop .)
     VAR             reduce using rule 118 (stack_funciones -> stack_pop .)
     VAL             reduce using rule 118 (stack_funciones -> stack_pop .)
-    ARRAYLIST       reduce using rule 118 (stack_funciones -> stack_pop .)
+    LINKEDL         reduce using rule 118 (stack_funciones -> stack_pop .)
     STACK           reduce using rule 118 (stack_funciones -> stack_pop .)
 
 
@@ -3660,7 +3661,7 @@ state 130
     PRINTLN         reduce using rule 119 (stack_funciones -> stack_peek .)
     VAR             reduce using rule 119 (stack_funciones -> stack_peek .)
     VAL             reduce using rule 119 (stack_funciones -> stack_peek .)
-    ARRAYLIST       reduce using rule 119 (stack_funciones -> stack_peek .)
+    LINKEDL         reduce using rule 119 (stack_funciones -> stack_peek .)
     STACK           reduce using rule 119 (stack_funciones -> stack_peek .)
 
 
@@ -3687,7 +3688,7 @@ state 131
     PRINTLN         reduce using rule 120 (stack_funciones -> stack_size .)
     VAR             reduce using rule 120 (stack_funciones -> stack_size .)
     VAL             reduce using rule 120 (stack_funciones -> stack_size .)
-    ARRAYLIST       reduce using rule 120 (stack_funciones -> stack_size .)
+    LINKEDL         reduce using rule 120 (stack_funciones -> stack_size .)
     STACK           reduce using rule 120 (stack_funciones -> stack_size .)
 
 
@@ -3742,7 +3743,7 @@ state 138
 
 state 139
 
-    (123) stack_push -> PUSH . LPAREN ID RPAREN
+    (123) stack_push -> PUSH . LPAREN factor RPAREN
 
     LPAREN          shift and go to state 195
 
@@ -3992,7 +3993,7 @@ state 151
     PRINTLN         reduce using rule 87 (condicionR -> INT opR INT .)
     VAR             reduce using rule 87 (condicionR -> INT opR INT .)
     VAL             reduce using rule 87 (condicionR -> INT opR INT .)
-    ARRAYLIST       reduce using rule 87 (condicionR -> INT opR INT .)
+    LINKEDL         reduce using rule 87 (condicionR -> INT opR INT .)
     STACK           reduce using rule 87 (condicionR -> INT opR INT .)
     SEMICOLON       reduce using rule 87 (condicionR -> INT opR INT .)
 
@@ -4020,7 +4021,7 @@ state 152
     PRINTLN         reduce using rule 88 (condicionR -> INT opR FLOAT .)
     VAR             reduce using rule 88 (condicionR -> INT opR FLOAT .)
     VAL             reduce using rule 88 (condicionR -> INT opR FLOAT .)
-    ARRAYLIST       reduce using rule 88 (condicionR -> INT opR FLOAT .)
+    LINKEDL         reduce using rule 88 (condicionR -> INT opR FLOAT .)
     STACK           reduce using rule 88 (condicionR -> INT opR FLOAT .)
     SEMICOLON       reduce using rule 88 (condicionR -> INT opR FLOAT .)
 
@@ -4048,7 +4049,7 @@ state 153
     PRINTLN         reduce using rule 89 (condicionR -> INT opR LONG .)
     VAR             reduce using rule 89 (condicionR -> INT opR LONG .)
     VAL             reduce using rule 89 (condicionR -> INT opR LONG .)
-    ARRAYLIST       reduce using rule 89 (condicionR -> INT opR LONG .)
+    LINKEDL         reduce using rule 89 (condicionR -> INT opR LONG .)
     STACK           reduce using rule 89 (condicionR -> INT opR LONG .)
     SEMICOLON       reduce using rule 89 (condicionR -> INT opR LONG .)
 
@@ -4076,7 +4077,7 @@ state 154
     PRINTLN         reduce using rule 83 (condicionL -> BOOLEAN opL BOOLEAN .)
     VAR             reduce using rule 83 (condicionL -> BOOLEAN opL BOOLEAN .)
     VAL             reduce using rule 83 (condicionL -> BOOLEAN opL BOOLEAN .)
-    ARRAYLIST       reduce using rule 83 (condicionL -> BOOLEAN opL BOOLEAN .)
+    LINKEDL         reduce using rule 83 (condicionL -> BOOLEAN opL BOOLEAN .)
     STACK           reduce using rule 83 (condicionL -> BOOLEAN opL BOOLEAN .)
     SEMICOLON       reduce using rule 83 (condicionL -> BOOLEAN opL BOOLEAN .)
 
@@ -4104,7 +4105,7 @@ state 155
     PRINTLN         reduce using rule 86 (condicionL -> BOOLEAN opL ID .)
     VAR             reduce using rule 86 (condicionL -> BOOLEAN opL ID .)
     VAL             reduce using rule 86 (condicionL -> BOOLEAN opL ID .)
-    ARRAYLIST       reduce using rule 86 (condicionL -> BOOLEAN opL ID .)
+    LINKEDL         reduce using rule 86 (condicionL -> BOOLEAN opL ID .)
     STACK           reduce using rule 86 (condicionL -> BOOLEAN opL ID .)
     SEMICOLON       reduce using rule 86 (condicionL -> BOOLEAN opL ID .)
 
@@ -4132,7 +4133,7 @@ state 156
     PRINTLN         reduce using rule 90 (condicionR -> FLOAT opR FLOAT .)
     VAR             reduce using rule 90 (condicionR -> FLOAT opR FLOAT .)
     VAL             reduce using rule 90 (condicionR -> FLOAT opR FLOAT .)
-    ARRAYLIST       reduce using rule 90 (condicionR -> FLOAT opR FLOAT .)
+    LINKEDL         reduce using rule 90 (condicionR -> FLOAT opR FLOAT .)
     STACK           reduce using rule 90 (condicionR -> FLOAT opR FLOAT .)
     SEMICOLON       reduce using rule 90 (condicionR -> FLOAT opR FLOAT .)
 
@@ -4160,7 +4161,7 @@ state 157
     PRINTLN         reduce using rule 91 (condicionR -> FLOAT opR INT .)
     VAR             reduce using rule 91 (condicionR -> FLOAT opR INT .)
     VAL             reduce using rule 91 (condicionR -> FLOAT opR INT .)
-    ARRAYLIST       reduce using rule 91 (condicionR -> FLOAT opR INT .)
+    LINKEDL         reduce using rule 91 (condicionR -> FLOAT opR INT .)
     STACK           reduce using rule 91 (condicionR -> FLOAT opR INT .)
     SEMICOLON       reduce using rule 91 (condicionR -> FLOAT opR INT .)
 
@@ -4188,7 +4189,7 @@ state 158
     PRINTLN         reduce using rule 92 (condicionR -> FLOAT opR LONG .)
     VAR             reduce using rule 92 (condicionR -> FLOAT opR LONG .)
     VAL             reduce using rule 92 (condicionR -> FLOAT opR LONG .)
-    ARRAYLIST       reduce using rule 92 (condicionR -> FLOAT opR LONG .)
+    LINKEDL         reduce using rule 92 (condicionR -> FLOAT opR LONG .)
     STACK           reduce using rule 92 (condicionR -> FLOAT opR LONG .)
     SEMICOLON       reduce using rule 92 (condicionR -> FLOAT opR LONG .)
 
@@ -4216,7 +4217,7 @@ state 159
     PRINTLN         reduce using rule 93 (condicionR -> LONG opR LONG .)
     VAR             reduce using rule 93 (condicionR -> LONG opR LONG .)
     VAL             reduce using rule 93 (condicionR -> LONG opR LONG .)
-    ARRAYLIST       reduce using rule 93 (condicionR -> LONG opR LONG .)
+    LINKEDL         reduce using rule 93 (condicionR -> LONG opR LONG .)
     STACK           reduce using rule 93 (condicionR -> LONG opR LONG .)
     SEMICOLON       reduce using rule 93 (condicionR -> LONG opR LONG .)
 
@@ -4244,7 +4245,7 @@ state 160
     PRINTLN         reduce using rule 94 (condicionR -> LONG opR INT .)
     VAR             reduce using rule 94 (condicionR -> LONG opR INT .)
     VAL             reduce using rule 94 (condicionR -> LONG opR INT .)
-    ARRAYLIST       reduce using rule 94 (condicionR -> LONG opR INT .)
+    LINKEDL         reduce using rule 94 (condicionR -> LONG opR INT .)
     STACK           reduce using rule 94 (condicionR -> LONG opR INT .)
     SEMICOLON       reduce using rule 94 (condicionR -> LONG opR INT .)
 
@@ -4272,7 +4273,7 @@ state 161
     PRINTLN         reduce using rule 95 (condicionR -> LONG opR FLOAT .)
     VAR             reduce using rule 95 (condicionR -> LONG opR FLOAT .)
     VAL             reduce using rule 95 (condicionR -> LONG opR FLOAT .)
-    ARRAYLIST       reduce using rule 95 (condicionR -> LONG opR FLOAT .)
+    LINKEDL         reduce using rule 95 (condicionR -> LONG opR FLOAT .)
     STACK           reduce using rule 95 (condicionR -> LONG opR FLOAT .)
     SEMICOLON       reduce using rule 95 (condicionR -> LONG opR FLOAT .)
 
@@ -4300,7 +4301,7 @@ state 162
     PRINTLN         reduce using rule 96 (condicionR -> STRING_1 opR STRING_1 .)
     VAR             reduce using rule 96 (condicionR -> STRING_1 opR STRING_1 .)
     VAL             reduce using rule 96 (condicionR -> STRING_1 opR STRING_1 .)
-    ARRAYLIST       reduce using rule 96 (condicionR -> STRING_1 opR STRING_1 .)
+    LINKEDL         reduce using rule 96 (condicionR -> STRING_1 opR STRING_1 .)
     STACK           reduce using rule 96 (condicionR -> STRING_1 opR STRING_1 .)
     SEMICOLON       reduce using rule 96 (condicionR -> STRING_1 opR STRING_1 .)
 
@@ -4328,7 +4329,7 @@ state 163
     PRINTLN         reduce using rule 97 (condicionR -> CHAR opR CHAR .)
     VAR             reduce using rule 97 (condicionR -> CHAR opR CHAR .)
     VAL             reduce using rule 97 (condicionR -> CHAR opR CHAR .)
-    ARRAYLIST       reduce using rule 97 (condicionR -> CHAR opR CHAR .)
+    LINKEDL         reduce using rule 97 (condicionR -> CHAR opR CHAR .)
     STACK           reduce using rule 97 (condicionR -> CHAR opR CHAR .)
     SEMICOLON       reduce using rule 97 (condicionR -> CHAR opR CHAR .)
 
@@ -4377,7 +4378,7 @@ state 165
 
 state 166
 
-    (112) stack -> keywordVariables ID DOTS . def_estruct_tipoDato EQUAL instance_arraylist
+    (112) stack -> keywordVariables ID DOTS . def_estruct_tipoDato EQUAL instance_linkedlist
     (133) lista -> keywordVariables ID DOTS . LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
     (44) asignacionSimple -> ID DOTS . tipoDatoEspecifico
     (113) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
@@ -4409,29 +4410,29 @@ state 167
 
 state 168
 
-    (114) instance_arraylist -> ARRAYLIST LPAREN RPAREN .
+    (114) instance_linkedlist -> LINKEDL LPAREN RPAREN .
 
-    SEMICOLON       reduce using rule 114 (instance_arraylist -> ARRAYLIST LPAREN RPAREN .)
-    $end            reduce using rule 114 (instance_arraylist -> ARRAYLIST LPAREN RPAREN .)
-    RCURL           reduce using rule 114 (instance_arraylist -> ARRAYLIST LPAREN RPAREN .)
-    LPAREN          reduce using rule 114 (instance_arraylist -> ARRAYLIST LPAREN RPAREN .)
-    FOR             reduce using rule 114 (instance_arraylist -> ARRAYLIST LPAREN RPAREN .)
-    IF              reduce using rule 114 (instance_arraylist -> ARRAYLIST LPAREN RPAREN .)
-    WHILE           reduce using rule 114 (instance_arraylist -> ARRAYLIST LPAREN RPAREN .)
-    BOOLEAN         reduce using rule 114 (instance_arraylist -> ARRAYLIST LPAREN RPAREN .)
-    ID              reduce using rule 114 (instance_arraylist -> ARRAYLIST LPAREN RPAREN .)
-    INT             reduce using rule 114 (instance_arraylist -> ARRAYLIST LPAREN RPAREN .)
-    FLOAT           reduce using rule 114 (instance_arraylist -> ARRAYLIST LPAREN RPAREN .)
-    LONG            reduce using rule 114 (instance_arraylist -> ARRAYLIST LPAREN RPAREN .)
-    STRING_1        reduce using rule 114 (instance_arraylist -> ARRAYLIST LPAREN RPAREN .)
-    CHAR            reduce using rule 114 (instance_arraylist -> ARRAYLIST LPAREN RPAREN .)
-    EXCL_WS         reduce using rule 114 (instance_arraylist -> ARRAYLIST LPAREN RPAREN .)
-    PRINT           reduce using rule 114 (instance_arraylist -> ARRAYLIST LPAREN RPAREN .)
-    PRINTLN         reduce using rule 114 (instance_arraylist -> ARRAYLIST LPAREN RPAREN .)
-    VAR             reduce using rule 114 (instance_arraylist -> ARRAYLIST LPAREN RPAREN .)
-    VAL             reduce using rule 114 (instance_arraylist -> ARRAYLIST LPAREN RPAREN .)
-    ARRAYLIST       reduce using rule 114 (instance_arraylist -> ARRAYLIST LPAREN RPAREN .)
-    STACK           reduce using rule 114 (instance_arraylist -> ARRAYLIST LPAREN RPAREN .)
+    SEMICOLON       reduce using rule 114 (instance_linkedlist -> LINKEDL LPAREN RPAREN .)
+    $end            reduce using rule 114 (instance_linkedlist -> LINKEDL LPAREN RPAREN .)
+    RCURL           reduce using rule 114 (instance_linkedlist -> LINKEDL LPAREN RPAREN .)
+    LPAREN          reduce using rule 114 (instance_linkedlist -> LINKEDL LPAREN RPAREN .)
+    FOR             reduce using rule 114 (instance_linkedlist -> LINKEDL LPAREN RPAREN .)
+    IF              reduce using rule 114 (instance_linkedlist -> LINKEDL LPAREN RPAREN .)
+    WHILE           reduce using rule 114 (instance_linkedlist -> LINKEDL LPAREN RPAREN .)
+    BOOLEAN         reduce using rule 114 (instance_linkedlist -> LINKEDL LPAREN RPAREN .)
+    ID              reduce using rule 114 (instance_linkedlist -> LINKEDL LPAREN RPAREN .)
+    INT             reduce using rule 114 (instance_linkedlist -> LINKEDL LPAREN RPAREN .)
+    FLOAT           reduce using rule 114 (instance_linkedlist -> LINKEDL LPAREN RPAREN .)
+    LONG            reduce using rule 114 (instance_linkedlist -> LINKEDL LPAREN RPAREN .)
+    STRING_1        reduce using rule 114 (instance_linkedlist -> LINKEDL LPAREN RPAREN .)
+    CHAR            reduce using rule 114 (instance_linkedlist -> LINKEDL LPAREN RPAREN .)
+    EXCL_WS         reduce using rule 114 (instance_linkedlist -> LINKEDL LPAREN RPAREN .)
+    PRINT           reduce using rule 114 (instance_linkedlist -> LINKEDL LPAREN RPAREN .)
+    PRINTLN         reduce using rule 114 (instance_linkedlist -> LINKEDL LPAREN RPAREN .)
+    VAR             reduce using rule 114 (instance_linkedlist -> LINKEDL LPAREN RPAREN .)
+    VAL             reduce using rule 114 (instance_linkedlist -> LINKEDL LPAREN RPAREN .)
+    LINKEDL         reduce using rule 114 (instance_linkedlist -> LINKEDL LPAREN RPAREN .)
+    STACK           reduce using rule 114 (instance_linkedlist -> LINKEDL LPAREN RPAREN .)
 
 
 state 169
@@ -4638,10 +4639,24 @@ state 194
 
 state 195
 
-    (123) stack_push -> PUSH LPAREN . ID RPAREN
+    (123) stack_push -> PUSH LPAREN . factor RPAREN
+    (70) factor -> . INT
+    (71) factor -> . FLOAT
+    (72) factor -> . LONG
+    (73) factor -> . CHAR
+    (74) factor -> . BOOLEAN
+    (75) factor -> . ID
+    (76) factor -> . STRING_1
 
-    ID              shift and go to state 226
+    INT             shift and go to state 60
+    FLOAT           shift and go to state 61
+    LONG            shift and go to state 62
+    CHAR            shift and go to state 63
+    BOOLEAN         shift and go to state 64
+    ID              shift and go to state 65
+    STRING_1        shift and go to state 66
 
+    factor                         shift and go to state 226
 
 state 196
 
@@ -4695,7 +4710,7 @@ state 200
     PRINTLN         reduce using rule 31 (impresion -> PRINT LPAREN expression RPAREN .)
     VAR             reduce using rule 31 (impresion -> PRINT LPAREN expression RPAREN .)
     VAL             reduce using rule 31 (impresion -> PRINT LPAREN expression RPAREN .)
-    ARRAYLIST       reduce using rule 31 (impresion -> PRINT LPAREN expression RPAREN .)
+    LINKEDL         reduce using rule 31 (impresion -> PRINT LPAREN expression RPAREN .)
     STACK           reduce using rule 31 (impresion -> PRINT LPAREN expression RPAREN .)
 
 
@@ -4722,13 +4737,13 @@ state 201
     PRINTLN         reduce using rule 32 (impresion -> PRINTLN LPAREN expression RPAREN .)
     VAR             reduce using rule 32 (impresion -> PRINTLN LPAREN expression RPAREN .)
     VAL             reduce using rule 32 (impresion -> PRINTLN LPAREN expression RPAREN .)
-    ARRAYLIST       reduce using rule 32 (impresion -> PRINTLN LPAREN expression RPAREN .)
+    LINKEDL         reduce using rule 32 (impresion -> PRINTLN LPAREN expression RPAREN .)
     STACK           reduce using rule 32 (impresion -> PRINTLN LPAREN expression RPAREN .)
 
 
 state 202
 
-    (112) stack -> keywordVariables ID DOTS def_estruct_tipoDato . EQUAL instance_arraylist
+    (112) stack -> keywordVariables ID DOTS def_estruct_tipoDato . EQUAL instance_linkedlist
 
     EQUAL           shift and go to state 231
 
@@ -4771,7 +4786,7 @@ state 205
     PRINTLN         reduce using rule 113 (def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE .)
     VAR             reduce using rule 113 (def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE .)
     VAL             reduce using rule 113 (def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE .)
-    ARRAYLIST       reduce using rule 113 (def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE .)
+    LINKEDL         reduce using rule 113 (def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE .)
     STACK           reduce using rule 113 (def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE .)
 
 
@@ -4821,7 +4836,7 @@ state 209
     PRINTLN         reduce using rule 46 (tipoDatoEspecifico -> TINT EQUAL INT .)
     VAR             reduce using rule 46 (tipoDatoEspecifico -> TINT EQUAL INT .)
     VAL             reduce using rule 46 (tipoDatoEspecifico -> TINT EQUAL INT .)
-    ARRAYLIST       reduce using rule 46 (tipoDatoEspecifico -> TINT EQUAL INT .)
+    LINKEDL         reduce using rule 46 (tipoDatoEspecifico -> TINT EQUAL INT .)
     STACK           reduce using rule 46 (tipoDatoEspecifico -> TINT EQUAL INT .)
 
 
@@ -4848,7 +4863,7 @@ state 210
     PRINTLN         reduce using rule 47 (tipoDatoEspecifico -> TLONG EQUAL LONG .)
     VAR             reduce using rule 47 (tipoDatoEspecifico -> TLONG EQUAL LONG .)
     VAL             reduce using rule 47 (tipoDatoEspecifico -> TLONG EQUAL LONG .)
-    ARRAYLIST       reduce using rule 47 (tipoDatoEspecifico -> TLONG EQUAL LONG .)
+    LINKEDL         reduce using rule 47 (tipoDatoEspecifico -> TLONG EQUAL LONG .)
     STACK           reduce using rule 47 (tipoDatoEspecifico -> TLONG EQUAL LONG .)
 
 
@@ -4875,7 +4890,7 @@ state 211
     PRINTLN         reduce using rule 48 (tipoDatoEspecifico -> TFLOAT EQUAL FLOAT .)
     VAR             reduce using rule 48 (tipoDatoEspecifico -> TFLOAT EQUAL FLOAT .)
     VAL             reduce using rule 48 (tipoDatoEspecifico -> TFLOAT EQUAL FLOAT .)
-    ARRAYLIST       reduce using rule 48 (tipoDatoEspecifico -> TFLOAT EQUAL FLOAT .)
+    LINKEDL         reduce using rule 48 (tipoDatoEspecifico -> TFLOAT EQUAL FLOAT .)
     STACK           reduce using rule 48 (tipoDatoEspecifico -> TFLOAT EQUAL FLOAT .)
 
 
@@ -4902,7 +4917,7 @@ state 212
     PRINTLN         reduce using rule 49 (tipoDatoEspecifico -> TBOOLEAN EQUAL BOOLEAN .)
     VAR             reduce using rule 49 (tipoDatoEspecifico -> TBOOLEAN EQUAL BOOLEAN .)
     VAL             reduce using rule 49 (tipoDatoEspecifico -> TBOOLEAN EQUAL BOOLEAN .)
-    ARRAYLIST       reduce using rule 49 (tipoDatoEspecifico -> TBOOLEAN EQUAL BOOLEAN .)
+    LINKEDL         reduce using rule 49 (tipoDatoEspecifico -> TBOOLEAN EQUAL BOOLEAN .)
     STACK           reduce using rule 49 (tipoDatoEspecifico -> TBOOLEAN EQUAL BOOLEAN .)
 
 
@@ -4929,7 +4944,7 @@ state 213
     PRINTLN         reduce using rule 50 (tipoDatoEspecifico -> TCHAR EQUAL CHAR .)
     VAR             reduce using rule 50 (tipoDatoEspecifico -> TCHAR EQUAL CHAR .)
     VAL             reduce using rule 50 (tipoDatoEspecifico -> TCHAR EQUAL CHAR .)
-    ARRAYLIST       reduce using rule 50 (tipoDatoEspecifico -> TCHAR EQUAL CHAR .)
+    LINKEDL         reduce using rule 50 (tipoDatoEspecifico -> TCHAR EQUAL CHAR .)
     STACK           reduce using rule 50 (tipoDatoEspecifico -> TCHAR EQUAL CHAR .)
 
 
@@ -4956,7 +4971,7 @@ state 214
     PRINTLN         reduce using rule 51 (tipoDatoEspecifico -> TSTRING EQUAL STRING_1 .)
     VAR             reduce using rule 51 (tipoDatoEspecifico -> TSTRING EQUAL STRING_1 .)
     VAL             reduce using rule 51 (tipoDatoEspecifico -> TSTRING EQUAL STRING_1 .)
-    ARRAYLIST       reduce using rule 51 (tipoDatoEspecifico -> TSTRING EQUAL STRING_1 .)
+    LINKEDL         reduce using rule 51 (tipoDatoEspecifico -> TSTRING EQUAL STRING_1 .)
     STACK           reduce using rule 51 (tipoDatoEspecifico -> TSTRING EQUAL STRING_1 .)
 
 
@@ -4991,7 +5006,7 @@ state 216
   ! reduce/reduce conflict for PRINTLN resolved using rule 28 (queue_peek -> ID DOT PEEK LPAREN RPAREN .)
   ! reduce/reduce conflict for VAR resolved using rule 28 (queue_peek -> ID DOT PEEK LPAREN RPAREN .)
   ! reduce/reduce conflict for VAL resolved using rule 28 (queue_peek -> ID DOT PEEK LPAREN RPAREN .)
-  ! reduce/reduce conflict for ARRAYLIST resolved using rule 28 (queue_peek -> ID DOT PEEK LPAREN RPAREN .)
+  ! reduce/reduce conflict for LINKEDL resolved using rule 28 (queue_peek -> ID DOT PEEK LPAREN RPAREN .)
   ! reduce/reduce conflict for STACK resolved using rule 28 (queue_peek -> ID DOT PEEK LPAREN RPAREN .)
     SEMICOLON       reduce using rule 28 (queue_peek -> ID DOT PEEK LPAREN RPAREN .)
     $end            reduce using rule 28 (queue_peek -> ID DOT PEEK LPAREN RPAREN .)
@@ -5012,7 +5027,7 @@ state 216
     PRINTLN         reduce using rule 28 (queue_peek -> ID DOT PEEK LPAREN RPAREN .)
     VAR             reduce using rule 28 (queue_peek -> ID DOT PEEK LPAREN RPAREN .)
     VAL             reduce using rule 28 (queue_peek -> ID DOT PEEK LPAREN RPAREN .)
-    ARRAYLIST       reduce using rule 28 (queue_peek -> ID DOT PEEK LPAREN RPAREN .)
+    LINKEDL         reduce using rule 28 (queue_peek -> ID DOT PEEK LPAREN RPAREN .)
     STACK           reduce using rule 28 (queue_peek -> ID DOT PEEK LPAREN RPAREN .)
 
   ! SEMICOLON       [ reduce using rule 124 (stack_peek -> PEEK LPAREN RPAREN .) ]
@@ -5034,7 +5049,7 @@ state 216
   ! PRINTLN         [ reduce using rule 124 (stack_peek -> PEEK LPAREN RPAREN .) ]
   ! VAR             [ reduce using rule 124 (stack_peek -> PEEK LPAREN RPAREN .) ]
   ! VAL             [ reduce using rule 124 (stack_peek -> PEEK LPAREN RPAREN .) ]
-  ! ARRAYLIST       [ reduce using rule 124 (stack_peek -> PEEK LPAREN RPAREN .) ]
+  ! LINKEDL         [ reduce using rule 124 (stack_peek -> PEEK LPAREN RPAREN .) ]
   ! STACK           [ reduce using rule 124 (stack_peek -> PEEK LPAREN RPAREN .) ]
 
 
@@ -5061,7 +5076,7 @@ state 217
     PRINTLN         reduce using rule 30 (queue_remove -> ID DOT REMOVE LPAREN RPAREN .)
     VAR             reduce using rule 30 (queue_remove -> ID DOT REMOVE LPAREN RPAREN .)
     VAL             reduce using rule 30 (queue_remove -> ID DOT REMOVE LPAREN RPAREN .)
-    ARRAYLIST       reduce using rule 30 (queue_remove -> ID DOT REMOVE LPAREN RPAREN .)
+    LINKEDL         reduce using rule 30 (queue_remove -> ID DOT REMOVE LPAREN RPAREN .)
     STACK           reduce using rule 30 (queue_remove -> ID DOT REMOVE LPAREN RPAREN .)
 
 
@@ -5088,7 +5103,7 @@ state 218
     PRINTLN         reduce using rule 29 (queue_poll -> ID DOT POLL LPAREN RPAREN .)
     VAR             reduce using rule 29 (queue_poll -> ID DOT POLL LPAREN RPAREN .)
     VAL             reduce using rule 29 (queue_poll -> ID DOT POLL LPAREN RPAREN .)
-    ARRAYLIST       reduce using rule 29 (queue_poll -> ID DOT POLL LPAREN RPAREN .)
+    LINKEDL         reduce using rule 29 (queue_poll -> ID DOT POLL LPAREN RPAREN .)
     STACK           reduce using rule 29 (queue_poll -> ID DOT POLL LPAREN RPAREN .)
 
 
@@ -5115,7 +5130,7 @@ state 219
     PRINTLN         reduce using rule 126 (Lmetod -> FIRST LPAREN RPAREN .)
     VAR             reduce using rule 126 (Lmetod -> FIRST LPAREN RPAREN .)
     VAL             reduce using rule 126 (Lmetod -> FIRST LPAREN RPAREN .)
-    ARRAYLIST       reduce using rule 126 (Lmetod -> FIRST LPAREN RPAREN .)
+    LINKEDL         reduce using rule 126 (Lmetod -> FIRST LPAREN RPAREN .)
     STACK           reduce using rule 126 (Lmetod -> FIRST LPAREN RPAREN .)
 
 
@@ -5142,7 +5157,7 @@ state 220
     PRINTLN         reduce using rule 127 (Lmetod -> LAST LPAREN RPAREN .)
     VAR             reduce using rule 127 (Lmetod -> LAST LPAREN RPAREN .)
     VAL             reduce using rule 127 (Lmetod -> LAST LPAREN RPAREN .)
-    ARRAYLIST       reduce using rule 127 (Lmetod -> LAST LPAREN RPAREN .)
+    LINKEDL         reduce using rule 127 (Lmetod -> LAST LPAREN RPAREN .)
     STACK           reduce using rule 127 (Lmetod -> LAST LPAREN RPAREN .)
 
 
@@ -5169,7 +5184,7 @@ state 221
     PRINTLN         reduce using rule 128 (Lmetod -> REMOVEL LPAREN RPAREN .)
     VAR             reduce using rule 128 (Lmetod -> REMOVEL LPAREN RPAREN .)
     VAL             reduce using rule 128 (Lmetod -> REMOVEL LPAREN RPAREN .)
-    ARRAYLIST       reduce using rule 128 (Lmetod -> REMOVEL LPAREN RPAREN .)
+    LINKEDL         reduce using rule 128 (Lmetod -> REMOVEL LPAREN RPAREN .)
     STACK           reduce using rule 128 (Lmetod -> REMOVEL LPAREN RPAREN .)
 
 
@@ -5217,13 +5232,13 @@ state 225
     PRINTLN         reduce using rule 121 (stack_isEmpty -> ISEMPTY LPAREN RPAREN .)
     VAR             reduce using rule 121 (stack_isEmpty -> ISEMPTY LPAREN RPAREN .)
     VAL             reduce using rule 121 (stack_isEmpty -> ISEMPTY LPAREN RPAREN .)
-    ARRAYLIST       reduce using rule 121 (stack_isEmpty -> ISEMPTY LPAREN RPAREN .)
+    LINKEDL         reduce using rule 121 (stack_isEmpty -> ISEMPTY LPAREN RPAREN .)
     STACK           reduce using rule 121 (stack_isEmpty -> ISEMPTY LPAREN RPAREN .)
 
 
 state 226
 
-    (123) stack_push -> PUSH LPAREN ID . RPAREN
+    (123) stack_push -> PUSH LPAREN factor . RPAREN
 
     RPAREN          shift and go to state 241
 
@@ -5251,7 +5266,7 @@ state 227
     PRINTLN         reduce using rule 122 (stack_pop -> POP LPAREN RPAREN .)
     VAR             reduce using rule 122 (stack_pop -> POP LPAREN RPAREN .)
     VAL             reduce using rule 122 (stack_pop -> POP LPAREN RPAREN .)
-    ARRAYLIST       reduce using rule 122 (stack_pop -> POP LPAREN RPAREN .)
+    LINKEDL         reduce using rule 122 (stack_pop -> POP LPAREN RPAREN .)
     STACK           reduce using rule 122 (stack_pop -> POP LPAREN RPAREN .)
 
 
@@ -5278,7 +5293,7 @@ state 228
     PRINTLN         reduce using rule 125 (stack_size -> SIZE LPAREN RPAREN .)
     VAR             reduce using rule 125 (stack_size -> SIZE LPAREN RPAREN .)
     VAL             reduce using rule 125 (stack_size -> SIZE LPAREN RPAREN .)
-    ARRAYLIST       reduce using rule 125 (stack_size -> SIZE LPAREN RPAREN .)
+    LINKEDL         reduce using rule 125 (stack_size -> SIZE LPAREN RPAREN .)
     STACK           reduce using rule 125 (stack_size -> SIZE LPAREN RPAREN .)
 
 
@@ -5341,7 +5356,7 @@ state 229
     (11) estructurasDatos -> . queue_operations
     (12) estructurasDatos -> . stack
     (13) estructurasDatos -> . stack_actuar
-    (14) estructurasDatos -> . instance_arraylist
+    (14) estructurasDatos -> . instance_linkedlist
     (15) estructurasDatos -> . def_estruct_tipoDato
     (16) estructurasDatos -> . lista
     (17) estructurasDatos -> . lsimplem
@@ -5363,9 +5378,9 @@ state 229
     (24) queue_operations -> . queue_peek
     (25) queue_operations -> . queue_remove
     (26) queue_operations -> . queue_poll
-    (112) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist
+    (112) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
     (115) stack_actuar -> . ID DOT stack_funciones
-    (114) instance_arraylist -> . ARRAYLIST LPAREN RPAREN
+    (114) instance_linkedlist -> . LINKEDL LPAREN RPAREN
     (113) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
     (133) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
     (134) lsimplem -> . ID DOT Lmetod
@@ -5393,7 +5408,7 @@ state 229
     RCURL           reduce using rule 19 (estructurasDatos -> .)
     VAR             shift and go to state 43
     VAL             shift and go to state 44
-    ARRAYLIST       shift and go to state 49
+    LINKEDL         shift and go to state 45
     STACK           shift and go to state 50
 
     condicion                      shift and go to state 5
@@ -5419,15 +5434,15 @@ state 229
     queue_operations               shift and go to state 35
     stack                          shift and go to state 36
     stack_actuar                   shift and go to state 37
-    instance_arraylist             shift and go to state 38
+    instance_linkedlist            shift and go to state 38
     def_estruct_tipoDato           shift and go to state 39
     lista                          shift and go to state 40
     lsimplem                       shift and go to state 41
     lcomp                          shift and go to state 42
-    queue_add                      shift and go to state 45
-    queue_peek                     shift and go to state 46
-    queue_remove                   shift and go to state 47
-    queue_poll                     shift and go to state 48
+    queue_add                      shift and go to state 46
+    queue_peek                     shift and go to state 47
+    queue_remove                   shift and go to state 48
+    queue_poll                     shift and go to state 49
 
 state 230
 
@@ -5438,12 +5453,12 @@ state 230
 
 state 231
 
-    (112) stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL . instance_arraylist
-    (114) instance_arraylist -> . ARRAYLIST LPAREN RPAREN
+    (112) stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL . instance_linkedlist
+    (114) instance_linkedlist -> . LINKEDL LPAREN RPAREN
 
-    ARRAYLIST       shift and go to state 49
+    LINKEDL         shift and go to state 45
 
-    instance_arraylist             shift and go to state 244
+    instance_linkedlist            shift and go to state 244
 
 state 232
 
@@ -5517,7 +5532,7 @@ state 237
     PRINTLN         reduce using rule 27 (queue_add -> ID DOT ADD LPAREN factor RPAREN .)
     VAR             reduce using rule 27 (queue_add -> ID DOT ADD LPAREN factor RPAREN .)
     VAL             reduce using rule 27 (queue_add -> ID DOT ADD LPAREN factor RPAREN .)
-    ARRAYLIST       reduce using rule 27 (queue_add -> ID DOT ADD LPAREN factor RPAREN .)
+    LINKEDL         reduce using rule 27 (queue_add -> ID DOT ADD LPAREN factor RPAREN .)
     STACK           reduce using rule 27 (queue_add -> ID DOT ADD LPAREN factor RPAREN .)
 
 
@@ -5544,7 +5559,7 @@ state 238
     PRINTLN         reduce using rule 129 (Cmetod -> APPEND LPAREN OBJECT RPAREN .)
     VAR             reduce using rule 129 (Cmetod -> APPEND LPAREN OBJECT RPAREN .)
     VAL             reduce using rule 129 (Cmetod -> APPEND LPAREN OBJECT RPAREN .)
-    ARRAYLIST       reduce using rule 129 (Cmetod -> APPEND LPAREN OBJECT RPAREN .)
+    LINKEDL         reduce using rule 129 (Cmetod -> APPEND LPAREN OBJECT RPAREN .)
     STACK           reduce using rule 129 (Cmetod -> APPEND LPAREN OBJECT RPAREN .)
 
 
@@ -5571,7 +5586,7 @@ state 239
     PRINTLN         reduce using rule 130 (Cmetod -> REMOVEN LPAREN OBJECT RPAREN .)
     VAR             reduce using rule 130 (Cmetod -> REMOVEN LPAREN OBJECT RPAREN .)
     VAL             reduce using rule 130 (Cmetod -> REMOVEN LPAREN OBJECT RPAREN .)
-    ARRAYLIST       reduce using rule 130 (Cmetod -> REMOVEN LPAREN OBJECT RPAREN .)
+    LINKEDL         reduce using rule 130 (Cmetod -> REMOVEN LPAREN OBJECT RPAREN .)
     STACK           reduce using rule 130 (Cmetod -> REMOVEN LPAREN OBJECT RPAREN .)
 
 
@@ -5598,35 +5613,35 @@ state 240
     PRINTLN         reduce using rule 131 (Cmetod -> REMOVEI LPAREN TINT RPAREN .)
     VAR             reduce using rule 131 (Cmetod -> REMOVEI LPAREN TINT RPAREN .)
     VAL             reduce using rule 131 (Cmetod -> REMOVEI LPAREN TINT RPAREN .)
-    ARRAYLIST       reduce using rule 131 (Cmetod -> REMOVEI LPAREN TINT RPAREN .)
+    LINKEDL         reduce using rule 131 (Cmetod -> REMOVEI LPAREN TINT RPAREN .)
     STACK           reduce using rule 131 (Cmetod -> REMOVEI LPAREN TINT RPAREN .)
 
 
 state 241
 
-    (123) stack_push -> PUSH LPAREN ID RPAREN .
+    (123) stack_push -> PUSH LPAREN factor RPAREN .
 
-    SEMICOLON       reduce using rule 123 (stack_push -> PUSH LPAREN ID RPAREN .)
-    $end            reduce using rule 123 (stack_push -> PUSH LPAREN ID RPAREN .)
-    RCURL           reduce using rule 123 (stack_push -> PUSH LPAREN ID RPAREN .)
-    LPAREN          reduce using rule 123 (stack_push -> PUSH LPAREN ID RPAREN .)
-    FOR             reduce using rule 123 (stack_push -> PUSH LPAREN ID RPAREN .)
-    IF              reduce using rule 123 (stack_push -> PUSH LPAREN ID RPAREN .)
-    WHILE           reduce using rule 123 (stack_push -> PUSH LPAREN ID RPAREN .)
-    BOOLEAN         reduce using rule 123 (stack_push -> PUSH LPAREN ID RPAREN .)
-    ID              reduce using rule 123 (stack_push -> PUSH LPAREN ID RPAREN .)
-    INT             reduce using rule 123 (stack_push -> PUSH LPAREN ID RPAREN .)
-    FLOAT           reduce using rule 123 (stack_push -> PUSH LPAREN ID RPAREN .)
-    LONG            reduce using rule 123 (stack_push -> PUSH LPAREN ID RPAREN .)
-    STRING_1        reduce using rule 123 (stack_push -> PUSH LPAREN ID RPAREN .)
-    CHAR            reduce using rule 123 (stack_push -> PUSH LPAREN ID RPAREN .)
-    EXCL_WS         reduce using rule 123 (stack_push -> PUSH LPAREN ID RPAREN .)
-    PRINT           reduce using rule 123 (stack_push -> PUSH LPAREN ID RPAREN .)
-    PRINTLN         reduce using rule 123 (stack_push -> PUSH LPAREN ID RPAREN .)
-    VAR             reduce using rule 123 (stack_push -> PUSH LPAREN ID RPAREN .)
-    VAL             reduce using rule 123 (stack_push -> PUSH LPAREN ID RPAREN .)
-    ARRAYLIST       reduce using rule 123 (stack_push -> PUSH LPAREN ID RPAREN .)
-    STACK           reduce using rule 123 (stack_push -> PUSH LPAREN ID RPAREN .)
+    SEMICOLON       reduce using rule 123 (stack_push -> PUSH LPAREN factor RPAREN .)
+    $end            reduce using rule 123 (stack_push -> PUSH LPAREN factor RPAREN .)
+    RCURL           reduce using rule 123 (stack_push -> PUSH LPAREN factor RPAREN .)
+    LPAREN          reduce using rule 123 (stack_push -> PUSH LPAREN factor RPAREN .)
+    FOR             reduce using rule 123 (stack_push -> PUSH LPAREN factor RPAREN .)
+    IF              reduce using rule 123 (stack_push -> PUSH LPAREN factor RPAREN .)
+    WHILE           reduce using rule 123 (stack_push -> PUSH LPAREN factor RPAREN .)
+    BOOLEAN         reduce using rule 123 (stack_push -> PUSH LPAREN factor RPAREN .)
+    ID              reduce using rule 123 (stack_push -> PUSH LPAREN factor RPAREN .)
+    INT             reduce using rule 123 (stack_push -> PUSH LPAREN factor RPAREN .)
+    FLOAT           reduce using rule 123 (stack_push -> PUSH LPAREN factor RPAREN .)
+    LONG            reduce using rule 123 (stack_push -> PUSH LPAREN factor RPAREN .)
+    STRING_1        reduce using rule 123 (stack_push -> PUSH LPAREN factor RPAREN .)
+    CHAR            reduce using rule 123 (stack_push -> PUSH LPAREN factor RPAREN .)
+    EXCL_WS         reduce using rule 123 (stack_push -> PUSH LPAREN factor RPAREN .)
+    PRINT           reduce using rule 123 (stack_push -> PUSH LPAREN factor RPAREN .)
+    PRINTLN         reduce using rule 123 (stack_push -> PUSH LPAREN factor RPAREN .)
+    VAR             reduce using rule 123 (stack_push -> PUSH LPAREN factor RPAREN .)
+    VAL             reduce using rule 123 (stack_push -> PUSH LPAREN factor RPAREN .)
+    LINKEDL         reduce using rule 123 (stack_push -> PUSH LPAREN factor RPAREN .)
+    STACK           reduce using rule 123 (stack_push -> PUSH LPAREN factor RPAREN .)
 
 
 state 242
@@ -5646,29 +5661,29 @@ state 243
 
 state 244
 
-    (112) stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist .
+    (112) stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .
 
-    SEMICOLON       reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist .)
-    $end            reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist .)
-    RCURL           reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist .)
-    LPAREN          reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist .)
-    FOR             reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist .)
-    IF              reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist .)
-    WHILE           reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist .)
-    BOOLEAN         reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist .)
-    ID              reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist .)
-    INT             reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist .)
-    FLOAT           reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist .)
-    LONG            reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist .)
-    STRING_1        reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist .)
-    CHAR            reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist .)
-    EXCL_WS         reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist .)
-    PRINT           reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist .)
-    PRINTLN         reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist .)
-    VAR             reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist .)
-    VAL             reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist .)
-    ARRAYLIST       reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist .)
-    STACK           reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist .)
+    SEMICOLON       reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
+    $end            reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
+    RCURL           reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
+    LPAREN          reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
+    FOR             reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
+    IF              reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
+    WHILE           reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
+    BOOLEAN         reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
+    ID              reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
+    INT             reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
+    FLOAT           reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
+    LONG            reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
+    STRING_1        reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
+    CHAR            reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
+    EXCL_WS         reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
+    PRINT           reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
+    PRINTLN         reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
+    VAR             reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
+    VAL             reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
+    LINKEDL         reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
+    STACK           reduce using rule 112 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
 
 
 state 245
@@ -5752,7 +5767,7 @@ state 248
     (11) estructurasDatos -> . queue_operations
     (12) estructurasDatos -> . stack
     (13) estructurasDatos -> . stack_actuar
-    (14) estructurasDatos -> . instance_arraylist
+    (14) estructurasDatos -> . instance_linkedlist
     (15) estructurasDatos -> . def_estruct_tipoDato
     (16) estructurasDatos -> . lista
     (17) estructurasDatos -> . lsimplem
@@ -5774,9 +5789,9 @@ state 248
     (24) queue_operations -> . queue_peek
     (25) queue_operations -> . queue_remove
     (26) queue_operations -> . queue_poll
-    (112) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist
+    (112) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
     (115) stack_actuar -> . ID DOT stack_funciones
-    (114) instance_arraylist -> . ARRAYLIST LPAREN RPAREN
+    (114) instance_linkedlist -> . LINKEDL LPAREN RPAREN
     (113) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
     (133) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
     (134) lsimplem -> . ID DOT Lmetod
@@ -5802,7 +5817,7 @@ state 248
   ! shift/reduce conflict for PRINTLN resolved as shift
   ! shift/reduce conflict for VAR resolved as shift
   ! shift/reduce conflict for VAL resolved as shift
-  ! shift/reduce conflict for ARRAYLIST resolved as shift
+  ! shift/reduce conflict for LINKEDL resolved as shift
   ! shift/reduce conflict for STACK resolved as shift
     LPAREN          shift and go to state 18
     FOR             shift and go to state 19
@@ -5822,7 +5837,7 @@ state 248
     RCURL           reduce using rule 19 (estructurasDatos -> .)
     VAR             shift and go to state 43
     VAL             shift and go to state 44
-    ARRAYLIST       shift and go to state 49
+    LINKEDL         shift and go to state 45
     STACK           shift and go to state 50
 
   ! LPAREN          [ reduce using rule 19 (estructurasDatos -> .) ]
@@ -5841,7 +5856,7 @@ state 248
   ! PRINTLN         [ reduce using rule 19 (estructurasDatos -> .) ]
   ! VAR             [ reduce using rule 19 (estructurasDatos -> .) ]
   ! VAL             [ reduce using rule 19 (estructurasDatos -> .) ]
-  ! ARRAYLIST       [ reduce using rule 19 (estructurasDatos -> .) ]
+  ! LINKEDL         [ reduce using rule 19 (estructurasDatos -> .) ]
   ! STACK           [ reduce using rule 19 (estructurasDatos -> .) ]
 
     morelines                      shift and go to state 254
@@ -5868,15 +5883,15 @@ state 248
     queue_operations               shift and go to state 35
     stack                          shift and go to state 36
     stack_actuar                   shift and go to state 37
-    instance_arraylist             shift and go to state 38
+    instance_linkedlist            shift and go to state 38
     def_estruct_tipoDato           shift and go to state 39
     lista                          shift and go to state 40
     lsimplem                       shift and go to state 41
     lcomp                          shift and go to state 42
-    queue_add                      shift and go to state 45
-    queue_peek                     shift and go to state 46
-    queue_remove                   shift and go to state 47
-    queue_poll                     shift and go to state 48
+    queue_add                      shift and go to state 46
+    queue_peek                     shift and go to state 47
+    queue_remove                   shift and go to state 48
+    queue_poll                     shift and go to state 49
 
 state 249
 
@@ -5909,7 +5924,7 @@ state 250
     PRINTLN         reduce using rule 77 (if -> IF LPAREN condicion RPAREN LCURL line RCURL .)
     VAR             reduce using rule 77 (if -> IF LPAREN condicion RPAREN LCURL line RCURL .)
     VAL             reduce using rule 77 (if -> IF LPAREN condicion RPAREN LCURL line RCURL .)
-    ARRAYLIST       reduce using rule 77 (if -> IF LPAREN condicion RPAREN LCURL line RCURL .)
+    LINKEDL         reduce using rule 77 (if -> IF LPAREN condicion RPAREN LCURL line RCURL .)
     STACK           reduce using rule 77 (if -> IF LPAREN condicion RPAREN LCURL line RCURL .)
     SEMICOLON       reduce using rule 77 (if -> IF LPAREN condicion RPAREN LCURL line RCURL .)
     ELSE            shift and go to state 257
@@ -5976,7 +5991,7 @@ state 251
     (11) estructurasDatos -> . queue_operations
     (12) estructurasDatos -> . stack
     (13) estructurasDatos -> . stack_actuar
-    (14) estructurasDatos -> . instance_arraylist
+    (14) estructurasDatos -> . instance_linkedlist
     (15) estructurasDatos -> . def_estruct_tipoDato
     (16) estructurasDatos -> . lista
     (17) estructurasDatos -> . lsimplem
@@ -5998,9 +6013,9 @@ state 251
     (24) queue_operations -> . queue_peek
     (25) queue_operations -> . queue_remove
     (26) queue_operations -> . queue_poll
-    (112) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist
+    (112) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
     (115) stack_actuar -> . ID DOT stack_funciones
-    (114) instance_arraylist -> . ARRAYLIST LPAREN RPAREN
+    (114) instance_linkedlist -> . LINKEDL LPAREN RPAREN
     (113) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
     (133) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
     (134) lsimplem -> . ID DOT Lmetod
@@ -6026,7 +6041,7 @@ state 251
   ! shift/reduce conflict for PRINTLN resolved as shift
   ! shift/reduce conflict for VAR resolved as shift
   ! shift/reduce conflict for VAL resolved as shift
-  ! shift/reduce conflict for ARRAYLIST resolved as shift
+  ! shift/reduce conflict for LINKEDL resolved as shift
   ! shift/reduce conflict for STACK resolved as shift
     LPAREN          shift and go to state 18
     FOR             shift and go to state 19
@@ -6046,7 +6061,7 @@ state 251
     RCURL           reduce using rule 19 (estructurasDatos -> .)
     VAR             shift and go to state 43
     VAL             shift and go to state 44
-    ARRAYLIST       shift and go to state 49
+    LINKEDL         shift and go to state 45
     STACK           shift and go to state 50
 
   ! LPAREN          [ reduce using rule 19 (estructurasDatos -> .) ]
@@ -6065,7 +6080,7 @@ state 251
   ! PRINTLN         [ reduce using rule 19 (estructurasDatos -> .) ]
   ! VAR             [ reduce using rule 19 (estructurasDatos -> .) ]
   ! VAL             [ reduce using rule 19 (estructurasDatos -> .) ]
-  ! ARRAYLIST       [ reduce using rule 19 (estructurasDatos -> .) ]
+  ! LINKEDL         [ reduce using rule 19 (estructurasDatos -> .) ]
   ! STACK           [ reduce using rule 19 (estructurasDatos -> .) ]
 
     morelines                      shift and go to state 258
@@ -6092,15 +6107,15 @@ state 251
     queue_operations               shift and go to state 35
     stack                          shift and go to state 36
     stack_actuar                   shift and go to state 37
-    instance_arraylist             shift and go to state 38
+    instance_linkedlist            shift and go to state 38
     def_estruct_tipoDato           shift and go to state 39
     lista                          shift and go to state 40
     lsimplem                       shift and go to state 41
     lcomp                          shift and go to state 42
-    queue_add                      shift and go to state 45
-    queue_peek                     shift and go to state 46
-    queue_remove                   shift and go to state 47
-    queue_poll                     shift and go to state 48
+    queue_add                      shift and go to state 46
+    queue_peek                     shift and go to state 47
+    queue_remove                   shift and go to state 48
+    queue_poll                     shift and go to state 49
 
 state 252
 
@@ -6184,7 +6199,7 @@ state 255
     (11) estructurasDatos -> . queue_operations
     (12) estructurasDatos -> . stack
     (13) estructurasDatos -> . stack_actuar
-    (14) estructurasDatos -> . instance_arraylist
+    (14) estructurasDatos -> . instance_linkedlist
     (15) estructurasDatos -> . def_estruct_tipoDato
     (16) estructurasDatos -> . lista
     (17) estructurasDatos -> . lsimplem
@@ -6206,9 +6221,9 @@ state 255
     (24) queue_operations -> . queue_peek
     (25) queue_operations -> . queue_remove
     (26) queue_operations -> . queue_poll
-    (112) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist
+    (112) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
     (115) stack_actuar -> . ID DOT stack_funciones
-    (114) instance_arraylist -> . ARRAYLIST LPAREN RPAREN
+    (114) instance_linkedlist -> . LINKEDL LPAREN RPAREN
     (113) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
     (133) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
     (134) lsimplem -> . ID DOT Lmetod
@@ -6235,7 +6250,7 @@ state 255
   ! reduce/reduce conflict for RCURL resolved using rule 19 (estructurasDatos -> .)
   ! shift/reduce conflict for VAR resolved as shift
   ! shift/reduce conflict for VAL resolved as shift
-  ! shift/reduce conflict for ARRAYLIST resolved as shift
+  ! shift/reduce conflict for LINKEDL resolved as shift
   ! shift/reduce conflict for STACK resolved as shift
     LPAREN          shift and go to state 18
     FOR             shift and go to state 19
@@ -6255,7 +6270,7 @@ state 255
     RCURL           reduce using rule 19 (estructurasDatos -> .)
     VAR             shift and go to state 43
     VAL             shift and go to state 44
-    ARRAYLIST       shift and go to state 49
+    LINKEDL         shift and go to state 45
     STACK           shift and go to state 50
 
   ! RCURL           [ reduce using rule 38 (morelines -> line .) ]
@@ -6275,7 +6290,7 @@ state 255
   ! PRINTLN         [ reduce using rule 19 (estructurasDatos -> .) ]
   ! VAR             [ reduce using rule 19 (estructurasDatos -> .) ]
   ! VAL             [ reduce using rule 19 (estructurasDatos -> .) ]
-  ! ARRAYLIST       [ reduce using rule 19 (estructurasDatos -> .) ]
+  ! LINKEDL         [ reduce using rule 19 (estructurasDatos -> .) ]
   ! STACK           [ reduce using rule 19 (estructurasDatos -> .) ]
 
     line                           shift and go to state 255
@@ -6302,15 +6317,15 @@ state 255
     queue_operations               shift and go to state 35
     stack                          shift and go to state 36
     stack_actuar                   shift and go to state 37
-    instance_arraylist             shift and go to state 38
+    instance_linkedlist            shift and go to state 38
     def_estruct_tipoDato           shift and go to state 39
     lista                          shift and go to state 40
     lsimplem                       shift and go to state 41
     lcomp                          shift and go to state 42
-    queue_add                      shift and go to state 45
-    queue_peek                     shift and go to state 46
-    queue_remove                   shift and go to state 47
-    queue_poll                     shift and go to state 48
+    queue_add                      shift and go to state 46
+    queue_peek                     shift and go to state 47
+    queue_remove                   shift and go to state 48
+    queue_poll                     shift and go to state 49
 
 state 256
 
@@ -6334,7 +6349,7 @@ state 256
     PRINTLN         reduce using rule 78 (if -> IF LPAREN condicion RPAREN LCURL line RCURL else .)
     VAR             reduce using rule 78 (if -> IF LPAREN condicion RPAREN LCURL line RCURL else .)
     VAL             reduce using rule 78 (if -> IF LPAREN condicion RPAREN LCURL line RCURL else .)
-    ARRAYLIST       reduce using rule 78 (if -> IF LPAREN condicion RPAREN LCURL line RCURL else .)
+    LINKEDL         reduce using rule 78 (if -> IF LPAREN condicion RPAREN LCURL line RCURL else .)
     STACK           reduce using rule 78 (if -> IF LPAREN condicion RPAREN LCURL line RCURL else .)
     SEMICOLON       reduce using rule 78 (if -> IF LPAREN condicion RPAREN LCURL line RCURL else .)
 
@@ -6389,7 +6404,7 @@ state 261
     PRINTLN         reduce using rule 34 (for -> FOR LPAREN ID IN iterable RPAREN LCURL morelines RCURL .)
     VAR             reduce using rule 34 (for -> FOR LPAREN ID IN iterable RPAREN LCURL morelines RCURL .)
     VAL             reduce using rule 34 (for -> FOR LPAREN ID IN iterable RPAREN LCURL morelines RCURL .)
-    ARRAYLIST       reduce using rule 34 (for -> FOR LPAREN ID IN iterable RPAREN LCURL morelines RCURL .)
+    LINKEDL         reduce using rule 34 (for -> FOR LPAREN ID IN iterable RPAREN LCURL morelines RCURL .)
     STACK           reduce using rule 34 (for -> FOR LPAREN ID IN iterable RPAREN LCURL morelines RCURL .)
     SEMICOLON       reduce using rule 34 (for -> FOR LPAREN ID IN iterable RPAREN LCURL morelines RCURL .)
 
@@ -6459,7 +6474,7 @@ state 263
     (11) estructurasDatos -> . queue_operations
     (12) estructurasDatos -> . stack
     (13) estructurasDatos -> . stack_actuar
-    (14) estructurasDatos -> . instance_arraylist
+    (14) estructurasDatos -> . instance_linkedlist
     (15) estructurasDatos -> . def_estruct_tipoDato
     (16) estructurasDatos -> . lista
     (17) estructurasDatos -> . lsimplem
@@ -6481,9 +6496,9 @@ state 263
     (24) queue_operations -> . queue_peek
     (25) queue_operations -> . queue_remove
     (26) queue_operations -> . queue_poll
-    (112) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist
+    (112) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
     (115) stack_actuar -> . ID DOT stack_funciones
-    (114) instance_arraylist -> . ARRAYLIST LPAREN RPAREN
+    (114) instance_linkedlist -> . LINKEDL LPAREN RPAREN
     (113) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
     (133) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
     (134) lsimplem -> . ID DOT Lmetod
@@ -6511,7 +6526,7 @@ state 263
     RCURL           reduce using rule 19 (estructurasDatos -> .)
     VAR             shift and go to state 43
     VAL             shift and go to state 44
-    ARRAYLIST       shift and go to state 49
+    LINKEDL         shift and go to state 45
     STACK           shift and go to state 50
 
     line                           shift and go to state 267
@@ -6537,15 +6552,15 @@ state 263
     queue_operations               shift and go to state 35
     stack                          shift and go to state 36
     stack_actuar                   shift and go to state 37
-    instance_arraylist             shift and go to state 38
+    instance_linkedlist            shift and go to state 38
     def_estruct_tipoDato           shift and go to state 39
     lista                          shift and go to state 40
     lsimplem                       shift and go to state 41
     lcomp                          shift and go to state 42
-    queue_add                      shift and go to state 45
-    queue_peek                     shift and go to state 46
-    queue_remove                   shift and go to state 47
-    queue_poll                     shift and go to state 48
+    queue_add                      shift and go to state 46
+    queue_peek                     shift and go to state 47
+    queue_remove                   shift and go to state 48
+    queue_poll                     shift and go to state 49
 
 state 264
 
@@ -6569,7 +6584,7 @@ state 264
     PRINTLN         reduce using rule 132 (while -> WHILE LPAREN ID opR INT RPAREN LCURL morelines RCURL .)
     VAR             reduce using rule 132 (while -> WHILE LPAREN ID opR INT RPAREN LCURL morelines RCURL .)
     VAL             reduce using rule 132 (while -> WHILE LPAREN ID opR INT RPAREN LCURL morelines RCURL .)
-    ARRAYLIST       reduce using rule 132 (while -> WHILE LPAREN ID opR INT RPAREN LCURL morelines RCURL .)
+    LINKEDL         reduce using rule 132 (while -> WHILE LPAREN ID opR INT RPAREN LCURL morelines RCURL .)
     STACK           reduce using rule 132 (while -> WHILE LPAREN ID opR INT RPAREN LCURL morelines RCURL .)
     SEMICOLON       reduce using rule 132 (while -> WHILE LPAREN ID opR INT RPAREN LCURL morelines RCURL .)
 
@@ -6645,7 +6660,7 @@ state 270
     PRINTLN         reduce using rule 79 (else -> ELSE LCURL line RCURL .)
     VAR             reduce using rule 79 (else -> ELSE LCURL line RCURL .)
     VAL             reduce using rule 79 (else -> ELSE LCURL line RCURL .)
-    ARRAYLIST       reduce using rule 79 (else -> ELSE LCURL line RCURL .)
+    LINKEDL         reduce using rule 79 (else -> ELSE LCURL line RCURL .)
     STACK           reduce using rule 79 (else -> ELSE LCURL line RCURL .)
     SEMICOLON       reduce using rule 79 (else -> ELSE LCURL line RCURL .)
 
@@ -6715,7 +6730,7 @@ state 277
     PRINTLN         reduce using rule 133 (lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN .)
     VAR             reduce using rule 133 (lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN .)
     VAL             reduce using rule 133 (lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN .)
-    ARRAYLIST       reduce using rule 133 (lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN .)
+    LINKEDL         reduce using rule 133 (lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN .)
     STACK           reduce using rule 133 (lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN .)
 
 
@@ -6742,7 +6757,7 @@ state 278
     PRINTLN         reduce using rule 33 (queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN .)
     VAR             reduce using rule 33 (queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN .)
     VAL             reduce using rule 33 (queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN .)
-    ARRAYLIST       reduce using rule 33 (queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN .)
+    LINKEDL         reduce using rule 33 (queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN .)
     STACK           reduce using rule 33 (queue -> VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN .)
 
 WARNING: 
@@ -6766,7 +6781,7 @@ WARNING: shift/reduce conflict for PRINT in state 248 resolved as shift
 WARNING: shift/reduce conflict for PRINTLN in state 248 resolved as shift
 WARNING: shift/reduce conflict for VAR in state 248 resolved as shift
 WARNING: shift/reduce conflict for VAL in state 248 resolved as shift
-WARNING: shift/reduce conflict for ARRAYLIST in state 248 resolved as shift
+WARNING: shift/reduce conflict for LINKEDL in state 248 resolved as shift
 WARNING: shift/reduce conflict for STACK in state 248 resolved as shift
 WARNING: shift/reduce conflict for LPAREN in state 251 resolved as shift
 WARNING: shift/reduce conflict for FOR in state 251 resolved as shift
@@ -6784,7 +6799,7 @@ WARNING: shift/reduce conflict for PRINT in state 251 resolved as shift
 WARNING: shift/reduce conflict for PRINTLN in state 251 resolved as shift
 WARNING: shift/reduce conflict for VAR in state 251 resolved as shift
 WARNING: shift/reduce conflict for VAL in state 251 resolved as shift
-WARNING: shift/reduce conflict for ARRAYLIST in state 251 resolved as shift
+WARNING: shift/reduce conflict for LINKEDL in state 251 resolved as shift
 WARNING: shift/reduce conflict for STACK in state 251 resolved as shift
 WARNING: shift/reduce conflict for LPAREN in state 255 resolved as shift
 WARNING: shift/reduce conflict for FOR in state 255 resolved as shift
@@ -6802,7 +6817,7 @@ WARNING: shift/reduce conflict for PRINT in state 255 resolved as shift
 WARNING: shift/reduce conflict for PRINTLN in state 255 resolved as shift
 WARNING: shift/reduce conflict for VAR in state 255 resolved as shift
 WARNING: shift/reduce conflict for VAL in state 255 resolved as shift
-WARNING: shift/reduce conflict for ARRAYLIST in state 255 resolved as shift
+WARNING: shift/reduce conflict for LINKEDL in state 255 resolved as shift
 WARNING: shift/reduce conflict for STACK in state 255 resolved as shift
 WARNING: reduce/reduce conflict in state 216 resolved using rule (queue_peek -> ID DOT PEEK LPAREN RPAREN)
 WARNING: rejected rule (stack_peek -> PEEK LPAREN RPAREN) in state 216

@@ -5,7 +5,7 @@ WIN_HEIGHT = 550
 
 window = tk.Tk() 
 window.title("Proyecto LP")  # to define the title
-window.config(cursor= 'heart')
+#window.config(cursor= 'heart')
 canvas = tk.Canvas(window, width=WIN_WIDTH, height=WIN_HEIGHT)  # define the size
 canvas.pack()
 frame = tk.Frame(window)
@@ -24,11 +24,13 @@ lexico = tk.IntVar()
 Sintactico = tk.IntVar() 
 Semantico = tk.IntVar() 
 window.config(menu=menu)
-subMenu_exit = tk.Menu(menu)
-menu.add_cascade(label="Exit_menu", menu=subMenu_exit)
-subMenu_exit.add_command(label="Exit", command=window.destroy)
-label = tk.Label(frame,text='Analizador del Lenguaje Kotlin', bd='3',fg='blue', font='Helvetica 9 bold').grid(column=1)  # placing labels
-label1 = tk.Label(frame,text='Input', bd='1',fg='blue', font='Helvetica 9 bold').grid(column=1)
+
+# menu cascade
+#subMenu_exit = tk.Menu(menu)
+#menu.add_cascade(label="Exit_menu", menu=subMenu_exit)
+#subMenu_exit.add_command(label="Exit", command=window.destroy)
+
+label = tk.Label(frame,text='Analizador del Lenguaje Kotlin', bd='3',fg='black', font='Helvetica 12 bold').grid(column=1)  # placing labels
 check_button1 = tk.Checkbutton(frame, text="Lexico", variable= lexico, onvalue=1, offvalue=0)
 check_button2= tk.Checkbutton(frame, text="Sintactico", variable= Sintactico, onvalue=1, offvalue=0)
 check_button3 = tk.Checkbutton(frame, text="Semantico", variable= Semantico, onvalue=1, offvalue=0)
@@ -39,6 +41,9 @@ check_button3 = tk.Checkbutton(frame, text="Semantico", variable= Semantico, onv
 check_button1.grid(row=2,column=0)
 check_button2.grid(row=2,column=1)
 check_button3.grid(row=2,column=2)
+
+#input field
+label1 = tk.Label(frame,text='Input', bd='1',fg='blue', font='Helvetica 9 bold').grid(column=1)
 entry_field1= tk.Text(frame,height = 10, width=30,bd='10')
 entry_field1.grid(column=1)
 analizar = tk.Button(frame, text="Analizar").grid(column=1)

@@ -31,7 +31,7 @@ def p_estructuras_datos(p):
                         | queue_operations
                         | stack
                         | stack_actuar
-                        | instance_arraylist
+                        | instance_linkedlist
                         | def_estruct_tipoDato
                         | lista
                         | lsimplem
@@ -250,9 +250,9 @@ def p_opR(p):
             '''
 
 # ---------------- STACK ---------------
-# <pila> ::= "var " <variable> ": Stack<" <tipoDato> ">" "=" "ArrayList()"
+# <pila> ::= "var " <variable> ": Stack<" <tipoDato> ">" "=" "LinkedList()"
 def p_stack(p):
-    'stack : keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist'
+    'stack : keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist'
 
 
 # Stack<" <tipoDato> ">"
@@ -261,8 +261,8 @@ def p_def_estruct_dato(p):
 
 
 # ArrayList()
-def p_instance_ArrayList(p):
-    'instance_arraylist : ARRAYLIST LPAREN RPAREN'
+def p_instance_linkedList(p):
+    'instance_linkedlist : LINKEDL LPAREN RPAREN'
 
 
 # ejecutar funciones para pilas
