@@ -259,7 +259,7 @@ def t_ID(t):
 
 # Regla de expresión regular para decimales
 def t_FLOAT(t):
-    r'-?[0-9]+\.[0-9]+f'
+    r'-?[0-9]+\.[0-9]+'
     return t
 
 # Regla de expresión regular para Long
@@ -320,5 +320,5 @@ while linea!="":
     getTokens(lexer)
 # Tokenize
 print("Succesfull")
-
 """
+

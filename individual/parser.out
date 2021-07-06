@@ -1,0 +1,2882 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    ABSTRACT
+    ACTUAL
+    ADD
+    ANNOTATION
+    APPEND
+    ARRAYOF
+    ARROW
+    AS
+    AT_NO_WS
+    BREAK
+    BY
+    CATCH
+    CLASS
+    COLONCOLON
+    COMMA
+    COMMENT
+    COMPANION
+    CONST
+    CONSTRUCTOR
+    CONTINUE
+    CROSSINLINE
+    DATA
+    DECR
+    DECREMENTIN
+    DECREMENTONE
+    DIVIDEIN
+    DO
+    DOUBLE_ARROW
+    DOUBLE_SEMICOLON
+    DYNAMIC
+    ENUM
+    EXCL_NO_WS
+    EXPECT
+    EXTERNAL
+    FIELD
+    FILE
+    FINAL
+    FINALLY
+    FIRST
+    FUN
+    GET
+    HASH
+    IMPORT
+    INCR
+    INCREMENTIN
+    INCREMENTONE
+    INCREMENTTIMES
+    INDICES
+    INFIX
+    INIT
+    INLINE
+    INNER
+    INTERFACE
+    INTERNAL
+    IS
+    LAST
+    LATEINIT
+    LINEBREAK
+    LINKEDL
+    LISTOF
+    LSQUARE
+    MARK_1
+    MARK_2
+    MODIN
+    NOINLINE
+    OBJECT
+    OPEN
+    OPERATOR
+    OUT
+    OVERRIDE
+    PACKAGE
+    PARAM
+    PEEK
+    POLL
+    PRIVATE
+    PROPERTY
+    PROTECTED
+    PUBLIC
+    QUEST_WS
+    QUEUE
+    RANGE
+    RECEIVER
+    REIFIED
+    REMOVE
+    REMOVEI
+    REMOVEL
+    REMOVEN
+    RETURN
+    RSQUARE
+    SEALED
+    SET
+    SETPARAM
+    SINGLE_QUOTE
+    SIZE
+    SUM
+    SUPER
+    SUSPEND
+    TAILREC
+    TEMPLATE
+    THIS
+    THREEDOTS
+    THROW
+    TRY
+    TYPEOF
+    TYPE_ALIAS
+    VALUE
+    VAL_TIPO_1
+    VARARG
+    VAR_TIPO_1
+    WHEN
+    WHERE
+    WHILE
+
+Grammar
+
+Rule 0     S' -> line
+Rule 1     line -> impresion
+Rule 2     line -> expression
+Rule 3     line -> condicionL
+Rule 4     line -> condicionR
+Rule 5     line -> condicionN
+Rule 6     line -> asignacion
+Rule 7     line -> asignacion SEMICOLON
+Rule 8     line -> for
+Rule 9     line -> if
+Rule 10    line -> stack
+Rule 11    line -> stack_actuar
+Rule 12    line -> instance_arraylist
+Rule 13    line -> def_estruct_tipoDato
+Rule 14    impresion -> PRINT LPAREN term RPAREN
+Rule 15    impresion -> PRINTLN LPAREN term RPAREN
+Rule 16    for -> FOR LPAREN ID IN ID RPAREN LCURL line RCURL
+Rule 17    keywordVariables -> VAR
+Rule 18    keywordVariables -> VAL
+Rule 19    asignacion -> keywordVariables asignacionSimple
+Rule 20    asignacion -> asignacionSimple
+Rule 21    asignacionSimple -> ID DOTS tipoDato EQUAL valor
+Rule 22    asignacionSimple -> ID EQUAL valor
+Rule 23    tipoDato -> TINT
+Rule 24    tipoDato -> TLONG
+Rule 25    tipoDato -> TFLOAT
+Rule 26    tipoDato -> TDOUBLE
+Rule 27    tipoDato -> TBOOLEAN
+Rule 28    tipoDato -> TCHAR
+Rule 29    tipoDato -> TSTRING
+Rule 30    valor -> expression
+Rule 31    expression -> expression PLUS term
+Rule 32    expression -> expression MINUS term
+Rule 33    expression -> expression TIMES term
+Rule 34    expression -> expression DIVIDE term
+Rule 35    expression -> expression MOD term
+Rule 36    expression -> term
+Rule 37    term -> factor
+Rule 38    term -> LPAREN expression RPAREN
+Rule 39    factor -> INT
+Rule 40    factor -> FLOAT
+Rule 41    factor -> LONG
+Rule 42    factor -> CHAR
+Rule 43    factor -> BOOLEAN
+Rule 44    factor -> ID
+Rule 45    factor -> STRING_1
+Rule 46    if -> IF LPAREN condicion RPAREN LCURL line RCURL
+Rule 47    if -> IF LPAREN condicion RPAREN LCURL line RCURL else
+Rule 48    else -> ELSE LCURL line RCURL
+Rule 49    condicion -> condicionL
+Rule 50    condicion -> condicionR
+Rule 51    condicion -> condicionN
+Rule 52    condicionL -> BOOLEAN opL BOOLEAN
+Rule 53    condicionL -> ID opL ID
+Rule 54    condicionL -> ID opL BOOLEAN
+Rule 55    condicionL -> BOOLEAN opL ID
+Rule 56    condicionR -> INT opR INT
+Rule 57    condicionR -> INT opR FLOAT
+Rule 58    condicionR -> INT opR LONG
+Rule 59    condicionR -> FLOAT opR FLOAT
+Rule 60    condicionR -> FLOAT opR INT
+Rule 61    condicionR -> FLOAT opR LONG
+Rule 62    condicionR -> LONG opR LONG
+Rule 63    condicionR -> LONG opR INT
+Rule 64    condicionR -> LONG opR FLOAT
+Rule 65    condicionR -> STRING_1 opR STRING_1
+Rule 66    condicionR -> CHAR opR CHAR
+Rule 67    condicionR -> ID opR ID
+Rule 68    condicionN -> EXCL_WS BOOLEAN
+Rule 69    condicionN -> EXCL_WS ID
+Rule 70    opL -> CONJ
+Rule 71    opL -> DISJ
+Rule 72    opR -> LANGLE
+Rule 73    opR -> RANGLE
+Rule 74    opR -> LE
+Rule 75    opR -> GE
+Rule 76    opR -> EXCL_EQ
+Rule 77    opR -> EXCL_EQEQ
+Rule 78    opR -> AS_SAFE
+Rule 79    opR -> EQEQ
+Rule 80    opR -> EQEQEQ
+Rule 81    stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist
+Rule 82    def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE
+Rule 83    instance_arraylist -> ARRAYLIST LPAREN RPAREN
+Rule 84    stack_actuar -> ID DOT stack_funciones
+Rule 85    stack_funciones -> stack_isEmpty
+Rule 86    stack_funciones -> stack_push
+Rule 87    stack_funciones -> stack_pop
+Rule 88    stack_isEmpty -> ISEMPTY LPAREN RPAREN
+Rule 89    stack_pop -> POP LPAREN RPAREN
+Rule 90    stack_push -> PUSH LPAREN ID RPAREN
+
+Terminals, with rules where they appear
+
+ABSTRACT             : 
+ACTUAL               : 
+ADD                  : 
+ANNOTATION           : 
+APPEND               : 
+ARRAYLIST            : 83
+ARRAYOF              : 
+ARROW                : 
+AS                   : 
+AS_SAFE              : 78
+AT_NO_WS             : 
+BOOLEAN              : 43 52 52 54 55 68
+BREAK                : 
+BY                   : 
+CATCH                : 
+CHAR                 : 42 66 66
+CLASS                : 
+COLONCOLON           : 
+COMMA                : 
+COMMENT              : 
+COMPANION            : 
+CONJ                 : 70
+CONST                : 
+CONSTRUCTOR          : 
+CONTINUE             : 
+CROSSINLINE          : 
+DATA                 : 
+DECR                 : 
+DECREMENTIN          : 
+DECREMENTONE         : 
+DISJ                 : 71
+DIVIDE               : 34
+DIVIDEIN             : 
+DO                   : 
+DOT                  : 84
+DOTS                 : 21 81
+DOUBLE_ARROW         : 
+DOUBLE_SEMICOLON     : 
+DYNAMIC              : 
+ELSE                 : 48
+ENUM                 : 
+EQEQ                 : 79
+EQEQEQ               : 80
+EQUAL                : 21 22 81
+EXCL_EQ              : 76
+EXCL_EQEQ            : 77
+EXCL_NO_WS           : 
+EXCL_WS              : 68 69
+EXPECT               : 
+EXTERNAL             : 
+FIELD                : 
+FILE                 : 
+FINAL                : 
+FINALLY              : 
+FIRST                : 
+FLOAT                : 40 57 59 59 60 61 64
+FOR                  : 16
+FUN                  : 
+GE                   : 75
+GET                  : 
+HASH                 : 
+ID                   : 16 16 21 22 44 53 53 54 55 67 67 69 81 84 90
+IF                   : 46 47
+IMPORT               : 
+IN                   : 16
+INCR                 : 
+INCREMENTIN          : 
+INCREMENTONE         : 
+INCREMENTTIMES       : 
+INDICES              : 
+INFIX                : 
+INIT                 : 
+INLINE               : 
+INNER                : 
+INT                  : 39 56 56 57 58 60 63
+INTERFACE            : 
+INTERNAL             : 
+IS                   : 
+ISEMPTY              : 88
+LANGLE               : 72 82
+LAST                 : 
+LATEINIT             : 
+LCURL                : 16 46 47 48
+LE                   : 74
+LINEBREAK            : 
+LINKEDL              : 
+LISTOF               : 
+LONG                 : 41 58 61 62 62 63 64
+LPAREN               : 14 15 16 38 46 47 83 88 89 90
+LSQUARE              : 
+MARK_1               : 
+MARK_2               : 
+MINUS                : 32
+MOD                  : 35
+MODIN                : 
+NOINLINE             : 
+OBJECT               : 
+OPEN                 : 
+OPERATOR             : 
+OUT                  : 
+OVERRIDE             : 
+PACKAGE              : 
+PARAM                : 
+PEEK                 : 
+PLUS                 : 31
+POLL                 : 
+POP                  : 89
+PRINT                : 14
+PRINTLN              : 15
+PRIVATE              : 
+PROPERTY             : 
+PROTECTED            : 
+PUBLIC               : 
+PUSH                 : 90
+QUEST_WS             : 
+QUEUE                : 
+RANGE                : 
+RANGLE               : 73 82
+RCURL                : 16 46 47 48
+RECEIVER             : 
+REIFIED              : 
+REMOVE               : 
+REMOVEI              : 
+REMOVEL              : 
+REMOVEN              : 
+RETURN               : 
+RPAREN               : 14 15 16 38 46 47 83 88 89 90
+RSQUARE              : 
+SEALED               : 
+SEMICOLON            : 7
+SET                  : 
+SETPARAM             : 
+SINGLE_QUOTE         : 
+SIZE                 : 
+STACK                : 82
+STRING_1             : 45 65 65
+SUM                  : 
+SUPER                : 
+SUSPEND              : 
+TAILREC              : 
+TBOOLEAN             : 27
+TCHAR                : 28
+TDOUBLE              : 26
+TEMPLATE             : 
+TFLOAT               : 25
+THIS                 : 
+THREEDOTS            : 
+THROW                : 
+TIMES                : 33
+TINT                 : 23
+TLONG                : 24
+TRY                  : 
+TSTRING              : 29
+TYPEOF               : 
+TYPE_ALIAS           : 
+VAL                  : 18
+VALUE                : 
+VAL_TIPO_1           : 
+VAR                  : 17
+VARARG               : 
+VAR_TIPO_1           : 
+WHEN                 : 
+WHERE                : 
+WHILE                : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+asignacion           : 6 7
+asignacionSimple     : 19 20
+condicion            : 46 47
+condicionL           : 3 49
+condicionN           : 5 51
+condicionR           : 4 50
+def_estruct_tipoDato : 13 81
+else                 : 47
+expression           : 2 30 31 32 33 34 35 38
+factor               : 37
+for                  : 8
+if                   : 9
+impresion            : 1
+instance_arraylist   : 12 81
+keywordVariables     : 19 81
+line                 : 16 46 47 48 0
+opL                  : 52 53 54 55
+opR                  : 56 57 58 59 60 61 62 63 64 65 66 67
+stack                : 10
+stack_actuar         : 11
+stack_funciones      : 84
+stack_isEmpty        : 85
+stack_pop            : 87
+stack_push           : 86
+term                 : 14 15 31 32 33 34 35 36
+tipoDato             : 21 82
+valor                : 21 22
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . line
+    (1) line -> . impresion
+    (2) line -> . expression
+    (3) line -> . condicionL
+    (4) line -> . condicionR
+    (5) line -> . condicionN
+    (6) line -> . asignacion
+    (7) line -> . asignacion SEMICOLON
+    (8) line -> . for
+    (9) line -> . if
+    (10) line -> . stack
+    (11) line -> . stack_actuar
+    (12) line -> . instance_arraylist
+    (13) line -> . def_estruct_tipoDato
+    (14) impresion -> . PRINT LPAREN term RPAREN
+    (15) impresion -> . PRINTLN LPAREN term RPAREN
+    (31) expression -> . expression PLUS term
+    (32) expression -> . expression MINUS term
+    (33) expression -> . expression TIMES term
+    (34) expression -> . expression DIVIDE term
+    (35) expression -> . expression MOD term
+    (36) expression -> . term
+    (52) condicionL -> . BOOLEAN opL BOOLEAN
+    (53) condicionL -> . ID opL ID
+    (54) condicionL -> . ID opL BOOLEAN
+    (55) condicionL -> . BOOLEAN opL ID
+    (56) condicionR -> . INT opR INT
+    (57) condicionR -> . INT opR FLOAT
+    (58) condicionR -> . INT opR LONG
+    (59) condicionR -> . FLOAT opR FLOAT
+    (60) condicionR -> . FLOAT opR INT
+    (61) condicionR -> . FLOAT opR LONG
+    (62) condicionR -> . LONG opR LONG
+    (63) condicionR -> . LONG opR INT
+    (64) condicionR -> . LONG opR FLOAT
+    (65) condicionR -> . STRING_1 opR STRING_1
+    (66) condicionR -> . CHAR opR CHAR
+    (67) condicionR -> . ID opR ID
+    (68) condicionN -> . EXCL_WS BOOLEAN
+    (69) condicionN -> . EXCL_WS ID
+    (19) asignacion -> . keywordVariables asignacionSimple
+    (20) asignacion -> . asignacionSimple
+    (16) for -> . FOR LPAREN ID IN ID RPAREN LCURL line RCURL
+    (46) if -> . IF LPAREN condicion RPAREN LCURL line RCURL
+    (47) if -> . IF LPAREN condicion RPAREN LCURL line RCURL else
+    (81) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist
+    (84) stack_actuar -> . ID DOT stack_funciones
+    (83) instance_arraylist -> . ARRAYLIST LPAREN RPAREN
+    (82) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
+    (37) term -> . factor
+    (38) term -> . LPAREN expression RPAREN
+    (17) keywordVariables -> . VAR
+    (18) keywordVariables -> . VAL
+    (21) asignacionSimple -> . ID DOTS tipoDato EQUAL valor
+    (22) asignacionSimple -> . ID EQUAL valor
+    (39) factor -> . INT
+    (40) factor -> . FLOAT
+    (41) factor -> . LONG
+    (42) factor -> . CHAR
+    (43) factor -> . BOOLEAN
+    (44) factor -> . ID
+    (45) factor -> . STRING_1
+
+    PRINT           shift and go to state 14
+    PRINTLN         shift and go to state 17
+    BOOLEAN         shift and go to state 18
+    ID              shift and go to state 19
+    INT             shift and go to state 20
+    FLOAT           shift and go to state 21
+    LONG            shift and go to state 22
+    STRING_1        shift and go to state 23
+    CHAR            shift and go to state 24
+    EXCL_WS         shift and go to state 25
+    FOR             shift and go to state 28
+    IF              shift and go to state 29
+    ARRAYLIST       shift and go to state 30
+    STACK           shift and go to state 31
+    LPAREN          shift and go to state 15
+    VAR             shift and go to state 33
+    VAL             shift and go to state 34
+
+    line                           shift and go to state 1
+    impresion                      shift and go to state 2
+    expression                     shift and go to state 3
+    condicionL                     shift and go to state 4
+    condicionR                     shift and go to state 5
+    condicionN                     shift and go to state 6
+    asignacion                     shift and go to state 7
+    for                            shift and go to state 8
+    if                             shift and go to state 9
+    stack                          shift and go to state 10
+    stack_actuar                   shift and go to state 11
+    instance_arraylist             shift and go to state 12
+    def_estruct_tipoDato           shift and go to state 13
+    term                           shift and go to state 16
+    keywordVariables               shift and go to state 26
+    asignacionSimple               shift and go to state 27
+    factor                         shift and go to state 32
+
+state 1
+
+    (0) S' -> line .
+
+
+
+state 2
+
+    (1) line -> impresion .
+
+    $end            reduce using rule 1 (line -> impresion .)
+    RCURL           reduce using rule 1 (line -> impresion .)
+
+
+state 3
+
+    (2) line -> expression .
+    (31) expression -> expression . PLUS term
+    (32) expression -> expression . MINUS term
+    (33) expression -> expression . TIMES term
+    (34) expression -> expression . DIVIDE term
+    (35) expression -> expression . MOD term
+
+    $end            reduce using rule 2 (line -> expression .)
+    RCURL           reduce using rule 2 (line -> expression .)
+    PLUS            shift and go to state 35
+    MINUS           shift and go to state 36
+    TIMES           shift and go to state 37
+    DIVIDE          shift and go to state 38
+    MOD             shift and go to state 39
+
+
+state 4
+
+    (3) line -> condicionL .
+
+    $end            reduce using rule 3 (line -> condicionL .)
+    RCURL           reduce using rule 3 (line -> condicionL .)
+
+
+state 5
+
+    (4) line -> condicionR .
+
+    $end            reduce using rule 4 (line -> condicionR .)
+    RCURL           reduce using rule 4 (line -> condicionR .)
+
+
+state 6
+
+    (5) line -> condicionN .
+
+    $end            reduce using rule 5 (line -> condicionN .)
+    RCURL           reduce using rule 5 (line -> condicionN .)
+
+
+state 7
+
+    (6) line -> asignacion .
+    (7) line -> asignacion . SEMICOLON
+
+    $end            reduce using rule 6 (line -> asignacion .)
+    RCURL           reduce using rule 6 (line -> asignacion .)
+    SEMICOLON       shift and go to state 40
+
+
+state 8
+
+    (8) line -> for .
+
+    $end            reduce using rule 8 (line -> for .)
+    RCURL           reduce using rule 8 (line -> for .)
+
+
+state 9
+
+    (9) line -> if .
+
+    $end            reduce using rule 9 (line -> if .)
+    RCURL           reduce using rule 9 (line -> if .)
+
+
+state 10
+
+    (10) line -> stack .
+
+    $end            reduce using rule 10 (line -> stack .)
+    RCURL           reduce using rule 10 (line -> stack .)
+
+
+state 11
+
+    (11) line -> stack_actuar .
+
+    $end            reduce using rule 11 (line -> stack_actuar .)
+    RCURL           reduce using rule 11 (line -> stack_actuar .)
+
+
+state 12
+
+    (12) line -> instance_arraylist .
+
+    $end            reduce using rule 12 (line -> instance_arraylist .)
+    RCURL           reduce using rule 12 (line -> instance_arraylist .)
+
+
+state 13
+
+    (13) line -> def_estruct_tipoDato .
+
+    $end            reduce using rule 13 (line -> def_estruct_tipoDato .)
+    RCURL           reduce using rule 13 (line -> def_estruct_tipoDato .)
+
+
+state 14
+
+    (14) impresion -> PRINT . LPAREN term RPAREN
+
+    LPAREN          shift and go to state 41
+
+
+state 15
+
+    (38) term -> LPAREN . expression RPAREN
+    (31) expression -> . expression PLUS term
+    (32) expression -> . expression MINUS term
+    (33) expression -> . expression TIMES term
+    (34) expression -> . expression DIVIDE term
+    (35) expression -> . expression MOD term
+    (36) expression -> . term
+    (37) term -> . factor
+    (38) term -> . LPAREN expression RPAREN
+    (39) factor -> . INT
+    (40) factor -> . FLOAT
+    (41) factor -> . LONG
+    (42) factor -> . CHAR
+    (43) factor -> . BOOLEAN
+    (44) factor -> . ID
+    (45) factor -> . STRING_1
+
+    LPAREN          shift and go to state 15
+    INT             shift and go to state 43
+    FLOAT           shift and go to state 44
+    LONG            shift and go to state 45
+    CHAR            shift and go to state 46
+    BOOLEAN         shift and go to state 47
+    ID              shift and go to state 48
+    STRING_1        shift and go to state 49
+
+    expression                     shift and go to state 42
+    term                           shift and go to state 16
+    factor                         shift and go to state 32
+
+state 16
+
+    (36) expression -> term .
+
+    PLUS            reduce using rule 36 (expression -> term .)
+    MINUS           reduce using rule 36 (expression -> term .)
+    TIMES           reduce using rule 36 (expression -> term .)
+    DIVIDE          reduce using rule 36 (expression -> term .)
+    MOD             reduce using rule 36 (expression -> term .)
+    $end            reduce using rule 36 (expression -> term .)
+    RPAREN          reduce using rule 36 (expression -> term .)
+    SEMICOLON       reduce using rule 36 (expression -> term .)
+    RCURL           reduce using rule 36 (expression -> term .)
+
+
+state 17
+
+    (15) impresion -> PRINTLN . LPAREN term RPAREN
+
+    LPAREN          shift and go to state 50
+
+
+state 18
+
+    (52) condicionL -> BOOLEAN . opL BOOLEAN
+    (55) condicionL -> BOOLEAN . opL ID
+    (43) factor -> BOOLEAN .
+    (70) opL -> . CONJ
+    (71) opL -> . DISJ
+
+    PLUS            reduce using rule 43 (factor -> BOOLEAN .)
+    MINUS           reduce using rule 43 (factor -> BOOLEAN .)
+    TIMES           reduce using rule 43 (factor -> BOOLEAN .)
+    DIVIDE          reduce using rule 43 (factor -> BOOLEAN .)
+    MOD             reduce using rule 43 (factor -> BOOLEAN .)
+    $end            reduce using rule 43 (factor -> BOOLEAN .)
+    RCURL           reduce using rule 43 (factor -> BOOLEAN .)
+    CONJ            shift and go to state 52
+    DISJ            shift and go to state 53
+
+    opL                            shift and go to state 51
+
+state 19
+
+    (53) condicionL -> ID . opL ID
+    (54) condicionL -> ID . opL BOOLEAN
+    (67) condicionR -> ID . opR ID
+    (84) stack_actuar -> ID . DOT stack_funciones
+    (21) asignacionSimple -> ID . DOTS tipoDato EQUAL valor
+    (22) asignacionSimple -> ID . EQUAL valor
+    (44) factor -> ID .
+    (70) opL -> . CONJ
+    (71) opL -> . DISJ
+    (72) opR -> . LANGLE
+    (73) opR -> . RANGLE
+    (74) opR -> . LE
+    (75) opR -> . GE
+    (76) opR -> . EXCL_EQ
+    (77) opR -> . EXCL_EQEQ
+    (78) opR -> . AS_SAFE
+    (79) opR -> . EQEQ
+    (80) opR -> . EQEQEQ
+
+    DOT             shift and go to state 56
+    DOTS            shift and go to state 57
+    EQUAL           shift and go to state 58
+    PLUS            reduce using rule 44 (factor -> ID .)
+    MINUS           reduce using rule 44 (factor -> ID .)
+    TIMES           reduce using rule 44 (factor -> ID .)
+    DIVIDE          reduce using rule 44 (factor -> ID .)
+    MOD             reduce using rule 44 (factor -> ID .)
+    $end            reduce using rule 44 (factor -> ID .)
+    RCURL           reduce using rule 44 (factor -> ID .)
+    CONJ            shift and go to state 52
+    DISJ            shift and go to state 53
+    LANGLE          shift and go to state 59
+    RANGLE          shift and go to state 60
+    LE              shift and go to state 61
+    GE              shift and go to state 62
+    EXCL_EQ         shift and go to state 63
+    EXCL_EQEQ       shift and go to state 64
+    AS_SAFE         shift and go to state 65
+    EQEQ            shift and go to state 66
+    EQEQEQ          shift and go to state 67
+
+    opL                            shift and go to state 54
+    opR                            shift and go to state 55
+
+state 20
+
+    (56) condicionR -> INT . opR INT
+    (57) condicionR -> INT . opR FLOAT
+    (58) condicionR -> INT . opR LONG
+    (39) factor -> INT .
+    (72) opR -> . LANGLE
+    (73) opR -> . RANGLE
+    (74) opR -> . LE
+    (75) opR -> . GE
+    (76) opR -> . EXCL_EQ
+    (77) opR -> . EXCL_EQEQ
+    (78) opR -> . AS_SAFE
+    (79) opR -> . EQEQ
+    (80) opR -> . EQEQEQ
+
+    PLUS            reduce using rule 39 (factor -> INT .)
+    MINUS           reduce using rule 39 (factor -> INT .)
+    TIMES           reduce using rule 39 (factor -> INT .)
+    DIVIDE          reduce using rule 39 (factor -> INT .)
+    MOD             reduce using rule 39 (factor -> INT .)
+    $end            reduce using rule 39 (factor -> INT .)
+    RCURL           reduce using rule 39 (factor -> INT .)
+    LANGLE          shift and go to state 59
+    RANGLE          shift and go to state 60
+    LE              shift and go to state 61
+    GE              shift and go to state 62
+    EXCL_EQ         shift and go to state 63
+    EXCL_EQEQ       shift and go to state 64
+    AS_SAFE         shift and go to state 65
+    EQEQ            shift and go to state 66
+    EQEQEQ          shift and go to state 67
+
+    opR                            shift and go to state 68
+
+state 21
+
+    (59) condicionR -> FLOAT . opR FLOAT
+    (60) condicionR -> FLOAT . opR INT
+    (61) condicionR -> FLOAT . opR LONG
+    (40) factor -> FLOAT .
+    (72) opR -> . LANGLE
+    (73) opR -> . RANGLE
+    (74) opR -> . LE
+    (75) opR -> . GE
+    (76) opR -> . EXCL_EQ
+    (77) opR -> . EXCL_EQEQ
+    (78) opR -> . AS_SAFE
+    (79) opR -> . EQEQ
+    (80) opR -> . EQEQEQ
+
+    PLUS            reduce using rule 40 (factor -> FLOAT .)
+    MINUS           reduce using rule 40 (factor -> FLOAT .)
+    TIMES           reduce using rule 40 (factor -> FLOAT .)
+    DIVIDE          reduce using rule 40 (factor -> FLOAT .)
+    MOD             reduce using rule 40 (factor -> FLOAT .)
+    $end            reduce using rule 40 (factor -> FLOAT .)
+    RCURL           reduce using rule 40 (factor -> FLOAT .)
+    LANGLE          shift and go to state 59
+    RANGLE          shift and go to state 60
+    LE              shift and go to state 61
+    GE              shift and go to state 62
+    EXCL_EQ         shift and go to state 63
+    EXCL_EQEQ       shift and go to state 64
+    AS_SAFE         shift and go to state 65
+    EQEQ            shift and go to state 66
+    EQEQEQ          shift and go to state 67
+
+    opR                            shift and go to state 69
+
+state 22
+
+    (62) condicionR -> LONG . opR LONG
+    (63) condicionR -> LONG . opR INT
+    (64) condicionR -> LONG . opR FLOAT
+    (41) factor -> LONG .
+    (72) opR -> . LANGLE
+    (73) opR -> . RANGLE
+    (74) opR -> . LE
+    (75) opR -> . GE
+    (76) opR -> . EXCL_EQ
+    (77) opR -> . EXCL_EQEQ
+    (78) opR -> . AS_SAFE
+    (79) opR -> . EQEQ
+    (80) opR -> . EQEQEQ
+
+    PLUS            reduce using rule 41 (factor -> LONG .)
+    MINUS           reduce using rule 41 (factor -> LONG .)
+    TIMES           reduce using rule 41 (factor -> LONG .)
+    DIVIDE          reduce using rule 41 (factor -> LONG .)
+    MOD             reduce using rule 41 (factor -> LONG .)
+    $end            reduce using rule 41 (factor -> LONG .)
+    RCURL           reduce using rule 41 (factor -> LONG .)
+    LANGLE          shift and go to state 59
+    RANGLE          shift and go to state 60
+    LE              shift and go to state 61
+    GE              shift and go to state 62
+    EXCL_EQ         shift and go to state 63
+    EXCL_EQEQ       shift and go to state 64
+    AS_SAFE         shift and go to state 65
+    EQEQ            shift and go to state 66
+    EQEQEQ          shift and go to state 67
+
+    opR                            shift and go to state 70
+
+state 23
+
+    (65) condicionR -> STRING_1 . opR STRING_1
+    (45) factor -> STRING_1 .
+    (72) opR -> . LANGLE
+    (73) opR -> . RANGLE
+    (74) opR -> . LE
+    (75) opR -> . GE
+    (76) opR -> . EXCL_EQ
+    (77) opR -> . EXCL_EQEQ
+    (78) opR -> . AS_SAFE
+    (79) opR -> . EQEQ
+    (80) opR -> . EQEQEQ
+
+    PLUS            reduce using rule 45 (factor -> STRING_1 .)
+    MINUS           reduce using rule 45 (factor -> STRING_1 .)
+    TIMES           reduce using rule 45 (factor -> STRING_1 .)
+    DIVIDE          reduce using rule 45 (factor -> STRING_1 .)
+    MOD             reduce using rule 45 (factor -> STRING_1 .)
+    $end            reduce using rule 45 (factor -> STRING_1 .)
+    RCURL           reduce using rule 45 (factor -> STRING_1 .)
+    LANGLE          shift and go to state 59
+    RANGLE          shift and go to state 60
+    LE              shift and go to state 61
+    GE              shift and go to state 62
+    EXCL_EQ         shift and go to state 63
+    EXCL_EQEQ       shift and go to state 64
+    AS_SAFE         shift and go to state 65
+    EQEQ            shift and go to state 66
+    EQEQEQ          shift and go to state 67
+
+    opR                            shift and go to state 71
+
+state 24
+
+    (66) condicionR -> CHAR . opR CHAR
+    (42) factor -> CHAR .
+    (72) opR -> . LANGLE
+    (73) opR -> . RANGLE
+    (74) opR -> . LE
+    (75) opR -> . GE
+    (76) opR -> . EXCL_EQ
+    (77) opR -> . EXCL_EQEQ
+    (78) opR -> . AS_SAFE
+    (79) opR -> . EQEQ
+    (80) opR -> . EQEQEQ
+
+    PLUS            reduce using rule 42 (factor -> CHAR .)
+    MINUS           reduce using rule 42 (factor -> CHAR .)
+    TIMES           reduce using rule 42 (factor -> CHAR .)
+    DIVIDE          reduce using rule 42 (factor -> CHAR .)
+    MOD             reduce using rule 42 (factor -> CHAR .)
+    $end            reduce using rule 42 (factor -> CHAR .)
+    RCURL           reduce using rule 42 (factor -> CHAR .)
+    LANGLE          shift and go to state 59
+    RANGLE          shift and go to state 60
+    LE              shift and go to state 61
+    GE              shift and go to state 62
+    EXCL_EQ         shift and go to state 63
+    EXCL_EQEQ       shift and go to state 64
+    AS_SAFE         shift and go to state 65
+    EQEQ            shift and go to state 66
+    EQEQEQ          shift and go to state 67
+
+    opR                            shift and go to state 72
+
+state 25
+
+    (68) condicionN -> EXCL_WS . BOOLEAN
+    (69) condicionN -> EXCL_WS . ID
+
+    BOOLEAN         shift and go to state 73
+    ID              shift and go to state 74
+
+
+state 26
+
+    (19) asignacion -> keywordVariables . asignacionSimple
+    (81) stack -> keywordVariables . ID DOTS def_estruct_tipoDato EQUAL instance_arraylist
+    (21) asignacionSimple -> . ID DOTS tipoDato EQUAL valor
+    (22) asignacionSimple -> . ID EQUAL valor
+
+    ID              shift and go to state 76
+
+    asignacionSimple               shift and go to state 75
+
+state 27
+
+    (20) asignacion -> asignacionSimple .
+
+    SEMICOLON       reduce using rule 20 (asignacion -> asignacionSimple .)
+    $end            reduce using rule 20 (asignacion -> asignacionSimple .)
+    RCURL           reduce using rule 20 (asignacion -> asignacionSimple .)
+
+
+state 28
+
+    (16) for -> FOR . LPAREN ID IN ID RPAREN LCURL line RCURL
+
+    LPAREN          shift and go to state 77
+
+
+state 29
+
+    (46) if -> IF . LPAREN condicion RPAREN LCURL line RCURL
+    (47) if -> IF . LPAREN condicion RPAREN LCURL line RCURL else
+
+    LPAREN          shift and go to state 78
+
+
+state 30
+
+    (83) instance_arraylist -> ARRAYLIST . LPAREN RPAREN
+
+    LPAREN          shift and go to state 79
+
+
+state 31
+
+    (82) def_estruct_tipoDato -> STACK . LANGLE tipoDato RANGLE
+
+    LANGLE          shift and go to state 80
+
+
+state 32
+
+    (37) term -> factor .
+
+    PLUS            reduce using rule 37 (term -> factor .)
+    MINUS           reduce using rule 37 (term -> factor .)
+    TIMES           reduce using rule 37 (term -> factor .)
+    DIVIDE          reduce using rule 37 (term -> factor .)
+    MOD             reduce using rule 37 (term -> factor .)
+    $end            reduce using rule 37 (term -> factor .)
+    RPAREN          reduce using rule 37 (term -> factor .)
+    SEMICOLON       reduce using rule 37 (term -> factor .)
+    RCURL           reduce using rule 37 (term -> factor .)
+
+
+state 33
+
+    (17) keywordVariables -> VAR .
+
+    ID              reduce using rule 17 (keywordVariables -> VAR .)
+
+
+state 34
+
+    (18) keywordVariables -> VAL .
+
+    ID              reduce using rule 18 (keywordVariables -> VAL .)
+
+
+state 35
+
+    (31) expression -> expression PLUS . term
+    (37) term -> . factor
+    (38) term -> . LPAREN expression RPAREN
+    (39) factor -> . INT
+    (40) factor -> . FLOAT
+    (41) factor -> . LONG
+    (42) factor -> . CHAR
+    (43) factor -> . BOOLEAN
+    (44) factor -> . ID
+    (45) factor -> . STRING_1
+
+    LPAREN          shift and go to state 15
+    INT             shift and go to state 43
+    FLOAT           shift and go to state 44
+    LONG            shift and go to state 45
+    CHAR            shift and go to state 46
+    BOOLEAN         shift and go to state 47
+    ID              shift and go to state 48
+    STRING_1        shift and go to state 49
+
+    term                           shift and go to state 81
+    factor                         shift and go to state 32
+
+state 36
+
+    (32) expression -> expression MINUS . term
+    (37) term -> . factor
+    (38) term -> . LPAREN expression RPAREN
+    (39) factor -> . INT
+    (40) factor -> . FLOAT
+    (41) factor -> . LONG
+    (42) factor -> . CHAR
+    (43) factor -> . BOOLEAN
+    (44) factor -> . ID
+    (45) factor -> . STRING_1
+
+    LPAREN          shift and go to state 15
+    INT             shift and go to state 43
+    FLOAT           shift and go to state 44
+    LONG            shift and go to state 45
+    CHAR            shift and go to state 46
+    BOOLEAN         shift and go to state 47
+    ID              shift and go to state 48
+    STRING_1        shift and go to state 49
+
+    term                           shift and go to state 82
+    factor                         shift and go to state 32
+
+state 37
+
+    (33) expression -> expression TIMES . term
+    (37) term -> . factor
+    (38) term -> . LPAREN expression RPAREN
+    (39) factor -> . INT
+    (40) factor -> . FLOAT
+    (41) factor -> . LONG
+    (42) factor -> . CHAR
+    (43) factor -> . BOOLEAN
+    (44) factor -> . ID
+    (45) factor -> . STRING_1
+
+    LPAREN          shift and go to state 15
+    INT             shift and go to state 43
+    FLOAT           shift and go to state 44
+    LONG            shift and go to state 45
+    CHAR            shift and go to state 46
+    BOOLEAN         shift and go to state 47
+    ID              shift and go to state 48
+    STRING_1        shift and go to state 49
+
+    term                           shift and go to state 83
+    factor                         shift and go to state 32
+
+state 38
+
+    (34) expression -> expression DIVIDE . term
+    (37) term -> . factor
+    (38) term -> . LPAREN expression RPAREN
+    (39) factor -> . INT
+    (40) factor -> . FLOAT
+    (41) factor -> . LONG
+    (42) factor -> . CHAR
+    (43) factor -> . BOOLEAN
+    (44) factor -> . ID
+    (45) factor -> . STRING_1
+
+    LPAREN          shift and go to state 15
+    INT             shift and go to state 43
+    FLOAT           shift and go to state 44
+    LONG            shift and go to state 45
+    CHAR            shift and go to state 46
+    BOOLEAN         shift and go to state 47
+    ID              shift and go to state 48
+    STRING_1        shift and go to state 49
+
+    term                           shift and go to state 84
+    factor                         shift and go to state 32
+
+state 39
+
+    (35) expression -> expression MOD . term
+    (37) term -> . factor
+    (38) term -> . LPAREN expression RPAREN
+    (39) factor -> . INT
+    (40) factor -> . FLOAT
+    (41) factor -> . LONG
+    (42) factor -> . CHAR
+    (43) factor -> . BOOLEAN
+    (44) factor -> . ID
+    (45) factor -> . STRING_1
+
+    LPAREN          shift and go to state 15
+    INT             shift and go to state 43
+    FLOAT           shift and go to state 44
+    LONG            shift and go to state 45
+    CHAR            shift and go to state 46
+    BOOLEAN         shift and go to state 47
+    ID              shift and go to state 48
+    STRING_1        shift and go to state 49
+
+    term                           shift and go to state 85
+    factor                         shift and go to state 32
+
+state 40
+
+    (7) line -> asignacion SEMICOLON .
+
+    $end            reduce using rule 7 (line -> asignacion SEMICOLON .)
+    RCURL           reduce using rule 7 (line -> asignacion SEMICOLON .)
+
+
+state 41
+
+    (14) impresion -> PRINT LPAREN . term RPAREN
+    (37) term -> . factor
+    (38) term -> . LPAREN expression RPAREN
+    (39) factor -> . INT
+    (40) factor -> . FLOAT
+    (41) factor -> . LONG
+    (42) factor -> . CHAR
+    (43) factor -> . BOOLEAN
+    (44) factor -> . ID
+    (45) factor -> . STRING_1
+
+    LPAREN          shift and go to state 15
+    INT             shift and go to state 43
+    FLOAT           shift and go to state 44
+    LONG            shift and go to state 45
+    CHAR            shift and go to state 46
+    BOOLEAN         shift and go to state 47
+    ID              shift and go to state 48
+    STRING_1        shift and go to state 49
+
+    term                           shift and go to state 86
+    factor                         shift and go to state 32
+
+state 42
+
+    (38) term -> LPAREN expression . RPAREN
+    (31) expression -> expression . PLUS term
+    (32) expression -> expression . MINUS term
+    (33) expression -> expression . TIMES term
+    (34) expression -> expression . DIVIDE term
+    (35) expression -> expression . MOD term
+
+    RPAREN          shift and go to state 87
+    PLUS            shift and go to state 35
+    MINUS           shift and go to state 36
+    TIMES           shift and go to state 37
+    DIVIDE          shift and go to state 38
+    MOD             shift and go to state 39
+
+
+state 43
+
+    (39) factor -> INT .
+
+    RPAREN          reduce using rule 39 (factor -> INT .)
+    PLUS            reduce using rule 39 (factor -> INT .)
+    MINUS           reduce using rule 39 (factor -> INT .)
+    TIMES           reduce using rule 39 (factor -> INT .)
+    DIVIDE          reduce using rule 39 (factor -> INT .)
+    MOD             reduce using rule 39 (factor -> INT .)
+    $end            reduce using rule 39 (factor -> INT .)
+    SEMICOLON       reduce using rule 39 (factor -> INT .)
+    RCURL           reduce using rule 39 (factor -> INT .)
+
+
+state 44
+
+    (40) factor -> FLOAT .
+
+    RPAREN          reduce using rule 40 (factor -> FLOAT .)
+    PLUS            reduce using rule 40 (factor -> FLOAT .)
+    MINUS           reduce using rule 40 (factor -> FLOAT .)
+    TIMES           reduce using rule 40 (factor -> FLOAT .)
+    DIVIDE          reduce using rule 40 (factor -> FLOAT .)
+    MOD             reduce using rule 40 (factor -> FLOAT .)
+    $end            reduce using rule 40 (factor -> FLOAT .)
+    SEMICOLON       reduce using rule 40 (factor -> FLOAT .)
+    RCURL           reduce using rule 40 (factor -> FLOAT .)
+
+
+state 45
+
+    (41) factor -> LONG .
+
+    RPAREN          reduce using rule 41 (factor -> LONG .)
+    PLUS            reduce using rule 41 (factor -> LONG .)
+    MINUS           reduce using rule 41 (factor -> LONG .)
+    TIMES           reduce using rule 41 (factor -> LONG .)
+    DIVIDE          reduce using rule 41 (factor -> LONG .)
+    MOD             reduce using rule 41 (factor -> LONG .)
+    $end            reduce using rule 41 (factor -> LONG .)
+    SEMICOLON       reduce using rule 41 (factor -> LONG .)
+    RCURL           reduce using rule 41 (factor -> LONG .)
+
+
+state 46
+
+    (42) factor -> CHAR .
+
+    RPAREN          reduce using rule 42 (factor -> CHAR .)
+    PLUS            reduce using rule 42 (factor -> CHAR .)
+    MINUS           reduce using rule 42 (factor -> CHAR .)
+    TIMES           reduce using rule 42 (factor -> CHAR .)
+    DIVIDE          reduce using rule 42 (factor -> CHAR .)
+    MOD             reduce using rule 42 (factor -> CHAR .)
+    $end            reduce using rule 42 (factor -> CHAR .)
+    SEMICOLON       reduce using rule 42 (factor -> CHAR .)
+    RCURL           reduce using rule 42 (factor -> CHAR .)
+
+
+state 47
+
+    (43) factor -> BOOLEAN .
+
+    RPAREN          reduce using rule 43 (factor -> BOOLEAN .)
+    PLUS            reduce using rule 43 (factor -> BOOLEAN .)
+    MINUS           reduce using rule 43 (factor -> BOOLEAN .)
+    TIMES           reduce using rule 43 (factor -> BOOLEAN .)
+    DIVIDE          reduce using rule 43 (factor -> BOOLEAN .)
+    MOD             reduce using rule 43 (factor -> BOOLEAN .)
+    $end            reduce using rule 43 (factor -> BOOLEAN .)
+    SEMICOLON       reduce using rule 43 (factor -> BOOLEAN .)
+    RCURL           reduce using rule 43 (factor -> BOOLEAN .)
+
+
+state 48
+
+    (44) factor -> ID .
+
+    RPAREN          reduce using rule 44 (factor -> ID .)
+    PLUS            reduce using rule 44 (factor -> ID .)
+    MINUS           reduce using rule 44 (factor -> ID .)
+    TIMES           reduce using rule 44 (factor -> ID .)
+    DIVIDE          reduce using rule 44 (factor -> ID .)
+    MOD             reduce using rule 44 (factor -> ID .)
+    $end            reduce using rule 44 (factor -> ID .)
+    SEMICOLON       reduce using rule 44 (factor -> ID .)
+    RCURL           reduce using rule 44 (factor -> ID .)
+
+
+state 49
+
+    (45) factor -> STRING_1 .
+
+    RPAREN          reduce using rule 45 (factor -> STRING_1 .)
+    PLUS            reduce using rule 45 (factor -> STRING_1 .)
+    MINUS           reduce using rule 45 (factor -> STRING_1 .)
+    TIMES           reduce using rule 45 (factor -> STRING_1 .)
+    DIVIDE          reduce using rule 45 (factor -> STRING_1 .)
+    MOD             reduce using rule 45 (factor -> STRING_1 .)
+    $end            reduce using rule 45 (factor -> STRING_1 .)
+    SEMICOLON       reduce using rule 45 (factor -> STRING_1 .)
+    RCURL           reduce using rule 45 (factor -> STRING_1 .)
+
+
+state 50
+
+    (15) impresion -> PRINTLN LPAREN . term RPAREN
+    (37) term -> . factor
+    (38) term -> . LPAREN expression RPAREN
+    (39) factor -> . INT
+    (40) factor -> . FLOAT
+    (41) factor -> . LONG
+    (42) factor -> . CHAR
+    (43) factor -> . BOOLEAN
+    (44) factor -> . ID
+    (45) factor -> . STRING_1
+
+    LPAREN          shift and go to state 15
+    INT             shift and go to state 43
+    FLOAT           shift and go to state 44
+    LONG            shift and go to state 45
+    CHAR            shift and go to state 46
+    BOOLEAN         shift and go to state 47
+    ID              shift and go to state 48
+    STRING_1        shift and go to state 49
+
+    term                           shift and go to state 88
+    factor                         shift and go to state 32
+
+state 51
+
+    (52) condicionL -> BOOLEAN opL . BOOLEAN
+    (55) condicionL -> BOOLEAN opL . ID
+
+    BOOLEAN         shift and go to state 89
+    ID              shift and go to state 90
+
+
+state 52
+
+    (70) opL -> CONJ .
+
+    BOOLEAN         reduce using rule 70 (opL -> CONJ .)
+    ID              reduce using rule 70 (opL -> CONJ .)
+
+
+state 53
+
+    (71) opL -> DISJ .
+
+    BOOLEAN         reduce using rule 71 (opL -> DISJ .)
+    ID              reduce using rule 71 (opL -> DISJ .)
+
+
+state 54
+
+    (53) condicionL -> ID opL . ID
+    (54) condicionL -> ID opL . BOOLEAN
+
+    ID              shift and go to state 91
+    BOOLEAN         shift and go to state 92
+
+
+state 55
+
+    (67) condicionR -> ID opR . ID
+
+    ID              shift and go to state 93
+
+
+state 56
+
+    (84) stack_actuar -> ID DOT . stack_funciones
+    (85) stack_funciones -> . stack_isEmpty
+    (86) stack_funciones -> . stack_push
+    (87) stack_funciones -> . stack_pop
+    (88) stack_isEmpty -> . ISEMPTY LPAREN RPAREN
+    (90) stack_push -> . PUSH LPAREN ID RPAREN
+    (89) stack_pop -> . POP LPAREN RPAREN
+
+    ISEMPTY         shift and go to state 98
+    PUSH            shift and go to state 99
+    POP             shift and go to state 100
+
+    stack_funciones                shift and go to state 94
+    stack_isEmpty                  shift and go to state 95
+    stack_push                     shift and go to state 96
+    stack_pop                      shift and go to state 97
+
+state 57
+
+    (21) asignacionSimple -> ID DOTS . tipoDato EQUAL valor
+    (23) tipoDato -> . TINT
+    (24) tipoDato -> . TLONG
+    (25) tipoDato -> . TFLOAT
+    (26) tipoDato -> . TDOUBLE
+    (27) tipoDato -> . TBOOLEAN
+    (28) tipoDato -> . TCHAR
+    (29) tipoDato -> . TSTRING
+
+    TINT            shift and go to state 102
+    TLONG           shift and go to state 103
+    TFLOAT          shift and go to state 104
+    TDOUBLE         shift and go to state 105
+    TBOOLEAN        shift and go to state 106
+    TCHAR           shift and go to state 107
+    TSTRING         shift and go to state 108
+
+    tipoDato                       shift and go to state 101
+
+state 58
+
+    (22) asignacionSimple -> ID EQUAL . valor
+    (30) valor -> . expression
+    (31) expression -> . expression PLUS term
+    (32) expression -> . expression MINUS term
+    (33) expression -> . expression TIMES term
+    (34) expression -> . expression DIVIDE term
+    (35) expression -> . expression MOD term
+    (36) expression -> . term
+    (37) term -> . factor
+    (38) term -> . LPAREN expression RPAREN
+    (39) factor -> . INT
+    (40) factor -> . FLOAT
+    (41) factor -> . LONG
+    (42) factor -> . CHAR
+    (43) factor -> . BOOLEAN
+    (44) factor -> . ID
+    (45) factor -> . STRING_1
+
+    LPAREN          shift and go to state 15
+    INT             shift and go to state 43
+    FLOAT           shift and go to state 44
+    LONG            shift and go to state 45
+    CHAR            shift and go to state 46
+    BOOLEAN         shift and go to state 47
+    ID              shift and go to state 48
+    STRING_1        shift and go to state 49
+
+    valor                          shift and go to state 109
+    expression                     shift and go to state 110
+    term                           shift and go to state 16
+    factor                         shift and go to state 32
+
+state 59
+
+    (72) opR -> LANGLE .
+
+    ID              reduce using rule 72 (opR -> LANGLE .)
+    INT             reduce using rule 72 (opR -> LANGLE .)
+    FLOAT           reduce using rule 72 (opR -> LANGLE .)
+    LONG            reduce using rule 72 (opR -> LANGLE .)
+    STRING_1        reduce using rule 72 (opR -> LANGLE .)
+    CHAR            reduce using rule 72 (opR -> LANGLE .)
+
+
+state 60
+
+    (73) opR -> RANGLE .
+
+    ID              reduce using rule 73 (opR -> RANGLE .)
+    INT             reduce using rule 73 (opR -> RANGLE .)
+    FLOAT           reduce using rule 73 (opR -> RANGLE .)
+    LONG            reduce using rule 73 (opR -> RANGLE .)
+    STRING_1        reduce using rule 73 (opR -> RANGLE .)
+    CHAR            reduce using rule 73 (opR -> RANGLE .)
+
+
+state 61
+
+    (74) opR -> LE .
+
+    ID              reduce using rule 74 (opR -> LE .)
+    INT             reduce using rule 74 (opR -> LE .)
+    FLOAT           reduce using rule 74 (opR -> LE .)
+    LONG            reduce using rule 74 (opR -> LE .)
+    STRING_1        reduce using rule 74 (opR -> LE .)
+    CHAR            reduce using rule 74 (opR -> LE .)
+
+
+state 62
+
+    (75) opR -> GE .
+
+    ID              reduce using rule 75 (opR -> GE .)
+    INT             reduce using rule 75 (opR -> GE .)
+    FLOAT           reduce using rule 75 (opR -> GE .)
+    LONG            reduce using rule 75 (opR -> GE .)
+    STRING_1        reduce using rule 75 (opR -> GE .)
+    CHAR            reduce using rule 75 (opR -> GE .)
+
+
+state 63
+
+    (76) opR -> EXCL_EQ .
+
+    ID              reduce using rule 76 (opR -> EXCL_EQ .)
+    INT             reduce using rule 76 (opR -> EXCL_EQ .)
+    FLOAT           reduce using rule 76 (opR -> EXCL_EQ .)
+    LONG            reduce using rule 76 (opR -> EXCL_EQ .)
+    STRING_1        reduce using rule 76 (opR -> EXCL_EQ .)
+    CHAR            reduce using rule 76 (opR -> EXCL_EQ .)
+
+
+state 64
+
+    (77) opR -> EXCL_EQEQ .
+
+    ID              reduce using rule 77 (opR -> EXCL_EQEQ .)
+    INT             reduce using rule 77 (opR -> EXCL_EQEQ .)
+    FLOAT           reduce using rule 77 (opR -> EXCL_EQEQ .)
+    LONG            reduce using rule 77 (opR -> EXCL_EQEQ .)
+    STRING_1        reduce using rule 77 (opR -> EXCL_EQEQ .)
+    CHAR            reduce using rule 77 (opR -> EXCL_EQEQ .)
+
+
+state 65
+
+    (78) opR -> AS_SAFE .
+
+    ID              reduce using rule 78 (opR -> AS_SAFE .)
+    INT             reduce using rule 78 (opR -> AS_SAFE .)
+    FLOAT           reduce using rule 78 (opR -> AS_SAFE .)
+    LONG            reduce using rule 78 (opR -> AS_SAFE .)
+    STRING_1        reduce using rule 78 (opR -> AS_SAFE .)
+    CHAR            reduce using rule 78 (opR -> AS_SAFE .)
+
+
+state 66
+
+    (79) opR -> EQEQ .
+
+    ID              reduce using rule 79 (opR -> EQEQ .)
+    INT             reduce using rule 79 (opR -> EQEQ .)
+    FLOAT           reduce using rule 79 (opR -> EQEQ .)
+    LONG            reduce using rule 79 (opR -> EQEQ .)
+    STRING_1        reduce using rule 79 (opR -> EQEQ .)
+    CHAR            reduce using rule 79 (opR -> EQEQ .)
+
+
+state 67
+
+    (80) opR -> EQEQEQ .
+
+    ID              reduce using rule 80 (opR -> EQEQEQ .)
+    INT             reduce using rule 80 (opR -> EQEQEQ .)
+    FLOAT           reduce using rule 80 (opR -> EQEQEQ .)
+    LONG            reduce using rule 80 (opR -> EQEQEQ .)
+    STRING_1        reduce using rule 80 (opR -> EQEQEQ .)
+    CHAR            reduce using rule 80 (opR -> EQEQEQ .)
+
+
+state 68
+
+    (56) condicionR -> INT opR . INT
+    (57) condicionR -> INT opR . FLOAT
+    (58) condicionR -> INT opR . LONG
+
+    INT             shift and go to state 111
+    FLOAT           shift and go to state 112
+    LONG            shift and go to state 113
+
+
+state 69
+
+    (59) condicionR -> FLOAT opR . FLOAT
+    (60) condicionR -> FLOAT opR . INT
+    (61) condicionR -> FLOAT opR . LONG
+
+    FLOAT           shift and go to state 114
+    INT             shift and go to state 115
+    LONG            shift and go to state 116
+
+
+state 70
+
+    (62) condicionR -> LONG opR . LONG
+    (63) condicionR -> LONG opR . INT
+    (64) condicionR -> LONG opR . FLOAT
+
+    LONG            shift and go to state 117
+    INT             shift and go to state 118
+    FLOAT           shift and go to state 119
+
+
+state 71
+
+    (65) condicionR -> STRING_1 opR . STRING_1
+
+    STRING_1        shift and go to state 120
+
+
+state 72
+
+    (66) condicionR -> CHAR opR . CHAR
+
+    CHAR            shift and go to state 121
+
+
+state 73
+
+    (68) condicionN -> EXCL_WS BOOLEAN .
+
+    $end            reduce using rule 68 (condicionN -> EXCL_WS BOOLEAN .)
+    RPAREN          reduce using rule 68 (condicionN -> EXCL_WS BOOLEAN .)
+    RCURL           reduce using rule 68 (condicionN -> EXCL_WS BOOLEAN .)
+
+
+state 74
+
+    (69) condicionN -> EXCL_WS ID .
+
+    $end            reduce using rule 69 (condicionN -> EXCL_WS ID .)
+    RPAREN          reduce using rule 69 (condicionN -> EXCL_WS ID .)
+    RCURL           reduce using rule 69 (condicionN -> EXCL_WS ID .)
+
+
+state 75
+
+    (19) asignacion -> keywordVariables asignacionSimple .
+
+    SEMICOLON       reduce using rule 19 (asignacion -> keywordVariables asignacionSimple .)
+    $end            reduce using rule 19 (asignacion -> keywordVariables asignacionSimple .)
+    RCURL           reduce using rule 19 (asignacion -> keywordVariables asignacionSimple .)
+
+
+state 76
+
+    (81) stack -> keywordVariables ID . DOTS def_estruct_tipoDato EQUAL instance_arraylist
+    (21) asignacionSimple -> ID . DOTS tipoDato EQUAL valor
+    (22) asignacionSimple -> ID . EQUAL valor
+
+    DOTS            shift and go to state 122
+    EQUAL           shift and go to state 58
+
+
+state 77
+
+    (16) for -> FOR LPAREN . ID IN ID RPAREN LCURL line RCURL
+
+    ID              shift and go to state 123
+
+
+state 78
+
+    (46) if -> IF LPAREN . condicion RPAREN LCURL line RCURL
+    (47) if -> IF LPAREN . condicion RPAREN LCURL line RCURL else
+    (49) condicion -> . condicionL
+    (50) condicion -> . condicionR
+    (51) condicion -> . condicionN
+    (52) condicionL -> . BOOLEAN opL BOOLEAN
+    (53) condicionL -> . ID opL ID
+    (54) condicionL -> . ID opL BOOLEAN
+    (55) condicionL -> . BOOLEAN opL ID
+    (56) condicionR -> . INT opR INT
+    (57) condicionR -> . INT opR FLOAT
+    (58) condicionR -> . INT opR LONG
+    (59) condicionR -> . FLOAT opR FLOAT
+    (60) condicionR -> . FLOAT opR INT
+    (61) condicionR -> . FLOAT opR LONG
+    (62) condicionR -> . LONG opR LONG
+    (63) condicionR -> . LONG opR INT
+    (64) condicionR -> . LONG opR FLOAT
+    (65) condicionR -> . STRING_1 opR STRING_1
+    (66) condicionR -> . CHAR opR CHAR
+    (67) condicionR -> . ID opR ID
+    (68) condicionN -> . EXCL_WS BOOLEAN
+    (69) condicionN -> . EXCL_WS ID
+
+    BOOLEAN         shift and go to state 128
+    ID              shift and go to state 129
+    INT             shift and go to state 130
+    FLOAT           shift and go to state 131
+    LONG            shift and go to state 132
+    STRING_1        shift and go to state 133
+    CHAR            shift and go to state 134
+    EXCL_WS         shift and go to state 25
+
+    condicion                      shift and go to state 124
+    condicionL                     shift and go to state 125
+    condicionR                     shift and go to state 126
+    condicionN                     shift and go to state 127
+
+state 79
+
+    (83) instance_arraylist -> ARRAYLIST LPAREN . RPAREN
+
+    RPAREN          shift and go to state 135
+
+
+state 80
+
+    (82) def_estruct_tipoDato -> STACK LANGLE . tipoDato RANGLE
+    (23) tipoDato -> . TINT
+    (24) tipoDato -> . TLONG
+    (25) tipoDato -> . TFLOAT
+    (26) tipoDato -> . TDOUBLE
+    (27) tipoDato -> . TBOOLEAN
+    (28) tipoDato -> . TCHAR
+    (29) tipoDato -> . TSTRING
+
+    TINT            shift and go to state 102
+    TLONG           shift and go to state 103
+    TFLOAT          shift and go to state 104
+    TDOUBLE         shift and go to state 105
+    TBOOLEAN        shift and go to state 106
+    TCHAR           shift and go to state 107
+    TSTRING         shift and go to state 108
+
+    tipoDato                       shift and go to state 136
+
+state 81
+
+    (31) expression -> expression PLUS term .
+
+    PLUS            reduce using rule 31 (expression -> expression PLUS term .)
+    MINUS           reduce using rule 31 (expression -> expression PLUS term .)
+    TIMES           reduce using rule 31 (expression -> expression PLUS term .)
+    DIVIDE          reduce using rule 31 (expression -> expression PLUS term .)
+    MOD             reduce using rule 31 (expression -> expression PLUS term .)
+    $end            reduce using rule 31 (expression -> expression PLUS term .)
+    RPAREN          reduce using rule 31 (expression -> expression PLUS term .)
+    SEMICOLON       reduce using rule 31 (expression -> expression PLUS term .)
+    RCURL           reduce using rule 31 (expression -> expression PLUS term .)
+
+
+state 82
+
+    (32) expression -> expression MINUS term .
+
+    PLUS            reduce using rule 32 (expression -> expression MINUS term .)
+    MINUS           reduce using rule 32 (expression -> expression MINUS term .)
+    TIMES           reduce using rule 32 (expression -> expression MINUS term .)
+    DIVIDE          reduce using rule 32 (expression -> expression MINUS term .)
+    MOD             reduce using rule 32 (expression -> expression MINUS term .)
+    $end            reduce using rule 32 (expression -> expression MINUS term .)
+    RPAREN          reduce using rule 32 (expression -> expression MINUS term .)
+    SEMICOLON       reduce using rule 32 (expression -> expression MINUS term .)
+    RCURL           reduce using rule 32 (expression -> expression MINUS term .)
+
+
+state 83
+
+    (33) expression -> expression TIMES term .
+
+    PLUS            reduce using rule 33 (expression -> expression TIMES term .)
+    MINUS           reduce using rule 33 (expression -> expression TIMES term .)
+    TIMES           reduce using rule 33 (expression -> expression TIMES term .)
+    DIVIDE          reduce using rule 33 (expression -> expression TIMES term .)
+    MOD             reduce using rule 33 (expression -> expression TIMES term .)
+    $end            reduce using rule 33 (expression -> expression TIMES term .)
+    RPAREN          reduce using rule 33 (expression -> expression TIMES term .)
+    SEMICOLON       reduce using rule 33 (expression -> expression TIMES term .)
+    RCURL           reduce using rule 33 (expression -> expression TIMES term .)
+
+
+state 84
+
+    (34) expression -> expression DIVIDE term .
+
+    PLUS            reduce using rule 34 (expression -> expression DIVIDE term .)
+    MINUS           reduce using rule 34 (expression -> expression DIVIDE term .)
+    TIMES           reduce using rule 34 (expression -> expression DIVIDE term .)
+    DIVIDE          reduce using rule 34 (expression -> expression DIVIDE term .)
+    MOD             reduce using rule 34 (expression -> expression DIVIDE term .)
+    $end            reduce using rule 34 (expression -> expression DIVIDE term .)
+    RPAREN          reduce using rule 34 (expression -> expression DIVIDE term .)
+    SEMICOLON       reduce using rule 34 (expression -> expression DIVIDE term .)
+    RCURL           reduce using rule 34 (expression -> expression DIVIDE term .)
+
+
+state 85
+
+    (35) expression -> expression MOD term .
+
+    PLUS            reduce using rule 35 (expression -> expression MOD term .)
+    MINUS           reduce using rule 35 (expression -> expression MOD term .)
+    TIMES           reduce using rule 35 (expression -> expression MOD term .)
+    DIVIDE          reduce using rule 35 (expression -> expression MOD term .)
+    MOD             reduce using rule 35 (expression -> expression MOD term .)
+    $end            reduce using rule 35 (expression -> expression MOD term .)
+    RPAREN          reduce using rule 35 (expression -> expression MOD term .)
+    SEMICOLON       reduce using rule 35 (expression -> expression MOD term .)
+    RCURL           reduce using rule 35 (expression -> expression MOD term .)
+
+
+state 86
+
+    (14) impresion -> PRINT LPAREN term . RPAREN
+
+    RPAREN          shift and go to state 137
+
+
+state 87
+
+    (38) term -> LPAREN expression RPAREN .
+
+    PLUS            reduce using rule 38 (term -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 38 (term -> LPAREN expression RPAREN .)
+    TIMES           reduce using rule 38 (term -> LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 38 (term -> LPAREN expression RPAREN .)
+    MOD             reduce using rule 38 (term -> LPAREN expression RPAREN .)
+    $end            reduce using rule 38 (term -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 38 (term -> LPAREN expression RPAREN .)
+    SEMICOLON       reduce using rule 38 (term -> LPAREN expression RPAREN .)
+    RCURL           reduce using rule 38 (term -> LPAREN expression RPAREN .)
+
+
+state 88
+
+    (15) impresion -> PRINTLN LPAREN term . RPAREN
+
+    RPAREN          shift and go to state 138
+
+
+state 89
+
+    (52) condicionL -> BOOLEAN opL BOOLEAN .
+
+    $end            reduce using rule 52 (condicionL -> BOOLEAN opL BOOLEAN .)
+    RPAREN          reduce using rule 52 (condicionL -> BOOLEAN opL BOOLEAN .)
+    RCURL           reduce using rule 52 (condicionL -> BOOLEAN opL BOOLEAN .)
+
+
+state 90
+
+    (55) condicionL -> BOOLEAN opL ID .
+
+    $end            reduce using rule 55 (condicionL -> BOOLEAN opL ID .)
+    RPAREN          reduce using rule 55 (condicionL -> BOOLEAN opL ID .)
+    RCURL           reduce using rule 55 (condicionL -> BOOLEAN opL ID .)
+
+
+state 91
+
+    (53) condicionL -> ID opL ID .
+
+    $end            reduce using rule 53 (condicionL -> ID opL ID .)
+    RPAREN          reduce using rule 53 (condicionL -> ID opL ID .)
+    RCURL           reduce using rule 53 (condicionL -> ID opL ID .)
+
+
+state 92
+
+    (54) condicionL -> ID opL BOOLEAN .
+
+    $end            reduce using rule 54 (condicionL -> ID opL BOOLEAN .)
+    RPAREN          reduce using rule 54 (condicionL -> ID opL BOOLEAN .)
+    RCURL           reduce using rule 54 (condicionL -> ID opL BOOLEAN .)
+
+
+state 93
+
+    (67) condicionR -> ID opR ID .
+
+    $end            reduce using rule 67 (condicionR -> ID opR ID .)
+    RPAREN          reduce using rule 67 (condicionR -> ID opR ID .)
+    RCURL           reduce using rule 67 (condicionR -> ID opR ID .)
+
+
+state 94
+
+    (84) stack_actuar -> ID DOT stack_funciones .
+
+    $end            reduce using rule 84 (stack_actuar -> ID DOT stack_funciones .)
+    RCURL           reduce using rule 84 (stack_actuar -> ID DOT stack_funciones .)
+
+
+state 95
+
+    (85) stack_funciones -> stack_isEmpty .
+
+    $end            reduce using rule 85 (stack_funciones -> stack_isEmpty .)
+    RCURL           reduce using rule 85 (stack_funciones -> stack_isEmpty .)
+
+
+state 96
+
+    (86) stack_funciones -> stack_push .
+
+    $end            reduce using rule 86 (stack_funciones -> stack_push .)
+    RCURL           reduce using rule 86 (stack_funciones -> stack_push .)
+
+
+state 97
+
+    (87) stack_funciones -> stack_pop .
+
+    $end            reduce using rule 87 (stack_funciones -> stack_pop .)
+    RCURL           reduce using rule 87 (stack_funciones -> stack_pop .)
+
+
+state 98
+
+    (88) stack_isEmpty -> ISEMPTY . LPAREN RPAREN
+
+    LPAREN          shift and go to state 139
+
+
+state 99
+
+    (90) stack_push -> PUSH . LPAREN ID RPAREN
+
+    LPAREN          shift and go to state 140
+
+
+state 100
+
+    (89) stack_pop -> POP . LPAREN RPAREN
+
+    LPAREN          shift and go to state 141
+
+
+state 101
+
+    (21) asignacionSimple -> ID DOTS tipoDato . EQUAL valor
+
+    EQUAL           shift and go to state 142
+
+
+state 102
+
+    (23) tipoDato -> TINT .
+
+    EQUAL           reduce using rule 23 (tipoDato -> TINT .)
+    RANGLE          reduce using rule 23 (tipoDato -> TINT .)
+
+
+state 103
+
+    (24) tipoDato -> TLONG .
+
+    EQUAL           reduce using rule 24 (tipoDato -> TLONG .)
+    RANGLE          reduce using rule 24 (tipoDato -> TLONG .)
+
+
+state 104
+
+    (25) tipoDato -> TFLOAT .
+
+    EQUAL           reduce using rule 25 (tipoDato -> TFLOAT .)
+    RANGLE          reduce using rule 25 (tipoDato -> TFLOAT .)
+
+
+state 105
+
+    (26) tipoDato -> TDOUBLE .
+
+    EQUAL           reduce using rule 26 (tipoDato -> TDOUBLE .)
+    RANGLE          reduce using rule 26 (tipoDato -> TDOUBLE .)
+
+
+state 106
+
+    (27) tipoDato -> TBOOLEAN .
+
+    EQUAL           reduce using rule 27 (tipoDato -> TBOOLEAN .)
+    RANGLE          reduce using rule 27 (tipoDato -> TBOOLEAN .)
+
+
+state 107
+
+    (28) tipoDato -> TCHAR .
+
+    EQUAL           reduce using rule 28 (tipoDato -> TCHAR .)
+    RANGLE          reduce using rule 28 (tipoDato -> TCHAR .)
+
+
+state 108
+
+    (29) tipoDato -> TSTRING .
+
+    EQUAL           reduce using rule 29 (tipoDato -> TSTRING .)
+    RANGLE          reduce using rule 29 (tipoDato -> TSTRING .)
+
+
+state 109
+
+    (22) asignacionSimple -> ID EQUAL valor .
+
+    SEMICOLON       reduce using rule 22 (asignacionSimple -> ID EQUAL valor .)
+    $end            reduce using rule 22 (asignacionSimple -> ID EQUAL valor .)
+    RCURL           reduce using rule 22 (asignacionSimple -> ID EQUAL valor .)
+
+
+state 110
+
+    (30) valor -> expression .
+    (31) expression -> expression . PLUS term
+    (32) expression -> expression . MINUS term
+    (33) expression -> expression . TIMES term
+    (34) expression -> expression . DIVIDE term
+    (35) expression -> expression . MOD term
+
+    SEMICOLON       reduce using rule 30 (valor -> expression .)
+    $end            reduce using rule 30 (valor -> expression .)
+    RCURL           reduce using rule 30 (valor -> expression .)
+    PLUS            shift and go to state 35
+    MINUS           shift and go to state 36
+    TIMES           shift and go to state 37
+    DIVIDE          shift and go to state 38
+    MOD             shift and go to state 39
+
+
+state 111
+
+    (56) condicionR -> INT opR INT .
+
+    $end            reduce using rule 56 (condicionR -> INT opR INT .)
+    RPAREN          reduce using rule 56 (condicionR -> INT opR INT .)
+    RCURL           reduce using rule 56 (condicionR -> INT opR INT .)
+
+
+state 112
+
+    (57) condicionR -> INT opR FLOAT .
+
+    $end            reduce using rule 57 (condicionR -> INT opR FLOAT .)
+    RPAREN          reduce using rule 57 (condicionR -> INT opR FLOAT .)
+    RCURL           reduce using rule 57 (condicionR -> INT opR FLOAT .)
+
+
+state 113
+
+    (58) condicionR -> INT opR LONG .
+
+    $end            reduce using rule 58 (condicionR -> INT opR LONG .)
+    RPAREN          reduce using rule 58 (condicionR -> INT opR LONG .)
+    RCURL           reduce using rule 58 (condicionR -> INT opR LONG .)
+
+
+state 114
+
+    (59) condicionR -> FLOAT opR FLOAT .
+
+    $end            reduce using rule 59 (condicionR -> FLOAT opR FLOAT .)
+    RPAREN          reduce using rule 59 (condicionR -> FLOAT opR FLOAT .)
+    RCURL           reduce using rule 59 (condicionR -> FLOAT opR FLOAT .)
+
+
+state 115
+
+    (60) condicionR -> FLOAT opR INT .
+
+    $end            reduce using rule 60 (condicionR -> FLOAT opR INT .)
+    RPAREN          reduce using rule 60 (condicionR -> FLOAT opR INT .)
+    RCURL           reduce using rule 60 (condicionR -> FLOAT opR INT .)
+
+
+state 116
+
+    (61) condicionR -> FLOAT opR LONG .
+
+    $end            reduce using rule 61 (condicionR -> FLOAT opR LONG .)
+    RPAREN          reduce using rule 61 (condicionR -> FLOAT opR LONG .)
+    RCURL           reduce using rule 61 (condicionR -> FLOAT opR LONG .)
+
+
+state 117
+
+    (62) condicionR -> LONG opR LONG .
+
+    $end            reduce using rule 62 (condicionR -> LONG opR LONG .)
+    RPAREN          reduce using rule 62 (condicionR -> LONG opR LONG .)
+    RCURL           reduce using rule 62 (condicionR -> LONG opR LONG .)
+
+
+state 118
+
+    (63) condicionR -> LONG opR INT .
+
+    $end            reduce using rule 63 (condicionR -> LONG opR INT .)
+    RPAREN          reduce using rule 63 (condicionR -> LONG opR INT .)
+    RCURL           reduce using rule 63 (condicionR -> LONG opR INT .)
+
+
+state 119
+
+    (64) condicionR -> LONG opR FLOAT .
+
+    $end            reduce using rule 64 (condicionR -> LONG opR FLOAT .)
+    RPAREN          reduce using rule 64 (condicionR -> LONG opR FLOAT .)
+    RCURL           reduce using rule 64 (condicionR -> LONG opR FLOAT .)
+
+
+state 120
+
+    (65) condicionR -> STRING_1 opR STRING_1 .
+
+    $end            reduce using rule 65 (condicionR -> STRING_1 opR STRING_1 .)
+    RPAREN          reduce using rule 65 (condicionR -> STRING_1 opR STRING_1 .)
+    RCURL           reduce using rule 65 (condicionR -> STRING_1 opR STRING_1 .)
+
+
+state 121
+
+    (66) condicionR -> CHAR opR CHAR .
+
+    $end            reduce using rule 66 (condicionR -> CHAR opR CHAR .)
+    RPAREN          reduce using rule 66 (condicionR -> CHAR opR CHAR .)
+    RCURL           reduce using rule 66 (condicionR -> CHAR opR CHAR .)
+
+
+state 122
+
+    (81) stack -> keywordVariables ID DOTS . def_estruct_tipoDato EQUAL instance_arraylist
+    (21) asignacionSimple -> ID DOTS . tipoDato EQUAL valor
+    (82) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
+    (23) tipoDato -> . TINT
+    (24) tipoDato -> . TLONG
+    (25) tipoDato -> . TFLOAT
+    (26) tipoDato -> . TDOUBLE
+    (27) tipoDato -> . TBOOLEAN
+    (28) tipoDato -> . TCHAR
+    (29) tipoDato -> . TSTRING
+
+    STACK           shift and go to state 31
+    TINT            shift and go to state 102
+    TLONG           shift and go to state 103
+    TFLOAT          shift and go to state 104
+    TDOUBLE         shift and go to state 105
+    TBOOLEAN        shift and go to state 106
+    TCHAR           shift and go to state 107
+    TSTRING         shift and go to state 108
+
+    def_estruct_tipoDato           shift and go to state 143
+    tipoDato                       shift and go to state 101
+
+state 123
+
+    (16) for -> FOR LPAREN ID . IN ID RPAREN LCURL line RCURL
+
+    IN              shift and go to state 144
+
+
+state 124
+
+    (46) if -> IF LPAREN condicion . RPAREN LCURL line RCURL
+    (47) if -> IF LPAREN condicion . RPAREN LCURL line RCURL else
+
+    RPAREN          shift and go to state 145
+
+
+state 125
+
+    (49) condicion -> condicionL .
+
+    RPAREN          reduce using rule 49 (condicion -> condicionL .)
+
+
+state 126
+
+    (50) condicion -> condicionR .
+
+    RPAREN          reduce using rule 50 (condicion -> condicionR .)
+
+
+state 127
+
+    (51) condicion -> condicionN .
+
+    RPAREN          reduce using rule 51 (condicion -> condicionN .)
+
+
+state 128
+
+    (52) condicionL -> BOOLEAN . opL BOOLEAN
+    (55) condicionL -> BOOLEAN . opL ID
+    (70) opL -> . CONJ
+    (71) opL -> . DISJ
+
+    CONJ            shift and go to state 52
+    DISJ            shift and go to state 53
+
+    opL                            shift and go to state 51
+
+state 129
+
+    (53) condicionL -> ID . opL ID
+    (54) condicionL -> ID . opL BOOLEAN
+    (67) condicionR -> ID . opR ID
+    (70) opL -> . CONJ
+    (71) opL -> . DISJ
+    (72) opR -> . LANGLE
+    (73) opR -> . RANGLE
+    (74) opR -> . LE
+    (75) opR -> . GE
+    (76) opR -> . EXCL_EQ
+    (77) opR -> . EXCL_EQEQ
+    (78) opR -> . AS_SAFE
+    (79) opR -> . EQEQ
+    (80) opR -> . EQEQEQ
+
+    CONJ            shift and go to state 52
+    DISJ            shift and go to state 53
+    LANGLE          shift and go to state 59
+    RANGLE          shift and go to state 60
+    LE              shift and go to state 61
+    GE              shift and go to state 62
+    EXCL_EQ         shift and go to state 63
+    EXCL_EQEQ       shift and go to state 64
+    AS_SAFE         shift and go to state 65
+    EQEQ            shift and go to state 66
+    EQEQEQ          shift and go to state 67
+
+    opL                            shift and go to state 54
+    opR                            shift and go to state 55
+
+state 130
+
+    (56) condicionR -> INT . opR INT
+    (57) condicionR -> INT . opR FLOAT
+    (58) condicionR -> INT . opR LONG
+    (72) opR -> . LANGLE
+    (73) opR -> . RANGLE
+    (74) opR -> . LE
+    (75) opR -> . GE
+    (76) opR -> . EXCL_EQ
+    (77) opR -> . EXCL_EQEQ
+    (78) opR -> . AS_SAFE
+    (79) opR -> . EQEQ
+    (80) opR -> . EQEQEQ
+
+    LANGLE          shift and go to state 59
+    RANGLE          shift and go to state 60
+    LE              shift and go to state 61
+    GE              shift and go to state 62
+    EXCL_EQ         shift and go to state 63
+    EXCL_EQEQ       shift and go to state 64
+    AS_SAFE         shift and go to state 65
+    EQEQ            shift and go to state 66
+    EQEQEQ          shift and go to state 67
+
+    opR                            shift and go to state 68
+
+state 131
+
+    (59) condicionR -> FLOAT . opR FLOAT
+    (60) condicionR -> FLOAT . opR INT
+    (61) condicionR -> FLOAT . opR LONG
+    (72) opR -> . LANGLE
+    (73) opR -> . RANGLE
+    (74) opR -> . LE
+    (75) opR -> . GE
+    (76) opR -> . EXCL_EQ
+    (77) opR -> . EXCL_EQEQ
+    (78) opR -> . AS_SAFE
+    (79) opR -> . EQEQ
+    (80) opR -> . EQEQEQ
+
+    LANGLE          shift and go to state 59
+    RANGLE          shift and go to state 60
+    LE              shift and go to state 61
+    GE              shift and go to state 62
+    EXCL_EQ         shift and go to state 63
+    EXCL_EQEQ       shift and go to state 64
+    AS_SAFE         shift and go to state 65
+    EQEQ            shift and go to state 66
+    EQEQEQ          shift and go to state 67
+
+    opR                            shift and go to state 69
+
+state 132
+
+    (62) condicionR -> LONG . opR LONG
+    (63) condicionR -> LONG . opR INT
+    (64) condicionR -> LONG . opR FLOAT
+    (72) opR -> . LANGLE
+    (73) opR -> . RANGLE
+    (74) opR -> . LE
+    (75) opR -> . GE
+    (76) opR -> . EXCL_EQ
+    (77) opR -> . EXCL_EQEQ
+    (78) opR -> . AS_SAFE
+    (79) opR -> . EQEQ
+    (80) opR -> . EQEQEQ
+
+    LANGLE          shift and go to state 59
+    RANGLE          shift and go to state 60
+    LE              shift and go to state 61
+    GE              shift and go to state 62
+    EXCL_EQ         shift and go to state 63
+    EXCL_EQEQ       shift and go to state 64
+    AS_SAFE         shift and go to state 65
+    EQEQ            shift and go to state 66
+    EQEQEQ          shift and go to state 67
+
+    opR                            shift and go to state 70
+
+state 133
+
+    (65) condicionR -> STRING_1 . opR STRING_1
+    (72) opR -> . LANGLE
+    (73) opR -> . RANGLE
+    (74) opR -> . LE
+    (75) opR -> . GE
+    (76) opR -> . EXCL_EQ
+    (77) opR -> . EXCL_EQEQ
+    (78) opR -> . AS_SAFE
+    (79) opR -> . EQEQ
+    (80) opR -> . EQEQEQ
+
+    LANGLE          shift and go to state 59
+    RANGLE          shift and go to state 60
+    LE              shift and go to state 61
+    GE              shift and go to state 62
+    EXCL_EQ         shift and go to state 63
+    EXCL_EQEQ       shift and go to state 64
+    AS_SAFE         shift and go to state 65
+    EQEQ            shift and go to state 66
+    EQEQEQ          shift and go to state 67
+
+    opR                            shift and go to state 71
+
+state 134
+
+    (66) condicionR -> CHAR . opR CHAR
+    (72) opR -> . LANGLE
+    (73) opR -> . RANGLE
+    (74) opR -> . LE
+    (75) opR -> . GE
+    (76) opR -> . EXCL_EQ
+    (77) opR -> . EXCL_EQEQ
+    (78) opR -> . AS_SAFE
+    (79) opR -> . EQEQ
+    (80) opR -> . EQEQEQ
+
+    LANGLE          shift and go to state 59
+    RANGLE          shift and go to state 60
+    LE              shift and go to state 61
+    GE              shift and go to state 62
+    EXCL_EQ         shift and go to state 63
+    EXCL_EQEQ       shift and go to state 64
+    AS_SAFE         shift and go to state 65
+    EQEQ            shift and go to state 66
+    EQEQEQ          shift and go to state 67
+
+    opR                            shift and go to state 72
+
+state 135
+
+    (83) instance_arraylist -> ARRAYLIST LPAREN RPAREN .
+
+    $end            reduce using rule 83 (instance_arraylist -> ARRAYLIST LPAREN RPAREN .)
+    RCURL           reduce using rule 83 (instance_arraylist -> ARRAYLIST LPAREN RPAREN .)
+
+
+state 136
+
+    (82) def_estruct_tipoDato -> STACK LANGLE tipoDato . RANGLE
+
+    RANGLE          shift and go to state 146
+
+
+state 137
+
+    (14) impresion -> PRINT LPAREN term RPAREN .
+
+    $end            reduce using rule 14 (impresion -> PRINT LPAREN term RPAREN .)
+    RCURL           reduce using rule 14 (impresion -> PRINT LPAREN term RPAREN .)
+
+
+state 138
+
+    (15) impresion -> PRINTLN LPAREN term RPAREN .
+
+    $end            reduce using rule 15 (impresion -> PRINTLN LPAREN term RPAREN .)
+    RCURL           reduce using rule 15 (impresion -> PRINTLN LPAREN term RPAREN .)
+
+
+state 139
+
+    (88) stack_isEmpty -> ISEMPTY LPAREN . RPAREN
+
+    RPAREN          shift and go to state 147
+
+
+state 140
+
+    (90) stack_push -> PUSH LPAREN . ID RPAREN
+
+    ID              shift and go to state 148
+
+
+state 141
+
+    (89) stack_pop -> POP LPAREN . RPAREN
+
+    RPAREN          shift and go to state 149
+
+
+state 142
+
+    (21) asignacionSimple -> ID DOTS tipoDato EQUAL . valor
+    (30) valor -> . expression
+    (31) expression -> . expression PLUS term
+    (32) expression -> . expression MINUS term
+    (33) expression -> . expression TIMES term
+    (34) expression -> . expression DIVIDE term
+    (35) expression -> . expression MOD term
+    (36) expression -> . term
+    (37) term -> . factor
+    (38) term -> . LPAREN expression RPAREN
+    (39) factor -> . INT
+    (40) factor -> . FLOAT
+    (41) factor -> . LONG
+    (42) factor -> . CHAR
+    (43) factor -> . BOOLEAN
+    (44) factor -> . ID
+    (45) factor -> . STRING_1
+
+    LPAREN          shift and go to state 15
+    INT             shift and go to state 43
+    FLOAT           shift and go to state 44
+    LONG            shift and go to state 45
+    CHAR            shift and go to state 46
+    BOOLEAN         shift and go to state 47
+    ID              shift and go to state 48
+    STRING_1        shift and go to state 49
+
+    valor                          shift and go to state 150
+    expression                     shift and go to state 110
+    term                           shift and go to state 16
+    factor                         shift and go to state 32
+
+state 143
+
+    (81) stack -> keywordVariables ID DOTS def_estruct_tipoDato . EQUAL instance_arraylist
+
+    EQUAL           shift and go to state 151
+
+
+state 144
+
+    (16) for -> FOR LPAREN ID IN . ID RPAREN LCURL line RCURL
+
+    ID              shift and go to state 152
+
+
+state 145
+
+    (46) if -> IF LPAREN condicion RPAREN . LCURL line RCURL
+    (47) if -> IF LPAREN condicion RPAREN . LCURL line RCURL else
+
+    LCURL           shift and go to state 153
+
+
+state 146
+
+    (82) def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE .
+
+    $end            reduce using rule 82 (def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE .)
+    EQUAL           reduce using rule 82 (def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE .)
+    RCURL           reduce using rule 82 (def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE .)
+
+
+state 147
+
+    (88) stack_isEmpty -> ISEMPTY LPAREN RPAREN .
+
+    $end            reduce using rule 88 (stack_isEmpty -> ISEMPTY LPAREN RPAREN .)
+    RCURL           reduce using rule 88 (stack_isEmpty -> ISEMPTY LPAREN RPAREN .)
+
+
+state 148
+
+    (90) stack_push -> PUSH LPAREN ID . RPAREN
+
+    RPAREN          shift and go to state 154
+
+
+state 149
+
+    (89) stack_pop -> POP LPAREN RPAREN .
+
+    $end            reduce using rule 89 (stack_pop -> POP LPAREN RPAREN .)
+    RCURL           reduce using rule 89 (stack_pop -> POP LPAREN RPAREN .)
+
+
+state 150
+
+    (21) asignacionSimple -> ID DOTS tipoDato EQUAL valor .
+
+    SEMICOLON       reduce using rule 21 (asignacionSimple -> ID DOTS tipoDato EQUAL valor .)
+    $end            reduce using rule 21 (asignacionSimple -> ID DOTS tipoDato EQUAL valor .)
+    RCURL           reduce using rule 21 (asignacionSimple -> ID DOTS tipoDato EQUAL valor .)
+
+
+state 151
+
+    (81) stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL . instance_arraylist
+    (83) instance_arraylist -> . ARRAYLIST LPAREN RPAREN
+
+    ARRAYLIST       shift and go to state 30
+
+    instance_arraylist             shift and go to state 155
+
+state 152
+
+    (16) for -> FOR LPAREN ID IN ID . RPAREN LCURL line RCURL
+
+    RPAREN          shift and go to state 156
+
+
+state 153
+
+    (46) if -> IF LPAREN condicion RPAREN LCURL . line RCURL
+    (47) if -> IF LPAREN condicion RPAREN LCURL . line RCURL else
+    (1) line -> . impresion
+    (2) line -> . expression
+    (3) line -> . condicionL
+    (4) line -> . condicionR
+    (5) line -> . condicionN
+    (6) line -> . asignacion
+    (7) line -> . asignacion SEMICOLON
+    (8) line -> . for
+    (9) line -> . if
+    (10) line -> . stack
+    (11) line -> . stack_actuar
+    (12) line -> . instance_arraylist
+    (13) line -> . def_estruct_tipoDato
+    (14) impresion -> . PRINT LPAREN term RPAREN
+    (15) impresion -> . PRINTLN LPAREN term RPAREN
+    (31) expression -> . expression PLUS term
+    (32) expression -> . expression MINUS term
+    (33) expression -> . expression TIMES term
+    (34) expression -> . expression DIVIDE term
+    (35) expression -> . expression MOD term
+    (36) expression -> . term
+    (52) condicionL -> . BOOLEAN opL BOOLEAN
+    (53) condicionL -> . ID opL ID
+    (54) condicionL -> . ID opL BOOLEAN
+    (55) condicionL -> . BOOLEAN opL ID
+    (56) condicionR -> . INT opR INT
+    (57) condicionR -> . INT opR FLOAT
+    (58) condicionR -> . INT opR LONG
+    (59) condicionR -> . FLOAT opR FLOAT
+    (60) condicionR -> . FLOAT opR INT
+    (61) condicionR -> . FLOAT opR LONG
+    (62) condicionR -> . LONG opR LONG
+    (63) condicionR -> . LONG opR INT
+    (64) condicionR -> . LONG opR FLOAT
+    (65) condicionR -> . STRING_1 opR STRING_1
+    (66) condicionR -> . CHAR opR CHAR
+    (67) condicionR -> . ID opR ID
+    (68) condicionN -> . EXCL_WS BOOLEAN
+    (69) condicionN -> . EXCL_WS ID
+    (19) asignacion -> . keywordVariables asignacionSimple
+    (20) asignacion -> . asignacionSimple
+    (16) for -> . FOR LPAREN ID IN ID RPAREN LCURL line RCURL
+    (46) if -> . IF LPAREN condicion RPAREN LCURL line RCURL
+    (47) if -> . IF LPAREN condicion RPAREN LCURL line RCURL else
+    (81) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist
+    (84) stack_actuar -> . ID DOT stack_funciones
+    (83) instance_arraylist -> . ARRAYLIST LPAREN RPAREN
+    (82) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
+    (37) term -> . factor
+    (38) term -> . LPAREN expression RPAREN
+    (17) keywordVariables -> . VAR
+    (18) keywordVariables -> . VAL
+    (21) asignacionSimple -> . ID DOTS tipoDato EQUAL valor
+    (22) asignacionSimple -> . ID EQUAL valor
+    (39) factor -> . INT
+    (40) factor -> . FLOAT
+    (41) factor -> . LONG
+    (42) factor -> . CHAR
+    (43) factor -> . BOOLEAN
+    (44) factor -> . ID
+    (45) factor -> . STRING_1
+
+    PRINT           shift and go to state 14
+    PRINTLN         shift and go to state 17
+    BOOLEAN         shift and go to state 18
+    ID              shift and go to state 19
+    INT             shift and go to state 20
+    FLOAT           shift and go to state 21
+    LONG            shift and go to state 22
+    STRING_1        shift and go to state 23
+    CHAR            shift and go to state 24
+    EXCL_WS         shift and go to state 25
+    FOR             shift and go to state 28
+    IF              shift and go to state 29
+    ARRAYLIST       shift and go to state 30
+    STACK           shift and go to state 31
+    LPAREN          shift and go to state 15
+    VAR             shift and go to state 33
+    VAL             shift and go to state 34
+
+    line                           shift and go to state 157
+    impresion                      shift and go to state 2
+    expression                     shift and go to state 3
+    condicionL                     shift and go to state 4
+    condicionR                     shift and go to state 5
+    condicionN                     shift and go to state 6
+    asignacion                     shift and go to state 7
+    for                            shift and go to state 8
+    if                             shift and go to state 9
+    stack                          shift and go to state 10
+    stack_actuar                   shift and go to state 11
+    instance_arraylist             shift and go to state 12
+    def_estruct_tipoDato           shift and go to state 13
+    term                           shift and go to state 16
+    keywordVariables               shift and go to state 26
+    asignacionSimple               shift and go to state 27
+    factor                         shift and go to state 32
+
+state 154
+
+    (90) stack_push -> PUSH LPAREN ID RPAREN .
+
+    $end            reduce using rule 90 (stack_push -> PUSH LPAREN ID RPAREN .)
+    RCURL           reduce using rule 90 (stack_push -> PUSH LPAREN ID RPAREN .)
+
+
+state 155
+
+    (81) stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist .
+
+    $end            reduce using rule 81 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist .)
+    RCURL           reduce using rule 81 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist .)
+
+
+state 156
+
+    (16) for -> FOR LPAREN ID IN ID RPAREN . LCURL line RCURL
+
+    LCURL           shift and go to state 158
+
+
+state 157
+
+    (46) if -> IF LPAREN condicion RPAREN LCURL line . RCURL
+    (47) if -> IF LPAREN condicion RPAREN LCURL line . RCURL else
+
+    RCURL           shift and go to state 159
+
+
+state 158
+
+    (16) for -> FOR LPAREN ID IN ID RPAREN LCURL . line RCURL
+    (1) line -> . impresion
+    (2) line -> . expression
+    (3) line -> . condicionL
+    (4) line -> . condicionR
+    (5) line -> . condicionN
+    (6) line -> . asignacion
+    (7) line -> . asignacion SEMICOLON
+    (8) line -> . for
+    (9) line -> . if
+    (10) line -> . stack
+    (11) line -> . stack_actuar
+    (12) line -> . instance_arraylist
+    (13) line -> . def_estruct_tipoDato
+    (14) impresion -> . PRINT LPAREN term RPAREN
+    (15) impresion -> . PRINTLN LPAREN term RPAREN
+    (31) expression -> . expression PLUS term
+    (32) expression -> . expression MINUS term
+    (33) expression -> . expression TIMES term
+    (34) expression -> . expression DIVIDE term
+    (35) expression -> . expression MOD term
+    (36) expression -> . term
+    (52) condicionL -> . BOOLEAN opL BOOLEAN
+    (53) condicionL -> . ID opL ID
+    (54) condicionL -> . ID opL BOOLEAN
+    (55) condicionL -> . BOOLEAN opL ID
+    (56) condicionR -> . INT opR INT
+    (57) condicionR -> . INT opR FLOAT
+    (58) condicionR -> . INT opR LONG
+    (59) condicionR -> . FLOAT opR FLOAT
+    (60) condicionR -> . FLOAT opR INT
+    (61) condicionR -> . FLOAT opR LONG
+    (62) condicionR -> . LONG opR LONG
+    (63) condicionR -> . LONG opR INT
+    (64) condicionR -> . LONG opR FLOAT
+    (65) condicionR -> . STRING_1 opR STRING_1
+    (66) condicionR -> . CHAR opR CHAR
+    (67) condicionR -> . ID opR ID
+    (68) condicionN -> . EXCL_WS BOOLEAN
+    (69) condicionN -> . EXCL_WS ID
+    (19) asignacion -> . keywordVariables asignacionSimple
+    (20) asignacion -> . asignacionSimple
+    (16) for -> . FOR LPAREN ID IN ID RPAREN LCURL line RCURL
+    (46) if -> . IF LPAREN condicion RPAREN LCURL line RCURL
+    (47) if -> . IF LPAREN condicion RPAREN LCURL line RCURL else
+    (81) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist
+    (84) stack_actuar -> . ID DOT stack_funciones
+    (83) instance_arraylist -> . ARRAYLIST LPAREN RPAREN
+    (82) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
+    (37) term -> . factor
+    (38) term -> . LPAREN expression RPAREN
+    (17) keywordVariables -> . VAR
+    (18) keywordVariables -> . VAL
+    (21) asignacionSimple -> . ID DOTS tipoDato EQUAL valor
+    (22) asignacionSimple -> . ID EQUAL valor
+    (39) factor -> . INT
+    (40) factor -> . FLOAT
+    (41) factor -> . LONG
+    (42) factor -> . CHAR
+    (43) factor -> . BOOLEAN
+    (44) factor -> . ID
+    (45) factor -> . STRING_1
+
+    PRINT           shift and go to state 14
+    PRINTLN         shift and go to state 17
+    BOOLEAN         shift and go to state 18
+    ID              shift and go to state 19
+    INT             shift and go to state 20
+    FLOAT           shift and go to state 21
+    LONG            shift and go to state 22
+    STRING_1        shift and go to state 23
+    CHAR            shift and go to state 24
+    EXCL_WS         shift and go to state 25
+    FOR             shift and go to state 28
+    IF              shift and go to state 29
+    ARRAYLIST       shift and go to state 30
+    STACK           shift and go to state 31
+    LPAREN          shift and go to state 15
+    VAR             shift and go to state 33
+    VAL             shift and go to state 34
+
+    line                           shift and go to state 160
+    impresion                      shift and go to state 2
+    expression                     shift and go to state 3
+    condicionL                     shift and go to state 4
+    condicionR                     shift and go to state 5
+    condicionN                     shift and go to state 6
+    asignacion                     shift and go to state 7
+    for                            shift and go to state 8
+    if                             shift and go to state 9
+    stack                          shift and go to state 10
+    stack_actuar                   shift and go to state 11
+    instance_arraylist             shift and go to state 12
+    def_estruct_tipoDato           shift and go to state 13
+    term                           shift and go to state 16
+    keywordVariables               shift and go to state 26
+    asignacionSimple               shift and go to state 27
+    factor                         shift and go to state 32
+
+state 159
+
+    (46) if -> IF LPAREN condicion RPAREN LCURL line RCURL .
+    (47) if -> IF LPAREN condicion RPAREN LCURL line RCURL . else
+    (48) else -> . ELSE LCURL line RCURL
+
+    $end            reduce using rule 46 (if -> IF LPAREN condicion RPAREN LCURL line RCURL .)
+    RCURL           reduce using rule 46 (if -> IF LPAREN condicion RPAREN LCURL line RCURL .)
+    ELSE            shift and go to state 162
+
+    else                           shift and go to state 161
+
+state 160
+
+    (16) for -> FOR LPAREN ID IN ID RPAREN LCURL line . RCURL
+
+    RCURL           shift and go to state 163
+
+
+state 161
+
+    (47) if -> IF LPAREN condicion RPAREN LCURL line RCURL else .
+
+    $end            reduce using rule 47 (if -> IF LPAREN condicion RPAREN LCURL line RCURL else .)
+    RCURL           reduce using rule 47 (if -> IF LPAREN condicion RPAREN LCURL line RCURL else .)
+
+
+state 162
+
+    (48) else -> ELSE . LCURL line RCURL
+
+    LCURL           shift and go to state 164
+
+
+state 163
+
+    (16) for -> FOR LPAREN ID IN ID RPAREN LCURL line RCURL .
+
+    $end            reduce using rule 16 (for -> FOR LPAREN ID IN ID RPAREN LCURL line RCURL .)
+    RCURL           reduce using rule 16 (for -> FOR LPAREN ID IN ID RPAREN LCURL line RCURL .)
+
+
+state 164
+
+    (48) else -> ELSE LCURL . line RCURL
+    (1) line -> . impresion
+    (2) line -> . expression
+    (3) line -> . condicionL
+    (4) line -> . condicionR
+    (5) line -> . condicionN
+    (6) line -> . asignacion
+    (7) line -> . asignacion SEMICOLON
+    (8) line -> . for
+    (9) line -> . if
+    (10) line -> . stack
+    (11) line -> . stack_actuar
+    (12) line -> . instance_arraylist
+    (13) line -> . def_estruct_tipoDato
+    (14) impresion -> . PRINT LPAREN term RPAREN
+    (15) impresion -> . PRINTLN LPAREN term RPAREN
+    (31) expression -> . expression PLUS term
+    (32) expression -> . expression MINUS term
+    (33) expression -> . expression TIMES term
+    (34) expression -> . expression DIVIDE term
+    (35) expression -> . expression MOD term
+    (36) expression -> . term
+    (52) condicionL -> . BOOLEAN opL BOOLEAN
+    (53) condicionL -> . ID opL ID
+    (54) condicionL -> . ID opL BOOLEAN
+    (55) condicionL -> . BOOLEAN opL ID
+    (56) condicionR -> . INT opR INT
+    (57) condicionR -> . INT opR FLOAT
+    (58) condicionR -> . INT opR LONG
+    (59) condicionR -> . FLOAT opR FLOAT
+    (60) condicionR -> . FLOAT opR INT
+    (61) condicionR -> . FLOAT opR LONG
+    (62) condicionR -> . LONG opR LONG
+    (63) condicionR -> . LONG opR INT
+    (64) condicionR -> . LONG opR FLOAT
+    (65) condicionR -> . STRING_1 opR STRING_1
+    (66) condicionR -> . CHAR opR CHAR
+    (67) condicionR -> . ID opR ID
+    (68) condicionN -> . EXCL_WS BOOLEAN
+    (69) condicionN -> . EXCL_WS ID
+    (19) asignacion -> . keywordVariables asignacionSimple
+    (20) asignacion -> . asignacionSimple
+    (16) for -> . FOR LPAREN ID IN ID RPAREN LCURL line RCURL
+    (46) if -> . IF LPAREN condicion RPAREN LCURL line RCURL
+    (47) if -> . IF LPAREN condicion RPAREN LCURL line RCURL else
+    (81) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_arraylist
+    (84) stack_actuar -> . ID DOT stack_funciones
+    (83) instance_arraylist -> . ARRAYLIST LPAREN RPAREN
+    (82) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
+    (37) term -> . factor
+    (38) term -> . LPAREN expression RPAREN
+    (17) keywordVariables -> . VAR
+    (18) keywordVariables -> . VAL
+    (21) asignacionSimple -> . ID DOTS tipoDato EQUAL valor
+    (22) asignacionSimple -> . ID EQUAL valor
+    (39) factor -> . INT
+    (40) factor -> . FLOAT
+    (41) factor -> . LONG
+    (42) factor -> . CHAR
+    (43) factor -> . BOOLEAN
+    (44) factor -> . ID
+    (45) factor -> . STRING_1
+
+    PRINT           shift and go to state 14
+    PRINTLN         shift and go to state 17
+    BOOLEAN         shift and go to state 18
+    ID              shift and go to state 19
+    INT             shift and go to state 20
+    FLOAT           shift and go to state 21
+    LONG            shift and go to state 22
+    STRING_1        shift and go to state 23
+    CHAR            shift and go to state 24
+    EXCL_WS         shift and go to state 25
+    FOR             shift and go to state 28
+    IF              shift and go to state 29
+    ARRAYLIST       shift and go to state 30
+    STACK           shift and go to state 31
+    LPAREN          shift and go to state 15
+    VAR             shift and go to state 33
+    VAL             shift and go to state 34
+
+    line                           shift and go to state 165
+    impresion                      shift and go to state 2
+    expression                     shift and go to state 3
+    condicionL                     shift and go to state 4
+    condicionR                     shift and go to state 5
+    condicionN                     shift and go to state 6
+    asignacion                     shift and go to state 7
+    for                            shift and go to state 8
+    if                             shift and go to state 9
+    stack                          shift and go to state 10
+    stack_actuar                   shift and go to state 11
+    instance_arraylist             shift and go to state 12
+    def_estruct_tipoDato           shift and go to state 13
+    term                           shift and go to state 16
+    keywordVariables               shift and go to state 26
+    asignacionSimple               shift and go to state 27
+    factor                         shift and go to state 32
+
+state 165
+
+    (48) else -> ELSE LCURL line . RCURL
+
+    RCURL           shift and go to state 166
+
+
+state 166
+
+    (48) else -> ELSE LCURL line RCURL .
+
+    $end            reduce using rule 48 (else -> ELSE LCURL line RCURL .)
+    RCURL           reduce using rule 48 (else -> ELSE LCURL line RCURL .)
+

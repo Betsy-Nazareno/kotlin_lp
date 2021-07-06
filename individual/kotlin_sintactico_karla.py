@@ -7,8 +7,11 @@ from kotlin_lexico import tokens
 
 
 def p_cuerpo(p):
-    """line : impresion SEMICOLON
+    """line : impresion
                 | expression
+                | condicionL
+                | condicionR
+                | condicionN
                 | asignacion
                 | asignacion SEMICOLON
                 | for
@@ -108,20 +111,34 @@ def p_condicion(p):
     '''condicion : condicionL
                 | condicionR
                 | condicionN
-                | condicion masCondiciones+
                 '''
 
-def p_masCondiciones(p):
-    'masCondiciones : opL condicion'
-
 def p_condicionL(p):
-    'condicionL : term opL term'
+    '''condicionL : BOOLEAN opL BOOLEAN
+                    | ID opL ID
+                    | ID opL BOOLEAN
+                    | BOOLEAN opL ID
+                    '''
 
 def p_condicionR(p):
-    'condicionR : term opR term'
+    '''condicionR : INT opR INT
+                    | INT opR FLOAT
+                    | INT opR LONG
+                    | FLOAT opR FLOAT
+                    | FLOAT opR INT
+                    | FLOAT opR LONG
+                    | LONG opR LONG
+                    | LONG opR INT
+                    | LONG opR FLOAT
+                    | STRING_1 opR STRING_1
+                    | CHAR opR CHAR
+                    | ID opR ID
+                    '''
 
 def p_condicionN(p):
-    'condicionN : EXCL_WS term'
+    '''condicionN : EXCL_WS BOOLEAN
+                    | EXCL_WS ID
+                    '''
 
 #operaciones logicos y relacionales
 def p_opL(p):
