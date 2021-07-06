@@ -1,7 +1,6 @@
 import ply.yacc as yacc
 from kotlin_lexico import tokens
 
-
 # Bug: Las restas las reconoce si pones espacio entre el número y el menos.
 # Si quieren probar las expresiones sin antes agregarlas a una variable agreguen "| expression" a la primer regla
 
@@ -337,11 +336,13 @@ def p_lcomp(p):
 def p_error(p):
     if p:
         print("Syntax error at token", p.type)
+        men_error = p.type
         # Just discard the token and tell the parser it's okay.
     else:
         print("Syntax error at EOF")
 
 
+'''
 # Build the parser
 parser = yacc.yacc()
 
@@ -353,3 +354,4 @@ while True:
     if not s: continue
     result = parser.parse(s)
     print(result)
+'''
