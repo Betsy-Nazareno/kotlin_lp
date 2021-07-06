@@ -13,4 +13,7 @@ Condiciones:
         se admite comparación entre booleanos y variables
 
     - Las variables no tienen restricción de comparación (se admite todo)
+
+Stack:
+    - Se permite hacer push a una pila de cualquier objeto
 """

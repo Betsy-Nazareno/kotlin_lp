@@ -289,7 +289,7 @@ def p_stack_pop(p):
 
 
 def p_stack_push(p):
-    'stack_push : PUSH LPAREN ID RPAREN'
+    'stack_push : PUSH LPAREN factor RPAREN'
 
 
 def p_stack_peek(p):

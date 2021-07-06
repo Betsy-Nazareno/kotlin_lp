@@ -189,7 +189,7 @@ def p_stack_pop(p):
     'stack_pop : POP LPAREN RPAREN'
 
 def p_stack_push(p):
-    'stack_push : PUSH LPAREN ID RPAREN'
+    'stack_push : PUSH LPAREN factor RPAREN'
 
 
 # Error rule for syntax errors

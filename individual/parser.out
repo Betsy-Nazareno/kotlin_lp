@@ -207,7 +207,7 @@ Rule 86    stack_funciones -> stack_push
 Rule 87    stack_funciones -> stack_pop
 Rule 88    stack_isEmpty -> ISEMPTY LPAREN RPAREN
 Rule 89    stack_pop -> POP LPAREN RPAREN
-Rule 90    stack_push -> PUSH LPAREN ID RPAREN
+Rule 90    stack_push -> PUSH LPAREN factor RPAREN
 
 Terminals, with rules where they appear
 
@@ -272,7 +272,7 @@ FUN                  :
 GE                   : 75
 GET                  : 
 HASH                 : 
-ID                   : 16 16 21 22 44 53 53 54 55 67 67 69 81 84 90
+ID                   : 16 16 21 22 44 53 53 54 55 67 67 69 81 84
 IF                   : 46 47
 IMPORT               : 
 IN                   : 16
@@ -388,7 +388,7 @@ condicionR           : 4 50
 def_estruct_tipoDato : 13 81
 else                 : 47
 expression           : 2 30 31 32 33 34 35 38
-factor               : 37
+factor               : 37 90
 for                  : 8
 if                   : 9
 impresion            : 1
@@ -1362,7 +1362,7 @@ state 56
     (86) stack_funciones -> . stack_push
     (87) stack_funciones -> . stack_pop
     (88) stack_isEmpty -> . ISEMPTY LPAREN RPAREN
-    (90) stack_push -> . PUSH LPAREN ID RPAREN
+    (90) stack_push -> . PUSH LPAREN factor RPAREN
     (89) stack_pop -> . POP LPAREN RPAREN
 
     ISEMPTY         shift and go to state 98
@@ -1886,7 +1886,7 @@ state 98
 
 state 99
 
-    (90) stack_push -> PUSH . LPAREN ID RPAREN
+    (90) stack_push -> PUSH . LPAREN factor RPAREN
 
     LPAREN          shift and go to state 140
 
@@ -2364,10 +2364,24 @@ state 139
 
 state 140
 
-    (90) stack_push -> PUSH LPAREN . ID RPAREN
+    (90) stack_push -> PUSH LPAREN . factor RPAREN
+    (39) factor -> . INT
+    (40) factor -> . FLOAT
+    (41) factor -> . LONG
+    (42) factor -> . CHAR
+    (43) factor -> . BOOLEAN
+    (44) factor -> . ID
+    (45) factor -> . STRING_1
 
-    ID              shift and go to state 148
+    INT             shift and go to state 43
+    FLOAT           shift and go to state 44
+    LONG            shift and go to state 45
+    CHAR            shift and go to state 46
+    BOOLEAN         shift and go to state 47
+    ID              shift and go to state 48
+    STRING_1        shift and go to state 49
 
+    factor                         shift and go to state 148
 
 state 141
 
@@ -2451,7 +2465,7 @@ state 147
 
 state 148
 
-    (90) stack_push -> PUSH LPAREN ID . RPAREN
+    (90) stack_push -> PUSH LPAREN factor . RPAREN
 
     RPAREN          shift and go to state 154
 
@@ -2593,10 +2607,10 @@ state 153
 
 state 154
 
-    (90) stack_push -> PUSH LPAREN ID RPAREN .
+    (90) stack_push -> PUSH LPAREN factor RPAREN .
 
-    $end            reduce using rule 90 (stack_push -> PUSH LPAREN ID RPAREN .)
-    RCURL           reduce using rule 90 (stack_push -> PUSH LPAREN ID RPAREN .)
+    $end            reduce using rule 90 (stack_push -> PUSH LPAREN factor RPAREN .)
+    RCURL           reduce using rule 90 (stack_push -> PUSH LPAREN factor RPAREN .)
 
 
 state 155
