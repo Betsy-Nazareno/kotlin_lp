@@ -27,12 +27,13 @@ reserved = {
     'Boolean': 'TBOOLEAN',
     'Char': 'TCHAR',
     'Queue': 'QUEUE',
-    'LinkedList': 'LINKEDLIST',
+    'LinkedList': 'LINKEDL',
     'listOf': 'LISTOF',
     'add': 'ADD',
     'peek': 'PEEK',
     'remove': 'REMOVE',
     'poll': 'POLL',
+    'indices': 'INDICES',
     'public':'PUBLIC',      #Aporte de Eddy-------------------------------------------------------------------
     'private': 'PRIVATE',
     'protected':'PROTECTED',
@@ -100,7 +101,6 @@ reserved = {
     'push':'PUSH',
     'size':'SIZE',
     #Eddy
-    'LinkedList':'LINKEDL',
     'first':'FIRST',
     'last':'LAST',
     'removeLast':'REMOVEL',
@@ -173,7 +173,8 @@ tokens = (
     'EQEQ',
     'EQEQEQ',
     'SINGLE_QUOTE',
-    'TEMPLATE'
+    'TEMPLATE',
+    'THREEDOTS'
 
 ) + tuple(reserved.values())
 # Regular expression rules for simple tokens
@@ -198,6 +199,7 @@ t_DECREMENTIN = r'-='
 t_INCREMENTTIMES = r'\*='
 t_DIVIDEIN = r'/\='
 t_MODIN = r'%='
+t_THREEDOTS= r'\.\.\.'
 
 #Fin de aporte de Betsy-------------------------------------------------------------------------------------------------
 # Aporte de Eddy
