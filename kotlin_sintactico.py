@@ -33,7 +33,7 @@ def p_estructuras_datos(p):
                         | lsimplem
                         | lcomp
 
-                         |"""
+                         """
 
 
 def p_estructuras_control(p):
