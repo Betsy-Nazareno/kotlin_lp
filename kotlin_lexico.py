@@ -1,6 +1,7 @@
 import ply.lex as lex
 from ply.lex import TOKEN
 
+lista_tokens=[]
 reserved = {
     'if': 'IF',
     'else': 'ELSE',
@@ -305,7 +306,8 @@ def getTokens(lexer):
         tok = lexer.token()
         if not tok:
             break  # No more input
-        print(tok)
+        print(str(tok))
+        lista_tokens.append(str(tok))
 # Build the lexer
 lexer = lex.lex()
 """
@@ -317,4 +319,3 @@ while linea!="":
 # Tokenize
 print("Succesfull")
 """
-
