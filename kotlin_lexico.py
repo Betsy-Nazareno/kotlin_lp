@@ -1,6 +1,5 @@
 import ply.lex as lex
 from ply.lex import TOKEN
-import ply.yacc as yacc
 
 reserved = {
     'if': 'IF',
@@ -174,12 +173,12 @@ tokens = (
     'EQEQEQ',
     'SINGLE_QUOTE',
     'TEMPLATE',
-    'THREEDOTS'
+    'THREEDOTS',
 
 ) + tuple(reserved.values())
 # Regular expression rules for simple tokens
 #Aporte de Betsy--------------------------------------------------------------------------------------------------------
-t_VAR_TIPO_1 = r'var=\.*'
+
 t_LINEBREAK = r'\n'
 t_MARK_1 = r'"'
 t_MARK_2 = r"'"
@@ -290,20 +289,17 @@ def t_IMPORT(t):
 #Fin aporte de Karla----------------------------------------------------------------------------------------------------
 
 
-
-
-
 # Define a rule so we can track line numbers
 def t_newline(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
-# A string containing ignored characters (spaces and tabs)
-t_ignore = ' \t'
+    pass
 
 # Error handling rule
 def t_error(t):
-    print("Illegal character '%s'" % t.value[0])
+    #print("Illegal character '%s'" % t.value[0])
     t.lexer.skip(1)
+
 def getTokens(lexer):
     while True:
         tok = lexer.token()

@@ -1,10 +1,10 @@
 import tkinter as tk
 from kotlin_sintactico import *
+from kotlin_lexico import lexer
 
 WIN_WIDTH = 280
 WIN_HEIGHT = 550
 
-parser = yacc.yacc()
 
 window = tk.Tk() 
 window.title("Proyecto LP")  # to define the title
@@ -54,22 +54,25 @@ analizar = tk.Button(frame, text="Analizar", command=lambda: getValue(entry_fiel
 #output field
 label2 = tk.Label(frame,text='Output', bd='1',fg='black', font='Helvetica 9 bold').grid(column=1)
 p1 = tk.StringVar(frame, "Resultado")
+print("Valor de ", p1)
 result_label= tk.Label(frame,height = 10, width=30,bd='5', textvariable=p1)
 result_label.grid(column=1)
 
 men_error = ""
 
+
 #cadena del input a analizar
 def getValue(cadena):
-    print(cadena)
     try:
         s = cadena
     except EOFError:
         print("EOFError")
     if s:
-        result = parser.parse(s)
-        p1.set(result)
-        #print(result)
+        parser.parse(s, lexer=lexer)
+        p1.set(cola[-1])
+        cola.clear()
+        cola.append("¡Everything it's ok!")
+
 
 window.mainloop()
 

@@ -1,16 +1,13 @@
 import ply.yacc as yacc
 from kotlin_lexico import tokens
 
-# Bug: Las restas las reconoce si pones espacio entre el número y el menos.
-# Si quieren probar las expresiones sin antes agregarlas a una variable agreguen "| expression" a la primer regla
-
+cola = ["¡Everything it's ok!"]
 
 def p_cuerpo(p):
     """line : lineas
                 | expression
                 | estructurasControl
                 | condicion
-
                 """
 
 
@@ -335,17 +332,16 @@ def p_lcomp(p):
 # Error rule for syntax errors
 def p_error(p):
     if p:
-        print("Syntax error at token", p.type)
-        men_error = p.type
+        cola.append("Syntax error at token " + p.type)
         # Just discard the token and tell the parser it's okay.
     else:
-        print("Syntax error at EOF")
+        cola.append("Syntax error at EOF")
 
 
-'''
+
 # Build the parser
 parser = yacc.yacc()
-
+'''
 while True:
     try:
         s = input("kotlin > ")
