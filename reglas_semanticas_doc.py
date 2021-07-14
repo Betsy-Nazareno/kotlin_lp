@@ -3,11 +3,17 @@ algoritmo de prueba:
 
 fun main() {
     print("hola")
-
+    if (a<1){
+        edad++
+        print("mayor de edad")
+    } else {
+        print("menor de edad")
+    }
 }
 
-REGLAS SEMÁNTICAS DEFINIDAS:
 
+
+REGLAS SEMÁNTICAS DEFINIDAS:
 
 
 ---------- KARLA ----------

@@ -5,9 +5,13 @@ cola = ["Everything is ok!"]
 
 def p_cuerpo(p):
     """line : blocks
+                | blocks SEMICOLON
                 | blocks LINEBREAK
                 | blocks LINEBREAK line
                 | blocks LINEBREAK line LINEBREAK
+                | blocks SEMICOLON LINEBREAK
+                | blocks SEMICOLON LINEBREAK line
+                | blocks SEMICOLON LINEBREAK line LINEBREAK
                 | LINEBREAK
                 """
 
