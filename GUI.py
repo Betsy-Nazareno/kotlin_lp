@@ -3,7 +3,7 @@ from kotlin_sintactico import *
 from kotlin_lexico import lexer
 
 WIN_WIDTH = 430
-WIN_HEIGHT = 553
+WIN_HEIGHT = 575
 
 
 window = tk.Tk() 
@@ -28,11 +28,10 @@ Sintactico = tk.IntVar()
 Semantico = tk.IntVar() 
 window.config(menu=menu)
 
-# menu cascade
-#subMenu_exit = tk.Menu(menu)
-#menu.add_cascade(label="Exit_menu", menu=subMenu_exit)
-#subMenu_exit.add_command(label="Exit", command=window.destroy)
 
+logo = tk.PhotoImage(file='kotlin_logo.png')
+logo = logo.subsample(12)
+logo_label = tk.Label(frame, image=logo).grid(sticky='W',row=0,column=0,columnspan=1)
 label = tk.Label(frame,text='Analizador del Lenguaje Kotlin', bd='3',fg='black', font='Helvetica 12 bold').grid(row=0,column=0,columnspan=4)  # placing labels
 
 #checks
@@ -46,7 +45,7 @@ check_button3.grid(pady=10,row=1,column=3, columnspan=1)
 
 #input field
 label1 = tk.Label(frame,text='Input', bd='1',fg='black', font='Helvetica 9 bold').grid(sticky = 'W',pady=10,row=1,column=0, columnspan=1)
-entry_field1= tk.Text(frame,height = 12, width=47,bd='5')
+entry_field1= tk.Text(frame,height = 12, width=47,bd='2')
 entry_field1.grid(sticky = 'W', row=2, column=0, columnspan=4)
 entry_field1.config(state='normal')
 analizar = tk.Button(frame, text="Analizar", command=lambda: getValue(entry_field1.get("1.0", "end-1c"))).grid(sticky = 'W', padx=100, pady=10, row=3, column=1,columnspan=4)
