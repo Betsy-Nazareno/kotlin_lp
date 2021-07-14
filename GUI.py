@@ -73,7 +73,6 @@ def getValue(cadena):
        cola.clear()
        cola.append("¡Everything it's ok!")
     elif s and lexico.get():
-      
        lexer.input(s)
        getTokens(lexer)
        for i in lista_tokens:
@@ -82,3 +81,4 @@ def getValue(cadena):
 
 
 window.mainloop()
+
