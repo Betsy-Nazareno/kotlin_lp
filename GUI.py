@@ -59,17 +59,13 @@ result_label= tk.Label(frame,height = 10, width=54,bd='5', textvariable=p1)
 result_label.grid(sticky='W',row=5, column=0, columnspan=4)
 result_label.configure(bg='white',  borderwidth=2, relief="groove")
 
-
-
-#men_error = ""
-
-
 #cadena del input a analizar
 def getValue(cadena):
+    s=""
     try:
         s = cadena
     except EOFError:
-        print("EOFError")
+        p1.set("EOFError")
     p1.set("")
     if s and (Sintactico.get() or Semantico.get()):
        parser.parse(s, lexer=lexer)
@@ -82,10 +78,6 @@ def getValue(cadena):
        for i in lista_tokens:
            p1.set(p1.get() +"\n"+ i)
        lista_tokens.clear()
-
-
-
-
 
 
 window.mainloop()

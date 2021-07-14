@@ -174,11 +174,13 @@ tokens = (
     'SINGLE_QUOTE',
     'TEMPLATE',
     'THREEDOTS',
+    'LINEBREAK'
 
 ) + tuple(reserved.values())
 # Regular expression rules for simple tokens
 #Aporte de Betsy--------------------------------------------------------------------------------------------------------
 
+t_LINEBREAK = r'\n+'
 t_MARK_1 = r'"'
 t_MARK_2 = r"'"
 t_PLUS = r'\+'
@@ -289,10 +291,9 @@ def t_IMPORT(t):
 
 
 # Define a rule so we can track line numbers
-def t_newline(t):
-    r'\n+'
-    t.lexer.lineno += len(t.value)
-    pass
+#def t_newline(t):
+ #   r'\n+'
+  #  t.lexer.lineno += len(t.value)
 
 # Error handling rule
 def t_error(t):

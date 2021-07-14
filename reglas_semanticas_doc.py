@@ -1,4 +1,11 @@
 """
+algoritmo de prueba:
+
+fun main() {
+    print("hola")
+
+}
+
 REGLAS SEMÁNTICAS DEFINIDAS:
 
 

@@ -1,25 +1,29 @@
 import ply.yacc as yacc
-from kotlin_lexico import tokens
+from kotlin_lexico import *
 
-cola = ["¡Everything it's ok!"]
+cola = ["Everything is ok!"]
 
 def p_cuerpo(p):
-    """line : lineas
-                | expression
-                | estructurasControl
-                | condicion
+    """line : blocks
+                | blocks LINEBREAK
+                | blocks LINEBREAK line
+                | blocks LINEBREAK line LINEBREAK
+                | LINEBREAK
                 """
-
 
 def p_body(p):
     """blocks : impresion
+                | expression
+                | estructurasControl
+                | condicion
+                | funcion
                 | asignacion
                 | estructurasDatos"""
 
 
-def p_body_lineas(p):
-    """lineas : blocks
-            | blocks SEMICOLON"""
+#def p_body_lineas(p):
+#    """lineas : blocks
+#            | blocks SEMICOLON"""
 
 
 def p_estructuras_datos(p):
@@ -34,7 +38,6 @@ def p_estructuras_datos(p):
                         | lcomp
 
                          """
-
 
 def p_estructuras_control(p):
     """estructurasControl : for
@@ -75,7 +78,7 @@ def p_queue(p):
 
 
 def p_for(p):
-    '''for : FOR LPAREN ID IN iterable RPAREN LCURL morelines RCURL  '''
+    '''for : FOR LPAREN ID IN iterable RPAREN LCURL lineorBreak RCURL  '''
 
 
 def p_iterable(p):
@@ -84,9 +87,9 @@ def p_iterable(p):
                 | ID DOT INDICES"""
 
 
-def p_morelines(p):
-    '''morelines : line
-                | line morelines'''
+#def p_morelines(p):
+#    '''morelines : line
+#                | line morelines'''
 
 
 def p_asignacion(p):
@@ -96,7 +99,8 @@ def p_asignacion(p):
 
 def p_keywordVariables(p):
     '''keywordVariables : VAR
-                        | VAL'''
+                        | VAL
+                        '''
 
 
 def p_asignacionS(p):
@@ -179,13 +183,26 @@ def p_factor(p):
 
 
 # ---------- Karla -------------
+def p_funcion(p):
+    '''funcion : FUN ID LPAREN RPAREN LCURL lineorBreak RCURL
+                | FUN ID LPAREN ID RPAREN LCURL lineorBreak RCURL
+                | FUN ID LPAREN ID RPAREN LCURL RCURL
+                | FUN ID LPAREN RPAREN LCURL RCURL
+    '''
+
+def p_lineorBreak(p):
+    ''' lineorBreak : line
+                    | LINEBREAK line LINEBREAK
+                    | LINEBREAK line
+    '''
+
 def p_if(p):
-    '''if : IF LPAREN condicion RPAREN LCURL line RCURL
-            | IF LPAREN condicion RPAREN LCURL line RCURL else
+    '''if : IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
+            | IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
             '''
 
 def p_else(p):
-    'else : ELSE LCURL line RCURL'
+    'else : ELSE LCURL lineorBreak RCURL'
 
 #condiciones del if
 # ((<datos> (<operadorL> | <operadorR>)) | <operadorN>) <datos>
@@ -211,18 +228,25 @@ def p_condicionR(p):
     '''condicionR : INT opR INT
                     | INT opR FLOAT
                     | INT opR LONG
+                    | INT opR ID
                     | FLOAT opR FLOAT
                     | FLOAT opR INT
                     | FLOAT opR LONG
+                    | FLOAT opR ID
                     | LONG opR LONG
                     | LONG opR INT
                     | LONG opR FLOAT
+                    | LONG opR ID
                     | STRING_1 opR STRING_1
+                    | STRING_1 opR ID
                     | CHAR opR CHAR
+                    | CHAR opR ID
                     | ID opR ID
                     | ID opR INT
                     | ID opR FLOAT
                     | ID opR LONG
+                    | ID opR STRING_1
+                    | ID opR CHAR
                     '''
 
 def p_condicionN(p):
@@ -317,7 +341,7 @@ def p_Cmetod(p):
 
 
 def p_while(p):
-    'while : WHILE LPAREN ID opR INT RPAREN LCURL morelines RCURL '
+    'while : WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL '
 
 
 def p_lista(p):
@@ -335,8 +359,7 @@ def p_lcomp(p):
 # Error rule for syntax errors
 def p_error(p):
     if p:
-        cola.append("Syntax error at token " + p.type)
-        # Just discard the token and tell the parser it's okay.
+        cola.append("Syntax error: The token "+ str(p.value) +" of type "+ p.type + " it's not allowed!")
     else:
         cola.append("EOF: Error at the end of the line. \nYour line is incomplete. Try again!")
 
