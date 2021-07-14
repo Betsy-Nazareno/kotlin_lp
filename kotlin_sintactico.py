@@ -1,25 +1,29 @@
 import ply.yacc as yacc
 from kotlin_lexico import tokens
 
-cola = ["¡Everything it's ok!"]
+cola = ["Everything is ok!"]
 
 def p_cuerpo(p):
-    """line : lineas
-                | expression
-                | estructurasControl
-                | condicion
+    """line : blocks
+                | blocks LINEBREAK
+                | blocks LINEBREAK line
+                | blocks LINEBREAK line LINEBREAK
+                | LINEBREAK
                 """
-
 
 def p_body(p):
     """blocks : impresion
+                | expression
+                | estructurasControl
+                | condicion
+                | funcion
                 | asignacion
                 | estructurasDatos"""
 
 
-def p_body_lineas(p):
-    """lineas : blocks
-            | blocks SEMICOLON"""
+#def p_body_lineas(p):
+#    """lineas : blocks
+#            | blocks SEMICOLON"""
 
 
 def p_estructuras_datos(p):
@@ -34,7 +38,6 @@ def p_estructuras_datos(p):
                         | lcomp
 
                          """
-
 
 def p_estructuras_control(p):
     """estructurasControl : for
@@ -75,7 +78,7 @@ def p_queue(p):
 
 
 def p_for(p):
-    '''for : FOR LPAREN ID IN iterable RPAREN LCURL morelines RCURL  '''
+    '''for : FOR LPAREN ID IN iterable RPAREN LCURL lineorBreak RCURL  '''
 
 
 def p_iterable(p):
@@ -84,9 +87,9 @@ def p_iterable(p):
                 | ID DOT INDICES"""
 
 
-def p_morelines(p):
-    '''morelines : line
-                | line morelines'''
+#def p_morelines(p):
+#    '''morelines : line
+#                | line morelines'''
 
 
 def p_asignacion(p):
@@ -96,7 +99,8 @@ def p_asignacion(p):
 
 def p_keywordVariables(p):
     '''keywordVariables : VAR
-                        | VAL'''
+                        | VAL
+                        '''
 
 
 def p_asignacionS(p):
@@ -179,13 +183,26 @@ def p_factor(p):
 
 
 # ---------- Karla -------------
+def p_funcion(p):
+    '''funcion : FUN ID LPAREN RPAREN LCURL lineorBreak RCURL
+                | FUN ID LPAREN ID RPAREN LCURL lineorBreak RCURL
+                | FUN ID LPAREN ID RPAREN LCURL RCURL
+                | FUN ID LPAREN RPAREN LCURL RCURL
+    '''
+
+def p_lineorBreak(p):
+    ''' lineorBreak : line
+                    | LINEBREAK line LINEBREAK
+                    | LINEBREAK line
+    '''
+
 def p_if(p):
-    '''if : IF LPAREN condicion RPAREN LCURL line RCURL
-            | IF LPAREN condicion RPAREN LCURL line RCURL else
+    '''if : IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
+            | IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
             '''
 
 def p_else(p):
-    'else : ELSE LCURL line RCURL'
+    'else : ELSE LCURL lineorBreak RCURL'
 
 #condiciones del if
 # ((<datos> (<operadorL> | <operadorR>)) | <operadorN>) <datos>
@@ -317,7 +334,7 @@ def p_Cmetod(p):
 
 
 def p_while(p):
-    'while : WHILE LPAREN ID opR INT RPAREN LCURL morelines RCURL '
+    'while : WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL '
 
 
 def p_lista(p):

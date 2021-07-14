@@ -59,13 +59,9 @@ result_label= tk.Label(frame,height = 10, width=54,bd='5', textvariable=p1)
 result_label.grid(sticky='W',row=5, column=0, columnspan=4)
 result_label.configure(bg='white',  borderwidth=2, relief="groove")
 
-
-
-#men_error = ""
-
-
 #cadena del input a analizar
 def getValue(cadena):
+    print(cadena)
     try:
         s = cadena
     except EOFError:
@@ -85,8 +81,4 @@ def getValue(cadena):
        lista_tokens.clear()
 
 
-
-
-
 window.mainloop()
-
