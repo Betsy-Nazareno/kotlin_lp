@@ -11,8 +11,9 @@ fun main() {
     }
 }
 
-REGLAS SEMÁNTICAS DEFINIDAS:
 
+
+REGLAS SEMÁNTICAS DEFINIDAS:
 
 
 ---------- KARLA ----------
