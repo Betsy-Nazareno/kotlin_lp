@@ -220,6 +220,9 @@ def p_condicionR(p):
                     | STRING_1 opR STRING_1
                     | CHAR opR CHAR
                     | ID opR ID
+                    | ID opR INT
+                    | ID opR FLOAT
+                    | ID opR LONG
                     '''
 
 def p_condicionN(p):
