@@ -123,7 +123,6 @@ tokens = (
     'RPAREN',
     "MOD",
     "ID",
-    "LINEBREAK",
     'EQUAL',#Aporte de Betsy--------------------------------------------------------------------------------------------
     'DOTS',
     'INCREMENTONE',
@@ -180,7 +179,6 @@ tokens = (
 # Regular expression rules for simple tokens
 #Aporte de Betsy--------------------------------------------------------------------------------------------------------
 
-t_LINEBREAK = r'\n'
 t_MARK_1 = r'"'
 t_MARK_2 = r"'"
 t_PLUS = r'\+'
@@ -308,7 +306,6 @@ def getTokens(lexer):
         tok = lexer.token()
         if not tok:
             break  # No more input
-        print(str(tok))
         lista_tokens.append(str(tok))
 # Build the lexer
 lexer = lex.lex()

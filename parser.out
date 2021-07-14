@@ -53,7 +53,6 @@ Unused terminals:
     INTERNAL
     IS
     LATEINIT
-    LINEBREAK
     LISTOF
     LSQUARE
     MARK_1
@@ -324,7 +323,6 @@ LAST                 : 129
 LATEINIT             : 
 LCURL                : 33 76 77 78 134
 LE                   : 107
-LINEBREAK            : 
 LINKEDL              : 32 116 135 135
 LISTOF               : 
 LONG                 : 46 71 88 91 92 92 93 94 100

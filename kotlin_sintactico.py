@@ -338,7 +338,7 @@ def p_error(p):
         cola.append("Syntax error at token " + p.type)
         # Just discard the token and tell the parser it's okay.
     else:
-        cola.append("Syntax error at EOF")
+        cola.append("EOF: Error at the end of the line. \nYour line is incomplete. Try again!")
 
 
 
