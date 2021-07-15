@@ -87,7 +87,7 @@ def analizar_sintactico(s):
     parser.parse(s, lexer=lexer)
     p1.set(cola[-1])
     cola.clear()
-    cola.append("Everything is ok!")
+    cola.append("¡Perfecto, es una sintáxis de kotlin limpia!")
 
 def analizar_lexico(s):
     lista_tokens.clear()
@@ -108,7 +108,7 @@ def analizar_lex_sintax(s):
     p1.set(cola[-1] + '\n')
     analizar_lexico(s)
     cola.clear()
-    cola.append("Everything is ok!")
+    cola.append("¡Perfecto, es una sintáxis de kotlin limpia!")
 
 
 window.mainloop()

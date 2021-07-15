@@ -9,6 +9,25 @@ fun main() {
     } else {
         print("menor de edad")
     }
+    val nombres: Queue <Int> = LinkedList<Int>();
+    cola.add(1)
+    for (num in 0...6){
+    cola.add(num)
+    }
+    cola.poll()
+
+    suma = 7+9;
+    resta = 4.8f - 5.9f
+    mult = 9L * 10L
+    div = 2/4;
+
+    println("Resultado de las operaciones: ")
+    println(suma)
+    println(resta)
+    println(mult)
+    println(div)
+
+
 }
 
 

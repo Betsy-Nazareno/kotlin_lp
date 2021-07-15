@@ -1,7 +1,7 @@
 import ply.yacc as yacc
 from kotlin_lexico import *
 
-cola = ["Everything is ok!"]
+cola = ["¡Perfecto, es una sintáxis de kotlin limpia!"]
 
 def p_cuerpo(p):
     """line : blocks
@@ -76,6 +76,37 @@ def p_impresion(p):
     '''impresion : PRINT LPAREN expression RPAREN
                 |  PRINTLN LPAREN expression RPAREN'''
 
+
+def p_impresion_error(p):
+    '''funcion : PRINT LPAREN error RPAREN
+                | PRINTLN LPAREN error RPAREN'''
+    cola.append("Error Semántico en la sentencia print. Expresión no válida.")
+
+
+
+def p_queue(p):
+    'queue : keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN'
+
+
+def p_for(p):
+    '''for : FOR LPAREN ID IN iterable RPAREN LCURL lineorBreak RCURL  '''
+
+def p_for_error(p):
+    '''for :  FOR LPAREN error RPAREN LCURL lineorBreak RCURL  '''
+    cola.append("Error Semántico en la sentencia for. \nDebes proveer una lista o rango para iterar en el ciclo")
+
+def p_iterable(p):
+    """iterable : ID
+                | INT THREEDOTS INT
+                | ID DOT INDICES"""
+
+
+#def p_morelines(p):
+#    '''morelines : line
+#                | line morelines'''
+
+
+
 def p_asignacion(p):
     '''asignacion : keywordVariables asignacionSimple
                     | asignacionSimple'''
@@ -112,23 +143,6 @@ def p_tipoDato(p):
                 | TSTRING'''
 
 
-def p_queue(p):
-    'queue : keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN'
-
-
-def p_for(p):
-    '''for : FOR LPAREN ID IN iterable RPAREN LCURL lineorBreak RCURL  '''
-
-
-def p_iterable(p):
-    """iterable : ID
-                | INT THREEDOTS INT
-                | ID DOT INDICES"""
-
-
-#def p_morelines(p):
-#    '''morelines : line
-#                | line morelines'''
 
 
 
@@ -350,6 +364,9 @@ def p_Cmetod(p):
 def p_while(p):
     'while : WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL '
 
+def p_while_error(p):
+    '''while :  WHILE LPAREN error RPAREN LCURL lineorBreak RCURL   '''
+    cola.append("Error Semántico en la sentencia while. \nDebes proveer una condición válida para finalizar el ciclo.")
 
 def p_lista(p):
     'lista : keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN'
@@ -366,9 +383,9 @@ def p_lcomp(p):
 # Error rule for syntax errors
 def p_error(p):
     if p:
-        cola.append("Syntax ERROR: Token "+ str(p.value) +" de tipo "+ p.type + " no está permitido!")
+        cola.append("ERROR SINTÁXICO: Token "+ str(p.value) +" de tipo "+ p.type + " no está permitido!")
     else:
-        cola.append("EOF: Error at the end of the line. \nYour line is incomplete. Try again!")
+        cola.append("EOF: Error al final de la línea. \n¡Tu sentencia está incompleta. Intentalo de nuevo!")
 
 
 

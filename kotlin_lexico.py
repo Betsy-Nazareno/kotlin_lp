@@ -259,7 +259,7 @@ def t_ID(t):
 
 # Regla de expresión regular para decimales
 def t_FLOAT(t):
-    r'-?[0-9]+\.[0-9]+'
+    r'-?[0-9]+\.[0-9]+f'
     return t
 
 # Regla de expresión regular para Long
