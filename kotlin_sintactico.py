@@ -350,7 +350,7 @@ def p_def_estruct_dato(p):
 
 # ArrayList()
 def p_instance_linkedList(p):
-    'instance_linkedlist : LINKEDL LPAREN RPAREN'
+    'instance_linkedlist : LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN'
 
 
 # ejecutar funciones para pilas

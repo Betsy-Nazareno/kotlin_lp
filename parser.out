@@ -247,7 +247,7 @@ Rule 146   opR -> EQEQ
 Rule 147   opR -> EQEQEQ
 Rule 148   stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
 Rule 149   def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE
-Rule 150   instance_linkedlist -> LINKEDL LPAREN RPAREN
+Rule 150   instance_linkedlist -> LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
 Rule 151   stack_actuar -> ID DOT stack_funciones
 Rule 152   stack_funciones -> stack_isEmpty
 Rule 153   stack_funciones -> stack_push
@@ -352,7 +352,7 @@ INTERFACE            :
 INTERNAL             : 
 IS                   : 
 ISEMPTY              : 157
-LANGLE               : 41 41 139 149 170 170
+LANGLE               : 41 41 139 149 150 170 170
 LAST                 : 163
 LATEINIT             : 
 LCURL                : 42 43 96 97 98 99 103 104 105 168 169
@@ -390,7 +390,7 @@ PUSH                 : 159
 QUEST_WS             : 
 QUEUE                : 41
 RANGE                : 
-RANGLE               : 41 41 140 149 170 170
+RANGLE               : 41 41 140 149 150 170 170
 RCURL                : 42 43 96 97 98 99 103 104 105 168 169
 RECEIVER             : 
 REIFIED              : 
@@ -487,7 +487,7 @@ stack_size           : 156
 term                 : 79 80 81 82 83 86
 tipoBoolean          : 56
 tipoChar             : 57
-tipoDato             : 41 41 149
+tipoDato             : 41 41 149 150
 tipoDatoEspecifico   : 51
 tipoEntero           : 53
 tipoFloat            : 55
@@ -597,7 +597,7 @@ state 0
     (32) queue_operations -> . queue_poll
     (148) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
     (151) stack_actuar -> . ID DOT stack_funciones
-    (150) instance_linkedlist -> . LINKEDL LPAREN RPAREN
+    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (149) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
     (170) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
     (171) lsimplem -> . ID DOT Lmetod
@@ -1389,9 +1389,9 @@ state 46
 
 state 47
 
-    (150) instance_linkedlist -> LINKEDL . LPAREN RPAREN
+    (150) instance_linkedlist -> LINKEDL . LANGLE tipoDato RANGLE LPAREN RPAREN
 
-    LPAREN          shift and go to state 102
+    LANGLE          shift and go to state 102
 
 
 state 48
@@ -1557,7 +1557,7 @@ state 54
     (32) queue_operations -> . queue_poll
     (148) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
     (151) stack_actuar -> . ID DOT stack_funciones
-    (150) instance_linkedlist -> . LINKEDL LPAREN RPAREN
+    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (149) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
     (170) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
     (171) lsimplem -> . ID DOT Lmetod
@@ -2476,10 +2476,24 @@ state 101
 
 state 102
 
-    (150) instance_linkedlist -> LINKEDL LPAREN . RPAREN
+    (150) instance_linkedlist -> LINKEDL LANGLE . tipoDato RANGLE LPAREN RPAREN
+    (71) tipoDato -> . TINT
+    (72) tipoDato -> . TLONG
+    (73) tipoDato -> . TFLOAT
+    (74) tipoDato -> . TDOUBLE
+    (75) tipoDato -> . TBOOLEAN
+    (76) tipoDato -> . TCHAR
+    (77) tipoDato -> . TSTRING
 
-    RPAREN          shift and go to state 193
+    TINT            shift and go to state 194
+    TLONG           shift and go to state 195
+    TFLOAT          shift and go to state 196
+    TDOUBLE         shift and go to state 197
+    TBOOLEAN        shift and go to state 198
+    TCHAR           shift and go to state 199
+    TSTRING         shift and go to state 200
 
+    tipoDato                       shift and go to state 193
 
 state 103
 
@@ -2492,15 +2506,15 @@ state 103
     (76) tipoDato -> . TCHAR
     (77) tipoDato -> . TSTRING
 
-    TINT            shift and go to state 195
-    TLONG           shift and go to state 196
-    TFLOAT          shift and go to state 197
-    TDOUBLE         shift and go to state 198
-    TBOOLEAN        shift and go to state 199
-    TCHAR           shift and go to state 200
-    TSTRING         shift and go to state 201
+    TINT            shift and go to state 194
+    TLONG           shift and go to state 195
+    TFLOAT          shift and go to state 196
+    TDOUBLE         shift and go to state 197
+    TBOOLEAN        shift and go to state 198
+    TCHAR           shift and go to state 199
+    TSTRING         shift and go to state 200
 
-    tipoDato                       shift and go to state 194
+    tipoDato                       shift and go to state 201
 
 state 104
 
@@ -2603,7 +2617,7 @@ state 104
     (32) queue_operations -> . queue_poll
     (148) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
     (151) stack_actuar -> . ID DOT stack_funciones
-    (150) instance_linkedlist -> . LINKEDL LPAREN RPAREN
+    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (149) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
     (170) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
     (171) lsimplem -> . ID DOT Lmetod
@@ -3770,68 +3784,65 @@ state 192
 
 state 193
 
-    (150) instance_linkedlist -> LINKEDL LPAREN RPAREN .
-
-    SEMICOLON       reduce using rule 150 (instance_linkedlist -> LINKEDL LPAREN RPAREN .)
-    LINEBREAK       reduce using rule 150 (instance_linkedlist -> LINKEDL LPAREN RPAREN .)
-    $end            reduce using rule 150 (instance_linkedlist -> LINKEDL LPAREN RPAREN .)
-    RCURL           reduce using rule 150 (instance_linkedlist -> LINKEDL LPAREN RPAREN .)
-
-
-state 194
-
-    (149) def_estruct_tipoDato -> STACK LANGLE tipoDato . RANGLE
+    (150) instance_linkedlist -> LINKEDL LANGLE tipoDato . RANGLE LPAREN RPAREN
 
     RANGLE          shift and go to state 238
 
 
-state 195
+state 194
 
     (71) tipoDato -> TINT .
 
     RANGLE          reduce using rule 71 (tipoDato -> TINT .)
 
 
-state 196
+state 195
 
     (72) tipoDato -> TLONG .
 
     RANGLE          reduce using rule 72 (tipoDato -> TLONG .)
 
 
-state 197
+state 196
 
     (73) tipoDato -> TFLOAT .
 
     RANGLE          reduce using rule 73 (tipoDato -> TFLOAT .)
 
 
-state 198
+state 197
 
     (74) tipoDato -> TDOUBLE .
 
     RANGLE          reduce using rule 74 (tipoDato -> TDOUBLE .)
 
 
-state 199
+state 198
 
     (75) tipoDato -> TBOOLEAN .
 
     RANGLE          reduce using rule 75 (tipoDato -> TBOOLEAN .)
 
 
-state 200
+state 199
 
     (76) tipoDato -> TCHAR .
 
     RANGLE          reduce using rule 76 (tipoDato -> TCHAR .)
 
 
-state 201
+state 200
 
     (77) tipoDato -> TSTRING .
 
     RANGLE          reduce using rule 77 (tipoDato -> TSTRING .)
+
+
+state 201
+
+    (149) def_estruct_tipoDato -> STACK LANGLE tipoDato . RANGLE
+
+    RANGLE          shift and go to state 239
 
 
 state 202
@@ -3842,7 +3853,7 @@ state 202
   ! shift/reduce conflict for LINEBREAK resolved as shift
     $end            reduce using rule 7 (line -> blocks SEMICOLON LINEBREAK line .)
     RCURL           reduce using rule 7 (line -> blocks SEMICOLON LINEBREAK line .)
-    LINEBREAK       shift and go to state 239
+    LINEBREAK       shift and go to state 240
 
   ! LINEBREAK       [ reduce using rule 7 (line -> blocks SEMICOLON LINEBREAK line .) ]
 
@@ -3900,21 +3911,21 @@ state 208
 
     (41) queue -> keywordVariables ID DOTS QUEUE . LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
 
-    LANGLE          shift and go to state 240
+    LANGLE          shift and go to state 241
 
 
 state 209
 
     (170) lista -> keywordVariables ID DOTS LINKEDL . LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
 
-    LANGLE          shift and go to state 241
+    LANGLE          shift and go to state 242
 
 
 state 210
 
     (148) stack -> keywordVariables ID DOTS def_estruct_tipoDato . EQUAL instance_linkedlist
 
-    EQUAL           shift and go to state 242
+    EQUAL           shift and go to state 243
 
 
 state 211
@@ -3922,7 +3933,7 @@ state 211
     (97) funcion -> FUN ID LPAREN ID . RPAREN LCURL lineorBreak RCURL
     (98) funcion -> FUN ID LPAREN ID . RPAREN LCURL RCURL
 
-    RPAREN          shift and go to state 243
+    RPAREN          shift and go to state 244
 
 
 state 212
@@ -3930,7 +3941,7 @@ state 212
     (96) funcion -> FUN ID LPAREN RPAREN . LCURL lineorBreak RCURL
     (99) funcion -> FUN ID LPAREN RPAREN . LCURL RCURL
 
-    LCURL           shift and go to state 244
+    LCURL           shift and go to state 245
 
 
 state 213
@@ -3938,8 +3949,8 @@ state 213
     (59) tipoEntero -> TINT EQUAL . INT
     (60) tipoEntero -> TINT EQUAL . error
 
-    INT             shift and go to state 245
-    error           shift and go to state 246
+    INT             shift and go to state 246
+    error           shift and go to state 247
 
 
 state 214
@@ -3947,8 +3958,8 @@ state 214
     (61) tipoLong -> TLONG EQUAL . LONG
     (62) tipoLong -> TLONG EQUAL . error
 
-    LONG            shift and go to state 247
-    error           shift and go to state 248
+    LONG            shift and go to state 248
+    error           shift and go to state 249
 
 
 state 215
@@ -3956,8 +3967,8 @@ state 215
     (63) tipoFloat -> TFLOAT EQUAL . FLOAT
     (64) tipoFloat -> TFLOAT EQUAL . error
 
-    FLOAT           shift and go to state 249
-    error           shift and go to state 250
+    FLOAT           shift and go to state 250
+    error           shift and go to state 251
 
 
 state 216
@@ -3965,8 +3976,8 @@ state 216
     (65) tipoBoolean -> TBOOLEAN EQUAL . BOOLEAN
     (66) tipoBoolean -> TBOOLEAN EQUAL . error
 
-    BOOLEAN         shift and go to state 251
-    error           shift and go to state 252
+    BOOLEAN         shift and go to state 252
+    error           shift and go to state 253
 
 
 state 217
@@ -3974,8 +3985,8 @@ state 217
     (67) tipoChar -> TCHAR EQUAL . CHAR
     (68) tipoChar -> TCHAR EQUAL . error
 
-    CHAR            shift and go to state 253
-    error           shift and go to state 254
+    CHAR            shift and go to state 254
+    error           shift and go to state 255
 
 
 state 218
@@ -3983,8 +3994,8 @@ state 218
     (69) tipoString -> TSTRING EQUAL . STRING_1
     (70) tipoString -> TSTRING EQUAL . error
 
-    STRING_1        shift and go to state 255
-    error           shift and go to state 256
+    STRING_1        shift and go to state 256
+    error           shift and go to state 257
 
 
 state 219
@@ -4006,77 +4017,77 @@ state 219
     ID              shift and go to state 69
     STRING_1        shift and go to state 70
 
-    factor                         shift and go to state 257
+    factor                         shift and go to state 258
 
 state 220
 
     (34) queue_peek -> ID DOT PEEK LPAREN . RPAREN
     (160) stack_peek -> PEEK LPAREN . RPAREN
 
-    RPAREN          shift and go to state 258
+    RPAREN          shift and go to state 259
 
 
 state 221
 
     (36) queue_remove -> ID DOT REMOVE LPAREN . RPAREN
 
-    RPAREN          shift and go to state 259
+    RPAREN          shift and go to state 260
 
 
 state 222
 
     (35) queue_poll -> ID DOT POLL LPAREN . RPAREN
 
-    RPAREN          shift and go to state 260
+    RPAREN          shift and go to state 261
 
 
 state 223
 
     (162) Lmetod -> FIRST LPAREN . RPAREN
 
-    RPAREN          shift and go to state 261
+    RPAREN          shift and go to state 262
 
 
 state 224
 
     (163) Lmetod -> LAST LPAREN . RPAREN
 
-    RPAREN          shift and go to state 262
+    RPAREN          shift and go to state 263
 
 
 state 225
 
     (164) Lmetod -> REMOVEL LPAREN . RPAREN
 
-    RPAREN          shift and go to state 263
+    RPAREN          shift and go to state 264
 
 
 state 226
 
     (165) Cmetod -> APPEND LPAREN . OBJECT RPAREN
 
-    OBJECT          shift and go to state 264
+    OBJECT          shift and go to state 265
 
 
 state 227
 
     (166) Cmetod -> REMOVEN LPAREN . OBJECT RPAREN
 
-    OBJECT          shift and go to state 265
+    OBJECT          shift and go to state 266
 
 
 state 228
 
     (167) Cmetod -> REMOVEI LPAREN . TINT RPAREN
 
-    TINT            shift and go to state 266
+    TINT            shift and go to state 267
 
 
 state 229
 
     (157) stack_isEmpty -> ISEMPTY LPAREN . RPAREN
 
-    RPAREN          shift and go to state 267
+    RPAREN          shift and go to state 268
 
 
 state 230
@@ -4098,20 +4109,20 @@ state 230
     ID              shift and go to state 69
     STRING_1        shift and go to state 70
 
-    factor                         shift and go to state 268
+    factor                         shift and go to state 269
 
 state 231
 
     (158) stack_pop -> POP LPAREN . RPAREN
 
-    RPAREN          shift and go to state 269
+    RPAREN          shift and go to state 270
 
 
 state 232
 
     (161) stack_size -> SIZE LPAREN . RPAREN
 
-    RPAREN          shift and go to state 270
+    RPAREN          shift and go to state 271
 
 
 state 233
@@ -4121,16 +4132,16 @@ state 233
     (45) iterable -> . INT THREEDOTS INT
     (46) iterable -> . ID DOT INDICES
 
-    ID              shift and go to state 271
-    INT             shift and go to state 273
+    ID              shift and go to state 272
+    INT             shift and go to state 274
 
-    iterable                       shift and go to state 272
+    iterable                       shift and go to state 273
 
 state 234
 
     (43) for -> FOR LPAREN error RPAREN . LCURL lineorBreak RCURL
 
-    LCURL           shift and go to state 274
+    LCURL           shift and go to state 275
 
 
 state 235
@@ -4138,24 +4149,31 @@ state 235
     (103) if -> IF LPAREN condicion RPAREN . LCURL lineorBreak RCURL
     (104) if -> IF LPAREN condicion RPAREN . LCURL lineorBreak RCURL else
 
-    LCURL           shift and go to state 275
+    LCURL           shift and go to state 276
 
 
 state 236
 
     (168) while -> WHILE LPAREN ID opR . INT RPAREN LCURL lineorBreak RCURL
 
-    INT             shift and go to state 276
+    INT             shift and go to state 277
 
 
 state 237
 
     (169) while -> WHILE LPAREN error RPAREN . LCURL lineorBreak RCURL
 
-    LCURL           shift and go to state 277
+    LCURL           shift and go to state 278
 
 
 state 238
+
+    (150) instance_linkedlist -> LINKEDL LANGLE tipoDato RANGLE . LPAREN RPAREN
+
+    LPAREN          shift and go to state 279
+
+
+state 239
 
     (149) def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE .
 
@@ -4166,7 +4184,7 @@ state 238
     EQUAL           reduce using rule 149 (def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE .)
 
 
-state 239
+state 240
 
     (8) line -> blocks SEMICOLON LINEBREAK line LINEBREAK .
 
@@ -4175,7 +4193,7 @@ state 239
     RCURL           reduce using rule 8 (line -> blocks SEMICOLON LINEBREAK line LINEBREAK .)
 
 
-state 240
+state 241
 
     (41) queue -> keywordVariables ID DOTS QUEUE LANGLE . tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (71) tipoDato -> . TINT
@@ -4186,41 +4204,41 @@ state 240
     (76) tipoDato -> . TCHAR
     (77) tipoDato -> . TSTRING
 
-    TINT            shift and go to state 195
-    TLONG           shift and go to state 196
-    TFLOAT          shift and go to state 197
-    TDOUBLE         shift and go to state 198
-    TBOOLEAN        shift and go to state 199
-    TCHAR           shift and go to state 200
-    TSTRING         shift and go to state 201
+    TINT            shift and go to state 194
+    TLONG           shift and go to state 195
+    TFLOAT          shift and go to state 196
+    TDOUBLE         shift and go to state 197
+    TBOOLEAN        shift and go to state 198
+    TCHAR           shift and go to state 199
+    TSTRING         shift and go to state 200
 
-    tipoDato                       shift and go to state 278
-
-state 241
-
-    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE . OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
-
-    OBJECT          shift and go to state 279
-
+    tipoDato                       shift and go to state 280
 
 state 242
 
+    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE . OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+
+    OBJECT          shift and go to state 281
+
+
+state 243
+
     (148) stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL . instance_linkedlist
-    (150) instance_linkedlist -> . LINKEDL LPAREN RPAREN
+    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
 
     LINKEDL         shift and go to state 47
 
-    instance_linkedlist            shift and go to state 280
+    instance_linkedlist            shift and go to state 282
 
-state 243
+state 244
 
     (97) funcion -> FUN ID LPAREN ID RPAREN . LCURL lineorBreak RCURL
     (98) funcion -> FUN ID LPAREN ID RPAREN . LCURL RCURL
 
-    LCURL           shift and go to state 281
+    LCURL           shift and go to state 283
 
 
-state 244
+state 245
 
     (96) funcion -> FUN ID LPAREN RPAREN LCURL . lineorBreak RCURL
     (99) funcion -> FUN ID LPAREN RPAREN LCURL . RCURL
@@ -4323,7 +4341,7 @@ state 244
     (32) queue_operations -> . queue_poll
     (148) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
     (151) stack_actuar -> . ID DOT stack_funciones
-    (150) instance_linkedlist -> . LINKEDL LPAREN RPAREN
+    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (149) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
     (170) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
     (171) lsimplem -> . ID DOT Lmetod
@@ -4340,8 +4358,8 @@ state 244
     (36) queue_remove -> . ID DOT REMOVE LPAREN RPAREN
     (35) queue_poll -> . ID DOT POLL LPAREN RPAREN
 
-    RCURL           shift and go to state 283
-    LINEBREAK       shift and go to state 285
+    RCURL           shift and go to state 285
+    LINEBREAK       shift and go to state 287
     PRINT           shift and go to state 11
     PRINTLN         shift and go to state 13
     FUN             shift and go to state 23
@@ -4362,8 +4380,8 @@ state 244
     LINKEDL         shift and go to state 47
     STACK           shift and go to state 52
 
-    lineorBreak                    shift and go to state 282
-    line                           shift and go to state 284
+    lineorBreak                    shift and go to state 284
+    line                           shift and go to state 286
     blocks                         shift and go to state 2
     impresion                      shift and go to state 4
     expression                     shift and go to state 5
@@ -4396,7 +4414,7 @@ state 244
     queue_remove                   shift and go to state 50
     queue_poll                     shift and go to state 51
 
-state 245
+state 246
 
     (59) tipoEntero -> TINT EQUAL INT .
 
@@ -4406,7 +4424,7 @@ state 245
     RCURL           reduce using rule 59 (tipoEntero -> TINT EQUAL INT .)
 
 
-state 246
+state 247
 
     (60) tipoEntero -> TINT EQUAL error .
 
@@ -4416,7 +4434,7 @@ state 246
     RCURL           reduce using rule 60 (tipoEntero -> TINT EQUAL error .)
 
 
-state 247
+state 248
 
     (61) tipoLong -> TLONG EQUAL LONG .
 
@@ -4426,7 +4444,7 @@ state 247
     RCURL           reduce using rule 61 (tipoLong -> TLONG EQUAL LONG .)
 
 
-state 248
+state 249
 
     (62) tipoLong -> TLONG EQUAL error .
 
@@ -4436,7 +4454,7 @@ state 248
     RCURL           reduce using rule 62 (tipoLong -> TLONG EQUAL error .)
 
 
-state 249
+state 250
 
     (63) tipoFloat -> TFLOAT EQUAL FLOAT .
 
@@ -4446,7 +4464,7 @@ state 249
     RCURL           reduce using rule 63 (tipoFloat -> TFLOAT EQUAL FLOAT .)
 
 
-state 250
+state 251
 
     (64) tipoFloat -> TFLOAT EQUAL error .
 
@@ -4456,7 +4474,7 @@ state 250
     RCURL           reduce using rule 64 (tipoFloat -> TFLOAT EQUAL error .)
 
 
-state 251
+state 252
 
     (65) tipoBoolean -> TBOOLEAN EQUAL BOOLEAN .
 
@@ -4466,7 +4484,7 @@ state 251
     RCURL           reduce using rule 65 (tipoBoolean -> TBOOLEAN EQUAL BOOLEAN .)
 
 
-state 252
+state 253
 
     (66) tipoBoolean -> TBOOLEAN EQUAL error .
 
@@ -4476,7 +4494,7 @@ state 252
     RCURL           reduce using rule 66 (tipoBoolean -> TBOOLEAN EQUAL error .)
 
 
-state 253
+state 254
 
     (67) tipoChar -> TCHAR EQUAL CHAR .
 
@@ -4486,7 +4504,7 @@ state 253
     RCURL           reduce using rule 67 (tipoChar -> TCHAR EQUAL CHAR .)
 
 
-state 254
+state 255
 
     (68) tipoChar -> TCHAR EQUAL error .
 
@@ -4496,7 +4514,7 @@ state 254
     RCURL           reduce using rule 68 (tipoChar -> TCHAR EQUAL error .)
 
 
-state 255
+state 256
 
     (69) tipoString -> TSTRING EQUAL STRING_1 .
 
@@ -4506,7 +4524,7 @@ state 255
     RCURL           reduce using rule 69 (tipoString -> TSTRING EQUAL STRING_1 .)
 
 
-state 256
+state 257
 
     (70) tipoString -> TSTRING EQUAL error .
 
@@ -4516,14 +4534,14 @@ state 256
     RCURL           reduce using rule 70 (tipoString -> TSTRING EQUAL error .)
 
 
-state 257
+state 258
 
     (33) queue_add -> ID DOT ADD LPAREN factor . RPAREN
 
-    RPAREN          shift and go to state 286
+    RPAREN          shift and go to state 288
 
 
-state 258
+state 259
 
     (34) queue_peek -> ID DOT PEEK LPAREN RPAREN .
     (160) stack_peek -> PEEK LPAREN RPAREN .
@@ -4543,7 +4561,7 @@ state 258
   ! RCURL           [ reduce using rule 160 (stack_peek -> PEEK LPAREN RPAREN .) ]
 
 
-state 259
+state 260
 
     (36) queue_remove -> ID DOT REMOVE LPAREN RPAREN .
 
@@ -4553,7 +4571,7 @@ state 259
     RCURL           reduce using rule 36 (queue_remove -> ID DOT REMOVE LPAREN RPAREN .)
 
 
-state 260
+state 261
 
     (35) queue_poll -> ID DOT POLL LPAREN RPAREN .
 
@@ -4563,7 +4581,7 @@ state 260
     RCURL           reduce using rule 35 (queue_poll -> ID DOT POLL LPAREN RPAREN .)
 
 
-state 261
+state 262
 
     (162) Lmetod -> FIRST LPAREN RPAREN .
 
@@ -4573,7 +4591,7 @@ state 261
     RCURL           reduce using rule 162 (Lmetod -> FIRST LPAREN RPAREN .)
 
 
-state 262
+state 263
 
     (163) Lmetod -> LAST LPAREN RPAREN .
 
@@ -4583,7 +4601,7 @@ state 262
     RCURL           reduce using rule 163 (Lmetod -> LAST LPAREN RPAREN .)
 
 
-state 263
+state 264
 
     (164) Lmetod -> REMOVEL LPAREN RPAREN .
 
@@ -4593,28 +4611,28 @@ state 263
     RCURL           reduce using rule 164 (Lmetod -> REMOVEL LPAREN RPAREN .)
 
 
-state 264
-
-    (165) Cmetod -> APPEND LPAREN OBJECT . RPAREN
-
-    RPAREN          shift and go to state 287
-
-
 state 265
 
-    (166) Cmetod -> REMOVEN LPAREN OBJECT . RPAREN
-
-    RPAREN          shift and go to state 288
-
-
-state 266
-
-    (167) Cmetod -> REMOVEI LPAREN TINT . RPAREN
+    (165) Cmetod -> APPEND LPAREN OBJECT . RPAREN
 
     RPAREN          shift and go to state 289
 
 
+state 266
+
+    (166) Cmetod -> REMOVEN LPAREN OBJECT . RPAREN
+
+    RPAREN          shift and go to state 290
+
+
 state 267
+
+    (167) Cmetod -> REMOVEI LPAREN TINT . RPAREN
+
+    RPAREN          shift and go to state 291
+
+
+state 268
 
     (157) stack_isEmpty -> ISEMPTY LPAREN RPAREN .
 
@@ -4624,14 +4642,14 @@ state 267
     RCURL           reduce using rule 157 (stack_isEmpty -> ISEMPTY LPAREN RPAREN .)
 
 
-state 268
+state 269
 
     (159) stack_push -> PUSH LPAREN factor . RPAREN
 
-    RPAREN          shift and go to state 290
+    RPAREN          shift and go to state 292
 
 
-state 269
+state 270
 
     (158) stack_pop -> POP LPAREN RPAREN .
 
@@ -4641,7 +4659,7 @@ state 269
     RCURL           reduce using rule 158 (stack_pop -> POP LPAREN RPAREN .)
 
 
-state 270
+state 271
 
     (161) stack_size -> SIZE LPAREN RPAREN .
 
@@ -4651,30 +4669,30 @@ state 270
     RCURL           reduce using rule 161 (stack_size -> SIZE LPAREN RPAREN .)
 
 
-state 271
+state 272
 
     (44) iterable -> ID .
     (46) iterable -> ID . DOT INDICES
 
     RPAREN          reduce using rule 44 (iterable -> ID .)
-    DOT             shift and go to state 291
-
-
-state 272
-
-    (42) for -> FOR LPAREN ID IN iterable . RPAREN LCURL lineorBreak RCURL
-
-    RPAREN          shift and go to state 292
+    DOT             shift and go to state 293
 
 
 state 273
 
-    (45) iterable -> INT . THREEDOTS INT
+    (42) for -> FOR LPAREN ID IN iterable . RPAREN LCURL lineorBreak RCURL
 
-    THREEDOTS       shift and go to state 293
+    RPAREN          shift and go to state 294
 
 
 state 274
+
+    (45) iterable -> INT . THREEDOTS INT
+
+    THREEDOTS       shift and go to state 295
+
+
+state 275
 
     (43) for -> FOR LPAREN error RPAREN LCURL . lineorBreak RCURL
     (100) lineorBreak -> . line
@@ -4776,7 +4794,7 @@ state 274
     (32) queue_operations -> . queue_poll
     (148) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
     (151) stack_actuar -> . ID DOT stack_funciones
-    (150) instance_linkedlist -> . LINKEDL LPAREN RPAREN
+    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (149) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
     (170) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
     (171) lsimplem -> . ID DOT Lmetod
@@ -4793,7 +4811,7 @@ state 274
     (36) queue_remove -> . ID DOT REMOVE LPAREN RPAREN
     (35) queue_poll -> . ID DOT POLL LPAREN RPAREN
 
-    LINEBREAK       shift and go to state 285
+    LINEBREAK       shift and go to state 287
     PRINT           shift and go to state 11
     PRINTLN         shift and go to state 13
     FUN             shift and go to state 23
@@ -4814,8 +4832,8 @@ state 274
     LINKEDL         shift and go to state 47
     STACK           shift and go to state 52
 
-    lineorBreak                    shift and go to state 294
-    line                           shift and go to state 284
+    lineorBreak                    shift and go to state 296
+    line                           shift and go to state 286
     blocks                         shift and go to state 2
     impresion                      shift and go to state 4
     expression                     shift and go to state 5
@@ -4848,7 +4866,7 @@ state 274
     queue_remove                   shift and go to state 50
     queue_poll                     shift and go to state 51
 
-state 275
+state 276
 
     (103) if -> IF LPAREN condicion RPAREN LCURL . lineorBreak RCURL
     (104) if -> IF LPAREN condicion RPAREN LCURL . lineorBreak RCURL else
@@ -4951,7 +4969,7 @@ state 275
     (32) queue_operations -> . queue_poll
     (148) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
     (151) stack_actuar -> . ID DOT stack_funciones
-    (150) instance_linkedlist -> . LINKEDL LPAREN RPAREN
+    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (149) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
     (170) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
     (171) lsimplem -> . ID DOT Lmetod
@@ -4968,7 +4986,7 @@ state 275
     (36) queue_remove -> . ID DOT REMOVE LPAREN RPAREN
     (35) queue_poll -> . ID DOT POLL LPAREN RPAREN
 
-    LINEBREAK       shift and go to state 285
+    LINEBREAK       shift and go to state 287
     PRINT           shift and go to state 11
     PRINTLN         shift and go to state 13
     FUN             shift and go to state 23
@@ -4990,8 +5008,8 @@ state 275
     STACK           shift and go to state 52
 
     condicion                      shift and go to state 8
-    lineorBreak                    shift and go to state 295
-    line                           shift and go to state 284
+    lineorBreak                    shift and go to state 297
+    line                           shift and go to state 286
     blocks                         shift and go to state 2
     impresion                      shift and go to state 4
     expression                     shift and go to state 5
@@ -5023,14 +5041,14 @@ state 275
     queue_remove                   shift and go to state 50
     queue_poll                     shift and go to state 51
 
-state 276
+state 277
 
     (168) while -> WHILE LPAREN ID opR INT . RPAREN LCURL lineorBreak RCURL
 
-    RPAREN          shift and go to state 296
+    RPAREN          shift and go to state 298
 
 
-state 277
+state 278
 
     (169) while -> WHILE LPAREN error RPAREN LCURL . lineorBreak RCURL
     (100) lineorBreak -> . line
@@ -5132,7 +5150,7 @@ state 277
     (32) queue_operations -> . queue_poll
     (148) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
     (151) stack_actuar -> . ID DOT stack_funciones
-    (150) instance_linkedlist -> . LINKEDL LPAREN RPAREN
+    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (149) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
     (170) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
     (171) lsimplem -> . ID DOT Lmetod
@@ -5149,7 +5167,7 @@ state 277
     (36) queue_remove -> . ID DOT REMOVE LPAREN RPAREN
     (35) queue_poll -> . ID DOT POLL LPAREN RPAREN
 
-    LINEBREAK       shift and go to state 285
+    LINEBREAK       shift and go to state 287
     PRINT           shift and go to state 11
     PRINTLN         shift and go to state 13
     FUN             shift and go to state 23
@@ -5170,8 +5188,8 @@ state 277
     LINKEDL         shift and go to state 47
     STACK           shift and go to state 52
 
-    lineorBreak                    shift and go to state 297
-    line                           shift and go to state 284
+    lineorBreak                    shift and go to state 299
+    line                           shift and go to state 286
     blocks                         shift and go to state 2
     impresion                      shift and go to state 4
     expression                     shift and go to state 5
@@ -5204,21 +5222,28 @@ state 277
     queue_remove                   shift and go to state 50
     queue_poll                     shift and go to state 51
 
-state 278
-
-    (41) queue -> keywordVariables ID DOTS QUEUE LANGLE tipoDato . RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
-
-    RANGLE          shift and go to state 298
-
-
 state 279
 
-    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT . RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (150) instance_linkedlist -> LINKEDL LANGLE tipoDato RANGLE LPAREN . RPAREN
 
-    RANGLE          shift and go to state 299
+    RPAREN          shift and go to state 300
 
 
 state 280
+
+    (41) queue -> keywordVariables ID DOTS QUEUE LANGLE tipoDato . RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
+
+    RANGLE          shift and go to state 301
+
+
+state 281
+
+    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT . RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+
+    RANGLE          shift and go to state 302
+
+
+state 282
 
     (148) stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .
 
@@ -5228,7 +5253,7 @@ state 280
     RCURL           reduce using rule 148 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
 
 
-state 281
+state 283
 
     (97) funcion -> FUN ID LPAREN ID RPAREN LCURL . lineorBreak RCURL
     (98) funcion -> FUN ID LPAREN ID RPAREN LCURL . RCURL
@@ -5331,7 +5356,7 @@ state 281
     (32) queue_operations -> . queue_poll
     (148) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
     (151) stack_actuar -> . ID DOT stack_funciones
-    (150) instance_linkedlist -> . LINKEDL LPAREN RPAREN
+    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (149) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
     (170) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
     (171) lsimplem -> . ID DOT Lmetod
@@ -5348,8 +5373,8 @@ state 281
     (36) queue_remove -> . ID DOT REMOVE LPAREN RPAREN
     (35) queue_poll -> . ID DOT POLL LPAREN RPAREN
 
-    RCURL           shift and go to state 301
-    LINEBREAK       shift and go to state 285
+    RCURL           shift and go to state 304
+    LINEBREAK       shift and go to state 287
     PRINT           shift and go to state 11
     PRINTLN         shift and go to state 13
     FUN             shift and go to state 23
@@ -5370,8 +5395,8 @@ state 281
     LINKEDL         shift and go to state 47
     STACK           shift and go to state 52
 
-    lineorBreak                    shift and go to state 300
-    line                           shift and go to state 284
+    lineorBreak                    shift and go to state 303
+    line                           shift and go to state 286
     blocks                         shift and go to state 2
     impresion                      shift and go to state 4
     expression                     shift and go to state 5
@@ -5404,14 +5429,14 @@ state 281
     queue_remove                   shift and go to state 50
     queue_poll                     shift and go to state 51
 
-state 282
+state 284
 
     (96) funcion -> FUN ID LPAREN RPAREN LCURL lineorBreak . RCURL
 
-    RCURL           shift and go to state 302
+    RCURL           shift and go to state 305
 
 
-state 283
+state 285
 
     (99) funcion -> FUN ID LPAREN RPAREN LCURL RCURL .
 
@@ -5421,14 +5446,14 @@ state 283
     RCURL           reduce using rule 99 (funcion -> FUN ID LPAREN RPAREN LCURL RCURL .)
 
 
-state 284
+state 286
 
     (100) lineorBreak -> line .
 
     RCURL           reduce using rule 100 (lineorBreak -> line .)
 
 
-state 285
+state 287
 
     (101) lineorBreak -> LINEBREAK . line LINEBREAK
     (102) lineorBreak -> LINEBREAK . line
@@ -5529,7 +5554,7 @@ state 285
     (32) queue_operations -> . queue_poll
     (148) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
     (151) stack_actuar -> . ID DOT stack_funciones
-    (150) instance_linkedlist -> . LINKEDL LPAREN RPAREN
+    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (149) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
     (170) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
     (171) lsimplem -> . ID DOT Lmetod
@@ -5568,7 +5593,7 @@ state 285
     LINKEDL         shift and go to state 47
     STACK           shift and go to state 52
 
-    line                           shift and go to state 303
+    line                           shift and go to state 306
     blocks                         shift and go to state 2
     impresion                      shift and go to state 4
     expression                     shift and go to state 5
@@ -5601,7 +5626,7 @@ state 285
     queue_remove                   shift and go to state 50
     queue_poll                     shift and go to state 51
 
-state 286
+state 288
 
     (33) queue_add -> ID DOT ADD LPAREN factor RPAREN .
 
@@ -5611,7 +5636,7 @@ state 286
     RCURL           reduce using rule 33 (queue_add -> ID DOT ADD LPAREN factor RPAREN .)
 
 
-state 287
+state 289
 
     (165) Cmetod -> APPEND LPAREN OBJECT RPAREN .
 
@@ -5621,7 +5646,7 @@ state 287
     RCURL           reduce using rule 165 (Cmetod -> APPEND LPAREN OBJECT RPAREN .)
 
 
-state 288
+state 290
 
     (166) Cmetod -> REMOVEN LPAREN OBJECT RPAREN .
 
@@ -5631,7 +5656,7 @@ state 288
     RCURL           reduce using rule 166 (Cmetod -> REMOVEN LPAREN OBJECT RPAREN .)
 
 
-state 289
+state 291
 
     (167) Cmetod -> REMOVEI LPAREN TINT RPAREN .
 
@@ -5641,7 +5666,7 @@ state 289
     RCURL           reduce using rule 167 (Cmetod -> REMOVEI LPAREN TINT RPAREN .)
 
 
-state 290
+state 292
 
     (159) stack_push -> PUSH LPAREN factor RPAREN .
 
@@ -5651,78 +5676,88 @@ state 290
     RCURL           reduce using rule 159 (stack_push -> PUSH LPAREN factor RPAREN .)
 
 
-state 291
+state 293
 
     (46) iterable -> ID DOT . INDICES
 
-    INDICES         shift and go to state 304
-
-
-state 292
-
-    (42) for -> FOR LPAREN ID IN iterable RPAREN . LCURL lineorBreak RCURL
-
-    LCURL           shift and go to state 305
-
-
-state 293
-
-    (45) iterable -> INT THREEDOTS . INT
-
-    INT             shift and go to state 306
+    INDICES         shift and go to state 307
 
 
 state 294
 
-    (43) for -> FOR LPAREN error RPAREN LCURL lineorBreak . RCURL
+    (42) for -> FOR LPAREN ID IN iterable RPAREN . LCURL lineorBreak RCURL
 
-    RCURL           shift and go to state 307
+    LCURL           shift and go to state 308
 
 
 state 295
 
-    (103) if -> IF LPAREN condicion RPAREN LCURL lineorBreak . RCURL
-    (104) if -> IF LPAREN condicion RPAREN LCURL lineorBreak . RCURL else
+    (45) iterable -> INT THREEDOTS . INT
 
-    RCURL           shift and go to state 308
+    INT             shift and go to state 309
 
 
 state 296
 
-    (168) while -> WHILE LPAREN ID opR INT RPAREN . LCURL lineorBreak RCURL
-
-    LCURL           shift and go to state 309
-
-
-state 297
-
-    (169) while -> WHILE LPAREN error RPAREN LCURL lineorBreak . RCURL
+    (43) for -> FOR LPAREN error RPAREN LCURL lineorBreak . RCURL
 
     RCURL           shift and go to state 310
 
 
+state 297
+
+    (103) if -> IF LPAREN condicion RPAREN LCURL lineorBreak . RCURL
+    (104) if -> IF LPAREN condicion RPAREN LCURL lineorBreak . RCURL else
+
+    RCURL           shift and go to state 311
+
+
 state 298
 
-    (41) queue -> keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE . EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
+    (168) while -> WHILE LPAREN ID opR INT RPAREN . LCURL lineorBreak RCURL
 
-    EQUAL           shift and go to state 311
+    LCURL           shift and go to state 312
 
 
 state 299
 
-    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE . EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
-
-    EQUAL           shift and go to state 312
-
-
-state 300
-
-    (97) funcion -> FUN ID LPAREN ID RPAREN LCURL lineorBreak . RCURL
+    (169) while -> WHILE LPAREN error RPAREN LCURL lineorBreak . RCURL
 
     RCURL           shift and go to state 313
 
 
+state 300
+
+    (150) instance_linkedlist -> LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN .
+
+    SEMICOLON       reduce using rule 150 (instance_linkedlist -> LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN .)
+    LINEBREAK       reduce using rule 150 (instance_linkedlist -> LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN .)
+    $end            reduce using rule 150 (instance_linkedlist -> LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN .)
+    RCURL           reduce using rule 150 (instance_linkedlist -> LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN .)
+
+
 state 301
+
+    (41) queue -> keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE . EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
+
+    EQUAL           shift and go to state 314
+
+
+state 302
+
+    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE . EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+
+    EQUAL           shift and go to state 315
+
+
+state 303
+
+    (97) funcion -> FUN ID LPAREN ID RPAREN LCURL lineorBreak . RCURL
+
+    RCURL           shift and go to state 316
+
+
+state 304
 
     (98) funcion -> FUN ID LPAREN ID RPAREN LCURL RCURL .
 
@@ -5732,7 +5767,7 @@ state 301
     RCURL           reduce using rule 98 (funcion -> FUN ID LPAREN ID RPAREN LCURL RCURL .)
 
 
-state 302
+state 305
 
     (96) funcion -> FUN ID LPAREN RPAREN LCURL lineorBreak RCURL .
 
@@ -5742,23 +5777,23 @@ state 302
     RCURL           reduce using rule 96 (funcion -> FUN ID LPAREN RPAREN LCURL lineorBreak RCURL .)
 
 
-state 303
+state 306
 
     (101) lineorBreak -> LINEBREAK line . LINEBREAK
     (102) lineorBreak -> LINEBREAK line .
 
-    LINEBREAK       shift and go to state 314
+    LINEBREAK       shift and go to state 317
     RCURL           reduce using rule 102 (lineorBreak -> LINEBREAK line .)
 
 
-state 304
+state 307
 
     (46) iterable -> ID DOT INDICES .
 
     RPAREN          reduce using rule 46 (iterable -> ID DOT INDICES .)
 
 
-state 305
+state 308
 
     (42) for -> FOR LPAREN ID IN iterable RPAREN LCURL . lineorBreak RCURL
     (100) lineorBreak -> . line
@@ -5860,7 +5895,7 @@ state 305
     (32) queue_operations -> . queue_poll
     (148) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
     (151) stack_actuar -> . ID DOT stack_funciones
-    (150) instance_linkedlist -> . LINKEDL LPAREN RPAREN
+    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (149) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
     (170) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
     (171) lsimplem -> . ID DOT Lmetod
@@ -5877,7 +5912,7 @@ state 305
     (36) queue_remove -> . ID DOT REMOVE LPAREN RPAREN
     (35) queue_poll -> . ID DOT POLL LPAREN RPAREN
 
-    LINEBREAK       shift and go to state 285
+    LINEBREAK       shift and go to state 287
     PRINT           shift and go to state 11
     PRINTLN         shift and go to state 13
     FUN             shift and go to state 23
@@ -5898,8 +5933,8 @@ state 305
     LINKEDL         shift and go to state 47
     STACK           shift and go to state 52
 
-    lineorBreak                    shift and go to state 315
-    line                           shift and go to state 284
+    lineorBreak                    shift and go to state 318
+    line                           shift and go to state 286
     blocks                         shift and go to state 2
     impresion                      shift and go to state 4
     expression                     shift and go to state 5
@@ -5932,14 +5967,14 @@ state 305
     queue_remove                   shift and go to state 50
     queue_poll                     shift and go to state 51
 
-state 306
+state 309
 
     (45) iterable -> INT THREEDOTS INT .
 
     RPAREN          reduce using rule 45 (iterable -> INT THREEDOTS INT .)
 
 
-state 307
+state 310
 
     (43) for -> FOR LPAREN error RPAREN LCURL lineorBreak RCURL .
 
@@ -5949,7 +5984,7 @@ state 307
     RCURL           reduce using rule 43 (for -> FOR LPAREN error RPAREN LCURL lineorBreak RCURL .)
 
 
-state 308
+state 311
 
     (103) if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL .
     (104) if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL . else
@@ -5959,11 +5994,11 @@ state 308
     LINEBREAK       reduce using rule 103 (if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL .)
     $end            reduce using rule 103 (if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL .)
     RCURL           reduce using rule 103 (if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL .)
-    ELSE            shift and go to state 317
+    ELSE            shift and go to state 320
 
-    else                           shift and go to state 316
+    else                           shift and go to state 319
 
-state 309
+state 312
 
     (168) while -> WHILE LPAREN ID opR INT RPAREN LCURL . lineorBreak RCURL
     (100) lineorBreak -> . line
@@ -6065,7 +6100,7 @@ state 309
     (32) queue_operations -> . queue_poll
     (148) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
     (151) stack_actuar -> . ID DOT stack_funciones
-    (150) instance_linkedlist -> . LINKEDL LPAREN RPAREN
+    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (149) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
     (170) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
     (171) lsimplem -> . ID DOT Lmetod
@@ -6082,7 +6117,7 @@ state 309
     (36) queue_remove -> . ID DOT REMOVE LPAREN RPAREN
     (35) queue_poll -> . ID DOT POLL LPAREN RPAREN
 
-    LINEBREAK       shift and go to state 285
+    LINEBREAK       shift and go to state 287
     PRINT           shift and go to state 11
     PRINTLN         shift and go to state 13
     FUN             shift and go to state 23
@@ -6103,8 +6138,8 @@ state 309
     LINKEDL         shift and go to state 47
     STACK           shift and go to state 52
 
-    lineorBreak                    shift and go to state 318
-    line                           shift and go to state 284
+    lineorBreak                    shift and go to state 321
+    line                           shift and go to state 286
     blocks                         shift and go to state 2
     impresion                      shift and go to state 4
     expression                     shift and go to state 5
@@ -6137,7 +6172,7 @@ state 309
     queue_remove                   shift and go to state 50
     queue_poll                     shift and go to state 51
 
-state 310
+state 313
 
     (169) while -> WHILE LPAREN error RPAREN LCURL lineorBreak RCURL .
 
@@ -6147,21 +6182,21 @@ state 310
     RCURL           reduce using rule 169 (while -> WHILE LPAREN error RPAREN LCURL lineorBreak RCURL .)
 
 
-state 311
+state 314
 
     (41) queue -> keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
 
-    LINKEDL         shift and go to state 319
+    LINKEDL         shift and go to state 322
 
 
-state 312
+state 315
 
     (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL . LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
 
-    LINKEDL         shift and go to state 320
+    LINKEDL         shift and go to state 323
 
 
-state 313
+state 316
 
     (97) funcion -> FUN ID LPAREN ID RPAREN LCURL lineorBreak RCURL .
 
@@ -6171,21 +6206,21 @@ state 313
     RCURL           reduce using rule 97 (funcion -> FUN ID LPAREN ID RPAREN LCURL lineorBreak RCURL .)
 
 
-state 314
+state 317
 
     (101) lineorBreak -> LINEBREAK line LINEBREAK .
 
     RCURL           reduce using rule 101 (lineorBreak -> LINEBREAK line LINEBREAK .)
 
 
-state 315
+state 318
 
     (42) for -> FOR LPAREN ID IN iterable RPAREN LCURL lineorBreak . RCURL
 
-    RCURL           shift and go to state 321
+    RCURL           shift and go to state 324
 
 
-state 316
+state 319
 
     (104) if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else .
 
@@ -6195,35 +6230,35 @@ state 316
     RCURL           reduce using rule 104 (if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else .)
 
 
-state 317
+state 320
 
     (105) else -> ELSE . LCURL lineorBreak RCURL
 
-    LCURL           shift and go to state 322
-
-
-state 318
-
-    (168) while -> WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak . RCURL
-
-    RCURL           shift and go to state 323
-
-
-state 319
-
-    (41) queue -> keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL . LANGLE tipoDato RANGLE LPAREN RPAREN
-
-    LANGLE          shift and go to state 324
-
-
-state 320
-
-    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL . LANGLE OBJECT RANGLE LPAREN RPAREN
-
-    LANGLE          shift and go to state 325
+    LCURL           shift and go to state 325
 
 
 state 321
+
+    (168) while -> WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak . RCURL
+
+    RCURL           shift and go to state 326
+
+
+state 322
+
+    (41) queue -> keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL . LANGLE tipoDato RANGLE LPAREN RPAREN
+
+    LANGLE          shift and go to state 327
+
+
+state 323
+
+    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL . LANGLE OBJECT RANGLE LPAREN RPAREN
+
+    LANGLE          shift and go to state 328
+
+
+state 324
 
     (42) for -> FOR LPAREN ID IN iterable RPAREN LCURL lineorBreak RCURL .
 
@@ -6233,7 +6268,7 @@ state 321
     RCURL           reduce using rule 42 (for -> FOR LPAREN ID IN iterable RPAREN LCURL lineorBreak RCURL .)
 
 
-state 322
+state 325
 
     (105) else -> ELSE LCURL . lineorBreak RCURL
     (100) lineorBreak -> . line
@@ -6335,7 +6370,7 @@ state 322
     (32) queue_operations -> . queue_poll
     (148) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
     (151) stack_actuar -> . ID DOT stack_funciones
-    (150) instance_linkedlist -> . LINKEDL LPAREN RPAREN
+    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (149) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
     (170) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
     (171) lsimplem -> . ID DOT Lmetod
@@ -6352,7 +6387,7 @@ state 322
     (36) queue_remove -> . ID DOT REMOVE LPAREN RPAREN
     (35) queue_poll -> . ID DOT POLL LPAREN RPAREN
 
-    LINEBREAK       shift and go to state 285
+    LINEBREAK       shift and go to state 287
     PRINT           shift and go to state 11
     PRINTLN         shift and go to state 13
     FUN             shift and go to state 23
@@ -6373,8 +6408,8 @@ state 322
     LINKEDL         shift and go to state 47
     STACK           shift and go to state 52
 
-    lineorBreak                    shift and go to state 326
-    line                           shift and go to state 284
+    lineorBreak                    shift and go to state 329
+    line                           shift and go to state 286
     blocks                         shift and go to state 2
     impresion                      shift and go to state 4
     expression                     shift and go to state 5
@@ -6407,7 +6442,7 @@ state 322
     queue_remove                   shift and go to state 50
     queue_poll                     shift and go to state 51
 
-state 323
+state 326
 
     (168) while -> WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL .
 
@@ -6417,7 +6452,7 @@ state 323
     RCURL           reduce using rule 168 (while -> WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL .)
 
 
-state 324
+state 327
 
     (41) queue -> keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE . tipoDato RANGLE LPAREN RPAREN
     (71) tipoDato -> . TINT
@@ -6428,45 +6463,45 @@ state 324
     (76) tipoDato -> . TCHAR
     (77) tipoDato -> . TSTRING
 
-    TINT            shift and go to state 195
-    TLONG           shift and go to state 196
-    TFLOAT          shift and go to state 197
-    TDOUBLE         shift and go to state 198
-    TBOOLEAN        shift and go to state 199
-    TCHAR           shift and go to state 200
-    TSTRING         shift and go to state 201
+    TINT            shift and go to state 194
+    TLONG           shift and go to state 195
+    TFLOAT          shift and go to state 196
+    TDOUBLE         shift and go to state 197
+    TBOOLEAN        shift and go to state 198
+    TCHAR           shift and go to state 199
+    TSTRING         shift and go to state 200
 
-    tipoDato                       shift and go to state 327
-
-state 325
-
-    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE . OBJECT RANGLE LPAREN RPAREN
-
-    OBJECT          shift and go to state 328
-
-
-state 326
-
-    (105) else -> ELSE LCURL lineorBreak . RCURL
-
-    RCURL           shift and go to state 329
-
-
-state 327
-
-    (41) queue -> keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato . RANGLE LPAREN RPAREN
-
-    RANGLE          shift and go to state 330
-
+    tipoDato                       shift and go to state 330
 
 state 328
 
-    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT . RANGLE LPAREN RPAREN
+    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE . OBJECT RANGLE LPAREN RPAREN
 
-    RANGLE          shift and go to state 331
+    OBJECT          shift and go to state 331
 
 
 state 329
+
+    (105) else -> ELSE LCURL lineorBreak . RCURL
+
+    RCURL           shift and go to state 332
+
+
+state 330
+
+    (41) queue -> keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato . RANGLE LPAREN RPAREN
+
+    RANGLE          shift and go to state 333
+
+
+state 331
+
+    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT . RANGLE LPAREN RPAREN
+
+    RANGLE          shift and go to state 334
+
+
+state 332
 
     (105) else -> ELSE LCURL lineorBreak RCURL .
 
@@ -6476,35 +6511,35 @@ state 329
     RCURL           reduce using rule 105 (else -> ELSE LCURL lineorBreak RCURL .)
 
 
-state 330
+state 333
 
     (41) queue -> keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE . LPAREN RPAREN
 
-    LPAREN          shift and go to state 332
-
-
-state 331
-
-    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE . LPAREN RPAREN
-
-    LPAREN          shift and go to state 333
-
-
-state 332
-
-    (41) queue -> keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN . RPAREN
-
-    RPAREN          shift and go to state 334
-
-
-state 333
-
-    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN . RPAREN
-
-    RPAREN          shift and go to state 335
+    LPAREN          shift and go to state 335
 
 
 state 334
+
+    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE . LPAREN RPAREN
+
+    LPAREN          shift and go to state 336
+
+
+state 335
+
+    (41) queue -> keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN . RPAREN
+
+    RPAREN          shift and go to state 337
+
+
+state 336
+
+    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN . RPAREN
+
+    RPAREN          shift and go to state 338
+
+
+state 337
 
     (41) queue -> keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN .
 
@@ -6514,7 +6549,7 @@ state 334
     RCURL           reduce using rule 41 (queue -> keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN .)
 
 
-state 335
+state 338
 
     (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN .
 
@@ -6532,6 +6567,6 @@ WARNING: shift/reduce conflict for LINEBREAK in state 54 resolved as shift
 WARNING: shift/reduce conflict for LINEBREAK in state 104 resolved as shift
 WARNING: shift/reduce conflict for LINEBREAK in state 105 resolved as shift
 WARNING: shift/reduce conflict for LINEBREAK in state 202 resolved as shift
-WARNING: reduce/reduce conflict in state 258 resolved using rule (queue_peek -> ID DOT PEEK LPAREN RPAREN)
-WARNING: rejected rule (stack_peek -> PEEK LPAREN RPAREN) in state 258
+WARNING: reduce/reduce conflict in state 259 resolved using rule (queue_peek -> ID DOT PEEK LPAREN RPAREN)
+WARNING: rejected rule (stack_peek -> PEEK LPAREN RPAREN) in state 259
 WARNING: Rule (stack_peek -> PEEK LPAREN RPAREN) is never reduced
