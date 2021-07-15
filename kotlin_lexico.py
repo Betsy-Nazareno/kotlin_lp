@@ -107,6 +107,7 @@ reserved = {
     'append' : 'APPEND',
     'removeNode':'REMOVEN',
     'removeAtIndex':'REMOVEI'
+    'Object':'OBJECT',
    
     
 }
