@@ -106,8 +106,8 @@ reserved = {
     'removeLast':'REMOVEL',
     'append' : 'APPEND',
     'removeNode':'REMOVEN',
-    'removeAtIndex':'REMOVEI'
-    'Object':'OBJECT',
+    'removeAtIndex':'REMOVEI',
+    'Object':'OBJECTO'
    
     
 }

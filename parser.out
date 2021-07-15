@@ -273,7 +273,7 @@ Rule 173   Cmetod -> REMOVEN LPAREN OBJECT RPAREN
 Rule 174   Cmetod -> REMOVEI LPAREN TINT RPAREN
 Rule 175   while -> WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
 Rule 176   while -> WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
-Rule 177   lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+Rule 177   lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN
 Rule 178   lsimplem -> ID DOT Lmetod
 Rule 179   lcomp -> ID DOT Cmetod
 
@@ -375,7 +375,8 @@ MINUS                : 80
 MOD                  : 83
 MODIN                : 
 NOINLINE             : 
-OBJECT               : 172 173 177 177
+OBJECT               : 172 173
+OBJECTO              : 177 177
 OPEN                 : 
 OPERATOR             : 
 OUT                  : 
@@ -610,7 +611,7 @@ state 0
     (158) stack_actuar -> . ID DOT stack_funciones
     (157) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (156) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
-    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN
     (178) lsimplem -> . ID DOT Lmetod
     (179) lcomp -> . ID DOT Cmetod
     (89) factor -> . INT
@@ -871,7 +872,7 @@ state 15
     (47) asignacion -> keywordVariables . asignacionSimple
     (41) queue -> keywordVariables . ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (155) stack -> keywordVariables . ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
-    (177) lista -> keywordVariables . ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (177) lista -> keywordVariables . ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN
     (51) asignacionSimple -> . ID DOTS tipoDatoEspecifico
     (52) asignacionSimple -> . ID EQUAL valor
 
@@ -1574,7 +1575,7 @@ state 54
     (158) stack_actuar -> . ID DOT stack_funciones
     (157) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (156) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
-    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN
     (178) lsimplem -> . ID DOT Lmetod
     (179) lcomp -> . ID DOT Cmetod
     (89) factor -> . INT
@@ -2042,7 +2043,7 @@ state 73
 
     (41) queue -> keywordVariables ID . DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (155) stack -> keywordVariables ID . DOTS def_estruct_tipoDato EQUAL instance_linkedlist
-    (177) lista -> keywordVariables ID . DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (177) lista -> keywordVariables ID . DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN
     (51) asignacionSimple -> ID . DOTS tipoDatoEspecifico
     (52) asignacionSimple -> ID . EQUAL valor
 
@@ -2638,7 +2639,7 @@ state 104
     (158) stack_actuar -> . ID DOT stack_funciones
     (157) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (156) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
-    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN
     (178) lsimplem -> . ID DOT Lmetod
     (179) lcomp -> . ID DOT Cmetod
     (89) factor -> . INT
@@ -2893,7 +2894,7 @@ state 116
 
     (41) queue -> keywordVariables ID DOTS . QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (155) stack -> keywordVariables ID DOTS . def_estruct_tipoDato EQUAL instance_linkedlist
-    (177) lista -> keywordVariables ID DOTS . LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (177) lista -> keywordVariables ID DOTS . LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN
     (51) asignacionSimple -> ID DOTS . tipoDatoEspecifico
     (156) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
     (53) tipoDatoEspecifico -> . tipoEntero
@@ -3956,7 +3957,7 @@ state 208
 
 state 209
 
-    (177) lista -> keywordVariables ID DOTS LINKEDL . LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (177) lista -> keywordVariables ID DOTS LINKEDL . LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN
 
     LANGLE          shift and go to state 244
 
@@ -4278,9 +4279,9 @@ state 243
 
 state 244
 
-    (177) lista -> keywordVariables ID DOTS LINKEDL LANGLE . OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (177) lista -> keywordVariables ID DOTS LINKEDL LANGLE . OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN
 
-    OBJECT          shift and go to state 287
+    OBJECTO         shift and go to state 287
 
 
 state 245
@@ -4428,7 +4429,7 @@ state 248
     (158) stack_actuar -> . ID DOT stack_funciones
     (157) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (156) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
-    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN
     (178) lsimplem -> . ID DOT Lmetod
     (179) lcomp -> . ID DOT Cmetod
     (89) factor -> . INT
@@ -4908,7 +4909,7 @@ state 281
     (158) stack_actuar -> . ID DOT stack_funciones
     (157) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (156) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
-    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN
     (178) lsimplem -> . ID DOT Lmetod
     (179) lcomp -> . ID DOT Cmetod
     (89) factor -> . INT
@@ -5085,7 +5086,7 @@ state 282
     (158) stack_actuar -> . ID DOT stack_funciones
     (157) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (156) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
-    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN
     (178) lsimplem -> . ID DOT Lmetod
     (179) lcomp -> . ID DOT Cmetod
     (89) factor -> . INT
@@ -5268,7 +5269,7 @@ state 284
     (158) stack_actuar -> . ID DOT stack_funciones
     (157) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (156) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
-    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN
     (178) lsimplem -> . ID DOT Lmetod
     (179) lcomp -> . ID DOT Cmetod
     (89) factor -> . INT
@@ -5354,7 +5355,7 @@ state 286
 
 state 287
 
-    (177) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT . RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (177) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECTO . RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN
 
     RANGLE          shift and go to state 312
 
@@ -5476,7 +5477,7 @@ state 289
     (158) stack_actuar -> . ID DOT stack_funciones
     (157) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (156) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
-    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN
     (178) lsimplem -> . ID DOT Lmetod
     (179) lcomp -> . ID DOT Cmetod
     (89) factor -> . INT
@@ -5684,7 +5685,7 @@ state 294
     (158) stack_actuar -> . ID DOT stack_funciones
     (157) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (156) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
-    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN
     (178) lsimplem -> . ID DOT Lmetod
     (179) lcomp -> . ID DOT Cmetod
     (89) factor -> . INT
@@ -5861,7 +5862,7 @@ state 295
     (158) stack_actuar -> . ID DOT stack_funciones
     (157) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (156) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
-    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN
     (178) lsimplem -> . ID DOT Lmetod
     (179) lcomp -> . ID DOT Cmetod
     (89) factor -> . INT
@@ -6070,7 +6071,7 @@ state 311
 
 state 312
 
-    (177) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE . EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (177) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE . EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN
 
     EQUAL           shift and go to state 328
 
@@ -6248,7 +6249,7 @@ state 321
     (158) stack_actuar -> . ID DOT stack_funciones
     (157) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (156) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
-    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN
     (178) lsimplem -> . ID DOT Lmetod
     (179) lcomp -> . ID DOT Cmetod
     (89) factor -> . INT
@@ -6455,7 +6456,7 @@ state 325
     (158) stack_actuar -> . ID DOT stack_funciones
     (157) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (156) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
-    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN
     (178) lsimplem -> . ID DOT Lmetod
     (179) lcomp -> . ID DOT Cmetod
     (89) factor -> . INT
@@ -6544,7 +6545,7 @@ state 327
 
 state 328
 
-    (177) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL . LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (177) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL . LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN
 
     LINKEDL         shift and go to state 337
 
@@ -6616,7 +6617,7 @@ state 336
 
 state 337
 
-    (177) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL . LANGLE OBJECT RANGLE LPAREN RPAREN
+    (177) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL . LANGLE OBJECTO RANGLE LPAREN RPAREN
 
     LANGLE          shift and go to state 342
 
@@ -6737,7 +6738,7 @@ state 339
     (158) stack_actuar -> . ID DOT stack_funciones
     (157) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (156) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
-    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (177) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN
     (178) lsimplem -> . ID DOT Lmetod
     (179) lcomp -> . ID DOT Cmetod
     (89) factor -> . INT
@@ -6840,9 +6841,9 @@ state 341
 
 state 342
 
-    (177) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE . OBJECT RANGLE LPAREN RPAREN
+    (177) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE . OBJECTO RANGLE LPAREN RPAREN
 
-    OBJECT          shift and go to state 345
+    OBJECTO         shift and go to state 345
 
 
 state 343
@@ -6861,7 +6862,7 @@ state 344
 
 state 345
 
-    (177) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT . RANGLE LPAREN RPAREN
+    (177) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO . RANGLE LPAREN RPAREN
 
     RANGLE          shift and go to state 348
 
@@ -6885,7 +6886,7 @@ state 347
 
 state 348
 
-    (177) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE . LPAREN RPAREN
+    (177) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE . LPAREN RPAREN
 
     LPAREN          shift and go to state 350
 
@@ -6899,7 +6900,7 @@ state 349
 
 state 350
 
-    (177) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN . RPAREN
+    (177) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN . RPAREN
 
     RPAREN          shift and go to state 352
 
@@ -6916,12 +6917,12 @@ state 351
 
 state 352
 
-    (177) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN .
+    (177) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN .
 
-    SEMICOLON       reduce using rule 177 (lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN .)
-    LINEBREAK       reduce using rule 177 (lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN .)
-    $end            reduce using rule 177 (lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN .)
-    RCURL           reduce using rule 177 (lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN .)
+    SEMICOLON       reduce using rule 177 (lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN .)
+    LINEBREAK       reduce using rule 177 (lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN .)
+    $end            reduce using rule 177 (lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN .)
+    RCURL           reduce using rule 177 (lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN .)
 
 WARNING: 
 WARNING: Conflicts:
