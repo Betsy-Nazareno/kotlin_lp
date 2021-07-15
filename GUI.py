@@ -54,10 +54,11 @@ clear_button = tk.Button(frame, text="Limpiar", command=lambda: entry_field1.del
 
 #output field
 label2 = tk.Label(frame,text='Output', bd='1',fg='black', font='Helvetica 9 bold').grid(sticky = 'W',pady=10,row=4, column=0,columnspan=1)
-p1 = tk.StringVar(frame, "Resultado")
-result_label= tk.Label(frame,height = 10, width=54,bd='5', textvariable=p1)
-result_label.grid(sticky='W',row=5, column=0, columnspan=4)
+p1 = tk.StringVar(frame, "")
+result_label= tk.Label(frame,height = 10, width=54,bd='5', textvariable=p1, anchor='nw')
 result_label.configure(bg='white',  borderwidth=2, relief="groove")
+result_label.grid(sticky='W',row=5, column=0, columnspan=4)
+
 
 #cadena del input a analizar
 def getValue(cadena):
@@ -75,8 +76,12 @@ def getValue(cadena):
     elif s and lexico.get():
        lexer.input(s)
        getTokens(lexer)
+       contador = 1
        for i in lista_tokens:
-           p1.set(p1.get() +"\n"+ i)
+           if (i.find('LINEBREAK') != -1):
+               contador += 1
+               continue
+           p1.set(p1.get()+ "Linea "+ str(contador) +": " + i + '\n')
        lista_tokens.clear()
 
 
