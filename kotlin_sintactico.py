@@ -366,7 +366,7 @@ def p_lcomp(p):
 # Error rule for syntax errors
 def p_error(p):
     if p:
-        cola.append("Syntax error: The token "+ str(p.value) +" of type "+ p.type + " it's not allowed!")
+        cola.append("Syntax ERROR: Token "+ str(p.value) +" de tipo "+ p.type + " no está permitido!")
     else:
         cola.append("EOF: Error at the end of the line. \nYour line is incomplete. Try again!")
 

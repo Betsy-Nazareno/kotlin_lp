@@ -292,8 +292,8 @@ def t_IMPORT(t):
 
 # Define a rule so we can track line numbers
 #def t_newline(t):
- #   r'\n+'
-  #  t.lexer.lineno += len(t.value)
+#    r'\n+'
+#    t.lexer.lineno += len(t.value)
 
 # Error handling rule
 def t_error(t):

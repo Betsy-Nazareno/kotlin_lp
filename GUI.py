@@ -61,9 +61,6 @@ t.insert(tk.END, p1.get())
 t.grid(sticky='W',row=5, column=0, columnspan=4)
 v.config(command=t.yview)
 
-
-
-
 #cadena del input a analizar
 def getValue(cadena):
     s=""
@@ -74,29 +71,44 @@ def getValue(cadena):
     t.configure(state='normal')
     p1.set("")
     t.delete("1.0", "end")
-    if s and (Sintactico.get() or Semantico.get()):
-       parser.parse(s, lexer=lexer)
-       p1.set(cola[-1])
-       cola.clear()
-       cola.append("¡Everything it's ok!")
+    if s and lexico.get() and (Sintactico.get() or Semantico.get()):
+        analizar_lex_sintax(s)
+    elif s and (Sintactico.get() or Semantico.get()):
+        analizar_sintactico(s)
     elif s and lexico.get():
-       lexer.input(s)
-       getTokens(lexer)
-       contador = 1
-       for i in lista_tokens:
-           if (i.find('LINEBREAK') != -1):
-               contador += 1
-               continue
-
-           elif (i.find('Illegal') != -1):
-               p1.set(p1.get() + "[ERROR] Linea " + str(contador) + ": " + i + '\n')
-           else:
-               p1.set(p1.get()+ "Linea "+ str(contador) +": " + i + '\n')
-
-       lista_tokens.clear()
-
+       analizar_lexico(s)
+    elif s:
+        p1.set('Seleccione un tipo de análisis')
     t.insert(tk.END, p1.get())
     t.configure(state='disabled')
+
+
+def analizar_sintactico(s):
+    parser.parse(s, lexer=lexer)
+    p1.set(cola[-1])
+    cola.clear()
+    cola.append("Everything is ok!")
+
+def analizar_lexico(s):
+    lista_tokens.clear()
+    lexer.input(s)
+    getTokens(lexer)
+    lexer.lineno = 1
+    for i in lista_tokens:
+        if (i.find('LINEBREAK') != -1):
+            lexer.lineno += 1
+        elif (i.find('Illegal') != -1):
+            p1.set(p1.get() + "[ERROR] Linea " + str(lexer.lineno) + ": " + i + '\n')
+        else:
+            p1.set(p1.get() + "Linea " + str(lexer.lineno) + ": " + i + '\n')
+    lista_tokens.clear()
+
+def analizar_lex_sintax(s):
+    parser.parse(s, lexer=lexer)
+    p1.set(cola[-1] + '\n')
+    analizar_lexico(s)
+    cola.clear()
+    cola.append("Everything is ok!")
 
 
 window.mainloop()
