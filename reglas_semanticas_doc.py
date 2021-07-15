@@ -46,7 +46,7 @@ fun main() {
     lista.remove()
     lista.append(object)
 }
-
+/*Fin de algoritmo de prueba*/
 
 
 REGLAS SEMÁNTICAS DEFINIDAS:
