@@ -18,10 +18,10 @@ def p_cuerpo(p):
 def p_body(p):
     """blocks : impresion
                 | expression
+                | asignacion
                 | estructurasControl
                 | condicion
                 | funcion
-                | asignacion
                 | estructurasDatos"""
 
 
@@ -76,26 +76,6 @@ def p_impresion(p):
     '''impresion : PRINT LPAREN expression RPAREN
                 |  PRINTLN LPAREN expression RPAREN'''
 
-
-def p_queue(p):
-    'queue : VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN'
-
-
-def p_for(p):
-    '''for : FOR LPAREN ID IN iterable RPAREN LCURL lineorBreak RCURL  '''
-
-
-def p_iterable(p):
-    """iterable : ID
-                | INT THREEDOTS INT
-                | ID DOT INDICES"""
-
-
-#def p_morelines(p):
-#    '''morelines : line
-#                | line morelines'''
-
-
 def p_asignacion(p):
     '''asignacion : keywordVariables asignacionSimple
                     | asignacionSimple'''
@@ -105,6 +85,7 @@ def p_keywordVariables(p):
     '''keywordVariables : VAR
                         | VAL
                         '''
+
 
 
 def p_asignacionS(p):
@@ -129,6 +110,28 @@ def p_tipoDato(p):
                 | TBOOLEAN
                 | TCHAR
                 | TSTRING'''
+
+
+def p_queue(p):
+    'queue : keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN'
+
+
+def p_for(p):
+    '''for : FOR LPAREN ID IN iterable RPAREN LCURL lineorBreak RCURL  '''
+
+
+def p_iterable(p):
+    """iterable : ID
+                | INT THREEDOTS INT
+                | ID DOT INDICES"""
+
+
+#def p_morelines(p):
+#    '''morelines : line
+#                | line morelines'''
+
+
+
 
 
 def p_valor(p):
