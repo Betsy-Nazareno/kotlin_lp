@@ -425,7 +425,7 @@ def p_while_error(p):
     cola.append(": Error Semántico en la sentencia while. \nDebes proveer una condición válida para finalizar el ciclo.")
 
 def p_lista(p):
-    'lista : keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN'
+    'lista : keywordVariables ID DOTS LINKEDL LANGLE OBJECTO RANGLE EQUAL LINKEDL LANGLE OBJECTO RANGLE LPAREN RPAREN'
 
 
 def p_lsimplem(p):
