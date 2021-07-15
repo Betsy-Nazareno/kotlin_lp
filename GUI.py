@@ -55,9 +55,18 @@ clear_button = tk.Button(frame, text="Limpiar", command=lambda: entry_field1.del
 #output field
 label2 = tk.Label(frame,text='Output', bd='1',fg='black', font='Helvetica 9 bold').grid(sticky = 'W',pady=10,row=4, column=0,columnspan=1)
 p1 = tk.StringVar(frame, "")
-result_label= tk.Label(frame,height = 10, width=54,bd='5', textvariable=p1, anchor='nw')
-result_label.configure(bg='white',  borderwidth=2, relief="groove")
-result_label.grid(sticky='W',row=5, column=0, columnspan=4)
+#result_label= tk.Label(frame,height = 10, width=54,bd='5', textvariable=p1, anchor='nw')
+#result_label.configure(bg='white',  borderwidth=2, relief="groove")
+#result_label.grid(sticky='W',row=5, column=0, columnspan=4)
+
+v = tk.Scrollbar(frame, orient='vertical')
+
+t = tk.Text(frame, height = 10, width=48, bd='5', wrap=tk.WORD, yscrollcommand=v.set, borderwidth=2, relief="groove")
+t.insert(tk.END, p1.get())
+t.grid(sticky='W',row=5, column=0, columnspan=4)
+v.config(command=t.yview)
+
+
 
 
 #cadena del input a analizar
@@ -67,10 +76,13 @@ def getValue(cadena):
         s = cadena
     except EOFError:
         p1.set("EOFError")
+    t.configure(state='normal')
     p1.set("")
     if s and (Sintactico.get() or Semantico.get()):
        parser.parse(s, lexer=lexer)
        p1.set(cola[-1])
+       t.delete("1.0", "end")
+       t.insert(tk.END, p1.get())
        cola.clear()
        cola.append("¡Everything it's ok!")
     elif s and lexico.get():
@@ -82,7 +94,11 @@ def getValue(cadena):
                contador += 1
                continue
            p1.set(p1.get()+ "Linea "+ str(contador) +": " + i + '\n')
+
+           t.delete("1.0", "end")
+           t.insert(tk.END, p1.get())
        lista_tokens.clear()
+    t.configure(state='disabled')
 
 
 window.mainloop()
