@@ -76,6 +76,9 @@ def p_impresion(p):
     '''impresion : PRINT LPAREN expression RPAREN
                 |  PRINTLN LPAREN expression RPAREN'''
 
+def p_impresion_error(p):
+    '''funcion : PRINT LPAREN error RPAREN'''
+    cola.append("Error Semántico en la sentencia print. Expresión no válida.")
 
 def p_queue(p):
     'queue : VAL ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN'
