@@ -28,6 +28,23 @@ fun main() {
     println(div)
 
 
+    var edad:Int=19;
+    var pais:String= "Ecuador"
+
+    var pila: Stack<String> = LinkedList();
+    pila.push("hola");
+    pila.push("mundo");
+    pila.isEmpty();
+    pila.pop();
+    pila.peek();
+    pila.size()
+
+
+    val lista:LinkedList<object> = LinkedList<object>();
+    lista.first()
+    lista.last()
+    lista.remove()
+    lista.append(object)
 }
 
 
