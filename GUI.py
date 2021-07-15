@@ -78,11 +78,10 @@ def getValue(cadena):
         p1.set("EOFError")
     t.configure(state='normal')
     p1.set("")
+    t.delete("1.0", "end")
     if s and (Sintactico.get() or Semantico.get()):
        parser.parse(s, lexer=lexer)
        p1.set(cola[-1])
-       t.delete("1.0", "end")
-       t.insert(tk.END, p1.get())
        cola.clear()
        cola.append("¡Everything it's ok!")
     elif s and lexico.get():
@@ -93,11 +92,15 @@ def getValue(cadena):
            if (i.find('LINEBREAK') != -1):
                contador += 1
                continue
-           p1.set(p1.get()+ "Linea "+ str(contador) +": " + i + '\n')
 
-           t.delete("1.0", "end")
-           t.insert(tk.END, p1.get())
+           elif (i.find('Illegal') != -1):
+               p1.set(p1.get() + "[ERROR] Linea " + str(contador) + ": " + i + '\n')
+           else:
+               p1.set(p1.get()+ "Linea "+ str(contador) +": " + i + '\n')
+
        lista_tokens.clear()
+
+    t.insert(tk.END, p1.get())
     t.configure(state='disabled')
 
 
