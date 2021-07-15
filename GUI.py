@@ -80,8 +80,10 @@ def getValue(cadena):
        for i in lista_tokens:
            if (i.find('LINEBREAK') != -1):
                contador += 1
-               continue
-           p1.set(p1.get()+ "Linea "+ str(contador) +": " + i + '\n')
+           elif (i.find('Illegal') != -1):
+               p1.set(p1.get() + "[ERROR] Linea " + str(contador) + ": " + i + '\n')
+           else:
+               p1.set(p1.get()+ "Linea "+ str(contador) +": " + i + '\n')
        lista_tokens.clear()
 
 
