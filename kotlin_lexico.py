@@ -295,6 +295,7 @@ def t_IMPORT(t):
 #    r'\n+'
 #    t.lexer.lineno += len(t.value)
 
+
 # Error handling rule
 def t_error(t):
     lista_tokens.append("Illegal character '%s'" % t.value[0])

@@ -31,7 +31,7 @@ fun main() {
     var edad:Int=19;
     var pais:String= "Ecuador"
 
-    var pila: Stack<String> = LinkedList();
+    var pila: Stack<String> = LinkedList<String>();
     pila.push("hola");
     pila.push("mundo");
     pila.isEmpty();

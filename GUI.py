@@ -84,7 +84,8 @@ def getValue(cadena):
 
 
 def analizar_sintactico(s):
-    parser.parse(s, lexer=lexer)
+    lexer.lineno = 1
+    parser.parse(s, lexer=lexer, tracking=True)
     p1.set(cola[-1])
     cola.clear()
     cola.append("¡Perfecto, es una sintáxis de kotlin limpia!")
@@ -95,15 +96,18 @@ def analizar_lexico(s):
     getTokens(lexer)
     lexer.lineno = 1
     for i in lista_tokens:
+        tipo, tok, num, car = i.split(",")
+        tipo =  tipo[tipo.find("(")+1:]
         if (i.find('LINEBREAK') != -1):
             lexer.lineno += 1
         elif (i.find('Illegal') != -1):
-            p1.set(p1.get() + "[ERROR] Linea " + str(lexer.lineno) + ": " + i + '\n')
+            p1.set(p1.get() + "[ERROR] Linea " + str(lexer.lineno) + ": LexTipo: " + tipo + ", Valor: "+tok+'\n')
         else:
-            p1.set(p1.get() + "Linea " + str(lexer.lineno) + ": " + i + '\n')
+            p1.set(p1.get() + "Linea " + str(lexer.lineno) + ": LexTipo: " + tipo + ", Valor: "+tok+'\n')
     lista_tokens.clear()
 
 def analizar_lex_sintax(s):
+    lexer.lineno = 1
     parser.parse(s, lexer=lexer)
     p1.set(cola[-1] + '\n')
     analizar_lexico(s)

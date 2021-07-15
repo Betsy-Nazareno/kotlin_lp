@@ -4,7 +4,7 @@ from kotlin_lexico import *
 cola = ["¡Perfecto, es una sintáxis de kotlin limpia!"]
 
 def p_cuerpo(p):
-    """line : blocks
+    """line :  blocks
                 | blocks SEMICOLON
                 | blocks LINEBREAK
                 | blocks LINEBREAK line
@@ -79,11 +79,13 @@ def p_impresion(p):
 
 def p_impresion_error(p):
     '''impresion : PRINT LPAREN error RPAREN'''
-    cola.append("Linea " + str(lexer.lineno) + ": Error Semántico en la sentencia print. Expresión no válida.")
+    num_linea = p.linespan(3)
+    print(num_linea)
+    cola.append("Error Semántico en la sentencia print. Expresión no válida.")
 
 def p_impresionLn_error(p):
     '''impresion : PRINTLN LPAREN error RPAREN'''
-    cola.append("Linea " + str(lexer.lineno) + ": Error Semántico en la sentencia prinln. Expresión no válida.")
+    cola.append("Error Semántico en la sentencia prinln. Expresión no válida.")
 
 
 def p_queue(p):
@@ -95,7 +97,7 @@ def p_for(p):
 
 def p_for_error(p):
     '''for :  FOR LPAREN error RPAREN LCURL lineorBreak RCURL  '''
-    cola.append("Linea " + str(lexer.lineno) + ": Error Semántico en la sentencia for. Debes proveer una lista o rango para iterar en el ciclo")
+    cola.append("Error Semántico en la sentencia for. Debes proveer una lista o rango para iterar en el ciclo")
 
 def p_iterable(p):
     """iterable : ID
@@ -140,42 +142,42 @@ def p_tipoEntero(p):
 
 def p_tipoEntero_error(p):
     'tipoEntero : TINT EQUAL error'
-    cola.append("Linea " + str(lexer.lineno) + ": Error Semántico en la asignación de variable tipo INT. Valor no válido.")
+    cola.append("Error Semántico en la asignación de variable tipo INT. Valor no válido.")
 
 def p_tipoLong(p):
     'tipoLong : TLONG EQUAL LONG'
 
 def p_tipoLong_error(p):
     'tipoLong : TLONG EQUAL error'
-    cola.append("Linea " + str(lexer.lineno) + ": Error Semántico en la asignación de variable tipo LONG. Valor no válido.")
+    cola.append("Error Semántico en la asignación de variable tipo LONG. Valor no válido.")
 
 def p_tipoFloat(p):
     'tipoFloat : TFLOAT EQUAL FLOAT'
 
 def p_tipoFloat_error(p):
     'tipoFloat : TFLOAT EQUAL error'
-    cola.append("Linea " + str(lexer.lineno) + ": Error Semántico en la asignación de variable tipo FLOAT. Valor no válido.")
+    cola.append("Error Semántico en la asignación de variable tipo FLOAT. Valor no válido.")
 
 def p_tipoBoolean(p):
     'tipoBoolean : TBOOLEAN EQUAL BOOLEAN'
 
 def p_tipoBoolean_error(p):
     'tipoBoolean : TBOOLEAN EQUAL error'
-    cola.append("Linea " + str(lexer.lineno) + ": Error Semántico en la asignación de variable tipo BOOLEAN. Valor no válido.")
+    cola.append("Error Semántico en la asignación de variable tipo BOOLEAN. Valor no válido.")
 
 def p_tipoChar(p):
     'tipoChar : TCHAR EQUAL CHAR'
 
 def p_tipoChar_error(p):
     'tipoChar : TCHAR EQUAL error'
-    cola.append("Linea " + str(lexer.lineno) + ": Error Semántico en la asignación de variable tipo CHAR. Valor no válido.")
+    cola.append("Error Semántico en la asignación de variable tipo CHAR. Valor no válido.")
 
 def p_tipoString(p):
     'tipoString : TSTRING EQUAL STRING_1'
 
 def p_tipoString_error(p):
     'tipoString : TSTRING EQUAL error'
-    cola.append("Linea " + str(lexer.lineno) + ": Error Semántico en la asignación de variable tipo STRING. Valor no válido.")
+    cola.append("Error Semántico en la asignación de variable tipo STRING. Valor no válido.")
 
 def p_tipoDato(p):
     '''tipoDato : TINT
@@ -185,10 +187,6 @@ def p_tipoDato(p):
                 | TBOOLEAN
                 | TCHAR
                 | TSTRING'''
-
-
-
-
 
 
 
@@ -410,7 +408,7 @@ def p_while(p):
 
 def p_while_error(p):
     '''while :  WHILE LPAREN error RPAREN LCURL lineorBreak RCURL   '''
-    cola.append("Linea " + str(lexer.lineno) + ": Error Semántico en la sentencia while. \nDebes proveer una condición válida para finalizar el ciclo.")
+    cola.append(": Error Semántico en la sentencia while. \nDebes proveer una condición válida para finalizar el ciclo.")
 
 def p_lista(p):
     'lista : keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN'
