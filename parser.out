@@ -15,7 +15,6 @@ Unused terminals:
     CATCH
     CLASS
     COLONCOLON
-    COMMA
     COMMENT
     COMPANION
     CONST
@@ -197,79 +196,84 @@ Rule 96    funcion -> FUN ID LPAREN RPAREN LCURL lineorBreak RCURL
 Rule 97    funcion -> FUN ID LPAREN ID RPAREN LCURL lineorBreak RCURL
 Rule 98    funcion -> FUN ID LPAREN ID RPAREN LCURL RCURL
 Rule 99    funcion -> FUN ID LPAREN RPAREN LCURL RCURL
-Rule 100   lineorBreak -> line
-Rule 101   lineorBreak -> LINEBREAK line LINEBREAK
-Rule 102   lineorBreak -> LINEBREAK line
-Rule 103   if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
-Rule 104   if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
-Rule 105   else -> ELSE LCURL lineorBreak RCURL
-Rule 106   condicion -> condicionL
-Rule 107   condicion -> condicionR
-Rule 108   condicion -> condicionN
-Rule 109   condicionL -> BOOLEAN opL BOOLEAN
-Rule 110   condicionL -> ID opL ID
-Rule 111   condicionL -> ID opL BOOLEAN
-Rule 112   condicionL -> BOOLEAN opL ID
-Rule 113   condicionR -> INT opR INT
-Rule 114   condicionR -> INT opR FLOAT
-Rule 115   condicionR -> INT opR LONG
-Rule 116   condicionR -> INT opR ID
-Rule 117   condicionR -> FLOAT opR FLOAT
-Rule 118   condicionR -> FLOAT opR INT
-Rule 119   condicionR -> FLOAT opR LONG
-Rule 120   condicionR -> FLOAT opR ID
-Rule 121   condicionR -> LONG opR LONG
-Rule 122   condicionR -> LONG opR INT
-Rule 123   condicionR -> LONG opR FLOAT
-Rule 124   condicionR -> LONG opR ID
-Rule 125   condicionR -> STRING_1 opR STRING_1
-Rule 126   condicionR -> STRING_1 opR ID
-Rule 127   condicionR -> CHAR opR CHAR
-Rule 128   condicionR -> CHAR opR ID
-Rule 129   condicionR -> ID opR ID
-Rule 130   condicionR -> ID opR INT
-Rule 131   condicionR -> ID opR FLOAT
-Rule 132   condicionR -> ID opR LONG
-Rule 133   condicionR -> ID opR STRING_1
-Rule 134   condicionR -> ID opR CHAR
-Rule 135   condicionN -> EXCL_WS BOOLEAN
-Rule 136   condicionN -> EXCL_WS ID
-Rule 137   opL -> CONJ
-Rule 138   opL -> DISJ
-Rule 139   opR -> LANGLE
-Rule 140   opR -> RANGLE
-Rule 141   opR -> LE
-Rule 142   opR -> GE
-Rule 143   opR -> EXCL_EQ
-Rule 144   opR -> EXCL_EQEQ
-Rule 145   opR -> AS_SAFE
-Rule 146   opR -> EQEQ
-Rule 147   opR -> EQEQEQ
-Rule 148   stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
-Rule 149   def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE
-Rule 150   instance_linkedlist -> LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
-Rule 151   stack_actuar -> ID DOT stack_funciones
-Rule 152   stack_funciones -> stack_isEmpty
-Rule 153   stack_funciones -> stack_push
-Rule 154   stack_funciones -> stack_pop
-Rule 155   stack_funciones -> stack_peek
-Rule 156   stack_funciones -> stack_size
-Rule 157   stack_isEmpty -> ISEMPTY LPAREN RPAREN
-Rule 158   stack_pop -> POP LPAREN RPAREN
-Rule 159   stack_push -> PUSH LPAREN factor RPAREN
-Rule 160   stack_peek -> PEEK LPAREN RPAREN
-Rule 161   stack_size -> SIZE LPAREN RPAREN
-Rule 162   Lmetod -> FIRST LPAREN RPAREN
-Rule 163   Lmetod -> LAST LPAREN RPAREN
-Rule 164   Lmetod -> REMOVEL LPAREN RPAREN
-Rule 165   Cmetod -> APPEND LPAREN OBJECT RPAREN
-Rule 166   Cmetod -> REMOVEN LPAREN OBJECT RPAREN
-Rule 167   Cmetod -> REMOVEI LPAREN TINT RPAREN
-Rule 168   while -> WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
-Rule 169   while -> WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
-Rule 170   lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
-Rule 171   lsimplem -> ID DOT Lmetod
-Rule 172   lcomp -> ID DOT Cmetod
+Rule 100   parametros -> parametro
+Rule 101   parametros -> masParametros
+Rule 102   parametro -> tipoDato DOTS factor
+Rule 103   masParametros -> COMMA parametro
+Rule 104   masParametros -> COMMA parametro masParametros
+Rule 105   lineorBreak -> line
+Rule 106   lineorBreak -> LINEBREAK line LINEBREAK
+Rule 107   lineorBreak -> LINEBREAK line
+Rule 108   if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
+Rule 109   if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
+Rule 110   else -> ELSE LCURL lineorBreak RCURL
+Rule 111   condicion -> condicionL
+Rule 112   condicion -> condicionR
+Rule 113   condicion -> condicionN
+Rule 114   condicionL -> BOOLEAN opL BOOLEAN
+Rule 115   condicionL -> ID opL ID
+Rule 116   condicionL -> ID opL BOOLEAN
+Rule 117   condicionL -> BOOLEAN opL ID
+Rule 118   condicionR -> INT opR INT
+Rule 119   condicionR -> INT opR FLOAT
+Rule 120   condicionR -> INT opR LONG
+Rule 121   condicionR -> INT opR ID
+Rule 122   condicionR -> FLOAT opR FLOAT
+Rule 123   condicionR -> FLOAT opR INT
+Rule 124   condicionR -> FLOAT opR LONG
+Rule 125   condicionR -> FLOAT opR ID
+Rule 126   condicionR -> LONG opR LONG
+Rule 127   condicionR -> LONG opR INT
+Rule 128   condicionR -> LONG opR FLOAT
+Rule 129   condicionR -> LONG opR ID
+Rule 130   condicionR -> STRING_1 opR STRING_1
+Rule 131   condicionR -> STRING_1 opR ID
+Rule 132   condicionR -> CHAR opR CHAR
+Rule 133   condicionR -> CHAR opR ID
+Rule 134   condicionR -> ID opR ID
+Rule 135   condicionR -> ID opR INT
+Rule 136   condicionR -> ID opR FLOAT
+Rule 137   condicionR -> ID opR LONG
+Rule 138   condicionR -> ID opR STRING_1
+Rule 139   condicionR -> ID opR CHAR
+Rule 140   condicionN -> EXCL_WS BOOLEAN
+Rule 141   condicionN -> EXCL_WS ID
+Rule 142   opL -> CONJ
+Rule 143   opL -> DISJ
+Rule 144   opR -> LANGLE
+Rule 145   opR -> RANGLE
+Rule 146   opR -> LE
+Rule 147   opR -> GE
+Rule 148   opR -> EXCL_EQ
+Rule 149   opR -> EXCL_EQEQ
+Rule 150   opR -> AS_SAFE
+Rule 151   opR -> EQEQ
+Rule 152   opR -> EQEQEQ
+Rule 153   stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
+Rule 154   def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE
+Rule 155   instance_linkedlist -> LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
+Rule 156   stack_actuar -> ID DOT stack_funciones
+Rule 157   stack_funciones -> stack_isEmpty
+Rule 158   stack_funciones -> stack_push
+Rule 159   stack_funciones -> stack_pop
+Rule 160   stack_funciones -> stack_peek
+Rule 161   stack_funciones -> stack_size
+Rule 162   stack_isEmpty -> ISEMPTY LPAREN RPAREN
+Rule 163   stack_pop -> POP LPAREN RPAREN
+Rule 164   stack_push -> PUSH LPAREN factor RPAREN
+Rule 165   stack_peek -> PEEK LPAREN RPAREN
+Rule 166   stack_size -> SIZE LPAREN RPAREN
+Rule 167   Lmetod -> FIRST LPAREN RPAREN
+Rule 168   Lmetod -> LAST LPAREN RPAREN
+Rule 169   Lmetod -> REMOVEL LPAREN RPAREN
+Rule 170   Cmetod -> APPEND LPAREN OBJECT RPAREN
+Rule 171   Cmetod -> REMOVEN LPAREN OBJECT RPAREN
+Rule 172   Cmetod -> REMOVEI LPAREN TINT RPAREN
+Rule 173   while -> WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
+Rule 174   while -> WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
+Rule 175   lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+Rule 176   lsimplem -> ID DOT Lmetod
+Rule 177   lcomp -> ID DOT Cmetod
 
 Terminals, with rules where they appear
 
@@ -277,24 +281,24 @@ ABSTRACT             :
 ACTUAL               : 
 ADD                  : 33
 ANNOTATION           : 
-APPEND               : 165
+APPEND               : 170
 ARRAYLIST            : 
 ARRAYOF              : 
 ARROW                : 
 AS                   : 
-AS_SAFE              : 145
+AS_SAFE              : 150
 AT_NO_WS             : 
-BOOLEAN              : 65 93 109 109 111 112 135
+BOOLEAN              : 65 93 114 114 116 117 140
 BREAK                : 
 BY                   : 
 CATCH                : 
-CHAR                 : 67 92 127 127 128 134
+CHAR                 : 67 92 132 132 133 139
 CLASS                : 
 COLONCOLON           : 
-COMMA                : 
+COMMA                : 103 104
 COMMENT              : 
 COMPANION            : 
-CONJ                 : 137
+CONJ                 : 142
 CONST                : 
 CONSTRUCTOR          : 
 CONTINUE             : 
@@ -303,39 +307,39 @@ DATA                 :
 DECR                 : 
 DECREMENTIN          : 
 DECREMENTONE         : 85
-DISJ                 : 138
+DISJ                 : 143
 DIVIDE               : 82
 DIVIDEIN             : 
 DO                   : 
-DOT                  : 33 34 35 36 46 151 171 172
-DOTS                 : 41 51 148 170
+DOT                  : 33 34 35 36 46 156 176 177
+DOTS                 : 41 51 102 153 175
 DOUBLE_ARROW         : 
 DOUBLE_SEMICOLON     : 
 DYNAMIC              : 
-ELSE                 : 105
+ELSE                 : 110
 ENUM                 : 
-EQEQ                 : 146
-EQEQEQ               : 147
-EQUAL                : 41 52 59 60 61 62 63 64 65 66 67 68 69 70 148 170
-EXCL_EQ              : 143
-EXCL_EQEQ            : 144
+EQEQ                 : 151
+EQEQEQ               : 152
+EQUAL                : 41 52 59 60 61 62 63 64 65 66 67 68 69 70 153 175
+EXCL_EQ              : 148
+EXCL_EQEQ            : 149
 EXCL_NO_WS           : 
-EXCL_WS              : 135 136
+EXCL_WS              : 140 141
 EXPECT               : 
 EXTERNAL             : 
 FIELD                : 
 FILE                 : 
 FINAL                : 
 FINALLY              : 
-FIRST                : 162
-FLOAT                : 63 90 114 117 117 118 119 120 123 131
+FIRST                : 167
+FLOAT                : 63 90 119 122 122 123 124 125 128 136
 FOR                  : 42 43
 FUN                  : 96 97 98 99
-GE                   : 142
+GE                   : 147
 GET                  : 
 HASH                 : 
-ID                   : 33 34 35 36 41 42 44 46 51 52 94 96 97 97 98 98 99 110 110 111 112 116 120 124 126 128 129 129 130 131 132 133 134 136 148 151 168 170 171 172
-IF                   : 103 104
+ID                   : 33 34 35 36 41 42 44 46 51 52 94 96 97 97 98 98 99 115 115 116 117 121 125 129 131 133 134 134 135 136 137 138 139 141 153 156 173 175 176 177
+IF                   : 108 109
 IMPORT               : 
 IN                   : 42
 INCR                 : 
@@ -347,21 +351,21 @@ INFIX                :
 INIT                 : 
 INLINE               : 
 INNER                : 
-INT                  : 45 45 59 89 113 113 114 115 116 118 122 130 168
+INT                  : 45 45 59 89 118 118 119 120 121 123 127 135 173
 INTERFACE            : 
 INTERNAL             : 
 IS                   : 
-ISEMPTY              : 157
-LANGLE               : 41 41 139 149 150 170 170
-LAST                 : 163
+ISEMPTY              : 162
+LANGLE               : 41 41 144 154 155 175 175
+LAST                 : 168
 LATEINIT             : 
-LCURL                : 42 43 96 97 98 99 103 104 105 168 169
-LE                   : 141
-LINEBREAK            : 3 4 5 5 6 7 8 8 9 101 101 102
-LINKEDL              : 41 150 170 170
+LCURL                : 42 43 96 97 98 99 108 109 110 173 174
+LE                   : 146
+LINEBREAK            : 3 4 5 5 6 7 8 8 9 106 106 107
+LINKEDL              : 41 155 175 175
 LISTOF               : 
-LONG                 : 61 91 115 119 121 121 122 123 124 132
-LPAREN               : 33 34 35 36 37 38 39 40 41 42 43 88 96 97 98 99 103 104 150 157 158 159 160 161 162 163 164 165 166 167 168 169 170
+LONG                 : 61 91 120 124 126 126 127 128 129 137
+LPAREN               : 33 34 35 36 37 38 39 40 41 42 43 88 96 97 98 99 108 109 155 162 163 164 165 166 167 168 169 170 171 172 173 174 175
 LSQUARE              : 
 MARK_1               : 
 MARK_2               : 
@@ -369,46 +373,46 @@ MINUS                : 80
 MOD                  : 83
 MODIN                : 
 NOINLINE             : 
-OBJECT               : 165 166 170 170
+OBJECT               : 170 171 175 175
 OPEN                 : 
 OPERATOR             : 
 OUT                  : 
 OVERRIDE             : 
 PACKAGE              : 
 PARAM                : 
-PEEK                 : 34 160
+PEEK                 : 34 165
 PLUS                 : 79
 POLL                 : 35
-POP                  : 158
+POP                  : 163
 PRINT                : 37 39
 PRINTLN              : 38 40
 PRIVATE              : 
 PROPERTY             : 
 PROTECTED            : 
 PUBLIC               : 
-PUSH                 : 159
+PUSH                 : 164
 QUEST_WS             : 
 QUEUE                : 41
 RANGE                : 
-RANGLE               : 41 41 140 149 150 170 170
-RCURL                : 42 43 96 97 98 99 103 104 105 168 169
+RANGLE               : 41 41 145 154 155 175 175
+RCURL                : 42 43 96 97 98 99 108 109 110 173 174
 RECEIVER             : 
 REIFIED              : 
 REMOVE               : 36
-REMOVEI              : 167
-REMOVEL              : 164
-REMOVEN              : 166
+REMOVEI              : 172
+REMOVEL              : 169
+REMOVEN              : 171
 RETURN               : 
-RPAREN               : 33 34 35 36 37 38 39 40 41 42 43 88 96 97 98 99 103 104 150 157 158 159 160 161 162 163 164 165 166 167 168 169 170
+RPAREN               : 33 34 35 36 37 38 39 40 41 42 43 88 96 97 98 99 108 109 155 162 163 164 165 166 167 168 169 170 171 172 173 174 175
 RSQUARE              : 
 SEALED               : 
 SEMICOLON            : 2 6 7 8
 SET                  : 
 SETPARAM             : 
 SINGLE_QUOTE         : 
-SIZE                 : 161
-STACK                : 149
-STRING_1             : 69 95 125 125 126 133
+SIZE                 : 166
+STACK                : 154
+STRING_1             : 69 95 130 130 131 138
 SUM                  : 
 SUPER                : 
 SUSPEND              : 
@@ -422,7 +426,7 @@ THIS                 :
 THREEDOTS            : 45
 THROW                : 
 TIMES                : 81
-TINT                 : 59 60 71 167
+TINT                 : 59 60 71 172
 TLONG                : 61 62 72
 TRY                  : 
 TSTRING              : 69 70 77
@@ -436,40 +440,43 @@ VARARG               :
 VAR_TIPO_1           : 
 WHEN                 : 
 WHERE                : 
-WHILE                : 168 169
-error                : 39 40 43 60 62 64 66 68 70 169
+WHILE                : 173 174
+error                : 39 40 43 60 62 64 66 68 70 174
 
 Nonterminals, with rules where they appear
 
-Cmetod               : 172
-Lmetod               : 171
+Cmetod               : 177
+Lmetod               : 176
 asignacion           : 12
 asignacionSimple     : 47 48
 blocks               : 1 2 3 4 5 6 7 8
-condicion            : 14 103 104
-condicionL           : 106
-condicionN           : 108
-condicionR           : 107
-def_estruct_tipoDato : 22 148
-else                 : 104
+condicion            : 14 108 109
+condicionL           : 111
+condicionN           : 113
+condicionR           : 112
+def_estruct_tipoDato : 22 153
+else                 : 109
 estructurasControl   : 13
 estructurasDatos     : 16
 expression           : 11 37 38 78 79 80 81 82 83 84 85 88
-factor               : 33 87 159
+factor               : 33 87 102 164
 for                  : 26
 funcion              : 15
 if                   : 27
 impresion            : 10
-instance_linkedlist  : 21 148
+instance_linkedlist  : 21 153
 iterable             : 42
-keywordVariables     : 41 47 148 170
+keywordVariables     : 41 47 153 175
 lcomp                : 25
-line                 : 4 5 7 8 100 101 102 0
-lineorBreak          : 42 43 96 97 103 104 105 168 169
+line                 : 4 5 7 8 105 106 107 0
+lineorBreak          : 42 43 96 97 108 109 110 173 174
 lista                : 23
 lsimplem             : 24
-opL                  : 109 110 111 112
-opR                  : 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 168
+masParametros        : 101 104
+opL                  : 114 115 116 117
+opR                  : 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 173
+parametro            : 100 103 104
+parametros           : 
 queue                : 17
 queue_add            : 29
 queue_operations     : 18
@@ -478,16 +485,16 @@ queue_poll           : 32
 queue_remove         : 31
 stack                : 19
 stack_actuar         : 20
-stack_funciones      : 151
-stack_isEmpty        : 152
-stack_peek           : 155
-stack_pop            : 154
-stack_push           : 153
-stack_size           : 156
+stack_funciones      : 156
+stack_isEmpty        : 157
+stack_peek           : 160
+stack_pop            : 159
+stack_push           : 158
+stack_size           : 161
 term                 : 79 80 81 82 83 86
 tipoBoolean          : 56
 tipoChar             : 57
-tipoDato             : 41 41 149 150
+tipoDato             : 41 41 102 154 155
 tipoDatoEspecifico   : 51
 tipoEntero           : 53
 tipoFloat            : 55
@@ -534,9 +541,9 @@ state 0
     (26) estructurasControl -> . for
     (27) estructurasControl -> . if
     (28) estructurasControl -> . while
-    (106) condicion -> . condicionL
-    (107) condicion -> . condicionR
-    (108) condicion -> . condicionN
+    (111) condicion -> . condicionL
+    (112) condicion -> . condicionR
+    (113) condicion -> . condicionN
     (96) funcion -> . FUN ID LPAREN RPAREN LCURL lineorBreak RCURL
     (97) funcion -> . FUN ID LPAREN ID RPAREN LCURL lineorBreak RCURL
     (98) funcion -> . FUN ID LPAREN ID RPAREN LCURL RCURL
@@ -558,50 +565,50 @@ state 0
     (52) asignacionSimple -> . ID EQUAL valor
     (42) for -> . FOR LPAREN ID IN iterable RPAREN LCURL lineorBreak RCURL
     (43) for -> . FOR LPAREN error RPAREN LCURL lineorBreak RCURL
-    (103) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
-    (104) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
-    (168) while -> . WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
-    (169) while -> . WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
-    (109) condicionL -> . BOOLEAN opL BOOLEAN
-    (110) condicionL -> . ID opL ID
-    (111) condicionL -> . ID opL BOOLEAN
-    (112) condicionL -> . BOOLEAN opL ID
-    (113) condicionR -> . INT opR INT
-    (114) condicionR -> . INT opR FLOAT
-    (115) condicionR -> . INT opR LONG
-    (116) condicionR -> . INT opR ID
-    (117) condicionR -> . FLOAT opR FLOAT
-    (118) condicionR -> . FLOAT opR INT
-    (119) condicionR -> . FLOAT opR LONG
-    (120) condicionR -> . FLOAT opR ID
-    (121) condicionR -> . LONG opR LONG
-    (122) condicionR -> . LONG opR INT
-    (123) condicionR -> . LONG opR FLOAT
-    (124) condicionR -> . LONG opR ID
-    (125) condicionR -> . STRING_1 opR STRING_1
-    (126) condicionR -> . STRING_1 opR ID
-    (127) condicionR -> . CHAR opR CHAR
-    (128) condicionR -> . CHAR opR ID
-    (129) condicionR -> . ID opR ID
-    (130) condicionR -> . ID opR INT
-    (131) condicionR -> . ID opR FLOAT
-    (132) condicionR -> . ID opR LONG
-    (133) condicionR -> . ID opR STRING_1
-    (134) condicionR -> . ID opR CHAR
-    (135) condicionN -> . EXCL_WS BOOLEAN
-    (136) condicionN -> . EXCL_WS ID
+    (108) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
+    (109) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
+    (173) while -> . WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
+    (174) while -> . WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
+    (114) condicionL -> . BOOLEAN opL BOOLEAN
+    (115) condicionL -> . ID opL ID
+    (116) condicionL -> . ID opL BOOLEAN
+    (117) condicionL -> . BOOLEAN opL ID
+    (118) condicionR -> . INT opR INT
+    (119) condicionR -> . INT opR FLOAT
+    (120) condicionR -> . INT opR LONG
+    (121) condicionR -> . INT opR ID
+    (122) condicionR -> . FLOAT opR FLOAT
+    (123) condicionR -> . FLOAT opR INT
+    (124) condicionR -> . FLOAT opR LONG
+    (125) condicionR -> . FLOAT opR ID
+    (126) condicionR -> . LONG opR LONG
+    (127) condicionR -> . LONG opR INT
+    (128) condicionR -> . LONG opR FLOAT
+    (129) condicionR -> . LONG opR ID
+    (130) condicionR -> . STRING_1 opR STRING_1
+    (131) condicionR -> . STRING_1 opR ID
+    (132) condicionR -> . CHAR opR CHAR
+    (133) condicionR -> . CHAR opR ID
+    (134) condicionR -> . ID opR ID
+    (135) condicionR -> . ID opR INT
+    (136) condicionR -> . ID opR FLOAT
+    (137) condicionR -> . ID opR LONG
+    (138) condicionR -> . ID opR STRING_1
+    (139) condicionR -> . ID opR CHAR
+    (140) condicionN -> . EXCL_WS BOOLEAN
+    (141) condicionN -> . EXCL_WS ID
     (41) queue -> . keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (29) queue_operations -> . queue_add
     (30) queue_operations -> . queue_peek
     (31) queue_operations -> . queue_remove
     (32) queue_operations -> . queue_poll
-    (148) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
-    (151) stack_actuar -> . ID DOT stack_funciones
-    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
-    (149) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
-    (170) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
-    (171) lsimplem -> . ID DOT Lmetod
-    (172) lcomp -> . ID DOT Cmetod
+    (153) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
+    (156) stack_actuar -> . ID DOT stack_funciones
+    (155) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
+    (154) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
+    (175) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (176) lsimplem -> . ID DOT Lmetod
+    (177) lcomp -> . ID DOT Cmetod
     (89) factor -> . INT
     (90) factor -> . FLOAT
     (91) factor -> . LONG
@@ -859,8 +866,8 @@ state 15
 
     (47) asignacion -> keywordVariables . asignacionSimple
     (41) queue -> keywordVariables . ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
-    (148) stack -> keywordVariables . ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
-    (170) lista -> keywordVariables . ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (153) stack -> keywordVariables . ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
+    (175) lista -> keywordVariables . ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
     (51) asignacionSimple -> . ID DOTS tipoDatoEspecifico
     (52) asignacionSimple -> . ID EQUAL valor
 
@@ -910,35 +917,35 @@ state 19
 
 state 20
 
-    (106) condicion -> condicionL .
+    (111) condicion -> condicionL .
 
-    SEMICOLON       reduce using rule 106 (condicion -> condicionL .)
-    LINEBREAK       reduce using rule 106 (condicion -> condicionL .)
-    $end            reduce using rule 106 (condicion -> condicionL .)
-    RCURL           reduce using rule 106 (condicion -> condicionL .)
-    RPAREN          reduce using rule 106 (condicion -> condicionL .)
+    SEMICOLON       reduce using rule 111 (condicion -> condicionL .)
+    LINEBREAK       reduce using rule 111 (condicion -> condicionL .)
+    $end            reduce using rule 111 (condicion -> condicionL .)
+    RCURL           reduce using rule 111 (condicion -> condicionL .)
+    RPAREN          reduce using rule 111 (condicion -> condicionL .)
 
 
 state 21
 
-    (107) condicion -> condicionR .
+    (112) condicion -> condicionR .
 
-    SEMICOLON       reduce using rule 107 (condicion -> condicionR .)
-    LINEBREAK       reduce using rule 107 (condicion -> condicionR .)
-    $end            reduce using rule 107 (condicion -> condicionR .)
-    RCURL           reduce using rule 107 (condicion -> condicionR .)
-    RPAREN          reduce using rule 107 (condicion -> condicionR .)
+    SEMICOLON       reduce using rule 112 (condicion -> condicionR .)
+    LINEBREAK       reduce using rule 112 (condicion -> condicionR .)
+    $end            reduce using rule 112 (condicion -> condicionR .)
+    RCURL           reduce using rule 112 (condicion -> condicionR .)
+    RPAREN          reduce using rule 112 (condicion -> condicionR .)
 
 
 state 22
 
-    (108) condicion -> condicionN .
+    (113) condicion -> condicionN .
 
-    SEMICOLON       reduce using rule 108 (condicion -> condicionN .)
-    LINEBREAK       reduce using rule 108 (condicion -> condicionN .)
-    $end            reduce using rule 108 (condicion -> condicionN .)
-    RCURL           reduce using rule 108 (condicion -> condicionN .)
-    RPAREN          reduce using rule 108 (condicion -> condicionN .)
+    SEMICOLON       reduce using rule 113 (condicion -> condicionN .)
+    LINEBREAK       reduce using rule 113 (condicion -> condicionN .)
+    $end            reduce using rule 113 (condicion -> condicionN .)
+    RCURL           reduce using rule 113 (condicion -> condicionN .)
+    RPAREN          reduce using rule 113 (condicion -> condicionN .)
 
 
 state 23
@@ -955,33 +962,33 @@ state 24
 
     (51) asignacionSimple -> ID . DOTS tipoDatoEspecifico
     (52) asignacionSimple -> ID . EQUAL valor
-    (110) condicionL -> ID . opL ID
-    (111) condicionL -> ID . opL BOOLEAN
-    (129) condicionR -> ID . opR ID
-    (130) condicionR -> ID . opR INT
-    (131) condicionR -> ID . opR FLOAT
-    (132) condicionR -> ID . opR LONG
-    (133) condicionR -> ID . opR STRING_1
-    (134) condicionR -> ID . opR CHAR
-    (151) stack_actuar -> ID . DOT stack_funciones
-    (171) lsimplem -> ID . DOT Lmetod
-    (172) lcomp -> ID . DOT Cmetod
+    (115) condicionL -> ID . opL ID
+    (116) condicionL -> ID . opL BOOLEAN
+    (134) condicionR -> ID . opR ID
+    (135) condicionR -> ID . opR INT
+    (136) condicionR -> ID . opR FLOAT
+    (137) condicionR -> ID . opR LONG
+    (138) condicionR -> ID . opR STRING_1
+    (139) condicionR -> ID . opR CHAR
+    (156) stack_actuar -> ID . DOT stack_funciones
+    (176) lsimplem -> ID . DOT Lmetod
+    (177) lcomp -> ID . DOT Cmetod
     (94) factor -> ID .
     (33) queue_add -> ID . DOT ADD LPAREN factor RPAREN
     (34) queue_peek -> ID . DOT PEEK LPAREN RPAREN
     (36) queue_remove -> ID . DOT REMOVE LPAREN RPAREN
     (35) queue_poll -> ID . DOT POLL LPAREN RPAREN
-    (137) opL -> . CONJ
-    (138) opL -> . DISJ
-    (139) opR -> . LANGLE
-    (140) opR -> . RANGLE
-    (141) opR -> . LE
-    (142) opR -> . GE
-    (143) opR -> . EXCL_EQ
-    (144) opR -> . EXCL_EQEQ
-    (145) opR -> . AS_SAFE
-    (146) opR -> . EQEQ
-    (147) opR -> . EQEQEQ
+    (142) opL -> . CONJ
+    (143) opL -> . DISJ
+    (144) opR -> . LANGLE
+    (145) opR -> . RANGLE
+    (146) opR -> . LE
+    (147) opR -> . GE
+    (148) opR -> . EXCL_EQ
+    (149) opR -> . EXCL_EQEQ
+    (150) opR -> . AS_SAFE
+    (151) opR -> . EQEQ
+    (152) opR -> . EQEQEQ
 
     DOTS            shift and go to state 75
     EQUAL           shift and go to state 76
@@ -1144,36 +1151,36 @@ state 37
 
 state 38
 
-    (103) if -> IF . LPAREN condicion RPAREN LCURL lineorBreak RCURL
-    (104) if -> IF . LPAREN condicion RPAREN LCURL lineorBreak RCURL else
+    (108) if -> IF . LPAREN condicion RPAREN LCURL lineorBreak RCURL
+    (109) if -> IF . LPAREN condicion RPAREN LCURL lineorBreak RCURL else
 
     LPAREN          shift and go to state 92
 
 
 state 39
 
-    (168) while -> WHILE . LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
-    (169) while -> WHILE . LPAREN error RPAREN LCURL lineorBreak RCURL
+    (173) while -> WHILE . LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
+    (174) while -> WHILE . LPAREN error RPAREN LCURL lineorBreak RCURL
 
     LPAREN          shift and go to state 93
 
 
 state 40
 
-    (113) condicionR -> INT . opR INT
-    (114) condicionR -> INT . opR FLOAT
-    (115) condicionR -> INT . opR LONG
-    (116) condicionR -> INT . opR ID
+    (118) condicionR -> INT . opR INT
+    (119) condicionR -> INT . opR FLOAT
+    (120) condicionR -> INT . opR LONG
+    (121) condicionR -> INT . opR ID
     (89) factor -> INT .
-    (139) opR -> . LANGLE
-    (140) opR -> . RANGLE
-    (141) opR -> . LE
-    (142) opR -> . GE
-    (143) opR -> . EXCL_EQ
-    (144) opR -> . EXCL_EQEQ
-    (145) opR -> . AS_SAFE
-    (146) opR -> . EQEQ
-    (147) opR -> . EQEQEQ
+    (144) opR -> . LANGLE
+    (145) opR -> . RANGLE
+    (146) opR -> . LE
+    (147) opR -> . GE
+    (148) opR -> . EXCL_EQ
+    (149) opR -> . EXCL_EQEQ
+    (150) opR -> . AS_SAFE
+    (151) opR -> . EQEQ
+    (152) opR -> . EQEQEQ
 
     PLUS            reduce using rule 89 (factor -> INT .)
     MINUS           reduce using rule 89 (factor -> INT .)
@@ -1200,11 +1207,11 @@ state 40
 
 state 41
 
-    (109) condicionL -> BOOLEAN . opL BOOLEAN
-    (112) condicionL -> BOOLEAN . opL ID
+    (114) condicionL -> BOOLEAN . opL BOOLEAN
+    (117) condicionL -> BOOLEAN . opL ID
     (93) factor -> BOOLEAN .
-    (137) opL -> . CONJ
-    (138) opL -> . DISJ
+    (142) opL -> . CONJ
+    (143) opL -> . DISJ
 
     PLUS            reduce using rule 93 (factor -> BOOLEAN .)
     MINUS           reduce using rule 93 (factor -> BOOLEAN .)
@@ -1224,20 +1231,20 @@ state 41
 
 state 42
 
-    (117) condicionR -> FLOAT . opR FLOAT
-    (118) condicionR -> FLOAT . opR INT
-    (119) condicionR -> FLOAT . opR LONG
-    (120) condicionR -> FLOAT . opR ID
+    (122) condicionR -> FLOAT . opR FLOAT
+    (123) condicionR -> FLOAT . opR INT
+    (124) condicionR -> FLOAT . opR LONG
+    (125) condicionR -> FLOAT . opR ID
     (90) factor -> FLOAT .
-    (139) opR -> . LANGLE
-    (140) opR -> . RANGLE
-    (141) opR -> . LE
-    (142) opR -> . GE
-    (143) opR -> . EXCL_EQ
-    (144) opR -> . EXCL_EQEQ
-    (145) opR -> . AS_SAFE
-    (146) opR -> . EQEQ
-    (147) opR -> . EQEQEQ
+    (144) opR -> . LANGLE
+    (145) opR -> . RANGLE
+    (146) opR -> . LE
+    (147) opR -> . GE
+    (148) opR -> . EXCL_EQ
+    (149) opR -> . EXCL_EQEQ
+    (150) opR -> . AS_SAFE
+    (151) opR -> . EQEQ
+    (152) opR -> . EQEQEQ
 
     PLUS            reduce using rule 90 (factor -> FLOAT .)
     MINUS           reduce using rule 90 (factor -> FLOAT .)
@@ -1264,20 +1271,20 @@ state 42
 
 state 43
 
-    (121) condicionR -> LONG . opR LONG
-    (122) condicionR -> LONG . opR INT
-    (123) condicionR -> LONG . opR FLOAT
-    (124) condicionR -> LONG . opR ID
+    (126) condicionR -> LONG . opR LONG
+    (127) condicionR -> LONG . opR INT
+    (128) condicionR -> LONG . opR FLOAT
+    (129) condicionR -> LONG . opR ID
     (91) factor -> LONG .
-    (139) opR -> . LANGLE
-    (140) opR -> . RANGLE
-    (141) opR -> . LE
-    (142) opR -> . GE
-    (143) opR -> . EXCL_EQ
-    (144) opR -> . EXCL_EQEQ
-    (145) opR -> . AS_SAFE
-    (146) opR -> . EQEQ
-    (147) opR -> . EQEQEQ
+    (144) opR -> . LANGLE
+    (145) opR -> . RANGLE
+    (146) opR -> . LE
+    (147) opR -> . GE
+    (148) opR -> . EXCL_EQ
+    (149) opR -> . EXCL_EQEQ
+    (150) opR -> . AS_SAFE
+    (151) opR -> . EQEQ
+    (152) opR -> . EQEQEQ
 
     PLUS            reduce using rule 91 (factor -> LONG .)
     MINUS           reduce using rule 91 (factor -> LONG .)
@@ -1304,18 +1311,18 @@ state 43
 
 state 44
 
-    (125) condicionR -> STRING_1 . opR STRING_1
-    (126) condicionR -> STRING_1 . opR ID
+    (130) condicionR -> STRING_1 . opR STRING_1
+    (131) condicionR -> STRING_1 . opR ID
     (95) factor -> STRING_1 .
-    (139) opR -> . LANGLE
-    (140) opR -> . RANGLE
-    (141) opR -> . LE
-    (142) opR -> . GE
-    (143) opR -> . EXCL_EQ
-    (144) opR -> . EXCL_EQEQ
-    (145) opR -> . AS_SAFE
-    (146) opR -> . EQEQ
-    (147) opR -> . EQEQEQ
+    (144) opR -> . LANGLE
+    (145) opR -> . RANGLE
+    (146) opR -> . LE
+    (147) opR -> . GE
+    (148) opR -> . EXCL_EQ
+    (149) opR -> . EXCL_EQEQ
+    (150) opR -> . AS_SAFE
+    (151) opR -> . EQEQ
+    (152) opR -> . EQEQEQ
 
     PLUS            reduce using rule 95 (factor -> STRING_1 .)
     MINUS           reduce using rule 95 (factor -> STRING_1 .)
@@ -1342,18 +1349,18 @@ state 44
 
 state 45
 
-    (127) condicionR -> CHAR . opR CHAR
-    (128) condicionR -> CHAR . opR ID
+    (132) condicionR -> CHAR . opR CHAR
+    (133) condicionR -> CHAR . opR ID
     (92) factor -> CHAR .
-    (139) opR -> . LANGLE
-    (140) opR -> . RANGLE
-    (141) opR -> . LE
-    (142) opR -> . GE
-    (143) opR -> . EXCL_EQ
-    (144) opR -> . EXCL_EQEQ
-    (145) opR -> . AS_SAFE
-    (146) opR -> . EQEQ
-    (147) opR -> . EQEQEQ
+    (144) opR -> . LANGLE
+    (145) opR -> . RANGLE
+    (146) opR -> . LE
+    (147) opR -> . GE
+    (148) opR -> . EXCL_EQ
+    (149) opR -> . EXCL_EQEQ
+    (150) opR -> . AS_SAFE
+    (151) opR -> . EQEQ
+    (152) opR -> . EQEQEQ
 
     PLUS            reduce using rule 92 (factor -> CHAR .)
     MINUS           reduce using rule 92 (factor -> CHAR .)
@@ -1380,8 +1387,8 @@ state 45
 
 state 46
 
-    (135) condicionN -> EXCL_WS . BOOLEAN
-    (136) condicionN -> EXCL_WS . ID
+    (140) condicionN -> EXCL_WS . BOOLEAN
+    (141) condicionN -> EXCL_WS . ID
 
     BOOLEAN         shift and go to state 100
     ID              shift and go to state 101
@@ -1389,7 +1396,7 @@ state 46
 
 state 47
 
-    (150) instance_linkedlist -> LINKEDL . LANGLE tipoDato RANGLE LPAREN RPAREN
+    (155) instance_linkedlist -> LINKEDL . LANGLE tipoDato RANGLE LPAREN RPAREN
 
     LANGLE          shift and go to state 102
 
@@ -1436,7 +1443,7 @@ state 51
 
 state 52
 
-    (149) def_estruct_tipoDato -> STACK . LANGLE tipoDato RANGLE
+    (154) def_estruct_tipoDato -> STACK . LANGLE tipoDato RANGLE
 
     LANGLE          shift and go to state 103
 
@@ -1494,9 +1501,9 @@ state 54
     (26) estructurasControl -> . for
     (27) estructurasControl -> . if
     (28) estructurasControl -> . while
-    (106) condicion -> . condicionL
-    (107) condicion -> . condicionR
-    (108) condicion -> . condicionN
+    (111) condicion -> . condicionL
+    (112) condicion -> . condicionR
+    (113) condicion -> . condicionN
     (96) funcion -> . FUN ID LPAREN RPAREN LCURL lineorBreak RCURL
     (97) funcion -> . FUN ID LPAREN ID RPAREN LCURL lineorBreak RCURL
     (98) funcion -> . FUN ID LPAREN ID RPAREN LCURL RCURL
@@ -1518,50 +1525,50 @@ state 54
     (52) asignacionSimple -> . ID EQUAL valor
     (42) for -> . FOR LPAREN ID IN iterable RPAREN LCURL lineorBreak RCURL
     (43) for -> . FOR LPAREN error RPAREN LCURL lineorBreak RCURL
-    (103) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
-    (104) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
-    (168) while -> . WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
-    (169) while -> . WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
-    (109) condicionL -> . BOOLEAN opL BOOLEAN
-    (110) condicionL -> . ID opL ID
-    (111) condicionL -> . ID opL BOOLEAN
-    (112) condicionL -> . BOOLEAN opL ID
-    (113) condicionR -> . INT opR INT
-    (114) condicionR -> . INT opR FLOAT
-    (115) condicionR -> . INT opR LONG
-    (116) condicionR -> . INT opR ID
-    (117) condicionR -> . FLOAT opR FLOAT
-    (118) condicionR -> . FLOAT opR INT
-    (119) condicionR -> . FLOAT opR LONG
-    (120) condicionR -> . FLOAT opR ID
-    (121) condicionR -> . LONG opR LONG
-    (122) condicionR -> . LONG opR INT
-    (123) condicionR -> . LONG opR FLOAT
-    (124) condicionR -> . LONG opR ID
-    (125) condicionR -> . STRING_1 opR STRING_1
-    (126) condicionR -> . STRING_1 opR ID
-    (127) condicionR -> . CHAR opR CHAR
-    (128) condicionR -> . CHAR opR ID
-    (129) condicionR -> . ID opR ID
-    (130) condicionR -> . ID opR INT
-    (131) condicionR -> . ID opR FLOAT
-    (132) condicionR -> . ID opR LONG
-    (133) condicionR -> . ID opR STRING_1
-    (134) condicionR -> . ID opR CHAR
-    (135) condicionN -> . EXCL_WS BOOLEAN
-    (136) condicionN -> . EXCL_WS ID
+    (108) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
+    (109) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
+    (173) while -> . WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
+    (174) while -> . WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
+    (114) condicionL -> . BOOLEAN opL BOOLEAN
+    (115) condicionL -> . ID opL ID
+    (116) condicionL -> . ID opL BOOLEAN
+    (117) condicionL -> . BOOLEAN opL ID
+    (118) condicionR -> . INT opR INT
+    (119) condicionR -> . INT opR FLOAT
+    (120) condicionR -> . INT opR LONG
+    (121) condicionR -> . INT opR ID
+    (122) condicionR -> . FLOAT opR FLOAT
+    (123) condicionR -> . FLOAT opR INT
+    (124) condicionR -> . FLOAT opR LONG
+    (125) condicionR -> . FLOAT opR ID
+    (126) condicionR -> . LONG opR LONG
+    (127) condicionR -> . LONG opR INT
+    (128) condicionR -> . LONG opR FLOAT
+    (129) condicionR -> . LONG opR ID
+    (130) condicionR -> . STRING_1 opR STRING_1
+    (131) condicionR -> . STRING_1 opR ID
+    (132) condicionR -> . CHAR opR CHAR
+    (133) condicionR -> . CHAR opR ID
+    (134) condicionR -> . ID opR ID
+    (135) condicionR -> . ID opR INT
+    (136) condicionR -> . ID opR FLOAT
+    (137) condicionR -> . ID opR LONG
+    (138) condicionR -> . ID opR STRING_1
+    (139) condicionR -> . ID opR CHAR
+    (140) condicionN -> . EXCL_WS BOOLEAN
+    (141) condicionN -> . EXCL_WS ID
     (41) queue -> . keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (29) queue_operations -> . queue_add
     (30) queue_operations -> . queue_peek
     (31) queue_operations -> . queue_remove
     (32) queue_operations -> . queue_poll
-    (148) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
-    (151) stack_actuar -> . ID DOT stack_funciones
-    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
-    (149) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
-    (170) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
-    (171) lsimplem -> . ID DOT Lmetod
-    (172) lcomp -> . ID DOT Cmetod
+    (153) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
+    (156) stack_actuar -> . ID DOT stack_funciones
+    (155) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
+    (154) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
+    (175) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (176) lsimplem -> . ID DOT Lmetod
+    (177) lcomp -> . ID DOT Cmetod
     (89) factor -> . INT
     (90) factor -> . FLOAT
     (91) factor -> . LONG
@@ -2026,8 +2033,8 @@ state 72
 state 73
 
     (41) queue -> keywordVariables ID . DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
-    (148) stack -> keywordVariables ID . DOTS def_estruct_tipoDato EQUAL instance_linkedlist
-    (170) lista -> keywordVariables ID . DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (153) stack -> keywordVariables ID . DOTS def_estruct_tipoDato EQUAL instance_linkedlist
+    (175) lista -> keywordVariables ID . DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
     (51) asignacionSimple -> ID . DOTS tipoDatoEspecifico
     (52) asignacionSimple -> ID . EQUAL valor
 
@@ -2120,8 +2127,8 @@ state 76
 
 state 77
 
-    (110) condicionL -> ID opL . ID
-    (111) condicionL -> ID opL . BOOLEAN
+    (115) condicionL -> ID opL . ID
+    (116) condicionL -> ID opL . BOOLEAN
 
     ID              shift and go to state 133
     BOOLEAN         shift and go to state 134
@@ -2129,12 +2136,12 @@ state 77
 
 state 78
 
-    (129) condicionR -> ID opR . ID
-    (130) condicionR -> ID opR . INT
-    (131) condicionR -> ID opR . FLOAT
-    (132) condicionR -> ID opR . LONG
-    (133) condicionR -> ID opR . STRING_1
-    (134) condicionR -> ID opR . CHAR
+    (134) condicionR -> ID opR . ID
+    (135) condicionR -> ID opR . INT
+    (136) condicionR -> ID opR . FLOAT
+    (137) condicionR -> ID opR . LONG
+    (138) condicionR -> ID opR . STRING_1
+    (139) condicionR -> ID opR . CHAR
 
     ID              shift and go to state 135
     INT             shift and go to state 136
@@ -2146,29 +2153,29 @@ state 78
 
 state 79
 
-    (151) stack_actuar -> ID DOT . stack_funciones
-    (171) lsimplem -> ID DOT . Lmetod
-    (172) lcomp -> ID DOT . Cmetod
+    (156) stack_actuar -> ID DOT . stack_funciones
+    (176) lsimplem -> ID DOT . Lmetod
+    (177) lcomp -> ID DOT . Cmetod
     (33) queue_add -> ID DOT . ADD LPAREN factor RPAREN
     (34) queue_peek -> ID DOT . PEEK LPAREN RPAREN
     (36) queue_remove -> ID DOT . REMOVE LPAREN RPAREN
     (35) queue_poll -> ID DOT . POLL LPAREN RPAREN
-    (152) stack_funciones -> . stack_isEmpty
-    (153) stack_funciones -> . stack_push
-    (154) stack_funciones -> . stack_pop
-    (155) stack_funciones -> . stack_peek
-    (156) stack_funciones -> . stack_size
-    (162) Lmetod -> . FIRST LPAREN RPAREN
-    (163) Lmetod -> . LAST LPAREN RPAREN
-    (164) Lmetod -> . REMOVEL LPAREN RPAREN
-    (165) Cmetod -> . APPEND LPAREN OBJECT RPAREN
-    (166) Cmetod -> . REMOVEN LPAREN OBJECT RPAREN
-    (167) Cmetod -> . REMOVEI LPAREN TINT RPAREN
-    (157) stack_isEmpty -> . ISEMPTY LPAREN RPAREN
-    (159) stack_push -> . PUSH LPAREN factor RPAREN
-    (158) stack_pop -> . POP LPAREN RPAREN
-    (160) stack_peek -> . PEEK LPAREN RPAREN
-    (161) stack_size -> . SIZE LPAREN RPAREN
+    (157) stack_funciones -> . stack_isEmpty
+    (158) stack_funciones -> . stack_push
+    (159) stack_funciones -> . stack_pop
+    (160) stack_funciones -> . stack_peek
+    (161) stack_funciones -> . stack_size
+    (167) Lmetod -> . FIRST LPAREN RPAREN
+    (168) Lmetod -> . LAST LPAREN RPAREN
+    (169) Lmetod -> . REMOVEL LPAREN RPAREN
+    (170) Cmetod -> . APPEND LPAREN OBJECT RPAREN
+    (171) Cmetod -> . REMOVEN LPAREN OBJECT RPAREN
+    (172) Cmetod -> . REMOVEI LPAREN TINT RPAREN
+    (162) stack_isEmpty -> . ISEMPTY LPAREN RPAREN
+    (164) stack_push -> . PUSH LPAREN factor RPAREN
+    (163) stack_pop -> . POP LPAREN RPAREN
+    (165) stack_peek -> . PEEK LPAREN RPAREN
+    (166) stack_size -> . SIZE LPAREN RPAREN
 
     ADD             shift and go to state 144
     PEEK            shift and go to state 145
@@ -2196,126 +2203,126 @@ state 79
 
 state 80
 
-    (137) opL -> CONJ .
+    (142) opL -> CONJ .
 
-    ID              reduce using rule 137 (opL -> CONJ .)
-    BOOLEAN         reduce using rule 137 (opL -> CONJ .)
+    ID              reduce using rule 142 (opL -> CONJ .)
+    BOOLEAN         reduce using rule 142 (opL -> CONJ .)
 
 
 state 81
 
-    (138) opL -> DISJ .
+    (143) opL -> DISJ .
 
-    ID              reduce using rule 138 (opL -> DISJ .)
-    BOOLEAN         reduce using rule 138 (opL -> DISJ .)
+    ID              reduce using rule 143 (opL -> DISJ .)
+    BOOLEAN         reduce using rule 143 (opL -> DISJ .)
 
 
 state 82
 
-    (139) opR -> LANGLE .
+    (144) opR -> LANGLE .
 
-    ID              reduce using rule 139 (opR -> LANGLE .)
-    INT             reduce using rule 139 (opR -> LANGLE .)
-    FLOAT           reduce using rule 139 (opR -> LANGLE .)
-    LONG            reduce using rule 139 (opR -> LANGLE .)
-    STRING_1        reduce using rule 139 (opR -> LANGLE .)
-    CHAR            reduce using rule 139 (opR -> LANGLE .)
+    ID              reduce using rule 144 (opR -> LANGLE .)
+    INT             reduce using rule 144 (opR -> LANGLE .)
+    FLOAT           reduce using rule 144 (opR -> LANGLE .)
+    LONG            reduce using rule 144 (opR -> LANGLE .)
+    STRING_1        reduce using rule 144 (opR -> LANGLE .)
+    CHAR            reduce using rule 144 (opR -> LANGLE .)
 
 
 state 83
 
-    (140) opR -> RANGLE .
+    (145) opR -> RANGLE .
 
-    ID              reduce using rule 140 (opR -> RANGLE .)
-    INT             reduce using rule 140 (opR -> RANGLE .)
-    FLOAT           reduce using rule 140 (opR -> RANGLE .)
-    LONG            reduce using rule 140 (opR -> RANGLE .)
-    STRING_1        reduce using rule 140 (opR -> RANGLE .)
-    CHAR            reduce using rule 140 (opR -> RANGLE .)
+    ID              reduce using rule 145 (opR -> RANGLE .)
+    INT             reduce using rule 145 (opR -> RANGLE .)
+    FLOAT           reduce using rule 145 (opR -> RANGLE .)
+    LONG            reduce using rule 145 (opR -> RANGLE .)
+    STRING_1        reduce using rule 145 (opR -> RANGLE .)
+    CHAR            reduce using rule 145 (opR -> RANGLE .)
 
 
 state 84
 
-    (141) opR -> LE .
+    (146) opR -> LE .
 
-    ID              reduce using rule 141 (opR -> LE .)
-    INT             reduce using rule 141 (opR -> LE .)
-    FLOAT           reduce using rule 141 (opR -> LE .)
-    LONG            reduce using rule 141 (opR -> LE .)
-    STRING_1        reduce using rule 141 (opR -> LE .)
-    CHAR            reduce using rule 141 (opR -> LE .)
+    ID              reduce using rule 146 (opR -> LE .)
+    INT             reduce using rule 146 (opR -> LE .)
+    FLOAT           reduce using rule 146 (opR -> LE .)
+    LONG            reduce using rule 146 (opR -> LE .)
+    STRING_1        reduce using rule 146 (opR -> LE .)
+    CHAR            reduce using rule 146 (opR -> LE .)
 
 
 state 85
 
-    (142) opR -> GE .
+    (147) opR -> GE .
 
-    ID              reduce using rule 142 (opR -> GE .)
-    INT             reduce using rule 142 (opR -> GE .)
-    FLOAT           reduce using rule 142 (opR -> GE .)
-    LONG            reduce using rule 142 (opR -> GE .)
-    STRING_1        reduce using rule 142 (opR -> GE .)
-    CHAR            reduce using rule 142 (opR -> GE .)
+    ID              reduce using rule 147 (opR -> GE .)
+    INT             reduce using rule 147 (opR -> GE .)
+    FLOAT           reduce using rule 147 (opR -> GE .)
+    LONG            reduce using rule 147 (opR -> GE .)
+    STRING_1        reduce using rule 147 (opR -> GE .)
+    CHAR            reduce using rule 147 (opR -> GE .)
 
 
 state 86
 
-    (143) opR -> EXCL_EQ .
+    (148) opR -> EXCL_EQ .
 
-    ID              reduce using rule 143 (opR -> EXCL_EQ .)
-    INT             reduce using rule 143 (opR -> EXCL_EQ .)
-    FLOAT           reduce using rule 143 (opR -> EXCL_EQ .)
-    LONG            reduce using rule 143 (opR -> EXCL_EQ .)
-    STRING_1        reduce using rule 143 (opR -> EXCL_EQ .)
-    CHAR            reduce using rule 143 (opR -> EXCL_EQ .)
+    ID              reduce using rule 148 (opR -> EXCL_EQ .)
+    INT             reduce using rule 148 (opR -> EXCL_EQ .)
+    FLOAT           reduce using rule 148 (opR -> EXCL_EQ .)
+    LONG            reduce using rule 148 (opR -> EXCL_EQ .)
+    STRING_1        reduce using rule 148 (opR -> EXCL_EQ .)
+    CHAR            reduce using rule 148 (opR -> EXCL_EQ .)
 
 
 state 87
 
-    (144) opR -> EXCL_EQEQ .
+    (149) opR -> EXCL_EQEQ .
 
-    ID              reduce using rule 144 (opR -> EXCL_EQEQ .)
-    INT             reduce using rule 144 (opR -> EXCL_EQEQ .)
-    FLOAT           reduce using rule 144 (opR -> EXCL_EQEQ .)
-    LONG            reduce using rule 144 (opR -> EXCL_EQEQ .)
-    STRING_1        reduce using rule 144 (opR -> EXCL_EQEQ .)
-    CHAR            reduce using rule 144 (opR -> EXCL_EQEQ .)
+    ID              reduce using rule 149 (opR -> EXCL_EQEQ .)
+    INT             reduce using rule 149 (opR -> EXCL_EQEQ .)
+    FLOAT           reduce using rule 149 (opR -> EXCL_EQEQ .)
+    LONG            reduce using rule 149 (opR -> EXCL_EQEQ .)
+    STRING_1        reduce using rule 149 (opR -> EXCL_EQEQ .)
+    CHAR            reduce using rule 149 (opR -> EXCL_EQEQ .)
 
 
 state 88
 
-    (145) opR -> AS_SAFE .
+    (150) opR -> AS_SAFE .
 
-    ID              reduce using rule 145 (opR -> AS_SAFE .)
-    INT             reduce using rule 145 (opR -> AS_SAFE .)
-    FLOAT           reduce using rule 145 (opR -> AS_SAFE .)
-    LONG            reduce using rule 145 (opR -> AS_SAFE .)
-    STRING_1        reduce using rule 145 (opR -> AS_SAFE .)
-    CHAR            reduce using rule 145 (opR -> AS_SAFE .)
+    ID              reduce using rule 150 (opR -> AS_SAFE .)
+    INT             reduce using rule 150 (opR -> AS_SAFE .)
+    FLOAT           reduce using rule 150 (opR -> AS_SAFE .)
+    LONG            reduce using rule 150 (opR -> AS_SAFE .)
+    STRING_1        reduce using rule 150 (opR -> AS_SAFE .)
+    CHAR            reduce using rule 150 (opR -> AS_SAFE .)
 
 
 state 89
 
-    (146) opR -> EQEQ .
+    (151) opR -> EQEQ .
 
-    ID              reduce using rule 146 (opR -> EQEQ .)
-    INT             reduce using rule 146 (opR -> EQEQ .)
-    FLOAT           reduce using rule 146 (opR -> EQEQ .)
-    LONG            reduce using rule 146 (opR -> EQEQ .)
-    STRING_1        reduce using rule 146 (opR -> EQEQ .)
-    CHAR            reduce using rule 146 (opR -> EQEQ .)
+    ID              reduce using rule 151 (opR -> EQEQ .)
+    INT             reduce using rule 151 (opR -> EQEQ .)
+    FLOAT           reduce using rule 151 (opR -> EQEQ .)
+    LONG            reduce using rule 151 (opR -> EQEQ .)
+    STRING_1        reduce using rule 151 (opR -> EQEQ .)
+    CHAR            reduce using rule 151 (opR -> EQEQ .)
 
 
 state 90
 
-    (147) opR -> EQEQEQ .
+    (152) opR -> EQEQEQ .
 
-    ID              reduce using rule 147 (opR -> EQEQEQ .)
-    INT             reduce using rule 147 (opR -> EQEQEQ .)
-    FLOAT           reduce using rule 147 (opR -> EQEQEQ .)
-    LONG            reduce using rule 147 (opR -> EQEQEQ .)
-    STRING_1        reduce using rule 147 (opR -> EQEQEQ .)
-    CHAR            reduce using rule 147 (opR -> EQEQEQ .)
+    ID              reduce using rule 152 (opR -> EQEQEQ .)
+    INT             reduce using rule 152 (opR -> EQEQEQ .)
+    FLOAT           reduce using rule 152 (opR -> EQEQEQ .)
+    LONG            reduce using rule 152 (opR -> EQEQEQ .)
+    STRING_1        reduce using rule 152 (opR -> EQEQEQ .)
+    CHAR            reduce using rule 152 (opR -> EQEQEQ .)
 
 
 state 91
@@ -2329,39 +2336,39 @@ state 91
 
 state 92
 
-    (103) if -> IF LPAREN . condicion RPAREN LCURL lineorBreak RCURL
-    (104) if -> IF LPAREN . condicion RPAREN LCURL lineorBreak RCURL else
-    (106) condicion -> . condicionL
-    (107) condicion -> . condicionR
-    (108) condicion -> . condicionN
-    (109) condicionL -> . BOOLEAN opL BOOLEAN
-    (110) condicionL -> . ID opL ID
-    (111) condicionL -> . ID opL BOOLEAN
-    (112) condicionL -> . BOOLEAN opL ID
-    (113) condicionR -> . INT opR INT
-    (114) condicionR -> . INT opR FLOAT
-    (115) condicionR -> . INT opR LONG
-    (116) condicionR -> . INT opR ID
-    (117) condicionR -> . FLOAT opR FLOAT
-    (118) condicionR -> . FLOAT opR INT
-    (119) condicionR -> . FLOAT opR LONG
-    (120) condicionR -> . FLOAT opR ID
-    (121) condicionR -> . LONG opR LONG
-    (122) condicionR -> . LONG opR INT
-    (123) condicionR -> . LONG opR FLOAT
-    (124) condicionR -> . LONG opR ID
-    (125) condicionR -> . STRING_1 opR STRING_1
-    (126) condicionR -> . STRING_1 opR ID
-    (127) condicionR -> . CHAR opR CHAR
-    (128) condicionR -> . CHAR opR ID
-    (129) condicionR -> . ID opR ID
-    (130) condicionR -> . ID opR INT
-    (131) condicionR -> . ID opR FLOAT
-    (132) condicionR -> . ID opR LONG
-    (133) condicionR -> . ID opR STRING_1
-    (134) condicionR -> . ID opR CHAR
-    (135) condicionN -> . EXCL_WS BOOLEAN
-    (136) condicionN -> . EXCL_WS ID
+    (108) if -> IF LPAREN . condicion RPAREN LCURL lineorBreak RCURL
+    (109) if -> IF LPAREN . condicion RPAREN LCURL lineorBreak RCURL else
+    (111) condicion -> . condicionL
+    (112) condicion -> . condicionR
+    (113) condicion -> . condicionN
+    (114) condicionL -> . BOOLEAN opL BOOLEAN
+    (115) condicionL -> . ID opL ID
+    (116) condicionL -> . ID opL BOOLEAN
+    (117) condicionL -> . BOOLEAN opL ID
+    (118) condicionR -> . INT opR INT
+    (119) condicionR -> . INT opR FLOAT
+    (120) condicionR -> . INT opR LONG
+    (121) condicionR -> . INT opR ID
+    (122) condicionR -> . FLOAT opR FLOAT
+    (123) condicionR -> . FLOAT opR INT
+    (124) condicionR -> . FLOAT opR LONG
+    (125) condicionR -> . FLOAT opR ID
+    (126) condicionR -> . LONG opR LONG
+    (127) condicionR -> . LONG opR INT
+    (128) condicionR -> . LONG opR FLOAT
+    (129) condicionR -> . LONG opR ID
+    (130) condicionR -> . STRING_1 opR STRING_1
+    (131) condicionR -> . STRING_1 opR ID
+    (132) condicionR -> . CHAR opR CHAR
+    (133) condicionR -> . CHAR opR ID
+    (134) condicionR -> . ID opR ID
+    (135) condicionR -> . ID opR INT
+    (136) condicionR -> . ID opR FLOAT
+    (137) condicionR -> . ID opR LONG
+    (138) condicionR -> . ID opR STRING_1
+    (139) condicionR -> . ID opR CHAR
+    (140) condicionN -> . EXCL_WS BOOLEAN
+    (141) condicionN -> . EXCL_WS ID
 
     BOOLEAN         shift and go to state 166
     ID              shift and go to state 167
@@ -2379,8 +2386,8 @@ state 92
 
 state 93
 
-    (168) while -> WHILE LPAREN . ID opR INT RPAREN LCURL lineorBreak RCURL
-    (169) while -> WHILE LPAREN . error RPAREN LCURL lineorBreak RCURL
+    (173) while -> WHILE LPAREN . ID opR INT RPAREN LCURL lineorBreak RCURL
+    (174) while -> WHILE LPAREN . error RPAREN LCURL lineorBreak RCURL
 
     ID              shift and go to state 173
     error           shift and go to state 174
@@ -2388,10 +2395,10 @@ state 93
 
 state 94
 
-    (113) condicionR -> INT opR . INT
-    (114) condicionR -> INT opR . FLOAT
-    (115) condicionR -> INT opR . LONG
-    (116) condicionR -> INT opR . ID
+    (118) condicionR -> INT opR . INT
+    (119) condicionR -> INT opR . FLOAT
+    (120) condicionR -> INT opR . LONG
+    (121) condicionR -> INT opR . ID
 
     INT             shift and go to state 175
     FLOAT           shift and go to state 176
@@ -2401,8 +2408,8 @@ state 94
 
 state 95
 
-    (109) condicionL -> BOOLEAN opL . BOOLEAN
-    (112) condicionL -> BOOLEAN opL . ID
+    (114) condicionL -> BOOLEAN opL . BOOLEAN
+    (117) condicionL -> BOOLEAN opL . ID
 
     BOOLEAN         shift and go to state 179
     ID              shift and go to state 180
@@ -2410,10 +2417,10 @@ state 95
 
 state 96
 
-    (117) condicionR -> FLOAT opR . FLOAT
-    (118) condicionR -> FLOAT opR . INT
-    (119) condicionR -> FLOAT opR . LONG
-    (120) condicionR -> FLOAT opR . ID
+    (122) condicionR -> FLOAT opR . FLOAT
+    (123) condicionR -> FLOAT opR . INT
+    (124) condicionR -> FLOAT opR . LONG
+    (125) condicionR -> FLOAT opR . ID
 
     FLOAT           shift and go to state 181
     INT             shift and go to state 182
@@ -2423,10 +2430,10 @@ state 96
 
 state 97
 
-    (121) condicionR -> LONG opR . LONG
-    (122) condicionR -> LONG opR . INT
-    (123) condicionR -> LONG opR . FLOAT
-    (124) condicionR -> LONG opR . ID
+    (126) condicionR -> LONG opR . LONG
+    (127) condicionR -> LONG opR . INT
+    (128) condicionR -> LONG opR . FLOAT
+    (129) condicionR -> LONG opR . ID
 
     LONG            shift and go to state 185
     INT             shift and go to state 186
@@ -2436,8 +2443,8 @@ state 97
 
 state 98
 
-    (125) condicionR -> STRING_1 opR . STRING_1
-    (126) condicionR -> STRING_1 opR . ID
+    (130) condicionR -> STRING_1 opR . STRING_1
+    (131) condicionR -> STRING_1 opR . ID
 
     STRING_1        shift and go to state 189
     ID              shift and go to state 190
@@ -2445,8 +2452,8 @@ state 98
 
 state 99
 
-    (127) condicionR -> CHAR opR . CHAR
-    (128) condicionR -> CHAR opR . ID
+    (132) condicionR -> CHAR opR . CHAR
+    (133) condicionR -> CHAR opR . ID
 
     CHAR            shift and go to state 191
     ID              shift and go to state 192
@@ -2454,29 +2461,29 @@ state 99
 
 state 100
 
-    (135) condicionN -> EXCL_WS BOOLEAN .
+    (140) condicionN -> EXCL_WS BOOLEAN .
 
-    SEMICOLON       reduce using rule 135 (condicionN -> EXCL_WS BOOLEAN .)
-    LINEBREAK       reduce using rule 135 (condicionN -> EXCL_WS BOOLEAN .)
-    $end            reduce using rule 135 (condicionN -> EXCL_WS BOOLEAN .)
-    RCURL           reduce using rule 135 (condicionN -> EXCL_WS BOOLEAN .)
-    RPAREN          reduce using rule 135 (condicionN -> EXCL_WS BOOLEAN .)
+    SEMICOLON       reduce using rule 140 (condicionN -> EXCL_WS BOOLEAN .)
+    LINEBREAK       reduce using rule 140 (condicionN -> EXCL_WS BOOLEAN .)
+    $end            reduce using rule 140 (condicionN -> EXCL_WS BOOLEAN .)
+    RCURL           reduce using rule 140 (condicionN -> EXCL_WS BOOLEAN .)
+    RPAREN          reduce using rule 140 (condicionN -> EXCL_WS BOOLEAN .)
 
 
 state 101
 
-    (136) condicionN -> EXCL_WS ID .
+    (141) condicionN -> EXCL_WS ID .
 
-    SEMICOLON       reduce using rule 136 (condicionN -> EXCL_WS ID .)
-    LINEBREAK       reduce using rule 136 (condicionN -> EXCL_WS ID .)
-    $end            reduce using rule 136 (condicionN -> EXCL_WS ID .)
-    RCURL           reduce using rule 136 (condicionN -> EXCL_WS ID .)
-    RPAREN          reduce using rule 136 (condicionN -> EXCL_WS ID .)
+    SEMICOLON       reduce using rule 141 (condicionN -> EXCL_WS ID .)
+    LINEBREAK       reduce using rule 141 (condicionN -> EXCL_WS ID .)
+    $end            reduce using rule 141 (condicionN -> EXCL_WS ID .)
+    RCURL           reduce using rule 141 (condicionN -> EXCL_WS ID .)
+    RPAREN          reduce using rule 141 (condicionN -> EXCL_WS ID .)
 
 
 state 102
 
-    (150) instance_linkedlist -> LINKEDL LANGLE . tipoDato RANGLE LPAREN RPAREN
+    (155) instance_linkedlist -> LINKEDL LANGLE . tipoDato RANGLE LPAREN RPAREN
     (71) tipoDato -> . TINT
     (72) tipoDato -> . TLONG
     (73) tipoDato -> . TFLOAT
@@ -2497,7 +2504,7 @@ state 102
 
 state 103
 
-    (149) def_estruct_tipoDato -> STACK LANGLE . tipoDato RANGLE
+    (154) def_estruct_tipoDato -> STACK LANGLE . tipoDato RANGLE
     (71) tipoDato -> . TINT
     (72) tipoDato -> . TLONG
     (73) tipoDato -> . TFLOAT
@@ -2554,9 +2561,9 @@ state 104
     (26) estructurasControl -> . for
     (27) estructurasControl -> . if
     (28) estructurasControl -> . while
-    (106) condicion -> . condicionL
-    (107) condicion -> . condicionR
-    (108) condicion -> . condicionN
+    (111) condicion -> . condicionL
+    (112) condicion -> . condicionR
+    (113) condicion -> . condicionN
     (96) funcion -> . FUN ID LPAREN RPAREN LCURL lineorBreak RCURL
     (97) funcion -> . FUN ID LPAREN ID RPAREN LCURL lineorBreak RCURL
     (98) funcion -> . FUN ID LPAREN ID RPAREN LCURL RCURL
@@ -2578,50 +2585,50 @@ state 104
     (52) asignacionSimple -> . ID EQUAL valor
     (42) for -> . FOR LPAREN ID IN iterable RPAREN LCURL lineorBreak RCURL
     (43) for -> . FOR LPAREN error RPAREN LCURL lineorBreak RCURL
-    (103) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
-    (104) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
-    (168) while -> . WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
-    (169) while -> . WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
-    (109) condicionL -> . BOOLEAN opL BOOLEAN
-    (110) condicionL -> . ID opL ID
-    (111) condicionL -> . ID opL BOOLEAN
-    (112) condicionL -> . BOOLEAN opL ID
-    (113) condicionR -> . INT opR INT
-    (114) condicionR -> . INT opR FLOAT
-    (115) condicionR -> . INT opR LONG
-    (116) condicionR -> . INT opR ID
-    (117) condicionR -> . FLOAT opR FLOAT
-    (118) condicionR -> . FLOAT opR INT
-    (119) condicionR -> . FLOAT opR LONG
-    (120) condicionR -> . FLOAT opR ID
-    (121) condicionR -> . LONG opR LONG
-    (122) condicionR -> . LONG opR INT
-    (123) condicionR -> . LONG opR FLOAT
-    (124) condicionR -> . LONG opR ID
-    (125) condicionR -> . STRING_1 opR STRING_1
-    (126) condicionR -> . STRING_1 opR ID
-    (127) condicionR -> . CHAR opR CHAR
-    (128) condicionR -> . CHAR opR ID
-    (129) condicionR -> . ID opR ID
-    (130) condicionR -> . ID opR INT
-    (131) condicionR -> . ID opR FLOAT
-    (132) condicionR -> . ID opR LONG
-    (133) condicionR -> . ID opR STRING_1
-    (134) condicionR -> . ID opR CHAR
-    (135) condicionN -> . EXCL_WS BOOLEAN
-    (136) condicionN -> . EXCL_WS ID
+    (108) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
+    (109) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
+    (173) while -> . WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
+    (174) while -> . WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
+    (114) condicionL -> . BOOLEAN opL BOOLEAN
+    (115) condicionL -> . ID opL ID
+    (116) condicionL -> . ID opL BOOLEAN
+    (117) condicionL -> . BOOLEAN opL ID
+    (118) condicionR -> . INT opR INT
+    (119) condicionR -> . INT opR FLOAT
+    (120) condicionR -> . INT opR LONG
+    (121) condicionR -> . INT opR ID
+    (122) condicionR -> . FLOAT opR FLOAT
+    (123) condicionR -> . FLOAT opR INT
+    (124) condicionR -> . FLOAT opR LONG
+    (125) condicionR -> . FLOAT opR ID
+    (126) condicionR -> . LONG opR LONG
+    (127) condicionR -> . LONG opR INT
+    (128) condicionR -> . LONG opR FLOAT
+    (129) condicionR -> . LONG opR ID
+    (130) condicionR -> . STRING_1 opR STRING_1
+    (131) condicionR -> . STRING_1 opR ID
+    (132) condicionR -> . CHAR opR CHAR
+    (133) condicionR -> . CHAR opR ID
+    (134) condicionR -> . ID opR ID
+    (135) condicionR -> . ID opR INT
+    (136) condicionR -> . ID opR FLOAT
+    (137) condicionR -> . ID opR LONG
+    (138) condicionR -> . ID opR STRING_1
+    (139) condicionR -> . ID opR CHAR
+    (140) condicionN -> . EXCL_WS BOOLEAN
+    (141) condicionN -> . EXCL_WS ID
     (41) queue -> . keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (29) queue_operations -> . queue_add
     (30) queue_operations -> . queue_peek
     (31) queue_operations -> . queue_remove
     (32) queue_operations -> . queue_poll
-    (148) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
-    (151) stack_actuar -> . ID DOT stack_funciones
-    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
-    (149) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
-    (170) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
-    (171) lsimplem -> . ID DOT Lmetod
-    (172) lcomp -> . ID DOT Cmetod
+    (153) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
+    (156) stack_actuar -> . ID DOT stack_funciones
+    (155) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
+    (154) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
+    (175) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (176) lsimplem -> . ID DOT Lmetod
+    (177) lcomp -> . ID DOT Cmetod
     (89) factor -> . INT
     (90) factor -> . FLOAT
     (91) factor -> . LONG
@@ -2873,10 +2880,10 @@ state 115
 state 116
 
     (41) queue -> keywordVariables ID DOTS . QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
-    (148) stack -> keywordVariables ID DOTS . def_estruct_tipoDato EQUAL instance_linkedlist
-    (170) lista -> keywordVariables ID DOTS . LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (153) stack -> keywordVariables ID DOTS . def_estruct_tipoDato EQUAL instance_linkedlist
+    (175) lista -> keywordVariables ID DOTS . LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
     (51) asignacionSimple -> ID DOTS . tipoDatoEspecifico
-    (149) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
+    (154) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
     (53) tipoDatoEspecifico -> . tipoEntero
     (54) tipoDatoEspecifico -> . tipoLong
     (55) tipoDatoEspecifico -> . tipoFloat
@@ -3080,120 +3087,120 @@ state 132
 
 state 133
 
-    (110) condicionL -> ID opL ID .
+    (115) condicionL -> ID opL ID .
 
-    SEMICOLON       reduce using rule 110 (condicionL -> ID opL ID .)
-    LINEBREAK       reduce using rule 110 (condicionL -> ID opL ID .)
-    $end            reduce using rule 110 (condicionL -> ID opL ID .)
-    RCURL           reduce using rule 110 (condicionL -> ID opL ID .)
-    RPAREN          reduce using rule 110 (condicionL -> ID opL ID .)
+    SEMICOLON       reduce using rule 115 (condicionL -> ID opL ID .)
+    LINEBREAK       reduce using rule 115 (condicionL -> ID opL ID .)
+    $end            reduce using rule 115 (condicionL -> ID opL ID .)
+    RCURL           reduce using rule 115 (condicionL -> ID opL ID .)
+    RPAREN          reduce using rule 115 (condicionL -> ID opL ID .)
 
 
 state 134
 
-    (111) condicionL -> ID opL BOOLEAN .
+    (116) condicionL -> ID opL BOOLEAN .
 
-    SEMICOLON       reduce using rule 111 (condicionL -> ID opL BOOLEAN .)
-    LINEBREAK       reduce using rule 111 (condicionL -> ID opL BOOLEAN .)
-    $end            reduce using rule 111 (condicionL -> ID opL BOOLEAN .)
-    RCURL           reduce using rule 111 (condicionL -> ID opL BOOLEAN .)
-    RPAREN          reduce using rule 111 (condicionL -> ID opL BOOLEAN .)
+    SEMICOLON       reduce using rule 116 (condicionL -> ID opL BOOLEAN .)
+    LINEBREAK       reduce using rule 116 (condicionL -> ID opL BOOLEAN .)
+    $end            reduce using rule 116 (condicionL -> ID opL BOOLEAN .)
+    RCURL           reduce using rule 116 (condicionL -> ID opL BOOLEAN .)
+    RPAREN          reduce using rule 116 (condicionL -> ID opL BOOLEAN .)
 
 
 state 135
 
-    (129) condicionR -> ID opR ID .
+    (134) condicionR -> ID opR ID .
 
-    SEMICOLON       reduce using rule 129 (condicionR -> ID opR ID .)
-    LINEBREAK       reduce using rule 129 (condicionR -> ID opR ID .)
-    $end            reduce using rule 129 (condicionR -> ID opR ID .)
-    RCURL           reduce using rule 129 (condicionR -> ID opR ID .)
-    RPAREN          reduce using rule 129 (condicionR -> ID opR ID .)
+    SEMICOLON       reduce using rule 134 (condicionR -> ID opR ID .)
+    LINEBREAK       reduce using rule 134 (condicionR -> ID opR ID .)
+    $end            reduce using rule 134 (condicionR -> ID opR ID .)
+    RCURL           reduce using rule 134 (condicionR -> ID opR ID .)
+    RPAREN          reduce using rule 134 (condicionR -> ID opR ID .)
 
 
 state 136
 
-    (130) condicionR -> ID opR INT .
+    (135) condicionR -> ID opR INT .
 
-    SEMICOLON       reduce using rule 130 (condicionR -> ID opR INT .)
-    LINEBREAK       reduce using rule 130 (condicionR -> ID opR INT .)
-    $end            reduce using rule 130 (condicionR -> ID opR INT .)
-    RCURL           reduce using rule 130 (condicionR -> ID opR INT .)
-    RPAREN          reduce using rule 130 (condicionR -> ID opR INT .)
+    SEMICOLON       reduce using rule 135 (condicionR -> ID opR INT .)
+    LINEBREAK       reduce using rule 135 (condicionR -> ID opR INT .)
+    $end            reduce using rule 135 (condicionR -> ID opR INT .)
+    RCURL           reduce using rule 135 (condicionR -> ID opR INT .)
+    RPAREN          reduce using rule 135 (condicionR -> ID opR INT .)
 
 
 state 137
 
-    (131) condicionR -> ID opR FLOAT .
+    (136) condicionR -> ID opR FLOAT .
 
-    SEMICOLON       reduce using rule 131 (condicionR -> ID opR FLOAT .)
-    LINEBREAK       reduce using rule 131 (condicionR -> ID opR FLOAT .)
-    $end            reduce using rule 131 (condicionR -> ID opR FLOAT .)
-    RCURL           reduce using rule 131 (condicionR -> ID opR FLOAT .)
-    RPAREN          reduce using rule 131 (condicionR -> ID opR FLOAT .)
+    SEMICOLON       reduce using rule 136 (condicionR -> ID opR FLOAT .)
+    LINEBREAK       reduce using rule 136 (condicionR -> ID opR FLOAT .)
+    $end            reduce using rule 136 (condicionR -> ID opR FLOAT .)
+    RCURL           reduce using rule 136 (condicionR -> ID opR FLOAT .)
+    RPAREN          reduce using rule 136 (condicionR -> ID opR FLOAT .)
 
 
 state 138
 
-    (132) condicionR -> ID opR LONG .
+    (137) condicionR -> ID opR LONG .
 
-    SEMICOLON       reduce using rule 132 (condicionR -> ID opR LONG .)
-    LINEBREAK       reduce using rule 132 (condicionR -> ID opR LONG .)
-    $end            reduce using rule 132 (condicionR -> ID opR LONG .)
-    RCURL           reduce using rule 132 (condicionR -> ID opR LONG .)
-    RPAREN          reduce using rule 132 (condicionR -> ID opR LONG .)
+    SEMICOLON       reduce using rule 137 (condicionR -> ID opR LONG .)
+    LINEBREAK       reduce using rule 137 (condicionR -> ID opR LONG .)
+    $end            reduce using rule 137 (condicionR -> ID opR LONG .)
+    RCURL           reduce using rule 137 (condicionR -> ID opR LONG .)
+    RPAREN          reduce using rule 137 (condicionR -> ID opR LONG .)
 
 
 state 139
 
-    (133) condicionR -> ID opR STRING_1 .
+    (138) condicionR -> ID opR STRING_1 .
 
-    SEMICOLON       reduce using rule 133 (condicionR -> ID opR STRING_1 .)
-    LINEBREAK       reduce using rule 133 (condicionR -> ID opR STRING_1 .)
-    $end            reduce using rule 133 (condicionR -> ID opR STRING_1 .)
-    RCURL           reduce using rule 133 (condicionR -> ID opR STRING_1 .)
-    RPAREN          reduce using rule 133 (condicionR -> ID opR STRING_1 .)
+    SEMICOLON       reduce using rule 138 (condicionR -> ID opR STRING_1 .)
+    LINEBREAK       reduce using rule 138 (condicionR -> ID opR STRING_1 .)
+    $end            reduce using rule 138 (condicionR -> ID opR STRING_1 .)
+    RCURL           reduce using rule 138 (condicionR -> ID opR STRING_1 .)
+    RPAREN          reduce using rule 138 (condicionR -> ID opR STRING_1 .)
 
 
 state 140
 
-    (134) condicionR -> ID opR CHAR .
+    (139) condicionR -> ID opR CHAR .
 
-    SEMICOLON       reduce using rule 134 (condicionR -> ID opR CHAR .)
-    LINEBREAK       reduce using rule 134 (condicionR -> ID opR CHAR .)
-    $end            reduce using rule 134 (condicionR -> ID opR CHAR .)
-    RCURL           reduce using rule 134 (condicionR -> ID opR CHAR .)
-    RPAREN          reduce using rule 134 (condicionR -> ID opR CHAR .)
+    SEMICOLON       reduce using rule 139 (condicionR -> ID opR CHAR .)
+    LINEBREAK       reduce using rule 139 (condicionR -> ID opR CHAR .)
+    $end            reduce using rule 139 (condicionR -> ID opR CHAR .)
+    RCURL           reduce using rule 139 (condicionR -> ID opR CHAR .)
+    RPAREN          reduce using rule 139 (condicionR -> ID opR CHAR .)
 
 
 state 141
 
-    (151) stack_actuar -> ID DOT stack_funciones .
+    (156) stack_actuar -> ID DOT stack_funciones .
 
-    SEMICOLON       reduce using rule 151 (stack_actuar -> ID DOT stack_funciones .)
-    LINEBREAK       reduce using rule 151 (stack_actuar -> ID DOT stack_funciones .)
-    $end            reduce using rule 151 (stack_actuar -> ID DOT stack_funciones .)
-    RCURL           reduce using rule 151 (stack_actuar -> ID DOT stack_funciones .)
+    SEMICOLON       reduce using rule 156 (stack_actuar -> ID DOT stack_funciones .)
+    LINEBREAK       reduce using rule 156 (stack_actuar -> ID DOT stack_funciones .)
+    $end            reduce using rule 156 (stack_actuar -> ID DOT stack_funciones .)
+    RCURL           reduce using rule 156 (stack_actuar -> ID DOT stack_funciones .)
 
 
 state 142
 
-    (171) lsimplem -> ID DOT Lmetod .
+    (176) lsimplem -> ID DOT Lmetod .
 
-    SEMICOLON       reduce using rule 171 (lsimplem -> ID DOT Lmetod .)
-    LINEBREAK       reduce using rule 171 (lsimplem -> ID DOT Lmetod .)
-    $end            reduce using rule 171 (lsimplem -> ID DOT Lmetod .)
-    RCURL           reduce using rule 171 (lsimplem -> ID DOT Lmetod .)
+    SEMICOLON       reduce using rule 176 (lsimplem -> ID DOT Lmetod .)
+    LINEBREAK       reduce using rule 176 (lsimplem -> ID DOT Lmetod .)
+    $end            reduce using rule 176 (lsimplem -> ID DOT Lmetod .)
+    RCURL           reduce using rule 176 (lsimplem -> ID DOT Lmetod .)
 
 
 state 143
 
-    (172) lcomp -> ID DOT Cmetod .
+    (177) lcomp -> ID DOT Cmetod .
 
-    SEMICOLON       reduce using rule 172 (lcomp -> ID DOT Cmetod .)
-    LINEBREAK       reduce using rule 172 (lcomp -> ID DOT Cmetod .)
-    $end            reduce using rule 172 (lcomp -> ID DOT Cmetod .)
-    RCURL           reduce using rule 172 (lcomp -> ID DOT Cmetod .)
+    SEMICOLON       reduce using rule 177 (lcomp -> ID DOT Cmetod .)
+    LINEBREAK       reduce using rule 177 (lcomp -> ID DOT Cmetod .)
+    $end            reduce using rule 177 (lcomp -> ID DOT Cmetod .)
+    RCURL           reduce using rule 177 (lcomp -> ID DOT Cmetod .)
 
 
 state 144
@@ -3206,7 +3213,7 @@ state 144
 state 145
 
     (34) queue_peek -> ID DOT PEEK . LPAREN RPAREN
-    (160) stack_peek -> PEEK . LPAREN RPAREN
+    (165) stack_peek -> PEEK . LPAREN RPAREN
 
     LPAREN          shift and go to state 220
 
@@ -3227,120 +3234,120 @@ state 147
 
 state 148
 
-    (152) stack_funciones -> stack_isEmpty .
+    (157) stack_funciones -> stack_isEmpty .
 
-    SEMICOLON       reduce using rule 152 (stack_funciones -> stack_isEmpty .)
-    LINEBREAK       reduce using rule 152 (stack_funciones -> stack_isEmpty .)
-    $end            reduce using rule 152 (stack_funciones -> stack_isEmpty .)
-    RCURL           reduce using rule 152 (stack_funciones -> stack_isEmpty .)
+    SEMICOLON       reduce using rule 157 (stack_funciones -> stack_isEmpty .)
+    LINEBREAK       reduce using rule 157 (stack_funciones -> stack_isEmpty .)
+    $end            reduce using rule 157 (stack_funciones -> stack_isEmpty .)
+    RCURL           reduce using rule 157 (stack_funciones -> stack_isEmpty .)
 
 
 state 149
 
-    (153) stack_funciones -> stack_push .
+    (158) stack_funciones -> stack_push .
 
-    SEMICOLON       reduce using rule 153 (stack_funciones -> stack_push .)
-    LINEBREAK       reduce using rule 153 (stack_funciones -> stack_push .)
-    $end            reduce using rule 153 (stack_funciones -> stack_push .)
-    RCURL           reduce using rule 153 (stack_funciones -> stack_push .)
+    SEMICOLON       reduce using rule 158 (stack_funciones -> stack_push .)
+    LINEBREAK       reduce using rule 158 (stack_funciones -> stack_push .)
+    $end            reduce using rule 158 (stack_funciones -> stack_push .)
+    RCURL           reduce using rule 158 (stack_funciones -> stack_push .)
 
 
 state 150
 
-    (154) stack_funciones -> stack_pop .
+    (159) stack_funciones -> stack_pop .
 
-    SEMICOLON       reduce using rule 154 (stack_funciones -> stack_pop .)
-    LINEBREAK       reduce using rule 154 (stack_funciones -> stack_pop .)
-    $end            reduce using rule 154 (stack_funciones -> stack_pop .)
-    RCURL           reduce using rule 154 (stack_funciones -> stack_pop .)
+    SEMICOLON       reduce using rule 159 (stack_funciones -> stack_pop .)
+    LINEBREAK       reduce using rule 159 (stack_funciones -> stack_pop .)
+    $end            reduce using rule 159 (stack_funciones -> stack_pop .)
+    RCURL           reduce using rule 159 (stack_funciones -> stack_pop .)
 
 
 state 151
 
-    (155) stack_funciones -> stack_peek .
+    (160) stack_funciones -> stack_peek .
 
-    SEMICOLON       reduce using rule 155 (stack_funciones -> stack_peek .)
-    LINEBREAK       reduce using rule 155 (stack_funciones -> stack_peek .)
-    $end            reduce using rule 155 (stack_funciones -> stack_peek .)
-    RCURL           reduce using rule 155 (stack_funciones -> stack_peek .)
+    SEMICOLON       reduce using rule 160 (stack_funciones -> stack_peek .)
+    LINEBREAK       reduce using rule 160 (stack_funciones -> stack_peek .)
+    $end            reduce using rule 160 (stack_funciones -> stack_peek .)
+    RCURL           reduce using rule 160 (stack_funciones -> stack_peek .)
 
 
 state 152
 
-    (156) stack_funciones -> stack_size .
+    (161) stack_funciones -> stack_size .
 
-    SEMICOLON       reduce using rule 156 (stack_funciones -> stack_size .)
-    LINEBREAK       reduce using rule 156 (stack_funciones -> stack_size .)
-    $end            reduce using rule 156 (stack_funciones -> stack_size .)
-    RCURL           reduce using rule 156 (stack_funciones -> stack_size .)
+    SEMICOLON       reduce using rule 161 (stack_funciones -> stack_size .)
+    LINEBREAK       reduce using rule 161 (stack_funciones -> stack_size .)
+    $end            reduce using rule 161 (stack_funciones -> stack_size .)
+    RCURL           reduce using rule 161 (stack_funciones -> stack_size .)
 
 
 state 153
 
-    (162) Lmetod -> FIRST . LPAREN RPAREN
+    (167) Lmetod -> FIRST . LPAREN RPAREN
 
     LPAREN          shift and go to state 223
 
 
 state 154
 
-    (163) Lmetod -> LAST . LPAREN RPAREN
+    (168) Lmetod -> LAST . LPAREN RPAREN
 
     LPAREN          shift and go to state 224
 
 
 state 155
 
-    (164) Lmetod -> REMOVEL . LPAREN RPAREN
+    (169) Lmetod -> REMOVEL . LPAREN RPAREN
 
     LPAREN          shift and go to state 225
 
 
 state 156
 
-    (165) Cmetod -> APPEND . LPAREN OBJECT RPAREN
+    (170) Cmetod -> APPEND . LPAREN OBJECT RPAREN
 
     LPAREN          shift and go to state 226
 
 
 state 157
 
-    (166) Cmetod -> REMOVEN . LPAREN OBJECT RPAREN
+    (171) Cmetod -> REMOVEN . LPAREN OBJECT RPAREN
 
     LPAREN          shift and go to state 227
 
 
 state 158
 
-    (167) Cmetod -> REMOVEI . LPAREN TINT RPAREN
+    (172) Cmetod -> REMOVEI . LPAREN TINT RPAREN
 
     LPAREN          shift and go to state 228
 
 
 state 159
 
-    (157) stack_isEmpty -> ISEMPTY . LPAREN RPAREN
+    (162) stack_isEmpty -> ISEMPTY . LPAREN RPAREN
 
     LPAREN          shift and go to state 229
 
 
 state 160
 
-    (159) stack_push -> PUSH . LPAREN factor RPAREN
+    (164) stack_push -> PUSH . LPAREN factor RPAREN
 
     LPAREN          shift and go to state 230
 
 
 state 161
 
-    (158) stack_pop -> POP . LPAREN RPAREN
+    (163) stack_pop -> POP . LPAREN RPAREN
 
     LPAREN          shift and go to state 231
 
 
 state 162
 
-    (161) stack_size -> SIZE . LPAREN RPAREN
+    (166) stack_size -> SIZE . LPAREN RPAREN
 
     LPAREN          shift and go to state 232
 
@@ -3361,18 +3368,18 @@ state 164
 
 state 165
 
-    (103) if -> IF LPAREN condicion . RPAREN LCURL lineorBreak RCURL
-    (104) if -> IF LPAREN condicion . RPAREN LCURL lineorBreak RCURL else
+    (108) if -> IF LPAREN condicion . RPAREN LCURL lineorBreak RCURL
+    (109) if -> IF LPAREN condicion . RPAREN LCURL lineorBreak RCURL else
 
     RPAREN          shift and go to state 235
 
 
 state 166
 
-    (109) condicionL -> BOOLEAN . opL BOOLEAN
-    (112) condicionL -> BOOLEAN . opL ID
-    (137) opL -> . CONJ
-    (138) opL -> . DISJ
+    (114) condicionL -> BOOLEAN . opL BOOLEAN
+    (117) condicionL -> BOOLEAN . opL ID
+    (142) opL -> . CONJ
+    (143) opL -> . DISJ
 
     CONJ            shift and go to state 80
     DISJ            shift and go to state 81
@@ -3381,25 +3388,25 @@ state 166
 
 state 167
 
-    (110) condicionL -> ID . opL ID
-    (111) condicionL -> ID . opL BOOLEAN
-    (129) condicionR -> ID . opR ID
-    (130) condicionR -> ID . opR INT
-    (131) condicionR -> ID . opR FLOAT
-    (132) condicionR -> ID . opR LONG
-    (133) condicionR -> ID . opR STRING_1
-    (134) condicionR -> ID . opR CHAR
-    (137) opL -> . CONJ
-    (138) opL -> . DISJ
-    (139) opR -> . LANGLE
-    (140) opR -> . RANGLE
-    (141) opR -> . LE
-    (142) opR -> . GE
-    (143) opR -> . EXCL_EQ
-    (144) opR -> . EXCL_EQEQ
-    (145) opR -> . AS_SAFE
-    (146) opR -> . EQEQ
-    (147) opR -> . EQEQEQ
+    (115) condicionL -> ID . opL ID
+    (116) condicionL -> ID . opL BOOLEAN
+    (134) condicionR -> ID . opR ID
+    (135) condicionR -> ID . opR INT
+    (136) condicionR -> ID . opR FLOAT
+    (137) condicionR -> ID . opR LONG
+    (138) condicionR -> ID . opR STRING_1
+    (139) condicionR -> ID . opR CHAR
+    (142) opL -> . CONJ
+    (143) opL -> . DISJ
+    (144) opR -> . LANGLE
+    (145) opR -> . RANGLE
+    (146) opR -> . LE
+    (147) opR -> . GE
+    (148) opR -> . EXCL_EQ
+    (149) opR -> . EXCL_EQEQ
+    (150) opR -> . AS_SAFE
+    (151) opR -> . EQEQ
+    (152) opR -> . EQEQEQ
 
     CONJ            shift and go to state 80
     DISJ            shift and go to state 81
@@ -3418,19 +3425,19 @@ state 167
 
 state 168
 
-    (113) condicionR -> INT . opR INT
-    (114) condicionR -> INT . opR FLOAT
-    (115) condicionR -> INT . opR LONG
-    (116) condicionR -> INT . opR ID
-    (139) opR -> . LANGLE
-    (140) opR -> . RANGLE
-    (141) opR -> . LE
-    (142) opR -> . GE
-    (143) opR -> . EXCL_EQ
-    (144) opR -> . EXCL_EQEQ
-    (145) opR -> . AS_SAFE
-    (146) opR -> . EQEQ
-    (147) opR -> . EQEQEQ
+    (118) condicionR -> INT . opR INT
+    (119) condicionR -> INT . opR FLOAT
+    (120) condicionR -> INT . opR LONG
+    (121) condicionR -> INT . opR ID
+    (144) opR -> . LANGLE
+    (145) opR -> . RANGLE
+    (146) opR -> . LE
+    (147) opR -> . GE
+    (148) opR -> . EXCL_EQ
+    (149) opR -> . EXCL_EQEQ
+    (150) opR -> . AS_SAFE
+    (151) opR -> . EQEQ
+    (152) opR -> . EQEQEQ
 
     LANGLE          shift and go to state 82
     RANGLE          shift and go to state 83
@@ -3446,19 +3453,19 @@ state 168
 
 state 169
 
-    (117) condicionR -> FLOAT . opR FLOAT
-    (118) condicionR -> FLOAT . opR INT
-    (119) condicionR -> FLOAT . opR LONG
-    (120) condicionR -> FLOAT . opR ID
-    (139) opR -> . LANGLE
-    (140) opR -> . RANGLE
-    (141) opR -> . LE
-    (142) opR -> . GE
-    (143) opR -> . EXCL_EQ
-    (144) opR -> . EXCL_EQEQ
-    (145) opR -> . AS_SAFE
-    (146) opR -> . EQEQ
-    (147) opR -> . EQEQEQ
+    (122) condicionR -> FLOAT . opR FLOAT
+    (123) condicionR -> FLOAT . opR INT
+    (124) condicionR -> FLOAT . opR LONG
+    (125) condicionR -> FLOAT . opR ID
+    (144) opR -> . LANGLE
+    (145) opR -> . RANGLE
+    (146) opR -> . LE
+    (147) opR -> . GE
+    (148) opR -> . EXCL_EQ
+    (149) opR -> . EXCL_EQEQ
+    (150) opR -> . AS_SAFE
+    (151) opR -> . EQEQ
+    (152) opR -> . EQEQEQ
 
     LANGLE          shift and go to state 82
     RANGLE          shift and go to state 83
@@ -3474,19 +3481,19 @@ state 169
 
 state 170
 
-    (121) condicionR -> LONG . opR LONG
-    (122) condicionR -> LONG . opR INT
-    (123) condicionR -> LONG . opR FLOAT
-    (124) condicionR -> LONG . opR ID
-    (139) opR -> . LANGLE
-    (140) opR -> . RANGLE
-    (141) opR -> . LE
-    (142) opR -> . GE
-    (143) opR -> . EXCL_EQ
-    (144) opR -> . EXCL_EQEQ
-    (145) opR -> . AS_SAFE
-    (146) opR -> . EQEQ
-    (147) opR -> . EQEQEQ
+    (126) condicionR -> LONG . opR LONG
+    (127) condicionR -> LONG . opR INT
+    (128) condicionR -> LONG . opR FLOAT
+    (129) condicionR -> LONG . opR ID
+    (144) opR -> . LANGLE
+    (145) opR -> . RANGLE
+    (146) opR -> . LE
+    (147) opR -> . GE
+    (148) opR -> . EXCL_EQ
+    (149) opR -> . EXCL_EQEQ
+    (150) opR -> . AS_SAFE
+    (151) opR -> . EQEQ
+    (152) opR -> . EQEQEQ
 
     LANGLE          shift and go to state 82
     RANGLE          shift and go to state 83
@@ -3502,17 +3509,17 @@ state 170
 
 state 171
 
-    (125) condicionR -> STRING_1 . opR STRING_1
-    (126) condicionR -> STRING_1 . opR ID
-    (139) opR -> . LANGLE
-    (140) opR -> . RANGLE
-    (141) opR -> . LE
-    (142) opR -> . GE
-    (143) opR -> . EXCL_EQ
-    (144) opR -> . EXCL_EQEQ
-    (145) opR -> . AS_SAFE
-    (146) opR -> . EQEQ
-    (147) opR -> . EQEQEQ
+    (130) condicionR -> STRING_1 . opR STRING_1
+    (131) condicionR -> STRING_1 . opR ID
+    (144) opR -> . LANGLE
+    (145) opR -> . RANGLE
+    (146) opR -> . LE
+    (147) opR -> . GE
+    (148) opR -> . EXCL_EQ
+    (149) opR -> . EXCL_EQEQ
+    (150) opR -> . AS_SAFE
+    (151) opR -> . EQEQ
+    (152) opR -> . EQEQEQ
 
     LANGLE          shift and go to state 82
     RANGLE          shift and go to state 83
@@ -3528,17 +3535,17 @@ state 171
 
 state 172
 
-    (127) condicionR -> CHAR . opR CHAR
-    (128) condicionR -> CHAR . opR ID
-    (139) opR -> . LANGLE
-    (140) opR -> . RANGLE
-    (141) opR -> . LE
-    (142) opR -> . GE
-    (143) opR -> . EXCL_EQ
-    (144) opR -> . EXCL_EQEQ
-    (145) opR -> . AS_SAFE
-    (146) opR -> . EQEQ
-    (147) opR -> . EQEQEQ
+    (132) condicionR -> CHAR . opR CHAR
+    (133) condicionR -> CHAR . opR ID
+    (144) opR -> . LANGLE
+    (145) opR -> . RANGLE
+    (146) opR -> . LE
+    (147) opR -> . GE
+    (148) opR -> . EXCL_EQ
+    (149) opR -> . EXCL_EQEQ
+    (150) opR -> . AS_SAFE
+    (151) opR -> . EQEQ
+    (152) opR -> . EQEQEQ
 
     LANGLE          shift and go to state 82
     RANGLE          shift and go to state 83
@@ -3554,16 +3561,16 @@ state 172
 
 state 173
 
-    (168) while -> WHILE LPAREN ID . opR INT RPAREN LCURL lineorBreak RCURL
-    (139) opR -> . LANGLE
-    (140) opR -> . RANGLE
-    (141) opR -> . LE
-    (142) opR -> . GE
-    (143) opR -> . EXCL_EQ
-    (144) opR -> . EXCL_EQEQ
-    (145) opR -> . AS_SAFE
-    (146) opR -> . EQEQ
-    (147) opR -> . EQEQEQ
+    (173) while -> WHILE LPAREN ID . opR INT RPAREN LCURL lineorBreak RCURL
+    (144) opR -> . LANGLE
+    (145) opR -> . RANGLE
+    (146) opR -> . LE
+    (147) opR -> . GE
+    (148) opR -> . EXCL_EQ
+    (149) opR -> . EXCL_EQEQ
+    (150) opR -> . AS_SAFE
+    (151) opR -> . EQEQ
+    (152) opR -> . EQEQEQ
 
     LANGLE          shift and go to state 82
     RANGLE          shift and go to state 83
@@ -3579,212 +3586,212 @@ state 173
 
 state 174
 
-    (169) while -> WHILE LPAREN error . RPAREN LCURL lineorBreak RCURL
+    (174) while -> WHILE LPAREN error . RPAREN LCURL lineorBreak RCURL
 
     RPAREN          shift and go to state 237
 
 
 state 175
 
-    (113) condicionR -> INT opR INT .
+    (118) condicionR -> INT opR INT .
 
-    SEMICOLON       reduce using rule 113 (condicionR -> INT opR INT .)
-    LINEBREAK       reduce using rule 113 (condicionR -> INT opR INT .)
-    $end            reduce using rule 113 (condicionR -> INT opR INT .)
-    RCURL           reduce using rule 113 (condicionR -> INT opR INT .)
-    RPAREN          reduce using rule 113 (condicionR -> INT opR INT .)
+    SEMICOLON       reduce using rule 118 (condicionR -> INT opR INT .)
+    LINEBREAK       reduce using rule 118 (condicionR -> INT opR INT .)
+    $end            reduce using rule 118 (condicionR -> INT opR INT .)
+    RCURL           reduce using rule 118 (condicionR -> INT opR INT .)
+    RPAREN          reduce using rule 118 (condicionR -> INT opR INT .)
 
 
 state 176
 
-    (114) condicionR -> INT opR FLOAT .
+    (119) condicionR -> INT opR FLOAT .
 
-    SEMICOLON       reduce using rule 114 (condicionR -> INT opR FLOAT .)
-    LINEBREAK       reduce using rule 114 (condicionR -> INT opR FLOAT .)
-    $end            reduce using rule 114 (condicionR -> INT opR FLOAT .)
-    RCURL           reduce using rule 114 (condicionR -> INT opR FLOAT .)
-    RPAREN          reduce using rule 114 (condicionR -> INT opR FLOAT .)
+    SEMICOLON       reduce using rule 119 (condicionR -> INT opR FLOAT .)
+    LINEBREAK       reduce using rule 119 (condicionR -> INT opR FLOAT .)
+    $end            reduce using rule 119 (condicionR -> INT opR FLOAT .)
+    RCURL           reduce using rule 119 (condicionR -> INT opR FLOAT .)
+    RPAREN          reduce using rule 119 (condicionR -> INT opR FLOAT .)
 
 
 state 177
 
-    (115) condicionR -> INT opR LONG .
+    (120) condicionR -> INT opR LONG .
 
-    SEMICOLON       reduce using rule 115 (condicionR -> INT opR LONG .)
-    LINEBREAK       reduce using rule 115 (condicionR -> INT opR LONG .)
-    $end            reduce using rule 115 (condicionR -> INT opR LONG .)
-    RCURL           reduce using rule 115 (condicionR -> INT opR LONG .)
-    RPAREN          reduce using rule 115 (condicionR -> INT opR LONG .)
+    SEMICOLON       reduce using rule 120 (condicionR -> INT opR LONG .)
+    LINEBREAK       reduce using rule 120 (condicionR -> INT opR LONG .)
+    $end            reduce using rule 120 (condicionR -> INT opR LONG .)
+    RCURL           reduce using rule 120 (condicionR -> INT opR LONG .)
+    RPAREN          reduce using rule 120 (condicionR -> INT opR LONG .)
 
 
 state 178
 
-    (116) condicionR -> INT opR ID .
+    (121) condicionR -> INT opR ID .
 
-    SEMICOLON       reduce using rule 116 (condicionR -> INT opR ID .)
-    LINEBREAK       reduce using rule 116 (condicionR -> INT opR ID .)
-    $end            reduce using rule 116 (condicionR -> INT opR ID .)
-    RCURL           reduce using rule 116 (condicionR -> INT opR ID .)
-    RPAREN          reduce using rule 116 (condicionR -> INT opR ID .)
+    SEMICOLON       reduce using rule 121 (condicionR -> INT opR ID .)
+    LINEBREAK       reduce using rule 121 (condicionR -> INT opR ID .)
+    $end            reduce using rule 121 (condicionR -> INT opR ID .)
+    RCURL           reduce using rule 121 (condicionR -> INT opR ID .)
+    RPAREN          reduce using rule 121 (condicionR -> INT opR ID .)
 
 
 state 179
 
-    (109) condicionL -> BOOLEAN opL BOOLEAN .
+    (114) condicionL -> BOOLEAN opL BOOLEAN .
 
-    SEMICOLON       reduce using rule 109 (condicionL -> BOOLEAN opL BOOLEAN .)
-    LINEBREAK       reduce using rule 109 (condicionL -> BOOLEAN opL BOOLEAN .)
-    $end            reduce using rule 109 (condicionL -> BOOLEAN opL BOOLEAN .)
-    RCURL           reduce using rule 109 (condicionL -> BOOLEAN opL BOOLEAN .)
-    RPAREN          reduce using rule 109 (condicionL -> BOOLEAN opL BOOLEAN .)
+    SEMICOLON       reduce using rule 114 (condicionL -> BOOLEAN opL BOOLEAN .)
+    LINEBREAK       reduce using rule 114 (condicionL -> BOOLEAN opL BOOLEAN .)
+    $end            reduce using rule 114 (condicionL -> BOOLEAN opL BOOLEAN .)
+    RCURL           reduce using rule 114 (condicionL -> BOOLEAN opL BOOLEAN .)
+    RPAREN          reduce using rule 114 (condicionL -> BOOLEAN opL BOOLEAN .)
 
 
 state 180
 
-    (112) condicionL -> BOOLEAN opL ID .
+    (117) condicionL -> BOOLEAN opL ID .
 
-    SEMICOLON       reduce using rule 112 (condicionL -> BOOLEAN opL ID .)
-    LINEBREAK       reduce using rule 112 (condicionL -> BOOLEAN opL ID .)
-    $end            reduce using rule 112 (condicionL -> BOOLEAN opL ID .)
-    RCURL           reduce using rule 112 (condicionL -> BOOLEAN opL ID .)
-    RPAREN          reduce using rule 112 (condicionL -> BOOLEAN opL ID .)
+    SEMICOLON       reduce using rule 117 (condicionL -> BOOLEAN opL ID .)
+    LINEBREAK       reduce using rule 117 (condicionL -> BOOLEAN opL ID .)
+    $end            reduce using rule 117 (condicionL -> BOOLEAN opL ID .)
+    RCURL           reduce using rule 117 (condicionL -> BOOLEAN opL ID .)
+    RPAREN          reduce using rule 117 (condicionL -> BOOLEAN opL ID .)
 
 
 state 181
 
-    (117) condicionR -> FLOAT opR FLOAT .
+    (122) condicionR -> FLOAT opR FLOAT .
 
-    SEMICOLON       reduce using rule 117 (condicionR -> FLOAT opR FLOAT .)
-    LINEBREAK       reduce using rule 117 (condicionR -> FLOAT opR FLOAT .)
-    $end            reduce using rule 117 (condicionR -> FLOAT opR FLOAT .)
-    RCURL           reduce using rule 117 (condicionR -> FLOAT opR FLOAT .)
-    RPAREN          reduce using rule 117 (condicionR -> FLOAT opR FLOAT .)
+    SEMICOLON       reduce using rule 122 (condicionR -> FLOAT opR FLOAT .)
+    LINEBREAK       reduce using rule 122 (condicionR -> FLOAT opR FLOAT .)
+    $end            reduce using rule 122 (condicionR -> FLOAT opR FLOAT .)
+    RCURL           reduce using rule 122 (condicionR -> FLOAT opR FLOAT .)
+    RPAREN          reduce using rule 122 (condicionR -> FLOAT opR FLOAT .)
 
 
 state 182
 
-    (118) condicionR -> FLOAT opR INT .
+    (123) condicionR -> FLOAT opR INT .
 
-    SEMICOLON       reduce using rule 118 (condicionR -> FLOAT opR INT .)
-    LINEBREAK       reduce using rule 118 (condicionR -> FLOAT opR INT .)
-    $end            reduce using rule 118 (condicionR -> FLOAT opR INT .)
-    RCURL           reduce using rule 118 (condicionR -> FLOAT opR INT .)
-    RPAREN          reduce using rule 118 (condicionR -> FLOAT opR INT .)
+    SEMICOLON       reduce using rule 123 (condicionR -> FLOAT opR INT .)
+    LINEBREAK       reduce using rule 123 (condicionR -> FLOAT opR INT .)
+    $end            reduce using rule 123 (condicionR -> FLOAT opR INT .)
+    RCURL           reduce using rule 123 (condicionR -> FLOAT opR INT .)
+    RPAREN          reduce using rule 123 (condicionR -> FLOAT opR INT .)
 
 
 state 183
 
-    (119) condicionR -> FLOAT opR LONG .
+    (124) condicionR -> FLOAT opR LONG .
 
-    SEMICOLON       reduce using rule 119 (condicionR -> FLOAT opR LONG .)
-    LINEBREAK       reduce using rule 119 (condicionR -> FLOAT opR LONG .)
-    $end            reduce using rule 119 (condicionR -> FLOAT opR LONG .)
-    RCURL           reduce using rule 119 (condicionR -> FLOAT opR LONG .)
-    RPAREN          reduce using rule 119 (condicionR -> FLOAT opR LONG .)
+    SEMICOLON       reduce using rule 124 (condicionR -> FLOAT opR LONG .)
+    LINEBREAK       reduce using rule 124 (condicionR -> FLOAT opR LONG .)
+    $end            reduce using rule 124 (condicionR -> FLOAT opR LONG .)
+    RCURL           reduce using rule 124 (condicionR -> FLOAT opR LONG .)
+    RPAREN          reduce using rule 124 (condicionR -> FLOAT opR LONG .)
 
 
 state 184
 
-    (120) condicionR -> FLOAT opR ID .
+    (125) condicionR -> FLOAT opR ID .
 
-    SEMICOLON       reduce using rule 120 (condicionR -> FLOAT opR ID .)
-    LINEBREAK       reduce using rule 120 (condicionR -> FLOAT opR ID .)
-    $end            reduce using rule 120 (condicionR -> FLOAT opR ID .)
-    RCURL           reduce using rule 120 (condicionR -> FLOAT opR ID .)
-    RPAREN          reduce using rule 120 (condicionR -> FLOAT opR ID .)
+    SEMICOLON       reduce using rule 125 (condicionR -> FLOAT opR ID .)
+    LINEBREAK       reduce using rule 125 (condicionR -> FLOAT opR ID .)
+    $end            reduce using rule 125 (condicionR -> FLOAT opR ID .)
+    RCURL           reduce using rule 125 (condicionR -> FLOAT opR ID .)
+    RPAREN          reduce using rule 125 (condicionR -> FLOAT opR ID .)
 
 
 state 185
 
-    (121) condicionR -> LONG opR LONG .
+    (126) condicionR -> LONG opR LONG .
 
-    SEMICOLON       reduce using rule 121 (condicionR -> LONG opR LONG .)
-    LINEBREAK       reduce using rule 121 (condicionR -> LONG opR LONG .)
-    $end            reduce using rule 121 (condicionR -> LONG opR LONG .)
-    RCURL           reduce using rule 121 (condicionR -> LONG opR LONG .)
-    RPAREN          reduce using rule 121 (condicionR -> LONG opR LONG .)
+    SEMICOLON       reduce using rule 126 (condicionR -> LONG opR LONG .)
+    LINEBREAK       reduce using rule 126 (condicionR -> LONG opR LONG .)
+    $end            reduce using rule 126 (condicionR -> LONG opR LONG .)
+    RCURL           reduce using rule 126 (condicionR -> LONG opR LONG .)
+    RPAREN          reduce using rule 126 (condicionR -> LONG opR LONG .)
 
 
 state 186
 
-    (122) condicionR -> LONG opR INT .
+    (127) condicionR -> LONG opR INT .
 
-    SEMICOLON       reduce using rule 122 (condicionR -> LONG opR INT .)
-    LINEBREAK       reduce using rule 122 (condicionR -> LONG opR INT .)
-    $end            reduce using rule 122 (condicionR -> LONG opR INT .)
-    RCURL           reduce using rule 122 (condicionR -> LONG opR INT .)
-    RPAREN          reduce using rule 122 (condicionR -> LONG opR INT .)
+    SEMICOLON       reduce using rule 127 (condicionR -> LONG opR INT .)
+    LINEBREAK       reduce using rule 127 (condicionR -> LONG opR INT .)
+    $end            reduce using rule 127 (condicionR -> LONG opR INT .)
+    RCURL           reduce using rule 127 (condicionR -> LONG opR INT .)
+    RPAREN          reduce using rule 127 (condicionR -> LONG opR INT .)
 
 
 state 187
 
-    (123) condicionR -> LONG opR FLOAT .
+    (128) condicionR -> LONG opR FLOAT .
 
-    SEMICOLON       reduce using rule 123 (condicionR -> LONG opR FLOAT .)
-    LINEBREAK       reduce using rule 123 (condicionR -> LONG opR FLOAT .)
-    $end            reduce using rule 123 (condicionR -> LONG opR FLOAT .)
-    RCURL           reduce using rule 123 (condicionR -> LONG opR FLOAT .)
-    RPAREN          reduce using rule 123 (condicionR -> LONG opR FLOAT .)
+    SEMICOLON       reduce using rule 128 (condicionR -> LONG opR FLOAT .)
+    LINEBREAK       reduce using rule 128 (condicionR -> LONG opR FLOAT .)
+    $end            reduce using rule 128 (condicionR -> LONG opR FLOAT .)
+    RCURL           reduce using rule 128 (condicionR -> LONG opR FLOAT .)
+    RPAREN          reduce using rule 128 (condicionR -> LONG opR FLOAT .)
 
 
 state 188
 
-    (124) condicionR -> LONG opR ID .
+    (129) condicionR -> LONG opR ID .
 
-    SEMICOLON       reduce using rule 124 (condicionR -> LONG opR ID .)
-    LINEBREAK       reduce using rule 124 (condicionR -> LONG opR ID .)
-    $end            reduce using rule 124 (condicionR -> LONG opR ID .)
-    RCURL           reduce using rule 124 (condicionR -> LONG opR ID .)
-    RPAREN          reduce using rule 124 (condicionR -> LONG opR ID .)
+    SEMICOLON       reduce using rule 129 (condicionR -> LONG opR ID .)
+    LINEBREAK       reduce using rule 129 (condicionR -> LONG opR ID .)
+    $end            reduce using rule 129 (condicionR -> LONG opR ID .)
+    RCURL           reduce using rule 129 (condicionR -> LONG opR ID .)
+    RPAREN          reduce using rule 129 (condicionR -> LONG opR ID .)
 
 
 state 189
 
-    (125) condicionR -> STRING_1 opR STRING_1 .
+    (130) condicionR -> STRING_1 opR STRING_1 .
 
-    SEMICOLON       reduce using rule 125 (condicionR -> STRING_1 opR STRING_1 .)
-    LINEBREAK       reduce using rule 125 (condicionR -> STRING_1 opR STRING_1 .)
-    $end            reduce using rule 125 (condicionR -> STRING_1 opR STRING_1 .)
-    RCURL           reduce using rule 125 (condicionR -> STRING_1 opR STRING_1 .)
-    RPAREN          reduce using rule 125 (condicionR -> STRING_1 opR STRING_1 .)
+    SEMICOLON       reduce using rule 130 (condicionR -> STRING_1 opR STRING_1 .)
+    LINEBREAK       reduce using rule 130 (condicionR -> STRING_1 opR STRING_1 .)
+    $end            reduce using rule 130 (condicionR -> STRING_1 opR STRING_1 .)
+    RCURL           reduce using rule 130 (condicionR -> STRING_1 opR STRING_1 .)
+    RPAREN          reduce using rule 130 (condicionR -> STRING_1 opR STRING_1 .)
 
 
 state 190
 
-    (126) condicionR -> STRING_1 opR ID .
+    (131) condicionR -> STRING_1 opR ID .
 
-    SEMICOLON       reduce using rule 126 (condicionR -> STRING_1 opR ID .)
-    LINEBREAK       reduce using rule 126 (condicionR -> STRING_1 opR ID .)
-    $end            reduce using rule 126 (condicionR -> STRING_1 opR ID .)
-    RCURL           reduce using rule 126 (condicionR -> STRING_1 opR ID .)
-    RPAREN          reduce using rule 126 (condicionR -> STRING_1 opR ID .)
+    SEMICOLON       reduce using rule 131 (condicionR -> STRING_1 opR ID .)
+    LINEBREAK       reduce using rule 131 (condicionR -> STRING_1 opR ID .)
+    $end            reduce using rule 131 (condicionR -> STRING_1 opR ID .)
+    RCURL           reduce using rule 131 (condicionR -> STRING_1 opR ID .)
+    RPAREN          reduce using rule 131 (condicionR -> STRING_1 opR ID .)
 
 
 state 191
 
-    (127) condicionR -> CHAR opR CHAR .
+    (132) condicionR -> CHAR opR CHAR .
 
-    SEMICOLON       reduce using rule 127 (condicionR -> CHAR opR CHAR .)
-    LINEBREAK       reduce using rule 127 (condicionR -> CHAR opR CHAR .)
-    $end            reduce using rule 127 (condicionR -> CHAR opR CHAR .)
-    RCURL           reduce using rule 127 (condicionR -> CHAR opR CHAR .)
-    RPAREN          reduce using rule 127 (condicionR -> CHAR opR CHAR .)
+    SEMICOLON       reduce using rule 132 (condicionR -> CHAR opR CHAR .)
+    LINEBREAK       reduce using rule 132 (condicionR -> CHAR opR CHAR .)
+    $end            reduce using rule 132 (condicionR -> CHAR opR CHAR .)
+    RCURL           reduce using rule 132 (condicionR -> CHAR opR CHAR .)
+    RPAREN          reduce using rule 132 (condicionR -> CHAR opR CHAR .)
 
 
 state 192
 
-    (128) condicionR -> CHAR opR ID .
+    (133) condicionR -> CHAR opR ID .
 
-    SEMICOLON       reduce using rule 128 (condicionR -> CHAR opR ID .)
-    LINEBREAK       reduce using rule 128 (condicionR -> CHAR opR ID .)
-    $end            reduce using rule 128 (condicionR -> CHAR opR ID .)
-    RCURL           reduce using rule 128 (condicionR -> CHAR opR ID .)
-    RPAREN          reduce using rule 128 (condicionR -> CHAR opR ID .)
+    SEMICOLON       reduce using rule 133 (condicionR -> CHAR opR ID .)
+    LINEBREAK       reduce using rule 133 (condicionR -> CHAR opR ID .)
+    $end            reduce using rule 133 (condicionR -> CHAR opR ID .)
+    RCURL           reduce using rule 133 (condicionR -> CHAR opR ID .)
+    RPAREN          reduce using rule 133 (condicionR -> CHAR opR ID .)
 
 
 state 193
 
-    (150) instance_linkedlist -> LINKEDL LANGLE tipoDato . RANGLE LPAREN RPAREN
+    (155) instance_linkedlist -> LINKEDL LANGLE tipoDato . RANGLE LPAREN RPAREN
 
     RANGLE          shift and go to state 238
 
@@ -3840,7 +3847,7 @@ state 200
 
 state 201
 
-    (149) def_estruct_tipoDato -> STACK LANGLE tipoDato . RANGLE
+    (154) def_estruct_tipoDato -> STACK LANGLE tipoDato . RANGLE
 
     RANGLE          shift and go to state 239
 
@@ -3916,14 +3923,14 @@ state 208
 
 state 209
 
-    (170) lista -> keywordVariables ID DOTS LINKEDL . LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (175) lista -> keywordVariables ID DOTS LINKEDL . LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
 
     LANGLE          shift and go to state 242
 
 
 state 210
 
-    (148) stack -> keywordVariables ID DOTS def_estruct_tipoDato . EQUAL instance_linkedlist
+    (153) stack -> keywordVariables ID DOTS def_estruct_tipoDato . EQUAL instance_linkedlist
 
     EQUAL           shift and go to state 243
 
@@ -4022,7 +4029,7 @@ state 219
 state 220
 
     (34) queue_peek -> ID DOT PEEK LPAREN . RPAREN
-    (160) stack_peek -> PEEK LPAREN . RPAREN
+    (165) stack_peek -> PEEK LPAREN . RPAREN
 
     RPAREN          shift and go to state 259
 
@@ -4043,56 +4050,56 @@ state 222
 
 state 223
 
-    (162) Lmetod -> FIRST LPAREN . RPAREN
+    (167) Lmetod -> FIRST LPAREN . RPAREN
 
     RPAREN          shift and go to state 262
 
 
 state 224
 
-    (163) Lmetod -> LAST LPAREN . RPAREN
+    (168) Lmetod -> LAST LPAREN . RPAREN
 
     RPAREN          shift and go to state 263
 
 
 state 225
 
-    (164) Lmetod -> REMOVEL LPAREN . RPAREN
+    (169) Lmetod -> REMOVEL LPAREN . RPAREN
 
     RPAREN          shift and go to state 264
 
 
 state 226
 
-    (165) Cmetod -> APPEND LPAREN . OBJECT RPAREN
+    (170) Cmetod -> APPEND LPAREN . OBJECT RPAREN
 
     OBJECT          shift and go to state 265
 
 
 state 227
 
-    (166) Cmetod -> REMOVEN LPAREN . OBJECT RPAREN
+    (171) Cmetod -> REMOVEN LPAREN . OBJECT RPAREN
 
     OBJECT          shift and go to state 266
 
 
 state 228
 
-    (167) Cmetod -> REMOVEI LPAREN . TINT RPAREN
+    (172) Cmetod -> REMOVEI LPAREN . TINT RPAREN
 
     TINT            shift and go to state 267
 
 
 state 229
 
-    (157) stack_isEmpty -> ISEMPTY LPAREN . RPAREN
+    (162) stack_isEmpty -> ISEMPTY LPAREN . RPAREN
 
     RPAREN          shift and go to state 268
 
 
 state 230
 
-    (159) stack_push -> PUSH LPAREN . factor RPAREN
+    (164) stack_push -> PUSH LPAREN . factor RPAREN
     (89) factor -> . INT
     (90) factor -> . FLOAT
     (91) factor -> . LONG
@@ -4113,14 +4120,14 @@ state 230
 
 state 231
 
-    (158) stack_pop -> POP LPAREN . RPAREN
+    (163) stack_pop -> POP LPAREN . RPAREN
 
     RPAREN          shift and go to state 270
 
 
 state 232
 
-    (161) stack_size -> SIZE LPAREN . RPAREN
+    (166) stack_size -> SIZE LPAREN . RPAREN
 
     RPAREN          shift and go to state 271
 
@@ -4146,42 +4153,42 @@ state 234
 
 state 235
 
-    (103) if -> IF LPAREN condicion RPAREN . LCURL lineorBreak RCURL
-    (104) if -> IF LPAREN condicion RPAREN . LCURL lineorBreak RCURL else
+    (108) if -> IF LPAREN condicion RPAREN . LCURL lineorBreak RCURL
+    (109) if -> IF LPAREN condicion RPAREN . LCURL lineorBreak RCURL else
 
     LCURL           shift and go to state 276
 
 
 state 236
 
-    (168) while -> WHILE LPAREN ID opR . INT RPAREN LCURL lineorBreak RCURL
+    (173) while -> WHILE LPAREN ID opR . INT RPAREN LCURL lineorBreak RCURL
 
     INT             shift and go to state 277
 
 
 state 237
 
-    (169) while -> WHILE LPAREN error RPAREN . LCURL lineorBreak RCURL
+    (174) while -> WHILE LPAREN error RPAREN . LCURL lineorBreak RCURL
 
     LCURL           shift and go to state 278
 
 
 state 238
 
-    (150) instance_linkedlist -> LINKEDL LANGLE tipoDato RANGLE . LPAREN RPAREN
+    (155) instance_linkedlist -> LINKEDL LANGLE tipoDato RANGLE . LPAREN RPAREN
 
     LPAREN          shift and go to state 279
 
 
 state 239
 
-    (149) def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE .
+    (154) def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE .
 
-    SEMICOLON       reduce using rule 149 (def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE .)
-    LINEBREAK       reduce using rule 149 (def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE .)
-    $end            reduce using rule 149 (def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE .)
-    RCURL           reduce using rule 149 (def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE .)
-    EQUAL           reduce using rule 149 (def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE .)
+    SEMICOLON       reduce using rule 154 (def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE .)
+    LINEBREAK       reduce using rule 154 (def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE .)
+    $end            reduce using rule 154 (def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE .)
+    RCURL           reduce using rule 154 (def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE .)
+    EQUAL           reduce using rule 154 (def_estruct_tipoDato -> STACK LANGLE tipoDato RANGLE .)
 
 
 state 240
@@ -4216,15 +4223,15 @@ state 241
 
 state 242
 
-    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE . OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (175) lista -> keywordVariables ID DOTS LINKEDL LANGLE . OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
 
     OBJECT          shift and go to state 281
 
 
 state 243
 
-    (148) stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL . instance_linkedlist
-    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
+    (153) stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL . instance_linkedlist
+    (155) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
 
     LINKEDL         shift and go to state 47
 
@@ -4242,9 +4249,9 @@ state 245
 
     (96) funcion -> FUN ID LPAREN RPAREN LCURL . lineorBreak RCURL
     (99) funcion -> FUN ID LPAREN RPAREN LCURL . RCURL
-    (100) lineorBreak -> . line
-    (101) lineorBreak -> . LINEBREAK line LINEBREAK
-    (102) lineorBreak -> . LINEBREAK line
+    (105) lineorBreak -> . line
+    (106) lineorBreak -> . LINEBREAK line LINEBREAK
+    (107) lineorBreak -> . LINEBREAK line
     (1) line -> . blocks
     (2) line -> . blocks SEMICOLON
     (3) line -> . blocks LINEBREAK
@@ -4278,9 +4285,9 @@ state 245
     (26) estructurasControl -> . for
     (27) estructurasControl -> . if
     (28) estructurasControl -> . while
-    (106) condicion -> . condicionL
-    (107) condicion -> . condicionR
-    (108) condicion -> . condicionN
+    (111) condicion -> . condicionL
+    (112) condicion -> . condicionR
+    (113) condicion -> . condicionN
     (96) funcion -> . FUN ID LPAREN RPAREN LCURL lineorBreak RCURL
     (97) funcion -> . FUN ID LPAREN ID RPAREN LCURL lineorBreak RCURL
     (98) funcion -> . FUN ID LPAREN ID RPAREN LCURL RCURL
@@ -4302,50 +4309,50 @@ state 245
     (52) asignacionSimple -> . ID EQUAL valor
     (42) for -> . FOR LPAREN ID IN iterable RPAREN LCURL lineorBreak RCURL
     (43) for -> . FOR LPAREN error RPAREN LCURL lineorBreak RCURL
-    (103) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
-    (104) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
-    (168) while -> . WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
-    (169) while -> . WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
-    (109) condicionL -> . BOOLEAN opL BOOLEAN
-    (110) condicionL -> . ID opL ID
-    (111) condicionL -> . ID opL BOOLEAN
-    (112) condicionL -> . BOOLEAN opL ID
-    (113) condicionR -> . INT opR INT
-    (114) condicionR -> . INT opR FLOAT
-    (115) condicionR -> . INT opR LONG
-    (116) condicionR -> . INT opR ID
-    (117) condicionR -> . FLOAT opR FLOAT
-    (118) condicionR -> . FLOAT opR INT
-    (119) condicionR -> . FLOAT opR LONG
-    (120) condicionR -> . FLOAT opR ID
-    (121) condicionR -> . LONG opR LONG
-    (122) condicionR -> . LONG opR INT
-    (123) condicionR -> . LONG opR FLOAT
-    (124) condicionR -> . LONG opR ID
-    (125) condicionR -> . STRING_1 opR STRING_1
-    (126) condicionR -> . STRING_1 opR ID
-    (127) condicionR -> . CHAR opR CHAR
-    (128) condicionR -> . CHAR opR ID
-    (129) condicionR -> . ID opR ID
-    (130) condicionR -> . ID opR INT
-    (131) condicionR -> . ID opR FLOAT
-    (132) condicionR -> . ID opR LONG
-    (133) condicionR -> . ID opR STRING_1
-    (134) condicionR -> . ID opR CHAR
-    (135) condicionN -> . EXCL_WS BOOLEAN
-    (136) condicionN -> . EXCL_WS ID
+    (108) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
+    (109) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
+    (173) while -> . WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
+    (174) while -> . WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
+    (114) condicionL -> . BOOLEAN opL BOOLEAN
+    (115) condicionL -> . ID opL ID
+    (116) condicionL -> . ID opL BOOLEAN
+    (117) condicionL -> . BOOLEAN opL ID
+    (118) condicionR -> . INT opR INT
+    (119) condicionR -> . INT opR FLOAT
+    (120) condicionR -> . INT opR LONG
+    (121) condicionR -> . INT opR ID
+    (122) condicionR -> . FLOAT opR FLOAT
+    (123) condicionR -> . FLOAT opR INT
+    (124) condicionR -> . FLOAT opR LONG
+    (125) condicionR -> . FLOAT opR ID
+    (126) condicionR -> . LONG opR LONG
+    (127) condicionR -> . LONG opR INT
+    (128) condicionR -> . LONG opR FLOAT
+    (129) condicionR -> . LONG opR ID
+    (130) condicionR -> . STRING_1 opR STRING_1
+    (131) condicionR -> . STRING_1 opR ID
+    (132) condicionR -> . CHAR opR CHAR
+    (133) condicionR -> . CHAR opR ID
+    (134) condicionR -> . ID opR ID
+    (135) condicionR -> . ID opR INT
+    (136) condicionR -> . ID opR FLOAT
+    (137) condicionR -> . ID opR LONG
+    (138) condicionR -> . ID opR STRING_1
+    (139) condicionR -> . ID opR CHAR
+    (140) condicionN -> . EXCL_WS BOOLEAN
+    (141) condicionN -> . EXCL_WS ID
     (41) queue -> . keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (29) queue_operations -> . queue_add
     (30) queue_operations -> . queue_peek
     (31) queue_operations -> . queue_remove
     (32) queue_operations -> . queue_poll
-    (148) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
-    (151) stack_actuar -> . ID DOT stack_funciones
-    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
-    (149) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
-    (170) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
-    (171) lsimplem -> . ID DOT Lmetod
-    (172) lcomp -> . ID DOT Cmetod
+    (153) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
+    (156) stack_actuar -> . ID DOT stack_funciones
+    (155) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
+    (154) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
+    (175) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (176) lsimplem -> . ID DOT Lmetod
+    (177) lcomp -> . ID DOT Cmetod
     (89) factor -> . INT
     (90) factor -> . FLOAT
     (91) factor -> . LONG
@@ -4544,7 +4551,7 @@ state 258
 state 259
 
     (34) queue_peek -> ID DOT PEEK LPAREN RPAREN .
-    (160) stack_peek -> PEEK LPAREN RPAREN .
+    (165) stack_peek -> PEEK LPAREN RPAREN .
 
   ! reduce/reduce conflict for SEMICOLON resolved using rule 34 (queue_peek -> ID DOT PEEK LPAREN RPAREN .)
   ! reduce/reduce conflict for LINEBREAK resolved using rule 34 (queue_peek -> ID DOT PEEK LPAREN RPAREN .)
@@ -4555,10 +4562,10 @@ state 259
     $end            reduce using rule 34 (queue_peek -> ID DOT PEEK LPAREN RPAREN .)
     RCURL           reduce using rule 34 (queue_peek -> ID DOT PEEK LPAREN RPAREN .)
 
-  ! SEMICOLON       [ reduce using rule 160 (stack_peek -> PEEK LPAREN RPAREN .) ]
-  ! LINEBREAK       [ reduce using rule 160 (stack_peek -> PEEK LPAREN RPAREN .) ]
-  ! $end            [ reduce using rule 160 (stack_peek -> PEEK LPAREN RPAREN .) ]
-  ! RCURL           [ reduce using rule 160 (stack_peek -> PEEK LPAREN RPAREN .) ]
+  ! SEMICOLON       [ reduce using rule 165 (stack_peek -> PEEK LPAREN RPAREN .) ]
+  ! LINEBREAK       [ reduce using rule 165 (stack_peek -> PEEK LPAREN RPAREN .) ]
+  ! $end            [ reduce using rule 165 (stack_peek -> PEEK LPAREN RPAREN .) ]
+  ! RCURL           [ reduce using rule 165 (stack_peek -> PEEK LPAREN RPAREN .) ]
 
 
 state 260
@@ -4583,90 +4590,90 @@ state 261
 
 state 262
 
-    (162) Lmetod -> FIRST LPAREN RPAREN .
+    (167) Lmetod -> FIRST LPAREN RPAREN .
 
-    SEMICOLON       reduce using rule 162 (Lmetod -> FIRST LPAREN RPAREN .)
-    LINEBREAK       reduce using rule 162 (Lmetod -> FIRST LPAREN RPAREN .)
-    $end            reduce using rule 162 (Lmetod -> FIRST LPAREN RPAREN .)
-    RCURL           reduce using rule 162 (Lmetod -> FIRST LPAREN RPAREN .)
+    SEMICOLON       reduce using rule 167 (Lmetod -> FIRST LPAREN RPAREN .)
+    LINEBREAK       reduce using rule 167 (Lmetod -> FIRST LPAREN RPAREN .)
+    $end            reduce using rule 167 (Lmetod -> FIRST LPAREN RPAREN .)
+    RCURL           reduce using rule 167 (Lmetod -> FIRST LPAREN RPAREN .)
 
 
 state 263
 
-    (163) Lmetod -> LAST LPAREN RPAREN .
+    (168) Lmetod -> LAST LPAREN RPAREN .
 
-    SEMICOLON       reduce using rule 163 (Lmetod -> LAST LPAREN RPAREN .)
-    LINEBREAK       reduce using rule 163 (Lmetod -> LAST LPAREN RPAREN .)
-    $end            reduce using rule 163 (Lmetod -> LAST LPAREN RPAREN .)
-    RCURL           reduce using rule 163 (Lmetod -> LAST LPAREN RPAREN .)
+    SEMICOLON       reduce using rule 168 (Lmetod -> LAST LPAREN RPAREN .)
+    LINEBREAK       reduce using rule 168 (Lmetod -> LAST LPAREN RPAREN .)
+    $end            reduce using rule 168 (Lmetod -> LAST LPAREN RPAREN .)
+    RCURL           reduce using rule 168 (Lmetod -> LAST LPAREN RPAREN .)
 
 
 state 264
 
-    (164) Lmetod -> REMOVEL LPAREN RPAREN .
+    (169) Lmetod -> REMOVEL LPAREN RPAREN .
 
-    SEMICOLON       reduce using rule 164 (Lmetod -> REMOVEL LPAREN RPAREN .)
-    LINEBREAK       reduce using rule 164 (Lmetod -> REMOVEL LPAREN RPAREN .)
-    $end            reduce using rule 164 (Lmetod -> REMOVEL LPAREN RPAREN .)
-    RCURL           reduce using rule 164 (Lmetod -> REMOVEL LPAREN RPAREN .)
+    SEMICOLON       reduce using rule 169 (Lmetod -> REMOVEL LPAREN RPAREN .)
+    LINEBREAK       reduce using rule 169 (Lmetod -> REMOVEL LPAREN RPAREN .)
+    $end            reduce using rule 169 (Lmetod -> REMOVEL LPAREN RPAREN .)
+    RCURL           reduce using rule 169 (Lmetod -> REMOVEL LPAREN RPAREN .)
 
 
 state 265
 
-    (165) Cmetod -> APPEND LPAREN OBJECT . RPAREN
+    (170) Cmetod -> APPEND LPAREN OBJECT . RPAREN
 
     RPAREN          shift and go to state 289
 
 
 state 266
 
-    (166) Cmetod -> REMOVEN LPAREN OBJECT . RPAREN
+    (171) Cmetod -> REMOVEN LPAREN OBJECT . RPAREN
 
     RPAREN          shift and go to state 290
 
 
 state 267
 
-    (167) Cmetod -> REMOVEI LPAREN TINT . RPAREN
+    (172) Cmetod -> REMOVEI LPAREN TINT . RPAREN
 
     RPAREN          shift and go to state 291
 
 
 state 268
 
-    (157) stack_isEmpty -> ISEMPTY LPAREN RPAREN .
+    (162) stack_isEmpty -> ISEMPTY LPAREN RPAREN .
 
-    SEMICOLON       reduce using rule 157 (stack_isEmpty -> ISEMPTY LPAREN RPAREN .)
-    LINEBREAK       reduce using rule 157 (stack_isEmpty -> ISEMPTY LPAREN RPAREN .)
-    $end            reduce using rule 157 (stack_isEmpty -> ISEMPTY LPAREN RPAREN .)
-    RCURL           reduce using rule 157 (stack_isEmpty -> ISEMPTY LPAREN RPAREN .)
+    SEMICOLON       reduce using rule 162 (stack_isEmpty -> ISEMPTY LPAREN RPAREN .)
+    LINEBREAK       reduce using rule 162 (stack_isEmpty -> ISEMPTY LPAREN RPAREN .)
+    $end            reduce using rule 162 (stack_isEmpty -> ISEMPTY LPAREN RPAREN .)
+    RCURL           reduce using rule 162 (stack_isEmpty -> ISEMPTY LPAREN RPAREN .)
 
 
 state 269
 
-    (159) stack_push -> PUSH LPAREN factor . RPAREN
+    (164) stack_push -> PUSH LPAREN factor . RPAREN
 
     RPAREN          shift and go to state 292
 
 
 state 270
 
-    (158) stack_pop -> POP LPAREN RPAREN .
+    (163) stack_pop -> POP LPAREN RPAREN .
 
-    SEMICOLON       reduce using rule 158 (stack_pop -> POP LPAREN RPAREN .)
-    LINEBREAK       reduce using rule 158 (stack_pop -> POP LPAREN RPAREN .)
-    $end            reduce using rule 158 (stack_pop -> POP LPAREN RPAREN .)
-    RCURL           reduce using rule 158 (stack_pop -> POP LPAREN RPAREN .)
+    SEMICOLON       reduce using rule 163 (stack_pop -> POP LPAREN RPAREN .)
+    LINEBREAK       reduce using rule 163 (stack_pop -> POP LPAREN RPAREN .)
+    $end            reduce using rule 163 (stack_pop -> POP LPAREN RPAREN .)
+    RCURL           reduce using rule 163 (stack_pop -> POP LPAREN RPAREN .)
 
 
 state 271
 
-    (161) stack_size -> SIZE LPAREN RPAREN .
+    (166) stack_size -> SIZE LPAREN RPAREN .
 
-    SEMICOLON       reduce using rule 161 (stack_size -> SIZE LPAREN RPAREN .)
-    LINEBREAK       reduce using rule 161 (stack_size -> SIZE LPAREN RPAREN .)
-    $end            reduce using rule 161 (stack_size -> SIZE LPAREN RPAREN .)
-    RCURL           reduce using rule 161 (stack_size -> SIZE LPAREN RPAREN .)
+    SEMICOLON       reduce using rule 166 (stack_size -> SIZE LPAREN RPAREN .)
+    LINEBREAK       reduce using rule 166 (stack_size -> SIZE LPAREN RPAREN .)
+    $end            reduce using rule 166 (stack_size -> SIZE LPAREN RPAREN .)
+    RCURL           reduce using rule 166 (stack_size -> SIZE LPAREN RPAREN .)
 
 
 state 272
@@ -4695,9 +4702,9 @@ state 274
 state 275
 
     (43) for -> FOR LPAREN error RPAREN LCURL . lineorBreak RCURL
-    (100) lineorBreak -> . line
-    (101) lineorBreak -> . LINEBREAK line LINEBREAK
-    (102) lineorBreak -> . LINEBREAK line
+    (105) lineorBreak -> . line
+    (106) lineorBreak -> . LINEBREAK line LINEBREAK
+    (107) lineorBreak -> . LINEBREAK line
     (1) line -> . blocks
     (2) line -> . blocks SEMICOLON
     (3) line -> . blocks LINEBREAK
@@ -4731,9 +4738,9 @@ state 275
     (26) estructurasControl -> . for
     (27) estructurasControl -> . if
     (28) estructurasControl -> . while
-    (106) condicion -> . condicionL
-    (107) condicion -> . condicionR
-    (108) condicion -> . condicionN
+    (111) condicion -> . condicionL
+    (112) condicion -> . condicionR
+    (113) condicion -> . condicionN
     (96) funcion -> . FUN ID LPAREN RPAREN LCURL lineorBreak RCURL
     (97) funcion -> . FUN ID LPAREN ID RPAREN LCURL lineorBreak RCURL
     (98) funcion -> . FUN ID LPAREN ID RPAREN LCURL RCURL
@@ -4755,50 +4762,50 @@ state 275
     (52) asignacionSimple -> . ID EQUAL valor
     (42) for -> . FOR LPAREN ID IN iterable RPAREN LCURL lineorBreak RCURL
     (43) for -> . FOR LPAREN error RPAREN LCURL lineorBreak RCURL
-    (103) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
-    (104) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
-    (168) while -> . WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
-    (169) while -> . WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
-    (109) condicionL -> . BOOLEAN opL BOOLEAN
-    (110) condicionL -> . ID opL ID
-    (111) condicionL -> . ID opL BOOLEAN
-    (112) condicionL -> . BOOLEAN opL ID
-    (113) condicionR -> . INT opR INT
-    (114) condicionR -> . INT opR FLOAT
-    (115) condicionR -> . INT opR LONG
-    (116) condicionR -> . INT opR ID
-    (117) condicionR -> . FLOAT opR FLOAT
-    (118) condicionR -> . FLOAT opR INT
-    (119) condicionR -> . FLOAT opR LONG
-    (120) condicionR -> . FLOAT opR ID
-    (121) condicionR -> . LONG opR LONG
-    (122) condicionR -> . LONG opR INT
-    (123) condicionR -> . LONG opR FLOAT
-    (124) condicionR -> . LONG opR ID
-    (125) condicionR -> . STRING_1 opR STRING_1
-    (126) condicionR -> . STRING_1 opR ID
-    (127) condicionR -> . CHAR opR CHAR
-    (128) condicionR -> . CHAR opR ID
-    (129) condicionR -> . ID opR ID
-    (130) condicionR -> . ID opR INT
-    (131) condicionR -> . ID opR FLOAT
-    (132) condicionR -> . ID opR LONG
-    (133) condicionR -> . ID opR STRING_1
-    (134) condicionR -> . ID opR CHAR
-    (135) condicionN -> . EXCL_WS BOOLEAN
-    (136) condicionN -> . EXCL_WS ID
+    (108) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
+    (109) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
+    (173) while -> . WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
+    (174) while -> . WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
+    (114) condicionL -> . BOOLEAN opL BOOLEAN
+    (115) condicionL -> . ID opL ID
+    (116) condicionL -> . ID opL BOOLEAN
+    (117) condicionL -> . BOOLEAN opL ID
+    (118) condicionR -> . INT opR INT
+    (119) condicionR -> . INT opR FLOAT
+    (120) condicionR -> . INT opR LONG
+    (121) condicionR -> . INT opR ID
+    (122) condicionR -> . FLOAT opR FLOAT
+    (123) condicionR -> . FLOAT opR INT
+    (124) condicionR -> . FLOAT opR LONG
+    (125) condicionR -> . FLOAT opR ID
+    (126) condicionR -> . LONG opR LONG
+    (127) condicionR -> . LONG opR INT
+    (128) condicionR -> . LONG opR FLOAT
+    (129) condicionR -> . LONG opR ID
+    (130) condicionR -> . STRING_1 opR STRING_1
+    (131) condicionR -> . STRING_1 opR ID
+    (132) condicionR -> . CHAR opR CHAR
+    (133) condicionR -> . CHAR opR ID
+    (134) condicionR -> . ID opR ID
+    (135) condicionR -> . ID opR INT
+    (136) condicionR -> . ID opR FLOAT
+    (137) condicionR -> . ID opR LONG
+    (138) condicionR -> . ID opR STRING_1
+    (139) condicionR -> . ID opR CHAR
+    (140) condicionN -> . EXCL_WS BOOLEAN
+    (141) condicionN -> . EXCL_WS ID
     (41) queue -> . keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (29) queue_operations -> . queue_add
     (30) queue_operations -> . queue_peek
     (31) queue_operations -> . queue_remove
     (32) queue_operations -> . queue_poll
-    (148) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
-    (151) stack_actuar -> . ID DOT stack_funciones
-    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
-    (149) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
-    (170) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
-    (171) lsimplem -> . ID DOT Lmetod
-    (172) lcomp -> . ID DOT Cmetod
+    (153) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
+    (156) stack_actuar -> . ID DOT stack_funciones
+    (155) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
+    (154) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
+    (175) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (176) lsimplem -> . ID DOT Lmetod
+    (177) lcomp -> . ID DOT Cmetod
     (89) factor -> . INT
     (90) factor -> . FLOAT
     (91) factor -> . LONG
@@ -4868,11 +4875,11 @@ state 275
 
 state 276
 
-    (103) if -> IF LPAREN condicion RPAREN LCURL . lineorBreak RCURL
-    (104) if -> IF LPAREN condicion RPAREN LCURL . lineorBreak RCURL else
-    (100) lineorBreak -> . line
-    (101) lineorBreak -> . LINEBREAK line LINEBREAK
-    (102) lineorBreak -> . LINEBREAK line
+    (108) if -> IF LPAREN condicion RPAREN LCURL . lineorBreak RCURL
+    (109) if -> IF LPAREN condicion RPAREN LCURL . lineorBreak RCURL else
+    (105) lineorBreak -> . line
+    (106) lineorBreak -> . LINEBREAK line LINEBREAK
+    (107) lineorBreak -> . LINEBREAK line
     (1) line -> . blocks
     (2) line -> . blocks SEMICOLON
     (3) line -> . blocks LINEBREAK
@@ -4906,9 +4913,9 @@ state 276
     (26) estructurasControl -> . for
     (27) estructurasControl -> . if
     (28) estructurasControl -> . while
-    (106) condicion -> . condicionL
-    (107) condicion -> . condicionR
-    (108) condicion -> . condicionN
+    (111) condicion -> . condicionL
+    (112) condicion -> . condicionR
+    (113) condicion -> . condicionN
     (96) funcion -> . FUN ID LPAREN RPAREN LCURL lineorBreak RCURL
     (97) funcion -> . FUN ID LPAREN ID RPAREN LCURL lineorBreak RCURL
     (98) funcion -> . FUN ID LPAREN ID RPAREN LCURL RCURL
@@ -4930,50 +4937,50 @@ state 276
     (52) asignacionSimple -> . ID EQUAL valor
     (42) for -> . FOR LPAREN ID IN iterable RPAREN LCURL lineorBreak RCURL
     (43) for -> . FOR LPAREN error RPAREN LCURL lineorBreak RCURL
-    (103) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
-    (104) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
-    (168) while -> . WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
-    (169) while -> . WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
-    (109) condicionL -> . BOOLEAN opL BOOLEAN
-    (110) condicionL -> . ID opL ID
-    (111) condicionL -> . ID opL BOOLEAN
-    (112) condicionL -> . BOOLEAN opL ID
-    (113) condicionR -> . INT opR INT
-    (114) condicionR -> . INT opR FLOAT
-    (115) condicionR -> . INT opR LONG
-    (116) condicionR -> . INT opR ID
-    (117) condicionR -> . FLOAT opR FLOAT
-    (118) condicionR -> . FLOAT opR INT
-    (119) condicionR -> . FLOAT opR LONG
-    (120) condicionR -> . FLOAT opR ID
-    (121) condicionR -> . LONG opR LONG
-    (122) condicionR -> . LONG opR INT
-    (123) condicionR -> . LONG opR FLOAT
-    (124) condicionR -> . LONG opR ID
-    (125) condicionR -> . STRING_1 opR STRING_1
-    (126) condicionR -> . STRING_1 opR ID
-    (127) condicionR -> . CHAR opR CHAR
-    (128) condicionR -> . CHAR opR ID
-    (129) condicionR -> . ID opR ID
-    (130) condicionR -> . ID opR INT
-    (131) condicionR -> . ID opR FLOAT
-    (132) condicionR -> . ID opR LONG
-    (133) condicionR -> . ID opR STRING_1
-    (134) condicionR -> . ID opR CHAR
-    (135) condicionN -> . EXCL_WS BOOLEAN
-    (136) condicionN -> . EXCL_WS ID
+    (108) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
+    (109) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
+    (173) while -> . WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
+    (174) while -> . WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
+    (114) condicionL -> . BOOLEAN opL BOOLEAN
+    (115) condicionL -> . ID opL ID
+    (116) condicionL -> . ID opL BOOLEAN
+    (117) condicionL -> . BOOLEAN opL ID
+    (118) condicionR -> . INT opR INT
+    (119) condicionR -> . INT opR FLOAT
+    (120) condicionR -> . INT opR LONG
+    (121) condicionR -> . INT opR ID
+    (122) condicionR -> . FLOAT opR FLOAT
+    (123) condicionR -> . FLOAT opR INT
+    (124) condicionR -> . FLOAT opR LONG
+    (125) condicionR -> . FLOAT opR ID
+    (126) condicionR -> . LONG opR LONG
+    (127) condicionR -> . LONG opR INT
+    (128) condicionR -> . LONG opR FLOAT
+    (129) condicionR -> . LONG opR ID
+    (130) condicionR -> . STRING_1 opR STRING_1
+    (131) condicionR -> . STRING_1 opR ID
+    (132) condicionR -> . CHAR opR CHAR
+    (133) condicionR -> . CHAR opR ID
+    (134) condicionR -> . ID opR ID
+    (135) condicionR -> . ID opR INT
+    (136) condicionR -> . ID opR FLOAT
+    (137) condicionR -> . ID opR LONG
+    (138) condicionR -> . ID opR STRING_1
+    (139) condicionR -> . ID opR CHAR
+    (140) condicionN -> . EXCL_WS BOOLEAN
+    (141) condicionN -> . EXCL_WS ID
     (41) queue -> . keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (29) queue_operations -> . queue_add
     (30) queue_operations -> . queue_peek
     (31) queue_operations -> . queue_remove
     (32) queue_operations -> . queue_poll
-    (148) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
-    (151) stack_actuar -> . ID DOT stack_funciones
-    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
-    (149) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
-    (170) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
-    (171) lsimplem -> . ID DOT Lmetod
-    (172) lcomp -> . ID DOT Cmetod
+    (153) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
+    (156) stack_actuar -> . ID DOT stack_funciones
+    (155) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
+    (154) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
+    (175) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (176) lsimplem -> . ID DOT Lmetod
+    (177) lcomp -> . ID DOT Cmetod
     (89) factor -> . INT
     (90) factor -> . FLOAT
     (91) factor -> . LONG
@@ -5043,17 +5050,17 @@ state 276
 
 state 277
 
-    (168) while -> WHILE LPAREN ID opR INT . RPAREN LCURL lineorBreak RCURL
+    (173) while -> WHILE LPAREN ID opR INT . RPAREN LCURL lineorBreak RCURL
 
     RPAREN          shift and go to state 298
 
 
 state 278
 
-    (169) while -> WHILE LPAREN error RPAREN LCURL . lineorBreak RCURL
-    (100) lineorBreak -> . line
-    (101) lineorBreak -> . LINEBREAK line LINEBREAK
-    (102) lineorBreak -> . LINEBREAK line
+    (174) while -> WHILE LPAREN error RPAREN LCURL . lineorBreak RCURL
+    (105) lineorBreak -> . line
+    (106) lineorBreak -> . LINEBREAK line LINEBREAK
+    (107) lineorBreak -> . LINEBREAK line
     (1) line -> . blocks
     (2) line -> . blocks SEMICOLON
     (3) line -> . blocks LINEBREAK
@@ -5087,9 +5094,9 @@ state 278
     (26) estructurasControl -> . for
     (27) estructurasControl -> . if
     (28) estructurasControl -> . while
-    (106) condicion -> . condicionL
-    (107) condicion -> . condicionR
-    (108) condicion -> . condicionN
+    (111) condicion -> . condicionL
+    (112) condicion -> . condicionR
+    (113) condicion -> . condicionN
     (96) funcion -> . FUN ID LPAREN RPAREN LCURL lineorBreak RCURL
     (97) funcion -> . FUN ID LPAREN ID RPAREN LCURL lineorBreak RCURL
     (98) funcion -> . FUN ID LPAREN ID RPAREN LCURL RCURL
@@ -5111,50 +5118,50 @@ state 278
     (52) asignacionSimple -> . ID EQUAL valor
     (42) for -> . FOR LPAREN ID IN iterable RPAREN LCURL lineorBreak RCURL
     (43) for -> . FOR LPAREN error RPAREN LCURL lineorBreak RCURL
-    (103) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
-    (104) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
-    (168) while -> . WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
-    (169) while -> . WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
-    (109) condicionL -> . BOOLEAN opL BOOLEAN
-    (110) condicionL -> . ID opL ID
-    (111) condicionL -> . ID opL BOOLEAN
-    (112) condicionL -> . BOOLEAN opL ID
-    (113) condicionR -> . INT opR INT
-    (114) condicionR -> . INT opR FLOAT
-    (115) condicionR -> . INT opR LONG
-    (116) condicionR -> . INT opR ID
-    (117) condicionR -> . FLOAT opR FLOAT
-    (118) condicionR -> . FLOAT opR INT
-    (119) condicionR -> . FLOAT opR LONG
-    (120) condicionR -> . FLOAT opR ID
-    (121) condicionR -> . LONG opR LONG
-    (122) condicionR -> . LONG opR INT
-    (123) condicionR -> . LONG opR FLOAT
-    (124) condicionR -> . LONG opR ID
-    (125) condicionR -> . STRING_1 opR STRING_1
-    (126) condicionR -> . STRING_1 opR ID
-    (127) condicionR -> . CHAR opR CHAR
-    (128) condicionR -> . CHAR opR ID
-    (129) condicionR -> . ID opR ID
-    (130) condicionR -> . ID opR INT
-    (131) condicionR -> . ID opR FLOAT
-    (132) condicionR -> . ID opR LONG
-    (133) condicionR -> . ID opR STRING_1
-    (134) condicionR -> . ID opR CHAR
-    (135) condicionN -> . EXCL_WS BOOLEAN
-    (136) condicionN -> . EXCL_WS ID
+    (108) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
+    (109) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
+    (173) while -> . WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
+    (174) while -> . WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
+    (114) condicionL -> . BOOLEAN opL BOOLEAN
+    (115) condicionL -> . ID opL ID
+    (116) condicionL -> . ID opL BOOLEAN
+    (117) condicionL -> . BOOLEAN opL ID
+    (118) condicionR -> . INT opR INT
+    (119) condicionR -> . INT opR FLOAT
+    (120) condicionR -> . INT opR LONG
+    (121) condicionR -> . INT opR ID
+    (122) condicionR -> . FLOAT opR FLOAT
+    (123) condicionR -> . FLOAT opR INT
+    (124) condicionR -> . FLOAT opR LONG
+    (125) condicionR -> . FLOAT opR ID
+    (126) condicionR -> . LONG opR LONG
+    (127) condicionR -> . LONG opR INT
+    (128) condicionR -> . LONG opR FLOAT
+    (129) condicionR -> . LONG opR ID
+    (130) condicionR -> . STRING_1 opR STRING_1
+    (131) condicionR -> . STRING_1 opR ID
+    (132) condicionR -> . CHAR opR CHAR
+    (133) condicionR -> . CHAR opR ID
+    (134) condicionR -> . ID opR ID
+    (135) condicionR -> . ID opR INT
+    (136) condicionR -> . ID opR FLOAT
+    (137) condicionR -> . ID opR LONG
+    (138) condicionR -> . ID opR STRING_1
+    (139) condicionR -> . ID opR CHAR
+    (140) condicionN -> . EXCL_WS BOOLEAN
+    (141) condicionN -> . EXCL_WS ID
     (41) queue -> . keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (29) queue_operations -> . queue_add
     (30) queue_operations -> . queue_peek
     (31) queue_operations -> . queue_remove
     (32) queue_operations -> . queue_poll
-    (148) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
-    (151) stack_actuar -> . ID DOT stack_funciones
-    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
-    (149) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
-    (170) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
-    (171) lsimplem -> . ID DOT Lmetod
-    (172) lcomp -> . ID DOT Cmetod
+    (153) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
+    (156) stack_actuar -> . ID DOT stack_funciones
+    (155) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
+    (154) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
+    (175) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (176) lsimplem -> . ID DOT Lmetod
+    (177) lcomp -> . ID DOT Cmetod
     (89) factor -> . INT
     (90) factor -> . FLOAT
     (91) factor -> . LONG
@@ -5224,7 +5231,7 @@ state 278
 
 state 279
 
-    (150) instance_linkedlist -> LINKEDL LANGLE tipoDato RANGLE LPAREN . RPAREN
+    (155) instance_linkedlist -> LINKEDL LANGLE tipoDato RANGLE LPAREN . RPAREN
 
     RPAREN          shift and go to state 300
 
@@ -5238,28 +5245,28 @@ state 280
 
 state 281
 
-    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT . RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (175) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT . RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
 
     RANGLE          shift and go to state 302
 
 
 state 282
 
-    (148) stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .
+    (153) stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .
 
-    SEMICOLON       reduce using rule 148 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
-    LINEBREAK       reduce using rule 148 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
-    $end            reduce using rule 148 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
-    RCURL           reduce using rule 148 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
+    SEMICOLON       reduce using rule 153 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
+    LINEBREAK       reduce using rule 153 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
+    $end            reduce using rule 153 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
+    RCURL           reduce using rule 153 (stack -> keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist .)
 
 
 state 283
 
     (97) funcion -> FUN ID LPAREN ID RPAREN LCURL . lineorBreak RCURL
     (98) funcion -> FUN ID LPAREN ID RPAREN LCURL . RCURL
-    (100) lineorBreak -> . line
-    (101) lineorBreak -> . LINEBREAK line LINEBREAK
-    (102) lineorBreak -> . LINEBREAK line
+    (105) lineorBreak -> . line
+    (106) lineorBreak -> . LINEBREAK line LINEBREAK
+    (107) lineorBreak -> . LINEBREAK line
     (1) line -> . blocks
     (2) line -> . blocks SEMICOLON
     (3) line -> . blocks LINEBREAK
@@ -5293,9 +5300,9 @@ state 283
     (26) estructurasControl -> . for
     (27) estructurasControl -> . if
     (28) estructurasControl -> . while
-    (106) condicion -> . condicionL
-    (107) condicion -> . condicionR
-    (108) condicion -> . condicionN
+    (111) condicion -> . condicionL
+    (112) condicion -> . condicionR
+    (113) condicion -> . condicionN
     (96) funcion -> . FUN ID LPAREN RPAREN LCURL lineorBreak RCURL
     (97) funcion -> . FUN ID LPAREN ID RPAREN LCURL lineorBreak RCURL
     (98) funcion -> . FUN ID LPAREN ID RPAREN LCURL RCURL
@@ -5317,50 +5324,50 @@ state 283
     (52) asignacionSimple -> . ID EQUAL valor
     (42) for -> . FOR LPAREN ID IN iterable RPAREN LCURL lineorBreak RCURL
     (43) for -> . FOR LPAREN error RPAREN LCURL lineorBreak RCURL
-    (103) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
-    (104) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
-    (168) while -> . WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
-    (169) while -> . WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
-    (109) condicionL -> . BOOLEAN opL BOOLEAN
-    (110) condicionL -> . ID opL ID
-    (111) condicionL -> . ID opL BOOLEAN
-    (112) condicionL -> . BOOLEAN opL ID
-    (113) condicionR -> . INT opR INT
-    (114) condicionR -> . INT opR FLOAT
-    (115) condicionR -> . INT opR LONG
-    (116) condicionR -> . INT opR ID
-    (117) condicionR -> . FLOAT opR FLOAT
-    (118) condicionR -> . FLOAT opR INT
-    (119) condicionR -> . FLOAT opR LONG
-    (120) condicionR -> . FLOAT opR ID
-    (121) condicionR -> . LONG opR LONG
-    (122) condicionR -> . LONG opR INT
-    (123) condicionR -> . LONG opR FLOAT
-    (124) condicionR -> . LONG opR ID
-    (125) condicionR -> . STRING_1 opR STRING_1
-    (126) condicionR -> . STRING_1 opR ID
-    (127) condicionR -> . CHAR opR CHAR
-    (128) condicionR -> . CHAR opR ID
-    (129) condicionR -> . ID opR ID
-    (130) condicionR -> . ID opR INT
-    (131) condicionR -> . ID opR FLOAT
-    (132) condicionR -> . ID opR LONG
-    (133) condicionR -> . ID opR STRING_1
-    (134) condicionR -> . ID opR CHAR
-    (135) condicionN -> . EXCL_WS BOOLEAN
-    (136) condicionN -> . EXCL_WS ID
+    (108) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
+    (109) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
+    (173) while -> . WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
+    (174) while -> . WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
+    (114) condicionL -> . BOOLEAN opL BOOLEAN
+    (115) condicionL -> . ID opL ID
+    (116) condicionL -> . ID opL BOOLEAN
+    (117) condicionL -> . BOOLEAN opL ID
+    (118) condicionR -> . INT opR INT
+    (119) condicionR -> . INT opR FLOAT
+    (120) condicionR -> . INT opR LONG
+    (121) condicionR -> . INT opR ID
+    (122) condicionR -> . FLOAT opR FLOAT
+    (123) condicionR -> . FLOAT opR INT
+    (124) condicionR -> . FLOAT opR LONG
+    (125) condicionR -> . FLOAT opR ID
+    (126) condicionR -> . LONG opR LONG
+    (127) condicionR -> . LONG opR INT
+    (128) condicionR -> . LONG opR FLOAT
+    (129) condicionR -> . LONG opR ID
+    (130) condicionR -> . STRING_1 opR STRING_1
+    (131) condicionR -> . STRING_1 opR ID
+    (132) condicionR -> . CHAR opR CHAR
+    (133) condicionR -> . CHAR opR ID
+    (134) condicionR -> . ID opR ID
+    (135) condicionR -> . ID opR INT
+    (136) condicionR -> . ID opR FLOAT
+    (137) condicionR -> . ID opR LONG
+    (138) condicionR -> . ID opR STRING_1
+    (139) condicionR -> . ID opR CHAR
+    (140) condicionN -> . EXCL_WS BOOLEAN
+    (141) condicionN -> . EXCL_WS ID
     (41) queue -> . keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (29) queue_operations -> . queue_add
     (30) queue_operations -> . queue_peek
     (31) queue_operations -> . queue_remove
     (32) queue_operations -> . queue_poll
-    (148) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
-    (151) stack_actuar -> . ID DOT stack_funciones
-    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
-    (149) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
-    (170) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
-    (171) lsimplem -> . ID DOT Lmetod
-    (172) lcomp -> . ID DOT Cmetod
+    (153) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
+    (156) stack_actuar -> . ID DOT stack_funciones
+    (155) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
+    (154) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
+    (175) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (176) lsimplem -> . ID DOT Lmetod
+    (177) lcomp -> . ID DOT Cmetod
     (89) factor -> . INT
     (90) factor -> . FLOAT
     (91) factor -> . LONG
@@ -5448,15 +5455,15 @@ state 285
 
 state 286
 
-    (100) lineorBreak -> line .
+    (105) lineorBreak -> line .
 
-    RCURL           reduce using rule 100 (lineorBreak -> line .)
+    RCURL           reduce using rule 105 (lineorBreak -> line .)
 
 
 state 287
 
-    (101) lineorBreak -> LINEBREAK . line LINEBREAK
-    (102) lineorBreak -> LINEBREAK . line
+    (106) lineorBreak -> LINEBREAK . line LINEBREAK
+    (107) lineorBreak -> LINEBREAK . line
     (9) line -> LINEBREAK .
     (1) line -> . blocks
     (2) line -> . blocks SEMICOLON
@@ -5491,9 +5498,9 @@ state 287
     (26) estructurasControl -> . for
     (27) estructurasControl -> . if
     (28) estructurasControl -> . while
-    (106) condicion -> . condicionL
-    (107) condicion -> . condicionR
-    (108) condicion -> . condicionN
+    (111) condicion -> . condicionL
+    (112) condicion -> . condicionR
+    (113) condicion -> . condicionN
     (96) funcion -> . FUN ID LPAREN RPAREN LCURL lineorBreak RCURL
     (97) funcion -> . FUN ID LPAREN ID RPAREN LCURL lineorBreak RCURL
     (98) funcion -> . FUN ID LPAREN ID RPAREN LCURL RCURL
@@ -5515,50 +5522,50 @@ state 287
     (52) asignacionSimple -> . ID EQUAL valor
     (42) for -> . FOR LPAREN ID IN iterable RPAREN LCURL lineorBreak RCURL
     (43) for -> . FOR LPAREN error RPAREN LCURL lineorBreak RCURL
-    (103) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
-    (104) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
-    (168) while -> . WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
-    (169) while -> . WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
-    (109) condicionL -> . BOOLEAN opL BOOLEAN
-    (110) condicionL -> . ID opL ID
-    (111) condicionL -> . ID opL BOOLEAN
-    (112) condicionL -> . BOOLEAN opL ID
-    (113) condicionR -> . INT opR INT
-    (114) condicionR -> . INT opR FLOAT
-    (115) condicionR -> . INT opR LONG
-    (116) condicionR -> . INT opR ID
-    (117) condicionR -> . FLOAT opR FLOAT
-    (118) condicionR -> . FLOAT opR INT
-    (119) condicionR -> . FLOAT opR LONG
-    (120) condicionR -> . FLOAT opR ID
-    (121) condicionR -> . LONG opR LONG
-    (122) condicionR -> . LONG opR INT
-    (123) condicionR -> . LONG opR FLOAT
-    (124) condicionR -> . LONG opR ID
-    (125) condicionR -> . STRING_1 opR STRING_1
-    (126) condicionR -> . STRING_1 opR ID
-    (127) condicionR -> . CHAR opR CHAR
-    (128) condicionR -> . CHAR opR ID
-    (129) condicionR -> . ID opR ID
-    (130) condicionR -> . ID opR INT
-    (131) condicionR -> . ID opR FLOAT
-    (132) condicionR -> . ID opR LONG
-    (133) condicionR -> . ID opR STRING_1
-    (134) condicionR -> . ID opR CHAR
-    (135) condicionN -> . EXCL_WS BOOLEAN
-    (136) condicionN -> . EXCL_WS ID
+    (108) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
+    (109) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
+    (173) while -> . WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
+    (174) while -> . WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
+    (114) condicionL -> . BOOLEAN opL BOOLEAN
+    (115) condicionL -> . ID opL ID
+    (116) condicionL -> . ID opL BOOLEAN
+    (117) condicionL -> . BOOLEAN opL ID
+    (118) condicionR -> . INT opR INT
+    (119) condicionR -> . INT opR FLOAT
+    (120) condicionR -> . INT opR LONG
+    (121) condicionR -> . INT opR ID
+    (122) condicionR -> . FLOAT opR FLOAT
+    (123) condicionR -> . FLOAT opR INT
+    (124) condicionR -> . FLOAT opR LONG
+    (125) condicionR -> . FLOAT opR ID
+    (126) condicionR -> . LONG opR LONG
+    (127) condicionR -> . LONG opR INT
+    (128) condicionR -> . LONG opR FLOAT
+    (129) condicionR -> . LONG opR ID
+    (130) condicionR -> . STRING_1 opR STRING_1
+    (131) condicionR -> . STRING_1 opR ID
+    (132) condicionR -> . CHAR opR CHAR
+    (133) condicionR -> . CHAR opR ID
+    (134) condicionR -> . ID opR ID
+    (135) condicionR -> . ID opR INT
+    (136) condicionR -> . ID opR FLOAT
+    (137) condicionR -> . ID opR LONG
+    (138) condicionR -> . ID opR STRING_1
+    (139) condicionR -> . ID opR CHAR
+    (140) condicionN -> . EXCL_WS BOOLEAN
+    (141) condicionN -> . EXCL_WS ID
     (41) queue -> . keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (29) queue_operations -> . queue_add
     (30) queue_operations -> . queue_peek
     (31) queue_operations -> . queue_remove
     (32) queue_operations -> . queue_poll
-    (148) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
-    (151) stack_actuar -> . ID DOT stack_funciones
-    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
-    (149) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
-    (170) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
-    (171) lsimplem -> . ID DOT Lmetod
-    (172) lcomp -> . ID DOT Cmetod
+    (153) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
+    (156) stack_actuar -> . ID DOT stack_funciones
+    (155) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
+    (154) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
+    (175) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (176) lsimplem -> . ID DOT Lmetod
+    (177) lcomp -> . ID DOT Cmetod
     (89) factor -> . INT
     (90) factor -> . FLOAT
     (91) factor -> . LONG
@@ -5638,42 +5645,42 @@ state 288
 
 state 289
 
-    (165) Cmetod -> APPEND LPAREN OBJECT RPAREN .
+    (170) Cmetod -> APPEND LPAREN OBJECT RPAREN .
 
-    SEMICOLON       reduce using rule 165 (Cmetod -> APPEND LPAREN OBJECT RPAREN .)
-    LINEBREAK       reduce using rule 165 (Cmetod -> APPEND LPAREN OBJECT RPAREN .)
-    $end            reduce using rule 165 (Cmetod -> APPEND LPAREN OBJECT RPAREN .)
-    RCURL           reduce using rule 165 (Cmetod -> APPEND LPAREN OBJECT RPAREN .)
+    SEMICOLON       reduce using rule 170 (Cmetod -> APPEND LPAREN OBJECT RPAREN .)
+    LINEBREAK       reduce using rule 170 (Cmetod -> APPEND LPAREN OBJECT RPAREN .)
+    $end            reduce using rule 170 (Cmetod -> APPEND LPAREN OBJECT RPAREN .)
+    RCURL           reduce using rule 170 (Cmetod -> APPEND LPAREN OBJECT RPAREN .)
 
 
 state 290
 
-    (166) Cmetod -> REMOVEN LPAREN OBJECT RPAREN .
+    (171) Cmetod -> REMOVEN LPAREN OBJECT RPAREN .
 
-    SEMICOLON       reduce using rule 166 (Cmetod -> REMOVEN LPAREN OBJECT RPAREN .)
-    LINEBREAK       reduce using rule 166 (Cmetod -> REMOVEN LPAREN OBJECT RPAREN .)
-    $end            reduce using rule 166 (Cmetod -> REMOVEN LPAREN OBJECT RPAREN .)
-    RCURL           reduce using rule 166 (Cmetod -> REMOVEN LPAREN OBJECT RPAREN .)
+    SEMICOLON       reduce using rule 171 (Cmetod -> REMOVEN LPAREN OBJECT RPAREN .)
+    LINEBREAK       reduce using rule 171 (Cmetod -> REMOVEN LPAREN OBJECT RPAREN .)
+    $end            reduce using rule 171 (Cmetod -> REMOVEN LPAREN OBJECT RPAREN .)
+    RCURL           reduce using rule 171 (Cmetod -> REMOVEN LPAREN OBJECT RPAREN .)
 
 
 state 291
 
-    (167) Cmetod -> REMOVEI LPAREN TINT RPAREN .
+    (172) Cmetod -> REMOVEI LPAREN TINT RPAREN .
 
-    SEMICOLON       reduce using rule 167 (Cmetod -> REMOVEI LPAREN TINT RPAREN .)
-    LINEBREAK       reduce using rule 167 (Cmetod -> REMOVEI LPAREN TINT RPAREN .)
-    $end            reduce using rule 167 (Cmetod -> REMOVEI LPAREN TINT RPAREN .)
-    RCURL           reduce using rule 167 (Cmetod -> REMOVEI LPAREN TINT RPAREN .)
+    SEMICOLON       reduce using rule 172 (Cmetod -> REMOVEI LPAREN TINT RPAREN .)
+    LINEBREAK       reduce using rule 172 (Cmetod -> REMOVEI LPAREN TINT RPAREN .)
+    $end            reduce using rule 172 (Cmetod -> REMOVEI LPAREN TINT RPAREN .)
+    RCURL           reduce using rule 172 (Cmetod -> REMOVEI LPAREN TINT RPAREN .)
 
 
 state 292
 
-    (159) stack_push -> PUSH LPAREN factor RPAREN .
+    (164) stack_push -> PUSH LPAREN factor RPAREN .
 
-    SEMICOLON       reduce using rule 159 (stack_push -> PUSH LPAREN factor RPAREN .)
-    LINEBREAK       reduce using rule 159 (stack_push -> PUSH LPAREN factor RPAREN .)
-    $end            reduce using rule 159 (stack_push -> PUSH LPAREN factor RPAREN .)
-    RCURL           reduce using rule 159 (stack_push -> PUSH LPAREN factor RPAREN .)
+    SEMICOLON       reduce using rule 164 (stack_push -> PUSH LPAREN factor RPAREN .)
+    LINEBREAK       reduce using rule 164 (stack_push -> PUSH LPAREN factor RPAREN .)
+    $end            reduce using rule 164 (stack_push -> PUSH LPAREN factor RPAREN .)
+    RCURL           reduce using rule 164 (stack_push -> PUSH LPAREN factor RPAREN .)
 
 
 state 293
@@ -5706,34 +5713,34 @@ state 296
 
 state 297
 
-    (103) if -> IF LPAREN condicion RPAREN LCURL lineorBreak . RCURL
-    (104) if -> IF LPAREN condicion RPAREN LCURL lineorBreak . RCURL else
+    (108) if -> IF LPAREN condicion RPAREN LCURL lineorBreak . RCURL
+    (109) if -> IF LPAREN condicion RPAREN LCURL lineorBreak . RCURL else
 
     RCURL           shift and go to state 311
 
 
 state 298
 
-    (168) while -> WHILE LPAREN ID opR INT RPAREN . LCURL lineorBreak RCURL
+    (173) while -> WHILE LPAREN ID opR INT RPAREN . LCURL lineorBreak RCURL
 
     LCURL           shift and go to state 312
 
 
 state 299
 
-    (169) while -> WHILE LPAREN error RPAREN LCURL lineorBreak . RCURL
+    (174) while -> WHILE LPAREN error RPAREN LCURL lineorBreak . RCURL
 
     RCURL           shift and go to state 313
 
 
 state 300
 
-    (150) instance_linkedlist -> LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN .
+    (155) instance_linkedlist -> LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN .
 
-    SEMICOLON       reduce using rule 150 (instance_linkedlist -> LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN .)
-    LINEBREAK       reduce using rule 150 (instance_linkedlist -> LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN .)
-    $end            reduce using rule 150 (instance_linkedlist -> LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN .)
-    RCURL           reduce using rule 150 (instance_linkedlist -> LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN .)
+    SEMICOLON       reduce using rule 155 (instance_linkedlist -> LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN .)
+    LINEBREAK       reduce using rule 155 (instance_linkedlist -> LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN .)
+    $end            reduce using rule 155 (instance_linkedlist -> LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN .)
+    RCURL           reduce using rule 155 (instance_linkedlist -> LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN .)
 
 
 state 301
@@ -5745,7 +5752,7 @@ state 301
 
 state 302
 
-    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE . EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (175) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE . EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
 
     EQUAL           shift and go to state 315
 
@@ -5779,11 +5786,11 @@ state 305
 
 state 306
 
-    (101) lineorBreak -> LINEBREAK line . LINEBREAK
-    (102) lineorBreak -> LINEBREAK line .
+    (106) lineorBreak -> LINEBREAK line . LINEBREAK
+    (107) lineorBreak -> LINEBREAK line .
 
     LINEBREAK       shift and go to state 317
-    RCURL           reduce using rule 102 (lineorBreak -> LINEBREAK line .)
+    RCURL           reduce using rule 107 (lineorBreak -> LINEBREAK line .)
 
 
 state 307
@@ -5796,9 +5803,9 @@ state 307
 state 308
 
     (42) for -> FOR LPAREN ID IN iterable RPAREN LCURL . lineorBreak RCURL
-    (100) lineorBreak -> . line
-    (101) lineorBreak -> . LINEBREAK line LINEBREAK
-    (102) lineorBreak -> . LINEBREAK line
+    (105) lineorBreak -> . line
+    (106) lineorBreak -> . LINEBREAK line LINEBREAK
+    (107) lineorBreak -> . LINEBREAK line
     (1) line -> . blocks
     (2) line -> . blocks SEMICOLON
     (3) line -> . blocks LINEBREAK
@@ -5832,9 +5839,9 @@ state 308
     (26) estructurasControl -> . for
     (27) estructurasControl -> . if
     (28) estructurasControl -> . while
-    (106) condicion -> . condicionL
-    (107) condicion -> . condicionR
-    (108) condicion -> . condicionN
+    (111) condicion -> . condicionL
+    (112) condicion -> . condicionR
+    (113) condicion -> . condicionN
     (96) funcion -> . FUN ID LPAREN RPAREN LCURL lineorBreak RCURL
     (97) funcion -> . FUN ID LPAREN ID RPAREN LCURL lineorBreak RCURL
     (98) funcion -> . FUN ID LPAREN ID RPAREN LCURL RCURL
@@ -5856,50 +5863,50 @@ state 308
     (52) asignacionSimple -> . ID EQUAL valor
     (42) for -> . FOR LPAREN ID IN iterable RPAREN LCURL lineorBreak RCURL
     (43) for -> . FOR LPAREN error RPAREN LCURL lineorBreak RCURL
-    (103) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
-    (104) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
-    (168) while -> . WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
-    (169) while -> . WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
-    (109) condicionL -> . BOOLEAN opL BOOLEAN
-    (110) condicionL -> . ID opL ID
-    (111) condicionL -> . ID opL BOOLEAN
-    (112) condicionL -> . BOOLEAN opL ID
-    (113) condicionR -> . INT opR INT
-    (114) condicionR -> . INT opR FLOAT
-    (115) condicionR -> . INT opR LONG
-    (116) condicionR -> . INT opR ID
-    (117) condicionR -> . FLOAT opR FLOAT
-    (118) condicionR -> . FLOAT opR INT
-    (119) condicionR -> . FLOAT opR LONG
-    (120) condicionR -> . FLOAT opR ID
-    (121) condicionR -> . LONG opR LONG
-    (122) condicionR -> . LONG opR INT
-    (123) condicionR -> . LONG opR FLOAT
-    (124) condicionR -> . LONG opR ID
-    (125) condicionR -> . STRING_1 opR STRING_1
-    (126) condicionR -> . STRING_1 opR ID
-    (127) condicionR -> . CHAR opR CHAR
-    (128) condicionR -> . CHAR opR ID
-    (129) condicionR -> . ID opR ID
-    (130) condicionR -> . ID opR INT
-    (131) condicionR -> . ID opR FLOAT
-    (132) condicionR -> . ID opR LONG
-    (133) condicionR -> . ID opR STRING_1
-    (134) condicionR -> . ID opR CHAR
-    (135) condicionN -> . EXCL_WS BOOLEAN
-    (136) condicionN -> . EXCL_WS ID
+    (108) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
+    (109) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
+    (173) while -> . WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
+    (174) while -> . WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
+    (114) condicionL -> . BOOLEAN opL BOOLEAN
+    (115) condicionL -> . ID opL ID
+    (116) condicionL -> . ID opL BOOLEAN
+    (117) condicionL -> . BOOLEAN opL ID
+    (118) condicionR -> . INT opR INT
+    (119) condicionR -> . INT opR FLOAT
+    (120) condicionR -> . INT opR LONG
+    (121) condicionR -> . INT opR ID
+    (122) condicionR -> . FLOAT opR FLOAT
+    (123) condicionR -> . FLOAT opR INT
+    (124) condicionR -> . FLOAT opR LONG
+    (125) condicionR -> . FLOAT opR ID
+    (126) condicionR -> . LONG opR LONG
+    (127) condicionR -> . LONG opR INT
+    (128) condicionR -> . LONG opR FLOAT
+    (129) condicionR -> . LONG opR ID
+    (130) condicionR -> . STRING_1 opR STRING_1
+    (131) condicionR -> . STRING_1 opR ID
+    (132) condicionR -> . CHAR opR CHAR
+    (133) condicionR -> . CHAR opR ID
+    (134) condicionR -> . ID opR ID
+    (135) condicionR -> . ID opR INT
+    (136) condicionR -> . ID opR FLOAT
+    (137) condicionR -> . ID opR LONG
+    (138) condicionR -> . ID opR STRING_1
+    (139) condicionR -> . ID opR CHAR
+    (140) condicionN -> . EXCL_WS BOOLEAN
+    (141) condicionN -> . EXCL_WS ID
     (41) queue -> . keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (29) queue_operations -> . queue_add
     (30) queue_operations -> . queue_peek
     (31) queue_operations -> . queue_remove
     (32) queue_operations -> . queue_poll
-    (148) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
-    (151) stack_actuar -> . ID DOT stack_funciones
-    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
-    (149) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
-    (170) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
-    (171) lsimplem -> . ID DOT Lmetod
-    (172) lcomp -> . ID DOT Cmetod
+    (153) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
+    (156) stack_actuar -> . ID DOT stack_funciones
+    (155) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
+    (154) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
+    (175) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (176) lsimplem -> . ID DOT Lmetod
+    (177) lcomp -> . ID DOT Cmetod
     (89) factor -> . INT
     (90) factor -> . FLOAT
     (91) factor -> . LONG
@@ -5986,24 +5993,24 @@ state 310
 
 state 311
 
-    (103) if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL .
-    (104) if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL . else
-    (105) else -> . ELSE LCURL lineorBreak RCURL
+    (108) if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL .
+    (109) if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL . else
+    (110) else -> . ELSE LCURL lineorBreak RCURL
 
-    SEMICOLON       reduce using rule 103 (if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL .)
-    LINEBREAK       reduce using rule 103 (if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL .)
-    $end            reduce using rule 103 (if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL .)
-    RCURL           reduce using rule 103 (if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL .)
+    SEMICOLON       reduce using rule 108 (if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL .)
+    LINEBREAK       reduce using rule 108 (if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL .)
+    $end            reduce using rule 108 (if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL .)
+    RCURL           reduce using rule 108 (if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL .)
     ELSE            shift and go to state 320
 
     else                           shift and go to state 319
 
 state 312
 
-    (168) while -> WHILE LPAREN ID opR INT RPAREN LCURL . lineorBreak RCURL
-    (100) lineorBreak -> . line
-    (101) lineorBreak -> . LINEBREAK line LINEBREAK
-    (102) lineorBreak -> . LINEBREAK line
+    (173) while -> WHILE LPAREN ID opR INT RPAREN LCURL . lineorBreak RCURL
+    (105) lineorBreak -> . line
+    (106) lineorBreak -> . LINEBREAK line LINEBREAK
+    (107) lineorBreak -> . LINEBREAK line
     (1) line -> . blocks
     (2) line -> . blocks SEMICOLON
     (3) line -> . blocks LINEBREAK
@@ -6037,9 +6044,9 @@ state 312
     (26) estructurasControl -> . for
     (27) estructurasControl -> . if
     (28) estructurasControl -> . while
-    (106) condicion -> . condicionL
-    (107) condicion -> . condicionR
-    (108) condicion -> . condicionN
+    (111) condicion -> . condicionL
+    (112) condicion -> . condicionR
+    (113) condicion -> . condicionN
     (96) funcion -> . FUN ID LPAREN RPAREN LCURL lineorBreak RCURL
     (97) funcion -> . FUN ID LPAREN ID RPAREN LCURL lineorBreak RCURL
     (98) funcion -> . FUN ID LPAREN ID RPAREN LCURL RCURL
@@ -6061,50 +6068,50 @@ state 312
     (52) asignacionSimple -> . ID EQUAL valor
     (42) for -> . FOR LPAREN ID IN iterable RPAREN LCURL lineorBreak RCURL
     (43) for -> . FOR LPAREN error RPAREN LCURL lineorBreak RCURL
-    (103) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
-    (104) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
-    (168) while -> . WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
-    (169) while -> . WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
-    (109) condicionL -> . BOOLEAN opL BOOLEAN
-    (110) condicionL -> . ID opL ID
-    (111) condicionL -> . ID opL BOOLEAN
-    (112) condicionL -> . BOOLEAN opL ID
-    (113) condicionR -> . INT opR INT
-    (114) condicionR -> . INT opR FLOAT
-    (115) condicionR -> . INT opR LONG
-    (116) condicionR -> . INT opR ID
-    (117) condicionR -> . FLOAT opR FLOAT
-    (118) condicionR -> . FLOAT opR INT
-    (119) condicionR -> . FLOAT opR LONG
-    (120) condicionR -> . FLOAT opR ID
-    (121) condicionR -> . LONG opR LONG
-    (122) condicionR -> . LONG opR INT
-    (123) condicionR -> . LONG opR FLOAT
-    (124) condicionR -> . LONG opR ID
-    (125) condicionR -> . STRING_1 opR STRING_1
-    (126) condicionR -> . STRING_1 opR ID
-    (127) condicionR -> . CHAR opR CHAR
-    (128) condicionR -> . CHAR opR ID
-    (129) condicionR -> . ID opR ID
-    (130) condicionR -> . ID opR INT
-    (131) condicionR -> . ID opR FLOAT
-    (132) condicionR -> . ID opR LONG
-    (133) condicionR -> . ID opR STRING_1
-    (134) condicionR -> . ID opR CHAR
-    (135) condicionN -> . EXCL_WS BOOLEAN
-    (136) condicionN -> . EXCL_WS ID
+    (108) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
+    (109) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
+    (173) while -> . WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
+    (174) while -> . WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
+    (114) condicionL -> . BOOLEAN opL BOOLEAN
+    (115) condicionL -> . ID opL ID
+    (116) condicionL -> . ID opL BOOLEAN
+    (117) condicionL -> . BOOLEAN opL ID
+    (118) condicionR -> . INT opR INT
+    (119) condicionR -> . INT opR FLOAT
+    (120) condicionR -> . INT opR LONG
+    (121) condicionR -> . INT opR ID
+    (122) condicionR -> . FLOAT opR FLOAT
+    (123) condicionR -> . FLOAT opR INT
+    (124) condicionR -> . FLOAT opR LONG
+    (125) condicionR -> . FLOAT opR ID
+    (126) condicionR -> . LONG opR LONG
+    (127) condicionR -> . LONG opR INT
+    (128) condicionR -> . LONG opR FLOAT
+    (129) condicionR -> . LONG opR ID
+    (130) condicionR -> . STRING_1 opR STRING_1
+    (131) condicionR -> . STRING_1 opR ID
+    (132) condicionR -> . CHAR opR CHAR
+    (133) condicionR -> . CHAR opR ID
+    (134) condicionR -> . ID opR ID
+    (135) condicionR -> . ID opR INT
+    (136) condicionR -> . ID opR FLOAT
+    (137) condicionR -> . ID opR LONG
+    (138) condicionR -> . ID opR STRING_1
+    (139) condicionR -> . ID opR CHAR
+    (140) condicionN -> . EXCL_WS BOOLEAN
+    (141) condicionN -> . EXCL_WS ID
     (41) queue -> . keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (29) queue_operations -> . queue_add
     (30) queue_operations -> . queue_peek
     (31) queue_operations -> . queue_remove
     (32) queue_operations -> . queue_poll
-    (148) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
-    (151) stack_actuar -> . ID DOT stack_funciones
-    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
-    (149) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
-    (170) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
-    (171) lsimplem -> . ID DOT Lmetod
-    (172) lcomp -> . ID DOT Cmetod
+    (153) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
+    (156) stack_actuar -> . ID DOT stack_funciones
+    (155) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
+    (154) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
+    (175) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (176) lsimplem -> . ID DOT Lmetod
+    (177) lcomp -> . ID DOT Cmetod
     (89) factor -> . INT
     (90) factor -> . FLOAT
     (91) factor -> . LONG
@@ -6174,12 +6181,12 @@ state 312
 
 state 313
 
-    (169) while -> WHILE LPAREN error RPAREN LCURL lineorBreak RCURL .
+    (174) while -> WHILE LPAREN error RPAREN LCURL lineorBreak RCURL .
 
-    SEMICOLON       reduce using rule 169 (while -> WHILE LPAREN error RPAREN LCURL lineorBreak RCURL .)
-    LINEBREAK       reduce using rule 169 (while -> WHILE LPAREN error RPAREN LCURL lineorBreak RCURL .)
-    $end            reduce using rule 169 (while -> WHILE LPAREN error RPAREN LCURL lineorBreak RCURL .)
-    RCURL           reduce using rule 169 (while -> WHILE LPAREN error RPAREN LCURL lineorBreak RCURL .)
+    SEMICOLON       reduce using rule 174 (while -> WHILE LPAREN error RPAREN LCURL lineorBreak RCURL .)
+    LINEBREAK       reduce using rule 174 (while -> WHILE LPAREN error RPAREN LCURL lineorBreak RCURL .)
+    $end            reduce using rule 174 (while -> WHILE LPAREN error RPAREN LCURL lineorBreak RCURL .)
+    RCURL           reduce using rule 174 (while -> WHILE LPAREN error RPAREN LCURL lineorBreak RCURL .)
 
 
 state 314
@@ -6191,7 +6198,7 @@ state 314
 
 state 315
 
-    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL . LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (175) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL . LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
 
     LINKEDL         shift and go to state 323
 
@@ -6208,9 +6215,9 @@ state 316
 
 state 317
 
-    (101) lineorBreak -> LINEBREAK line LINEBREAK .
+    (106) lineorBreak -> LINEBREAK line LINEBREAK .
 
-    RCURL           reduce using rule 101 (lineorBreak -> LINEBREAK line LINEBREAK .)
+    RCURL           reduce using rule 106 (lineorBreak -> LINEBREAK line LINEBREAK .)
 
 
 state 318
@@ -6222,24 +6229,24 @@ state 318
 
 state 319
 
-    (104) if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else .
+    (109) if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else .
 
-    SEMICOLON       reduce using rule 104 (if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else .)
-    LINEBREAK       reduce using rule 104 (if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else .)
-    $end            reduce using rule 104 (if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else .)
-    RCURL           reduce using rule 104 (if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else .)
+    SEMICOLON       reduce using rule 109 (if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else .)
+    LINEBREAK       reduce using rule 109 (if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else .)
+    $end            reduce using rule 109 (if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else .)
+    RCURL           reduce using rule 109 (if -> IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else .)
 
 
 state 320
 
-    (105) else -> ELSE . LCURL lineorBreak RCURL
+    (110) else -> ELSE . LCURL lineorBreak RCURL
 
     LCURL           shift and go to state 325
 
 
 state 321
 
-    (168) while -> WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak . RCURL
+    (173) while -> WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak . RCURL
 
     RCURL           shift and go to state 326
 
@@ -6253,7 +6260,7 @@ state 322
 
 state 323
 
-    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL . LANGLE OBJECT RANGLE LPAREN RPAREN
+    (175) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL . LANGLE OBJECT RANGLE LPAREN RPAREN
 
     LANGLE          shift and go to state 328
 
@@ -6270,10 +6277,10 @@ state 324
 
 state 325
 
-    (105) else -> ELSE LCURL . lineorBreak RCURL
-    (100) lineorBreak -> . line
-    (101) lineorBreak -> . LINEBREAK line LINEBREAK
-    (102) lineorBreak -> . LINEBREAK line
+    (110) else -> ELSE LCURL . lineorBreak RCURL
+    (105) lineorBreak -> . line
+    (106) lineorBreak -> . LINEBREAK line LINEBREAK
+    (107) lineorBreak -> . LINEBREAK line
     (1) line -> . blocks
     (2) line -> . blocks SEMICOLON
     (3) line -> . blocks LINEBREAK
@@ -6307,9 +6314,9 @@ state 325
     (26) estructurasControl -> . for
     (27) estructurasControl -> . if
     (28) estructurasControl -> . while
-    (106) condicion -> . condicionL
-    (107) condicion -> . condicionR
-    (108) condicion -> . condicionN
+    (111) condicion -> . condicionL
+    (112) condicion -> . condicionR
+    (113) condicion -> . condicionN
     (96) funcion -> . FUN ID LPAREN RPAREN LCURL lineorBreak RCURL
     (97) funcion -> . FUN ID LPAREN ID RPAREN LCURL lineorBreak RCURL
     (98) funcion -> . FUN ID LPAREN ID RPAREN LCURL RCURL
@@ -6331,50 +6338,50 @@ state 325
     (52) asignacionSimple -> . ID EQUAL valor
     (42) for -> . FOR LPAREN ID IN iterable RPAREN LCURL lineorBreak RCURL
     (43) for -> . FOR LPAREN error RPAREN LCURL lineorBreak RCURL
-    (103) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
-    (104) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
-    (168) while -> . WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
-    (169) while -> . WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
-    (109) condicionL -> . BOOLEAN opL BOOLEAN
-    (110) condicionL -> . ID opL ID
-    (111) condicionL -> . ID opL BOOLEAN
-    (112) condicionL -> . BOOLEAN opL ID
-    (113) condicionR -> . INT opR INT
-    (114) condicionR -> . INT opR FLOAT
-    (115) condicionR -> . INT opR LONG
-    (116) condicionR -> . INT opR ID
-    (117) condicionR -> . FLOAT opR FLOAT
-    (118) condicionR -> . FLOAT opR INT
-    (119) condicionR -> . FLOAT opR LONG
-    (120) condicionR -> . FLOAT opR ID
-    (121) condicionR -> . LONG opR LONG
-    (122) condicionR -> . LONG opR INT
-    (123) condicionR -> . LONG opR FLOAT
-    (124) condicionR -> . LONG opR ID
-    (125) condicionR -> . STRING_1 opR STRING_1
-    (126) condicionR -> . STRING_1 opR ID
-    (127) condicionR -> . CHAR opR CHAR
-    (128) condicionR -> . CHAR opR ID
-    (129) condicionR -> . ID opR ID
-    (130) condicionR -> . ID opR INT
-    (131) condicionR -> . ID opR FLOAT
-    (132) condicionR -> . ID opR LONG
-    (133) condicionR -> . ID opR STRING_1
-    (134) condicionR -> . ID opR CHAR
-    (135) condicionN -> . EXCL_WS BOOLEAN
-    (136) condicionN -> . EXCL_WS ID
+    (108) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL
+    (109) if -> . IF LPAREN condicion RPAREN LCURL lineorBreak RCURL else
+    (173) while -> . WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL
+    (174) while -> . WHILE LPAREN error RPAREN LCURL lineorBreak RCURL
+    (114) condicionL -> . BOOLEAN opL BOOLEAN
+    (115) condicionL -> . ID opL ID
+    (116) condicionL -> . ID opL BOOLEAN
+    (117) condicionL -> . BOOLEAN opL ID
+    (118) condicionR -> . INT opR INT
+    (119) condicionR -> . INT opR FLOAT
+    (120) condicionR -> . INT opR LONG
+    (121) condicionR -> . INT opR ID
+    (122) condicionR -> . FLOAT opR FLOAT
+    (123) condicionR -> . FLOAT opR INT
+    (124) condicionR -> . FLOAT opR LONG
+    (125) condicionR -> . FLOAT opR ID
+    (126) condicionR -> . LONG opR LONG
+    (127) condicionR -> . LONG opR INT
+    (128) condicionR -> . LONG opR FLOAT
+    (129) condicionR -> . LONG opR ID
+    (130) condicionR -> . STRING_1 opR STRING_1
+    (131) condicionR -> . STRING_1 opR ID
+    (132) condicionR -> . CHAR opR CHAR
+    (133) condicionR -> . CHAR opR ID
+    (134) condicionR -> . ID opR ID
+    (135) condicionR -> . ID opR INT
+    (136) condicionR -> . ID opR FLOAT
+    (137) condicionR -> . ID opR LONG
+    (138) condicionR -> . ID opR STRING_1
+    (139) condicionR -> . ID opR CHAR
+    (140) condicionN -> . EXCL_WS BOOLEAN
+    (141) condicionN -> . EXCL_WS ID
     (41) queue -> . keywordVariables ID DOTS QUEUE LANGLE tipoDato RANGLE EQUAL LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
     (29) queue_operations -> . queue_add
     (30) queue_operations -> . queue_peek
     (31) queue_operations -> . queue_remove
     (32) queue_operations -> . queue_poll
-    (148) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
-    (151) stack_actuar -> . ID DOT stack_funciones
-    (150) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
-    (149) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
-    (170) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
-    (171) lsimplem -> . ID DOT Lmetod
-    (172) lcomp -> . ID DOT Cmetod
+    (153) stack -> . keywordVariables ID DOTS def_estruct_tipoDato EQUAL instance_linkedlist
+    (156) stack_actuar -> . ID DOT stack_funciones
+    (155) instance_linkedlist -> . LINKEDL LANGLE tipoDato RANGLE LPAREN RPAREN
+    (154) def_estruct_tipoDato -> . STACK LANGLE tipoDato RANGLE
+    (175) lista -> . keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN
+    (176) lsimplem -> . ID DOT Lmetod
+    (177) lcomp -> . ID DOT Cmetod
     (89) factor -> . INT
     (90) factor -> . FLOAT
     (91) factor -> . LONG
@@ -6444,12 +6451,12 @@ state 325
 
 state 326
 
-    (168) while -> WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL .
+    (173) while -> WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL .
 
-    SEMICOLON       reduce using rule 168 (while -> WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL .)
-    LINEBREAK       reduce using rule 168 (while -> WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL .)
-    $end            reduce using rule 168 (while -> WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL .)
-    RCURL           reduce using rule 168 (while -> WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL .)
+    SEMICOLON       reduce using rule 173 (while -> WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL .)
+    LINEBREAK       reduce using rule 173 (while -> WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL .)
+    $end            reduce using rule 173 (while -> WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL .)
+    RCURL           reduce using rule 173 (while -> WHILE LPAREN ID opR INT RPAREN LCURL lineorBreak RCURL .)
 
 
 state 327
@@ -6475,14 +6482,14 @@ state 327
 
 state 328
 
-    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE . OBJECT RANGLE LPAREN RPAREN
+    (175) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE . OBJECT RANGLE LPAREN RPAREN
 
     OBJECT          shift and go to state 331
 
 
 state 329
 
-    (105) else -> ELSE LCURL lineorBreak . RCURL
+    (110) else -> ELSE LCURL lineorBreak . RCURL
 
     RCURL           shift and go to state 332
 
@@ -6496,19 +6503,19 @@ state 330
 
 state 331
 
-    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT . RANGLE LPAREN RPAREN
+    (175) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT . RANGLE LPAREN RPAREN
 
     RANGLE          shift and go to state 334
 
 
 state 332
 
-    (105) else -> ELSE LCURL lineorBreak RCURL .
+    (110) else -> ELSE LCURL lineorBreak RCURL .
 
-    SEMICOLON       reduce using rule 105 (else -> ELSE LCURL lineorBreak RCURL .)
-    LINEBREAK       reduce using rule 105 (else -> ELSE LCURL lineorBreak RCURL .)
-    $end            reduce using rule 105 (else -> ELSE LCURL lineorBreak RCURL .)
-    RCURL           reduce using rule 105 (else -> ELSE LCURL lineorBreak RCURL .)
+    SEMICOLON       reduce using rule 110 (else -> ELSE LCURL lineorBreak RCURL .)
+    LINEBREAK       reduce using rule 110 (else -> ELSE LCURL lineorBreak RCURL .)
+    $end            reduce using rule 110 (else -> ELSE LCURL lineorBreak RCURL .)
+    RCURL           reduce using rule 110 (else -> ELSE LCURL lineorBreak RCURL .)
 
 
 state 333
@@ -6520,7 +6527,7 @@ state 333
 
 state 334
 
-    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE . LPAREN RPAREN
+    (175) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE . LPAREN RPAREN
 
     LPAREN          shift and go to state 336
 
@@ -6534,7 +6541,7 @@ state 335
 
 state 336
 
-    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN . RPAREN
+    (175) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN . RPAREN
 
     RPAREN          shift and go to state 338
 
@@ -6551,12 +6558,12 @@ state 337
 
 state 338
 
-    (170) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN .
+    (175) lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN .
 
-    SEMICOLON       reduce using rule 170 (lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN .)
-    LINEBREAK       reduce using rule 170 (lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN .)
-    $end            reduce using rule 170 (lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN .)
-    RCURL           reduce using rule 170 (lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN .)
+    SEMICOLON       reduce using rule 175 (lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN .)
+    LINEBREAK       reduce using rule 175 (lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN .)
+    $end            reduce using rule 175 (lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN .)
+    RCURL           reduce using rule 175 (lista -> keywordVariables ID DOTS LINKEDL LANGLE OBJECT RANGLE EQUAL LINKEDL LANGLE OBJECT RANGLE LPAREN RPAREN .)
 
 WARNING: 
 WARNING: Conflicts:

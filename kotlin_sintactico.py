@@ -253,6 +253,20 @@ def p_funcion(p):
                 | FUN ID LPAREN RPAREN LCURL RCURL
     '''
 
+def p_parametros(p):
+    ''' parametros : parametro
+                    | masParametros
+    '''
+
+def p_parametro(p):
+    'parametro : tipoDato DOTS factor'
+
+def p_masParametros(p):
+    '''masParametros : COMMA parametro
+                    | COMMA parametro masParametros
+
+    '''
+
 def p_lineorBreak(p):
     ''' lineorBreak : line
                     | LINEBREAK line LINEBREAK
