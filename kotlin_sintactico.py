@@ -1,5 +1,5 @@
 import ply.yacc as yacc
-from kotlin_lexico import tokens
+from kotlin_lexico import *
 
 cola = ["Everything is ok!"]
 
@@ -232,18 +232,25 @@ def p_condicionR(p):
     '''condicionR : INT opR INT
                     | INT opR FLOAT
                     | INT opR LONG
+                    | INT opR ID
                     | FLOAT opR FLOAT
                     | FLOAT opR INT
                     | FLOAT opR LONG
+                    | FLOAT opR ID
                     | LONG opR LONG
                     | LONG opR INT
                     | LONG opR FLOAT
+                    | LONG opR ID
                     | STRING_1 opR STRING_1
+                    | STRING_1 opR ID
                     | CHAR opR CHAR
+                    | CHAR opR ID
                     | ID opR ID
                     | ID opR INT
                     | ID opR FLOAT
                     | ID opR LONG
+                    | ID opR STRING_1
+                    | ID opR CHAR
                     '''
 
 def p_condicionN(p):
@@ -356,10 +363,9 @@ def p_lcomp(p):
 # Error rule for syntax errors
 def p_error(p):
     if p:
-        cola.append("Syntax error at token " + p.type)
-        # Just discard the token and tell the parser it's okay.
+        cola.append("Syntax error: The token "+ str(p.value) +" of type "+ p.type + " it's not allowed!")
     else:
-        cola.append("Syntax error at EOF")
+        cola.append("EOF: Error at the end of the line. \nYour line is incomplete. Try again!")
 
 
 

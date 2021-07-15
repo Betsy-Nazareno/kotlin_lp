@@ -123,7 +123,6 @@ tokens = (
     'RPAREN',
     "MOD",
     "ID",
-    "LINEBREAK",
     'EQUAL',#Aporte de Betsy--------------------------------------------------------------------------------------------
     'DOTS',
     'INCREMENTONE',
@@ -175,6 +174,7 @@ tokens = (
     'SINGLE_QUOTE',
     'TEMPLATE',
     'THREEDOTS',
+    'LINEBREAK'
 
 ) + tuple(reserved.values())
 # Regular expression rules for simple tokens
@@ -292,9 +292,8 @@ def t_IMPORT(t):
 
 # Define a rule so we can track line numbers
 #def t_newline(t):
-#    r'\n+'
-#    t.lexer.lineno += len(t.value)
-#    pass
+ #   r'\n+'
+  #  t.lexer.lineno += len(t.value)
 
 # Error handling rule
 def t_error(t):
@@ -308,7 +307,6 @@ def getTokens(lexer):
         tok = lexer.token()
         if not tok:
             break  # No more input
-        print(str(tok))
         lista_tokens.append(str(tok))
 # Build the lexer
 lexer = lex.lex()

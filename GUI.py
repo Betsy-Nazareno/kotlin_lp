@@ -62,11 +62,11 @@ result_label.grid(sticky='W',row=5, column=0, columnspan=4)
 
 #cadena del input a analizar
 def getValue(cadena):
-    print(cadena)
+    s=""
     try:
         s = cadena
     except EOFError:
-        print("EOFError")
+        p1.set("EOFError")
     p1.set("")
     if s and (Sintactico.get() or Semantico.get()):
        parser.parse(s, lexer=lexer)
